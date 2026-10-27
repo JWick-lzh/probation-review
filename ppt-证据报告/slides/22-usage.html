@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>AI 用量</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：logo 挪到右端，导航右移让出左上角（演示外壳的「概览」按钮在那里；与 01–07 同一写法） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+/* ── 22 AI 用量 ── */
+.band { height: 186px; padding-top: 34px; }
+.band .assert { font-size: var(--fs-assert); line-height: 1.2; white-space: nowrap; }
+.band .sub { margin-top: 6px; font-size: var(--fs-body); color: var(--ink-2); }
+
+.chart { position: absolute; left: var(--gutter); top: 312px; width: 1240px; }
+.plot { display: block; overflow: visible; }
+.chart .source { margin-top: 18px; }
+
+.plot .lg { font-size: 22px; fill: var(--ink-2); }
+.plot .ax { font-size: 20px; fill: var(--muted); }
+.plot .ax-b { font-weight: 700; fill: var(--ink-2); }
+.plot .when { font-size: 28px; font-weight: 700; fill: var(--ink); }
+.plot .from { font-size: 20px; fill: var(--muted); }
+.plot .val { font-size: 28px; font-weight: 700; fill: var(--ink); }
+.plot .pct { font-size: 24px; font-weight: 500; fill: var(--ink-2); }
+.plot .fc { font-size: 22px; font-weight: 700; fill: var(--ink-2); }
+.plot .fcs { font-size: 20px; font-weight: 400; fill: var(--muted); }
+.plot .track { fill: var(--track); }
+.plot .rest { fill: none; stroke: #8E9AA8; stroke-width: 2; stroke-dasharray: 6 6; }
+.plot .used { fill: var(--s-done); }
+.plot .aily { fill: var(--s-wip); }
+.plot .g25 { stroke: var(--rule); stroke-width: 1.5; stroke-dasharray: 4 6; fill: none; }
+.plot .g100 { stroke: var(--ink-2); stroke-width: 2; stroke-dasharray: 7 6; fill: none; }
+.plot .g0 { stroke: #B8C2CE; stroke-width: 2; fill: none; }
+.plot .sep { stroke: var(--track); stroke-width: 1.5; }
+.plot .note { font-size: 24px; fill: var(--ink-2); }
+.plot .note-b { font-weight: 700; fill: var(--ink); }
+
+.side.read { left: 1400px; top: 322px; width: 414px; }
+.side.read h3 + p { margin-top: 10px; }
+.side.read p + p { margin-top: 14px; }
+.side.read p + h3 { margin-top: 44px; }
+
+/* 时间轴（ms）：红线 0–600 → 标题 100–700 → 框架 250–650 → 刻度线 350–800
+   → 8/17 的条长出来 450–950 → 10/23 的条长出来 600–1300 → aily 条 750–1100 → 预计说明 1150–1450 → 来源行 1300–1600 */
+.plot .used, .plot .aily { transform-box: fill-box; transform-origin: 0 50%; }
+.plot .g25, .plot .g100, .plot .g0 { transform-box: fill-box; transform-origin: 50% 0; }
+html.motion .band .assert { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .sub { animation: rise .5s var(--ease-out) .2s both; }
+html.motion .plot .frame { animation: fade .4s ease-out .25s both; }
+html.motion .plot .g25, html.motion .plot .g100, html.motion .plot .g0 { animation: draw-y .45s var(--ease-out) .35s both; }
+html.motion .plot .used, html.motion .plot .aily { animation: draw-x var(--t, .5s) var(--ease-out) var(--d) both; }
+html.motion .plot .ride { animation: ride var(--t, .5s) var(--ease-out) var(--d) both; }
+html.motion .plot .late { animation: fade .3s ease-out var(--d) both; }
+html.motion .side.read { animation: fade .4s ease-out .3s both; }
+.chart .source { --src-delay: 1.3s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span>岗位定位</span><span>目标回顾</span><span>完成情况</span><span>IT 规划</span><span class="on" aria-current="true">团队管理</span><span>自我评价</span><span>未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">用量跟着上来：飞书 AI 年度额度用了 58.70%</h1>
+  <p class="sub">整条是年度额度 618 万点，深色是到那天为止的累计用量</p>
+</section>
+
+<figure class="chart">
+  <!-- x = 240 + 已用 / 618 万点 × 900 -->
+  <svg class="plot" width="1240" height="560" viewBox="0 0 1240 560" role="img"
+       aria-label="飞书 AI 年度额度 618 万点的累计用量：8/17 用了 68.35 万点，11%；10/23 用了 362.76 万点，58.70%；其中 aily 专业版 9/13–10/19 约用掉 32 万点。飞书方 10/21 预计按当时速度通用点数 11 月底用完、纪要专用额度 11 月初用完">
+    <g class="frame">
+      <text x="0" y="36" class="lg">累计已用</text>
+      <text x="240" y="36" class="ax" text-anchor="middle">0</text>
+      <text x="465" y="36" class="ax" text-anchor="middle">25%</text>
+      <text x="690" y="36" class="ax" text-anchor="middle">50%</text>
+      <text x="915" y="36" class="ax" text-anchor="middle">75%</text>
+      <text x="1140" y="36" class="ax" text-anchor="middle"><tspan class="ax-b">618 万点</tspan> 100%</text>
+
+      <text x="0" y="112" class="when">8/17</text>
+      <text x="0" y="142" class="from">飞书管理后台</text>
+      <rect x="240" y="80" width="900" height="60" class="track"/>
+
+      <line x1="0" x2="1240" y1="176" y2="176" class="sep"/>
+      <text x="0" y="246" class="when">10/23</text>
+      <text x="0" y="276" class="from">飞书诊断报告</text>
+      <rect x="240" y="214" width="900" height="60" class="track"/>
+      <rect x="768.3" y="214" width="371.7" height="60" class="rest"/>
+
+      <line x1="0" x2="1240" y1="310" y2="310" class="sep"/>
+      <text x="0" y="372" class="when">其中 aily</text>
+      <text x="0" y="402" class="from">专业版，9/13–10/19</text>
+      <rect x="240" y="350" width="900" height="28" class="track"/>
+    </g>
+    <line x1="240" x2="240" y1="54" y2="400" class="g0"/>
+    <line x1="465" x2="465" y1="54" y2="400" class="g25"/>
+    <line x1="690" x2="690" y1="54" y2="400" class="g25"/>
+    <line x1="915" x2="915" y1="54" y2="400" class="g25"/>
+    <line x1="1140" x2="1140" y1="54" y2="400" class="g100"/>
+
+    <rect x="240" y="80" width="99.5" height="60" class="used" style="--d:450ms"/>
+    <g class="ride" data-ride style="--dx:100px;--d:450ms"><text x="355" y="120" class="val">68.35 万点<tspan dx="12" class="pct">11%</tspan></text></g>
+
+    <rect x="240" y="214" width="528.3" height="60" class="used" style="--d:600ms;--t:.7s"/>
+    <g class="ride" data-ride style="--dx:528px;--d:600ms;--t:.7s"><text x="784" y="254" class="val">362.76 万点<tspan dx="12" class="pct">58.70%</tspan></text></g>
+    <g class="late" style="--d:1150ms"><text x="1130" y="204" class="fc" text-anchor="end">飞书方预计 11 月底用完<tspan class="fcs">（不是实测）</tspan></text></g>
+
+    <rect x="240" y="350" width="46.6" height="28" class="aily" style="--d:750ms;--t:.35s"/>
+    <g class="ride" data-ride style="--dx:47px;--d:750ms;--t:.35s"><text x="301" y="373" class="val" style="font-size:24px">约 32 万点</text></g>
+
+    <g class="late" style="--d:1200ms">
+      <line x1="0" x2="1240" y1="446" y2="446" class="sep"/>
+      <text x="0" y="492" class="note"><tspan class="note-b">另一笔：</tspan>纪要专用额度，飞书方 10/21 预计按当时速度 11 月初用完。</text>
+      <text x="0" y="532" class="note">上面两根条是同一笔额度、同一个口径，可以直接比。</text>
+    </g>
+  </svg>
+  <figcaption class="source">来源：飞书管理后台（8/17）；《Usmile 飞书使用诊断与 AI 场景运营计划》（数据截至 2026.10.23）；10/21 飞书来访</figcaption>
+</figure>
+
+<aside class="side read">
+  <h3>判断</h3>
+  <p>「跟着上来」是判断：这是<br>全公司的用量，不只是身边<br>的人用的。</p>
+  <h3>口径</h3>
+  <p>8/17 取飞书管理后台；10/23 取<br>飞书诊断报告「AI 用量总结」。</p>
+  <p>「用完」是飞书方 10/21 来访时<br>的预计，不是实测。</p>
+</aside>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>IT 现状</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：logo 挪到右端，导航右移让出左上角（演示外壳的「概览」按钮在那里；与 01–07 同一写法） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+/* ── 16 IT 现状 ── */
+.band { height: 186px; padding-top: 34px; }
+.band .assert { font-size: var(--fs-assert); line-height: 1.2; white-space: nowrap; }
+.band .sub { margin-top: 6px; font-size: var(--fs-body); color: var(--ink-2); }
+
+.chart { position: absolute; left: var(--gutter); top: 322px; width: 1080px; }
+.shot { display: block; width: 1080px; height: 648px; object-fit: contain; object-position: left top;
+  border: 1px solid var(--rule); background: #FAFAFA; }
+.chart .source { margin-top: 16px; }
+
+.side.read { left: 1400px; top: 322px; width: 414px; }
+.side .key { font-size: 56px; font-weight: 700; line-height: 1.1; color: var(--ink); }
+.side .key small { font-size: var(--fs-body); font-weight: 500; color: var(--ink-2); margin-left: 6px; }
+.side .key + p { margin-top: 10px; }
+.side.read h3 + p { margin-top: 10px; }
+.side.read p + p { margin-top: 14px; }
+.side.read p + h3 { margin-top: 40px; }
+
+/* 时间轴（ms）：红线 0–600 → 标题 100–700 → 图从左往右揭开 300–1100 → 侧栏 400–800 → 来源行 1300–1600 */
+html.motion .band .assert { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .sub { animation: rise .5s var(--ease-out) .2s both; }
+html.motion .shot { animation: wipe .8s var(--ease-draw) .3s both; }
+html.motion .side.read { animation: fade .4s ease-out .4s both; }
+@keyframes wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+.chart .source { --src-delay: 1.3s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span>岗位定位</span><span>目标回顾</span><span>完成情况</span><span class="on" aria-current="true">IT 规划</span><span>团队管理</span><span>自我评价</span><span>未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">IT 每年花约 2,700 万，做出的东西没人信、没人用</h1>
+  <p class="sub">入职第一周起跟着 IT 双周会、飞书来访、9/15 Lovense 交流边看边记，归成六个现象、三个根因</p>
+</section>
+
+<figure class="chart">
+  <img class="shot" src="../assets/it-roots.png" alt="IT 规划图 5：六个现象（系统多而散、交付不被信任、员工的声音没人接、AI 用不起来、同一件事买几遍做几遍、AI 工具的钱花在报销单里）指向三个根因（没有主线、没有收口、没有「产品」的组织）">
+  <figcaption class="source">来源：《IT 建设规划 2026–2028》讨论稿 v2 第 1 章，图 5；对照客户 46%–73% 取飞书 9 月诊断</figcaption>
+</figure>
+
+<aside class="side read">
+  <p class="key">约 2,700 万<small>每年</small></p>
+  <p>IT 的花费；管着 60 个系统、<br>约 30 家厂商。</p>
+  <h3>说明</h3>
+  <p>AI 渗透率 24.2%，同规模<br>飞书客户里最低，对照客户<br>是 46%–73%。</p>
+  <p>员工自己买 AI 工具再报销，<br>公司付费的额度却闲着。</p>
+  <h3>口径</h3>
+  <p>IT 规划原文第 1 章；24.2% 是<br>近 7 个工作日口径。</p>
+  <p>「没人信、没人用」是判断，<br>证据在原文第 1 章。</p>
+</aside>
+</body>
+</html>

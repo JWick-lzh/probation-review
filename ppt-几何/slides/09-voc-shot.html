@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-total="1700" data-probe="诊断看板月日交给业务总览分析页型号全部时间述职报告截图个场景里在用的对着讲评论功能点落在复购驱动潜力品牌流失无感哪一栏系统瘦身判定规则改成界面可调口径取自">
+<head>
+<meta charset="UTF-8">
+<title>09 VOC 截图</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+/* ───────── 左：朱红平涂画框（VOC）+ 截图 ─────────
+   截图 2082×1214，按原比例放 1000 × 583.1，不裁 */
+.frame { position: absolute; left: 96px; top: 80px; width: 1064px; background: var(--red); }
+.frame .shot { display: block; margin: 32px 32px 0; width: 1000px; height: 583.1px; object-fit: contain; background: #fff; }
+.frame .cap { height: 64px; display: flex; align-items: center; padding: 0 32px; font-size: var(--fs-label); font-weight: 700; color: var(--paper); letter-spacing: .04em; }
+.frame.anim { animation: drop 720ms var(--spring); --drop: -820px; }
+
+/* ───────── 左下：一排说明 ───────── */
+.row { position: absolute; left: 96px; top: 790px; width: 1064px; display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 48px; }
+.row .tag { margin-bottom: 14px; }
+.row .txt { font-size: var(--fs-body-s); font-weight: 500; line-height: 1.6; }
+.row > div.anim { animation: reveal-right 520ms var(--ease-out); }
+.row > div:nth-child(1) { animation-delay: 480ms !important; }
+.row > div:nth-child(2) { animation-delay: 580ms !important; }
+.row > div:nth-child(3) { animation-delay: 680ms !important; }
+/* 3 个场景格位：在用的 1 个填朱红（同第 8 页） */
+.slots { display: flex; gap: 14px; margin-bottom: 14px; }
+.slots i { flex: 0 0 64px; height: 64px; border: 4px solid var(--red); }
+.slots i.on { background: var(--red); }
+
+/* ───────── 右：竖排断言标题 ───────── */
+.vt { position: absolute; left: 1236px; top: 80px; writing-mode: vertical-rl;
+      font-family: var(--serif); font-weight: 900; font-size: var(--fs-title-2); line-height: 1.2; letter-spacing: .06em; }
+.vt .l { display: block; }
+.vt .l.anim { animation: reveal-down 560ms var(--ease-out); }
+.vt .l:nth-child(2) { animation-delay: 140ms !important; }
+.tcy { text-combine-upright: all; }
+.up  { text-orientation: upright; }
+
+.src { position: absolute; left: 1236px; bottom: 107px; width: 588px; font-size: var(--fs-body-s); font-weight: 500; color: var(--ink-2); letter-spacing: .04em; line-height: 1.5; }
+.src.anim { animation: reveal-right 500ms var(--ease-out) 1000ms; }
+.page-rule { left: 96px; right: 96px; top: 1008px; transform-origin: 0 50%; }
+.page-rule.anim { animation: draw-x 600ms var(--ease-out) 940ms; }
+</style>
+</head>
+<body>
+
+  <figure class="frame anim">
+    <img class="shot" src="../assets/voc-shot-2.png" alt="VOC「AI 总览分析」页，型号 Y30：功能点分成复购驱动、潜力复购、品牌流失、无感功能四栏，下面是购买理由、喜欢使用、推荐理由各前 10">
+    <figcaption class="cap">VOC「AI 总览分析」页，型号 Y30，全部时间</figcaption>
+  </figure>
+
+  <div class="row">
+    <div class="anim">
+      <div class="slots" aria-label="3 个场景格位，在用 1 个"><i class="on"></i><i></i><i></i></div>
+      <p class="txt">3 个场景里<br>在用的 1 个</p>
+    </div>
+    <div class="anim">
+      <span class="tag">对着截图讲</span>
+      <p class="txt">Y30 的功能点<br>按复购驱动、潜力复购<br>品牌流失、无感功能分栏</p>
+    </div>
+    <div class="anim">
+      <span class="tag">10 月</span>
+      <p class="txt">10/21 V2.0 系统瘦身<br>10/23 矩阵判定规则<br>改成界面可调</p>
+    </div>
+  </div>
+
+  <!-- 断言标题：Y30 诊断看板，9/21 交给业务 -->
+  <h1 class="vt" aria-label="Y30 诊断看板，9 月 21 日交给业务"><span class="l anim"><span class="up">Y</span><span class="tcy">30</span>诊断看板</span><span class="l anim"><span class="tcy">9</span>月<span class="tcy">21</span>日交给业务</span></h1>
+
+  <div class="src anim">口径：截图取自述职报告</div>
+  <div class="rule page-rule anim"></div>
+
+<script src="../shared/motion.js"></script>
+</body>
+</html>

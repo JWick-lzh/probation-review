@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-total="1600" data-probe="三个月代码提交次每月整不是只算日截至上线发布妙搭生产部署打卡小时工作起以产品从变成口径仓库按作者统计指本人账号操作">
+<head>
+<meta charset="UTF-8">
+<title>24 投入</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+/* ───────── 左：每月提交次数，方块高度按次数（591 次 = 600px，1 次 ≈ 1.015px） ─────────
+   7 月 54 → 54.8；8 月 119 → 120.8；9 月 541 → 549.2；10 月 591 → 600
+   墨黑＝整月；钢蓝＝不是整月（7 月只算 22–31 日，10 月截至 25 日） */
+.cap { position: absolute; left: 96px; top: 80px; }
+.cap .nm { font-size: var(--fs-lead); font-weight: 700; line-height: 1.3; }
+.cap ul { list-style: none; display: flex; gap: 36px; margin-top: 16px; }
+.cap li { display: flex; align-items: center; font-size: var(--fs-body-s); font-weight: 500; }
+.cap li em { width: 26px; height: 26px; margin-right: 12px; }
+.cap.anim { animation: reveal-right 500ms var(--ease-out) 60ms; }
+
+.col { position: absolute; bottom: calc(1080px - 780px); width: 210px; }
+.col .v { font-size: var(--fs-num-m); font-weight: 900; line-height: 1; margin-bottom: 14px; letter-spacing: -.01em; }
+.col .b { width: 210px; transform-origin: 50% 100%; }
+.col .b.anim { animation: grow-y 620ms var(--ease-out); }
+.c7  { left: 96px; }   .c7  .b { height: 54.8px;  background: var(--blue); }
+.c8  { left: 389px; }  .c8  .b { height: 120.8px; background: var(--ink); }
+.c9  { left: 683px; }  .c9  .b { height: 549.2px; background: var(--ink); }
+.c10 { left: 976px; }  .c10 .b { height: 600px;   background: var(--blue); }
+.c7 .v, .c10 .v { color: var(--blue); }
+
+.base { position: absolute; left: 96px; top: 780px; width: 1090px; height: 3px; background: var(--ink); transform-origin: 0 50%; }
+.base.anim { animation: draw-x 500ms var(--ease-out) 40ms; }
+.mo { position: absolute; top: 800px; width: 210px; }
+.mo .m { font-size: var(--fs-body); font-weight: 900; line-height: 1.3; }
+.mo .n { margin-top: 4px; font-size: var(--fs-body-s); font-weight: 700; line-height: 1.4; color: var(--blue); }
+
+/* ───────── 右：竖排标题 + 横排大数（L 形） ───────── */
+.vt { position: absolute; left: 1236px; top: 80px; writing-mode: vertical-rl;
+      font-family: var(--serif); font-weight: 900; font-size: var(--fs-title-2); line-height: 1.2; letter-spacing: .06em; }
+.vt .ln { display: block; }
+.vt .ln.anim { animation: reveal-down 560ms var(--ease-out); }
+.big { position: absolute; left: 1236px; top: 754px; font-size: var(--fs-num-xl); font-weight: 900; line-height: 1; letter-spacing: -.01em; white-space: nowrap; }
+.big small { font-size: var(--fs-num-s); font-weight: 700; margin-left: 8px; }
+.big.anim { animation: reveal-right 520ms var(--ease-out) 360ms; }
+
+.info { position: absolute; left: 1400px; top: 84px; width: 424px; }
+.info section + section { margin-top: 48px; }
+.info .tag { margin-bottom: 18px; }
+.info section.anim { animation: reveal-right 520ms var(--ease-out); }
+.info section:nth-child(1) { animation-delay: 460ms !important; }
+.info section:nth-child(2) { animation-delay: 580ms !important; }
+.info section:nth-child(3) { animation-delay: 700ms !important; }
+.info .num { font-size: var(--fs-num-l); font-weight: 900; line-height: 1; margin-bottom: 12px; }
+.info .num small { font-size: var(--fs-body); font-weight: 700; margin-left: 6px; }
+.info .txt { font-size: var(--fs-body-s); font-weight: 500; line-height: 1.6; }
+
+.src { position: absolute; left: 1236px; bottom: 107px; width: 588px; font-size: var(--fs-body-s); font-weight: 500; color: var(--ink-2); letter-spacing: .04em; line-height: 1.5; }
+.src.anim { animation: reveal-right 500ms var(--ease-out) 1000ms; }
+.page-rule { left: 96px; right: 96px; top: 1008px; transform-origin: 0 50%; }
+.page-rule.anim { animation: draw-x 600ms var(--ease-out) 940ms; }
+</style>
+</head>
+<body>
+
+  <div class="cap anim">
+    <p class="nm">每月代码提交次数</p>
+    <ul>
+      <li><em style="background:var(--ink)"></em>整月</li>
+      <li><em style="background:var(--blue)"></em>不是整月</li>
+    </ul>
+  </div>
+
+  <div class="col c7"><p class="v" data-to="54" data-delay="160" data-dur="620">54</p><div class="b anim" style="animation-delay:160ms"></div></div>
+  <div class="col c8"><p class="v" data-to="119" data-delay="240" data-dur="620">119</p><div class="b anim" style="animation-delay:240ms"></div></div>
+  <div class="col c9"><p class="v" data-to="541" data-delay="320" data-dur="700">541</p><div class="b anim" style="animation-delay:320ms; animation-duration:700ms"></div></div>
+  <div class="col c10"><p class="v" data-to="591" data-delay="400" data-dur="700">591</p><div class="b anim" style="animation-delay:400ms; animation-duration:700ms"></div></div>
+
+  <div class="base anim"></div>
+  <div class="mo" style="left:96px"><p class="m">7 月</p><p class="n">只算 22–31 日</p></div>
+  <div class="mo" style="left:389px"><p class="m">8 月</p></div>
+  <div class="mo" style="left:683px"><p class="m">9 月</p></div>
+  <div class="mo" style="left:976px"><p class="m">10 月</p><p class="n">截至 25 日</p></div>
+
+  <h1 class="vt" aria-label="三个月代码提交 1,305 次，上线发布 225 次"><span class="ln anim">三个月代码提交</span></h1>
+  <div class="big anim">1,305<small>次</small></div>
+
+  <div class="info">
+    <section class="anim">
+      <span class="tag">上线发布</span>
+      <p class="num"><span data-to="225" data-delay="460" data-dur="700">225</span><small>次</small></p>
+      <p class="txt">妙搭 213 次 ＋ VOC 生产部署 12 次</p>
+    </section>
+    <section class="anim">
+      <span class="tag">9 月起</span>
+      <p class="txt">每月 500 次以上，<br>产品从 1 个变成 4 个</p>
+    </section>
+    <section class="anim">
+      <span class="tag">8 月打卡</span>
+      <p class="txt">259 小时，21 个工作日</p>
+    </section>
+  </div>
+
+  <div class="src anim">口径：7/22–10/25，6 个仓库，按作者统计；<br>发布指本人账号操作</div>
+  <div class="rule page-rule anim"></div>
+
+<script src="../shared/motion.js"></script>
+</body>
+</html>

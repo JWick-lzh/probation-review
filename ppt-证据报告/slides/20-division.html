@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>三方分工</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：logo 挪到右端，导航右移让出左上角（演示外壳的「概览」按钮在那里；与 01–07 同一写法） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+/* ── 20 三方分工 ── */
+.band { height: 186px; padding-top: 34px; }
+.band .assert { font-size: var(--fs-assert); line-height: 1.2; white-space: nowrap; }
+.band .sub { margin-top: 6px; font-size: var(--fs-body); color: var(--ink-2); }
+
+.chart { position: absolute; left: var(--gutter); top: 340px; width: 1240px; }
+.plot { display: block; overflow: visible; }
+.chart .source { margin-top: 18px; }
+
+.plot .lg { font-size: 22px; fill: var(--ink-2); }
+.plot .lgb { font-size: 24px; font-weight: 700; fill: var(--ink); }
+.plot .ax { font-size: 20px; fill: var(--muted); }
+.plot .step { font-size: 20px; fill: var(--muted); }
+.plot .who { font-size: 30px; font-weight: 700; fill: var(--ink); }
+.plot .what { font-size: 24px; fill: var(--ink-2); }
+.plot .me .step { fill: #C9D3E0; }
+.plot .me .who, .plot .me .what { fill: #fff; }
+.plot .box { fill: #fff; stroke: var(--rule); stroke-width: 2; }
+.plot .me .box { fill: var(--navy); stroke: var(--navy); }
+.plot .wire { fill: none; stroke: var(--ink-2); stroke-width: 2.5; }
+.plot .head { fill: var(--ink-2); }
+.plot .ev { font-size: 24px; font-weight: 700; fill: var(--ink); }
+.plot .evm { font-size: 24px; fill: var(--ink-2); }
+.plot .axis { stroke: #B8C2CE; stroke-width: 2; }
+.plot .dtick { stroke: #B8C2CE; stroke-width: 2; }
+.plot .lead { stroke: var(--ink-2); stroke-width: 1.5; }
+.plot .span { fill: var(--s-done); }
+.plot .dot { fill: var(--s-done); stroke: #fff; stroke-width: 3; }
+.plot .ring { fill: #fff; stroke: var(--s-done); stroke-width: 3; }
+
+.side.read { left: 1400px; top: 322px; width: 414px; }
+.side.read h3 + p { margin-top: 10px; }
+.side.read p + p { margin-top: 14px; }
+.side.read p + h3 { margin-top: 44px; }
+.side .verdict { font-weight: 700; color: var(--ink); }
+
+/* 时间轴（ms）：红线 0–600 → 标题 100–700 → 四步依次出现、箭头画出来 300–900
+   → 两周时间轴 800–1250、交付点落下 950–1350 → 来源行 1300–1600 */
+.plot .blk { transform-box: fill-box; }
+.plot .axis, .plot .span { transform-box: fill-box; transform-origin: 0 50%; }
+.plot .pop { transform-box: fill-box; transform-origin: 50% 50%; }
+html.motion .band .assert { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .sub { animation: rise .5s var(--ease-out) .2s both; }
+html.motion .plot .frame { animation: fade .4s ease-out .25s both; }
+html.motion .plot .blk { animation: rise .4s var(--ease-out) var(--d) both; }
+html.motion .plot .wire { stroke-dasharray: 1; stroke-dashoffset: 1; animation: stroke-in .25s var(--ease-draw) var(--d) forwards; }
+html.motion .plot .axis { animation: draw-x .45s var(--ease-draw) .8s both; }
+html.motion .plot .span { animation: draw-x .4s var(--ease-out) var(--d) both; }
+html.motion .plot .pop { animation: pop .28s var(--ease-out) var(--d) both; }
+html.motion .plot .lbl { animation: fade .3s ease-out var(--d) both; }
+html.motion .side.read { animation: fade .4s ease-out .3s both; }
+@keyframes stroke-in { to { stroke-dashoffset: 0; } }
+.chart .source { --src-delay: 1.3s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span>岗位定位</span><span>目标回顾</span><span>完成情况</span><span>IT 规划</span><span class="on" aria-current="true">团队管理</span><span>自我评价</span><span>未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">10/14 的分工：我负责把确认过的需求做成产品</h1>
+  <p class="sub">CEO 10/14 在群里定的四步，我在第 3 步；下面是之后两周的交付</p>
+</section>
+
+<figure class="chart">
+  <svg class="plot" width="1240" height="540" viewBox="0 0 1240 540" role="img"
+       aria-label="三方分工四步：第 1 步业务助理发现业务痛点、定义问题和指标、出产品 Demo；第 2 步 CEO 确认需求；第 3 步我做数据打通、产品实现、发现好产品推广赋能；第 4 步业务助理产品化之后看活跃、看迭代、升级产品。之后两周：10/15 工作反馈系统按 CEO 的 Demo 改版，10/18 上线；10/19 时间管理上线；10/22 10:54 提需求，16:52 交付验收">
+    <g class="blk" style="--d:300ms">
+      <rect x="0" y="0" width="268" height="232" class="box"/>
+      <text x="22" y="38" class="step">第 1 步</text>
+      <text x="22" y="82" class="who">业务助理</text>
+      <text x="22" y="128" class="what">发现业务痛点，</text>
+      <text x="22" y="162" class="what">定义问题和指标，</text>
+      <text x="22" y="196" class="what">出产品 Demo</text>
+    </g>
+    <path d="M276 116 H308" class="wire" pathLength="1" style="--d:420ms"/>
+    <path d="M306 106 L320 116 L306 126 Z" class="head pop" style="--d:600ms"/>
+    <g class="blk" style="--d:450ms">
+      <rect x="324" y="0" width="268" height="232" class="box"/>
+      <text x="346" y="38" class="step">第 2 步</text>
+      <text x="346" y="82" class="who">CEO</text>
+      <text x="346" y="128" class="what">确认需求</text>
+    </g>
+    <path d="M600 116 H632" class="wire" pathLength="1" style="--d:570ms"/>
+    <path d="M630 106 L644 116 L630 126 Z" class="head pop" style="--d:750ms"/>
+    <g class="blk me" style="--d:600ms">
+      <rect x="648" y="0" width="268" height="232" class="box"/>
+      <text x="670" y="38" class="step">第 3 步</text>
+      <text x="670" y="82" class="who">我</text>
+      <text x="670" y="128" class="what">数据打通，</text>
+      <text x="670" y="162" class="what">产品实现，</text>
+      <text x="670" y="196" class="what">发现好产品推广赋能</text>
+    </g>
+    <path d="M924 116 H956" class="wire" pathLength="1" style="--d:720ms"/>
+    <path d="M954 106 L968 116 L954 126 Z" class="head pop" style="--d:900ms"/>
+    <g class="blk" style="--d:750ms">
+      <rect x="972" y="0" width="268" height="232" class="box"/>
+      <text x="994" y="38" class="step">第 4 步</text>
+      <text x="994" y="82" class="who">业务助理</text>
+      <text x="994" y="128" class="what">产品化之后</text>
+      <text x="994" y="162" class="what">看活跃、看迭代，</text>
+      <text x="994" y="196" class="what">升级产品</text>
+    </g>
+
+    <!-- 之后两周：x = 40 + (距 10/14 的天数) × 140 -->
+    <g class="frame">
+      <text x="0" y="316" class="lgb">分工之后两周</text>
+      <text x="40" y="530" class="ax" text-anchor="middle">10/14</text>
+      <text x="180" y="530" class="ax" text-anchor="middle">10/15</text>
+      <text x="320" y="530" class="ax" text-anchor="middle">10/16</text>
+      <text x="460" y="530" class="ax" text-anchor="middle">10/17</text>
+      <text x="600" y="530" class="ax" text-anchor="middle">10/18</text>
+      <text x="740" y="530" class="ax" text-anchor="middle">10/19</text>
+      <text x="880" y="530" class="ax" text-anchor="middle">10/20</text>
+      <text x="1020" y="530" class="ax" text-anchor="middle">10/21</text>
+      <text x="1160" y="530" class="ax" text-anchor="middle">10/22</text>
+      <line x1="40" x2="40" y1="472" y2="490" class="dtick"/>
+      <line x1="180" x2="180" y1="472" y2="490" class="dtick"/>
+      <line x1="320" x2="320" y1="472" y2="490" class="dtick"/>
+      <line x1="460" x2="460" y1="472" y2="490" class="dtick"/>
+      <line x1="600" x2="600" y1="472" y2="490" class="dtick"/>
+      <line x1="740" x2="740" y1="472" y2="490" class="dtick"/>
+      <line x1="880" x2="880" y1="472" y2="490" class="dtick"/>
+      <line x1="1020" x2="1020" y1="472" y2="490" class="dtick"/>
+      <line x1="1160" x2="1160" y1="472" y2="490" class="dtick"/>
+    </g>
+    <line x1="0" x2="1200" y1="472" y2="472" class="axis"/>
+
+    <circle cx="40" cy="472" r="11" class="pop ring" style="--d:950ms"/>
+    <g class="lbl" style="--d:950ms"><text x="0" y="380" class="ev">定分工</text><line x1="40" x2="40" y1="392" y2="458" class="lead"/></g>
+
+    <rect x="180" y="466" width="420" height="12" rx="6" class="span" style="--d:1000ms"/>
+    <g class="lbl" style="--d:1100ms"><text x="180" y="440" class="evm"><tspan class="ev">工作反馈系统</tspan>按 CEO 的 Demo 改版，10/18 上线</text></g>
+
+    <circle cx="740" cy="472" r="11" class="pop dot" style="--d:1150ms"/>
+    <g class="lbl" style="--d:1150ms"><text x="728" y="440" class="evm"><tspan class="ev">时间管理</tspan>上线</text></g>
+
+    <circle cx="1160" cy="472" r="11" class="pop dot" style="--d:1250ms"/>
+    <g class="lbl" style="--d:1250ms"><text x="1200" y="380" class="evm" text-anchor="end">10/22 <tspan class="ev">10:54</tspan> 提需求，<tspan class="ev">16:52</tspan> 交付验收</text><line x1="1160" x2="1160" y1="392" y2="458" class="lead"/></g>
+  </svg>
+  <figcaption class="source">来源：10/14 CEO 群消息原文；交付时间取应用发布记录</figcaption>
+</figure>
+
+<aside class="side read">
+  <h3>判断</h3>
+  <p class="verdict">是不是分工带来的，时间还短，<br>下不了结论。</p>
+  <p>现在当试验田在跑。</p>
+  <h3>口径</h3>
+  <p>四步取 10/14 CEO 群消息原文；<br>交付时间取应用发布记录。</p>
+</aside>
+</body>
+</html>

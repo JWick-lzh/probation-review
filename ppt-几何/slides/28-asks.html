@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-total="1200" data-probe="善战者无赫赫之功">
+<head>
+<meta charset="UTF-8">
+<title>28 结尾</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+/* ───────── 结尾：只有一句话，竖排两列（善战者／无赫赫之功）───────── */
+.quote { position: absolute; left: 50%; top: 150px; transform: translateX(-50%); writing-mode: vertical-rl;
+         font-family: var(--serif); font-weight: 900; font-size: 150px; line-height: 1.25; letter-spacing: .08em; }
+.quote .ln { display: block; }
+.quote .ln.anim { animation: reveal-down 640ms var(--ease-out); }
+.quote .ln:nth-child(2) { animation-delay: 180ms !important; }
+
+.page-rule { left: 96px; right: 96px; top: 1008px; transform-origin: 0 50%; }
+.page-rule.anim { animation: draw-x 600ms var(--ease-out) 700ms; }
+</style>
+</head>
+<body>
+
+  <h1 class="quote" aria-label="善战者无赫赫之功"><span class="ln anim">善战者</span><span class="ln anim">无赫赫之功</span></h1>
+  <div class="rule page-rule anim"></div>
+
+<script src="../shared/motion.js"></script>
+</body>
+</html>

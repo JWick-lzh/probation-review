@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>飞书诊断</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* 截图页骨架同第 5 页：左截图（10/23 更新版诊断报告）| 右栏巨数字 24.2% + 口径 + 结论句 → 底部细线四栏 → 口径行
+     24.2% 是 9 月版、近 7 个工作日口径；截图是 10/23 版，原文没再给渗透率。和上一页 13.68%（单日）不能比，692 和 257 不并排 */
+
+  .runhead {
+    position: absolute; left: var(--m); right: var(--m); top: 40px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: var(--fs-label); line-height: 1.2;
+  }
+  .runhead b { font-weight: 700; }
+  #rule-top { left: var(--m); width: var(--content-w); top: 78px; }
+
+  /* 截图：容器和原图同比例（2448×1384），标注框按百分比落在原图坐标上 */
+  .shot { position: absolute; left: var(--m); top: 118px; width: 1080px; aspect-ratio: 1465 / 812; }
+  .shot img { display: block; width: 100%; height: 100%; object-fit: contain; box-shadow: 0 0 0 1px var(--rule); }
+  .shot .mark { position: absolute; left: 1.2%; top: 23.9%; width: 95.6%; height: 19.4%; box-shadow: 0 0 0 4px var(--ink); }
+  .cap { position: absolute; left: 0; width: 100%; top: calc(100% + 15px); padding-top: 12px; font-size: var(--fs-label); line-height: 1.3; color: var(--muted); }
+  .cap .rule-h { left: 0; width: 100%; top: 0; }
+
+  /* 右栏 */
+  .side { position: absolute; left: 1248px; width: 576px; top: 118px; }
+  .side > .rule-h { left: 0; width: 100%; top: 0; }
+  .side .k { padding-top: 14px; font-size: var(--fs-label); font-weight: 700; color: var(--muted); line-height: 1.2; }
+  .giant {
+    margin: 14px 0 0 -6px;
+    font-family: var(--font-giant); font-weight: 900; line-height: 1;
+    font-size: 176px; letter-spacing: -0.04em; white-space: nowrap;
+  }
+  .giant small { font-size: 0.5em; letter-spacing: -0.02em; margin-left: 0.03em; }
+  .basis { margin-top: 16px; font-size: var(--fs-lead); font-weight: 700; line-height: 1.3; }
+  .claim {
+    margin-top: 40px;
+    font-family: var(--font-giant); font-size: 60px; font-weight: 900;
+    line-height: 1.12; letter-spacing: -0.01em;
+  }
+  .say { margin-top: 28px; font-size: var(--fs-body); line-height: 1.5; color: var(--ink-2); }
+
+  /* 底部辅助数 */
+  #rule-facts { left: var(--m); width: var(--content-w); top: 830px; }
+  .facts {
+    position: absolute; left: var(--m); width: var(--content-w); top: 832px; height: 140px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+  }
+  .facts .rule-v { top: 0; height: 140px; }
+  .fact { padding: 16px 28px 0; position: relative; }
+  .fact:first-child { padding-left: 0; }
+  .fact .k { font-size: var(--fs-label); font-weight: 700; color: var(--muted); line-height: 1.2; }
+  .fact .v { font-family: var(--font-giant); font-weight: 900; font-size: 60px; line-height: 1; margin-top: 6px; letter-spacing: -0.035em; white-space: nowrap; }
+  .fact .v i { font-style: normal; font-family: var(--font-text); font-size: var(--fs-lead); font-weight: 700; letter-spacing: 0; margin-left: 6px; }
+  .fact small { display: block; margin-top: 8px; font-size: var(--fs-label); line-height: 1.3; color: var(--ink-2); }
+
+  .foot {
+    position: absolute; left: var(--m); right: var(--m); top: 1000px;
+    font-size: var(--fs-label); line-height: 1.2; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+  <div class="runhead"><b>二、目标回顾</b><span>转正述职　林灶辉</span></div>
+  <div class="rule-h strong" id="rule-top"></div>
+
+  <figure class="shot">
+    <img src="../assets/diag-1023.png" alt="飞书诊断报告 AI 用量总结：通用额度消耗率 58.70%，近 7 个工作日 AI DAU 为 692，数据截至 2026.10.23">
+    <i class="mark" aria-hidden="true"></i>
+    <figcaption class="cap"><span class="rule-h"></span>图：飞书诊断报告「AI 用量总结」，数据截至 2026.10.23（黑框是本页的数）</figcaption>
+  </figure>
+
+  <aside class="side">
+    <div class="rule-h strong"></div>
+    <p class="k">9 月诊断</p>
+    <div class="giant" role="img" aria-label="24.2%">
+      <span class="odo" aria-hidden="true"><span class="strip" style="--n:2"><b>0</b><b>1</b><b>2</b></span></span><span class="odo" aria-hidden="true"><span class="strip" style="--n:4"><b>0</b><b>1</b><b>2</b><b>3</b><b>4</b></span></span><span aria-hidden="true">.</span><span class="odo" aria-hidden="true"><span class="strip" style="--n:2"><b>0</b><b>1</b><b>2</b></span></span><small aria-hidden="true">%</small>
+    </div>
+    <p class="basis">近 7 个工作日口径：257 / 1,061 人</p>
+    <h1 class="claim">
+      <span class="ln"><span>9 月渗透率 24.2%，</span></span>
+      <span class="ln"><span>10/23 日活 692 人</span></span>
+    </h1>
+    <p class="say">24.2% 算的是近 7 个工作日内，在任一飞书 AI 产品上有用量的人（9/23 对齐会飞书方原话）。<br>左图是 10/23 更新版，原文没再给渗透率。</p>
+  </aside>
+
+  <div class="rule-h strong" id="rule-facts"></div>
+  <section class="facts">
+    <div class="fact">
+      <p class="k">AI 日活</p>
+      <p class="v"><span data-to="692">692</span><i>人</i></p>
+      <small>10/23 更新，近 7 个工作日</small>
+    </div>
+    <div class="fact">
+      <div class="rule-v" style="left:0"></div>
+      <p class="k">通用额度已用</p>
+      <p class="v">58.70<i>%</i></p>
+      <small>362.76 万点 / 618 万点</small>
+    </div>
+    <div class="fact">
+      <div class="rule-v" style="left:0"></div>
+      <p class="k">渗透率</p>
+      <p class="v">没再给</p>
+      <small>10/23 更新版原文</small>
+    </div>
+    <div class="fact">
+      <div class="rule-v" style="left:0"></div>
+      <p class="k">不能比</p>
+      <p class="v">近 7 个工作日</p>
+      <small>上一页的 13.68% 是 8/16 单日</small>
+    </div>
+  </section>
+
+  <footer class="foot">口径：《Usmile 飞书使用诊断与 AI 场景运营计划》，数据截至 2026.10.23；24.2% 的口径取 9/23 对齐会飞书方原话；和上一页 13.68%（单日）不是一个口径，不能比</footer>
+
+<script src="../shared/motion.js"></script>
+<script>
+  (function () {
+    var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+    var drawX = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }];
+    var drawY = [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }];
+    var rise = [{ transform: 'translateY(135%)' }, { transform: 'none' }];
+    var fade = [{ opacity: 0 }, { opacity: 1 }];
+
+    P5.tween($('#rule-top'), drawX, { duration: 700 });
+
+    // 截图先出，标注框随后框上去
+    P5.tween($('.shot img'), [{ opacity: 0, transform: 'translateY(24px)' }, { opacity: 1, transform: 'none' }], { delay: 80, duration: 700 });
+    P5.tween($('.shot .mark'), [{ opacity: 0, transform: 'scale(1.12)' }, { opacity: 1, transform: 'none' }], { delay: 760, duration: 500 });
+    P5.tween($('.cap .rule-h'), drawX, { delay: 300, duration: 600 });
+    P5.tween($('.cap'), fade, { delay: 420, duration: 500 });
+
+    // 右栏：细线 → 巨数字逐位滚到 24.2 → 口径 → 结论
+    P5.tween($('.side > .rule-h'), drawX, { delay: 120, duration: 600 });
+    $$('.giant .strip').forEach(function (s, i) {
+      var n = parseFloat(s.style.getPropertyValue('--n'));
+      P5.tween(s, [{ transform: 'translateY(0)' }, { transform: 'translateY(' + (-n) + 'em)' }],
+        { delay: 120 + i * 80, duration: 1000 - i * 60, easing: 'cubic-bezier(.22,.8,.12,1)' });
+    });
+    P5.tween($('.giant small'), fade, { delay: 560, duration: 400 });
+    P5.tween($('.basis'), fade, { delay: 520, duration: 500 });
+    $$('.claim .ln > span').forEach(function (s, i) { P5.tween(s, rise, { delay: 440 + i * 80, duration: 750 }); });
+    P5.tween($('.say'), fade, { delay: 760, duration: 500 });
+
+    // 底部
+    P5.tween($('#rule-facts'), drawX, { delay: 600, duration: 750 });
+    $$('.facts .rule-v').forEach(function (v, i) { P5.tween(v, drawY, { delay: 760 + i * 60, duration: 500 }); });
+    $$('.facts [data-to]').forEach(function (n, i) { P5.count(n, { delay: 760 + i * 60, duration: 650 }); });
+    $$('.fact').forEach(function (f, i) { P5.tween(f, fade, { delay: 700 + i * 60, duration: 450 }); });
+
+    P5.go();
+  })();
+</script>
+</body>
+</html>

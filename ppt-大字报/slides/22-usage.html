@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>AI 用量</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* 骨架：左上巨数字 58.70% → 结论句 → 一条通栏额度条（618 万点 = 1728px），8/17 和 10/23 两个刻度，按数据长出来
+     → 底部细线两栏：aily 专业版、飞书方对用完时间的估计（标明是估计） */
+
+  .runhead {
+    position: absolute; left: var(--m); right: var(--m); top: 40px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: var(--fs-label); line-height: 1.2;
+  }
+  .runhead b { font-weight: 700; }
+  #rule-top { left: var(--m); width: var(--content-w); top: 78px; }
+
+  .giant {
+    position: absolute; left: 78px; top: 84px;
+    font-family: var(--font-giant); font-weight: 900; line-height: 1;
+    font-size: 360px; letter-spacing: -0.04em; white-space: nowrap; color: var(--blue);
+  }
+  .giant .unit { font-size: 0.42em; letter-spacing: -0.02em; margin-left: 0.04em; }
+
+  .note {
+    position: absolute; right: var(--m); top: 186px; text-align: right;
+    font-size: var(--fs-lead); font-weight: 700; line-height: 1.45;
+  }
+  .note small { display: block; margin-top: 10px; font-size: var(--fs-label); font-weight: 400; color: var(--muted); }
+
+  .claim {
+    position: absolute; left: var(--m); top: 466px;
+    font-family: var(--font-giant); font-size: var(--fs-claim); font-weight: 900;
+    line-height: 1.1; letter-spacing: -0.01em; white-space: nowrap;
+  }
+
+  /* 额度条：1728px = 618 万点；11% = 190px，58.70% = 1014px */
+  .quota { position: absolute; left: var(--m); width: var(--content-w); top: 600px; height: 180px; }
+  .track { position: absolute; left: 0; width: 100%; top: 54px; height: 60px; background: var(--cell); }
+  .seg { position: absolute; top: 54px; height: 60px; background: var(--blue); transform-origin: 0 50%; }
+  #s1 { left: 0; width: 190px; }
+  #s2 { left: 193px; width: 821px; }
+  .tick { position: absolute; top: 40px; height: 88px; width: 0; border-left: 2px solid var(--ink); transform-origin: 50% 0; }
+  #t1 { left: 190px; } #t2 { left: 1014px; }
+  .lab { position: absolute; white-space: nowrap; line-height: 1.2; }
+  .lab.top { top: 0; font-size: var(--fs-body); }
+  .lab.top b { font-weight: 900; }
+  .lab.bot { top: 136px; font-size: var(--fs-body); color: var(--ink-2); }
+  #l1t, #l1b { left: 202px; } #l2t, #l2b { left: 1026px; }
+  #l3t, #l3b { right: 0; text-align: right; }
+
+  #rule-base { left: var(--m); width: var(--content-w); top: 830px; }
+  .base {
+    position: absolute; left: var(--m); width: var(--content-w); top: 832px; height: 140px;
+    display: grid; grid-template-columns: 1fr 2fr;
+  }
+  .base .rule-v { top: 0; height: 140px; left: 0; }
+  .cell { position: relative; padding: 16px 32px 0; }
+  .cell:first-child { padding-left: 0; }
+  .cell .k { font-size: var(--fs-label); font-weight: 700; color: var(--muted); line-height: 1.2; }
+  .cell .v { margin-top: 8px; font-family: var(--font-giant); font-weight: 900; font-size: 56px; line-height: 1; letter-spacing: -0.03em; }
+  .cell .v i { font-style: normal; font-family: var(--font-text); font-size: var(--fs-lead); font-weight: 700; letter-spacing: 0; margin-left: 6px; }
+  .cell .v .pre { font-family: var(--font-text); font-size: var(--fs-lead); font-weight: 700; letter-spacing: 0; margin-right: 6px; }
+  .cell small { display: block; margin-top: 8px; font-size: var(--fs-label); color: var(--ink-2); line-height: 1.3; }
+  .cell h3 { margin-top: 10px; font-size: var(--fs-lead); font-weight: 900; line-height: 1.45; }
+
+  .foot {
+    position: absolute; left: var(--m); right: var(--m); top: 1000px;
+    font-size: var(--fs-label); line-height: 1.2; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+  <div class="runhead"><b>三、团队管理</b><span>转正述职　林灶辉</span></div>
+  <div class="rule-h strong" id="rule-top"></div>
+
+  <div class="giant" role="img" aria-label="飞书 AI 年度额度用了 58.70%">
+    <span class="odo-src" aria-hidden="true">58.70</span><span class="unit" aria-hidden="true">%</span>
+  </div>
+
+  <aside class="note">
+    <span class="ln"><span>飞书 AI 年度额度</span></span>
+    <span class="ln"><span>618 万点里用掉的比例</span></span>
+    <span class="ln"><small>10/23，飞书诊断报告</small></span>
+  </aside>
+
+  <h2 class="claim"><span class="ln"><span>用的人多了，用量也跟着上来。</span></span></h2>
+
+  <section class="quota" aria-label="618 万点年度额度：8/17 用了 11%，10/23 用了 58.70%">
+    <div class="track"></div>
+    <div class="seg" id="s1"></div>
+    <div class="seg" id="s2"></div>
+    <div class="tick" id="t1"></div>
+    <div class="tick" id="t2"></div>
+    <p class="lab top" id="l1t"><b>8/17</b>　用了 11%</p>
+    <p class="lab bot" id="l1b">68.35 万点</p>
+    <p class="lab top" id="l2t"><b>10/23</b>　用了 58.70%</p>
+    <p class="lab bot" id="l2b">362.76 万点</p>
+    <p class="lab top" id="l3t"><b>年度额度</b></p>
+    <p class="lab bot" id="l3b">618 万点</p>
+  </section>
+
+  <div class="rule-h strong" id="rule-base"></div>
+  <section class="base">
+    <div class="cell">
+      <p class="k">其中 aily 专业版</p>
+      <p class="v"><span class="pre">约</span><span data-to="32">32</span><i>万点</i></p>
+      <small>9/13–10/19</small>
+    </div>
+    <div class="cell">
+      <div class="rule-v"></div>
+      <p class="k">飞书方的估计（10/21 来访时说的，不是已经发生）</p>
+      <h3>按现在的速度，纪要专用额度 11 月初用完，<br>通用点数 11 月底用完。</h3>
+    </div>
+  </section>
+
+  <footer class="foot">口径：8/17 取飞书管理后台，10/23 取飞书诊断报告</footer>
+
+<script src="../shared/motion.js"></script>
+<script>
+  (function () {
+    var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+    function odoize(el) {
+      var txt = el.textContent; el.textContent = '';
+      for (var i = 0; i < txt.length; i++) {
+        var ch = txt.charAt(i);
+        if (/\d/.test(ch)) {
+          var d = +ch, n = d === 0 ? 10 : d;
+          var o = document.createElement('span'), s = document.createElement('span');
+          o.className = 'odo'; s.className = 'strip'; s.style.setProperty('--n', n);
+          for (var k = 0; k <= n; k++) { var b = document.createElement('b'); b.textContent = k % 10; s.appendChild(b); }
+          o.appendChild(s); el.appendChild(o);
+        } else el.appendChild(document.createTextNode(ch));
+      }
+      return Array.prototype.slice.call(el.querySelectorAll('.strip'));
+    }
+
+    var drawX = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }];
+    var drawY = [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }];
+    var rise = [{ transform: 'translateY(135%)' }, { transform: 'none' }];
+    var up = [{ transform: 'translateY(16px)', clipPath: 'inset(0 0 100% 0)' }, { transform: 'none', clipPath: 'inset(0 0 0 0)' }];
+
+    P5.tween($('#rule-top'), drawX, { duration: 700 });
+    odoize($('.giant .odo-src')).forEach(function (s, i) {
+      var n = parseFloat(s.style.getPropertyValue('--n'));
+      P5.tween(s, [{ transform: 'translateY(0)' }, { transform: 'translateY(' + (-n) + 'em)' }],
+        { delay: 60 + i * 100, duration: 1100 - i * 100, easing: 'cubic-bezier(.22,.8,.12,1)' });
+    });
+    $$('.note .ln > *').forEach(function (s, i) { P5.tween(s, rise, { delay: 320 + i * 70, duration: 700 }); });
+    P5.tween($('.claim .ln > span'), rise, { delay: 400, duration: 800 });
+
+    // 额度条：先长到 8/17 的 11%，再长到 10/23 的 58.70%；刻度和标签跟着到
+    P5.tween($('.track'), drawX, { delay: 380, duration: 700 });
+    P5.tween($('#s1'), drawX, { delay: 520, duration: 300, easing: 'cubic-bezier(.3,.7,.2,1)' });
+    P5.tween($('#t1'), drawY, { delay: 760, duration: 260 });
+    P5.tween($('#l1t'), up, { delay: 780, duration: 420 });
+    P5.tween($('#l1b'), up, { delay: 820, duration: 420 });
+    P5.tween($('#s2'), drawX, { delay: 820, duration: 620, easing: 'cubic-bezier(.3,.7,.2,1)' });
+    P5.tween($('#t2'), drawY, { delay: 1340, duration: 240 });
+    P5.tween($('#l2t'), up, { delay: 1340, duration: 260 });
+    P5.tween($('#l2b'), up, { delay: 1360, duration: 240 });
+    P5.tween($('#l3t'), up, { delay: 560, duration: 420 });
+    P5.tween($('#l3b'), up, { delay: 600, duration: 420 });
+
+    P5.tween($('#rule-base'), drawX, { delay: 700, duration: 800 });
+    P5.tween($('.base .rule-v'), drawY, { delay: 860, duration: 500 });
+    P5.count($('.base [data-to]'), { delay: 860, duration: 600 });
+    $$('.cell > *:not(.rule-v)').forEach(function (e, i) { P5.tween(e, up, { delay: 860 + i * 50, duration: 520 }); });
+
+    P5.go();
+  })();
+</script>
+</body>
+</html>

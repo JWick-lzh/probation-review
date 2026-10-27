@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>会议闭环</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* 截图页：左边是约会页（讲稿说「左边是约会页」），右栏是结论句 + 三步闭环（步骤号是这一页的大数字，三步是真顺序）+ 两句说明 */
+
+  .runhead {
+    position: absolute; left: var(--m); right: var(--m); top: 40px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: var(--fs-label); line-height: 1.2;
+  }
+  .runhead b { font-weight: 700; }
+  #rule-top { left: var(--m); width: var(--content-w); top: 78px; }
+
+  .shot { position: absolute; left: var(--m); top: 118px; width: 960px; aspect-ratio: 1444 / 1164; }
+  .shot img { display: block; width: 100%; height: 100%; object-fit: contain; box-shadow: 0 0 0 1px var(--rule); }
+  .cap { position: absolute; left: 0; width: 100%; top: calc(100% + 15px); padding-top: 12px; font-size: var(--fs-label); line-height: 1.3; color: var(--muted); }
+  .cap .rule-h { left: 0; width: 100%; top: 0; }
+
+  .side { position: absolute; left: 1144px; width: 680px; top: 118px; }
+  .side > .rule-h { left: 0; width: 100%; top: 0; }
+  .side .k { padding-top: 14px; font-size: var(--fs-label); font-weight: 700; color: var(--muted); line-height: 1.2; }
+  .claim {
+    margin-top: 18px;
+    font-family: var(--font-giant); font-size: 60px; font-weight: 900;
+    line-height: 1.12; letter-spacing: -0.01em;
+  }
+
+  /* 三步：左列大号步骤号，右列名称；右侧一条回线把第 3 步接回第 1 步 */
+  .loop { position: relative; margin-top: 40px; width: 680px; }
+  .step { position: relative; display: grid; grid-template-columns: 96px 1fr; align-items: center; height: 104px; padding-right: 80px; }
+  .step .rule-h { left: 0; width: calc(100% - 80px); top: 0; }
+  .step .no { font-family: var(--font-giant); font-weight: 900; font-size: 88px; line-height: 1; letter-spacing: -0.04em; }
+  .step h2 { font-size: 32px; font-weight: 900; line-height: 1.2; white-space: nowrap; }
+  .step p { margin-top: 4px; font-size: var(--fs-label); color: var(--ink-2); line-height: 1.35; }
+  .back { position: absolute; right: 0; top: 0; width: 80px; height: 312px; overflow: visible; }
+  .back path { fill: none; stroke: var(--ink); stroke-width: 2; }
+
+  .say { margin-top: 36px; font-size: var(--fs-body); line-height: 1.5; color: var(--ink-2); }
+  .say b { color: var(--ink); }
+
+  .foot {
+    position: absolute; left: var(--m); right: var(--m); top: 1000px;
+    font-size: var(--fs-label); line-height: 1.2; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+  <div class="runhead"><b>三、工作目标完成情况</b><span>转正述职　林灶辉</span></div>
+  <div class="rule-h strong" id="rule-top"></div>
+
+  <figure class="shot">
+    <img src="../assets/booking-007.png" alt="业务助理自己搭的约会工作台「和 007 约会请填写」：会议主题、会议说明、期望日期、参会人与分工、会议材料，右侧是约会三步流程和 007 办公地点">
+    <figcaption class="cap"><span class="rule-h"></span>图：业务助理自己搭的约会工作台「和 007 约会请填写」，10/26 截图</figcaption>
+  </figure>
+
+  <aside class="side">
+    <div class="rule-h strong"></div>
+    <p class="k">会议闭环</p>
+    <h1 class="claim">
+      <span class="ln"><span>会前评审、约会、</span></span>
+      <span class="ln"><span>会后打分，</span></span>
+      <span class="ln"><span>连成了一个闭环</span></span>
+    </h1>
+
+    <div class="loop" aria-label="三步：会前材料评审，会议时间预约，会后自动推送打分，再回到下一次会前">
+      <div class="step"><div class="rule-h strong"></div><span class="no">1</span><div><h2>会前材料评审</h2></div></div>
+      <div class="step"><div class="rule-h"></div><span class="no">2</span><div><h2>会议时间预约</h2><p>先填目标、议题、分工和材料，<br>总助确认后发飞书日程</p></div></div>
+      <div class="step"><div class="rule-h"></div><span class="no">3</span><div><h2>会后自动推送打分</h2></div></div>
+      <!-- 回线：从第 3 步右侧出发，沿右边上行，回到第 1 步，末端一个小箭头 -->
+      <svg class="back" viewBox="0 0 80 312" aria-hidden="true">
+        <path class="ret" d="M 8 260 H 56 V 52 H 8"/>
+        <path class="tip" d="M 20 42 L 8 52 L 20 62"/>
+      </svg>
+    </div>
+
+    <p class="say">用智能体把这三步连起来，业务助理开会前的准备工作少了。<br><b>顺带</b>：业务助理更熟练地用 AI，<br>开始搭自己的业务工作台，左边就是它的约会页。</p>
+  </aside>
+
+  <footer class="foot">口径：业务助理的约会工作台，10/26 截图；截图中人名已换成岗位</footer>
+
+<script src="../shared/motion.js"></script>
+<script>
+  (function () {
+    var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+    var drawX = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }];
+    var rise = [{ transform: 'translateY(135%)' }, { transform: 'none' }];
+    var fade = [{ opacity: 0 }, { opacity: 1 }];
+
+    P5.tween($('#rule-top'), drawX, { duration: 700 });
+    P5.tween($('.shot img'), [{ opacity: 0, transform: 'translateY(24px)' }, { opacity: 1, transform: 'none' }], { delay: 80, duration: 700 });
+    P5.tween($('.cap .rule-h'), drawX, { delay: 300, duration: 600 });
+    P5.tween($('.cap'), fade, { delay: 420, duration: 500 });
+
+    P5.tween($('.side > .rule-h'), drawX, { delay: 120, duration: 600 });
+    P5.tween($('.side .k'), fade, { delay: 200, duration: 400 });
+    $$('.claim .ln > span').forEach(function (s, i) { P5.tween(s, rise, { delay: 220 + i * 80, duration: 700 }); });
+
+    // 三步依次出现，最后回线从第 3 步画回第 1 步
+    $$('.step').forEach(function (st, i) {
+      P5.tween(st.querySelector('.rule-h'), drawX, { delay: 480 + i * 140, duration: 500 });
+      P5.tween(st.querySelector('.no'), [{ opacity: 0, transform: 'translateY(30%)' }, { opacity: 1, transform: 'none' }], { delay: 520 + i * 140, duration: 500 });
+      P5.tween(st.querySelector('div:last-child'), fade, { delay: 560 + i * 140, duration: 450 });
+    });
+    P5.tween($('.back .ret'), [{ strokeDasharray: '320', strokeDashoffset: '320' }, { strokeDasharray: '320', strokeDashoffset: '0' }], { delay: 940, duration: 520, easing: 'cubic-bezier(.5,0,.2,1)' });
+    P5.tween($('.back .tip'), fade, { delay: 1400, duration: 160 });
+    P5.tween($('.say'), fade, { delay: 1000, duration: 500 });
+
+    P5.go();
+  })();
+</script>
+</body>
+</html>

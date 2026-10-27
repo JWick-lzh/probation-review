@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>封面</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：index.html 演示模式的「⊞ 概览」按钮固定在视口左上角，16:9 小窗口里会压住左上角的 logo。
+   logo 挪到顶栏右端，导航右移让出左上角（全 deck 同一写法） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+
+/* ── 01 封面 ── */
+.band { height: 361px; padding-top: 56px; }
+.band h1 { font-size: var(--fs-display); line-height: 1.1; letter-spacing: .04em; }
+.band .byline { margin-top: 22px; font-size: var(--fs-byline); color: var(--ink-2); }
+.band .byline u { text-decoration-thickness: 2px; text-underline-offset: 7px; }
+.band .meta { margin-top: 8px; font-size: 22px; color: var(--muted); }
+
+.lead { position: absolute; left: var(--gutter); top: 540px; width: 1708px;
+  font-size: var(--fs-lead); line-height: 1.32; }
+
+.trial { position: absolute; left: var(--gutter); top: 712px; width: 1708px; }
+.tl { display: block; overflow: visible; }
+.trial .source { margin-top: 18px; }
+
+.tl .ct { font-size: 22px; font-weight: 700; fill: var(--ink); }
+.tl .track { stroke: var(--track); stroke-width: 10; stroke-linecap: round; }
+.tl .done { stroke: var(--s-done); stroke-width: 10; stroke-linecap: round; }
+.tl .tick { stroke: #B8C2CE; stroke-width: 2; }
+.tl .mo { font-size: 20px; fill: var(--muted); }
+.tl .end { fill: #fff; stroke: var(--s-done); stroke-width: 3; }
+.tl .end.open { stroke: #B8C2CE; }
+.tl .now { fill: var(--ink); stroke: #fff; stroke-width: 4; }
+.tl .stem { stroke: var(--ink); stroke-width: 2; }
+.tl .k { font-size: 24px; font-weight: 700; fill: var(--ink); }
+.tl .d { font-size: 22px; fill: var(--ink-2); }
+
+/* 时间轴（ms）：红线 0–600 → 标题 100–600 → 一句话 250–700 → 轨道 350–800
+   → 已过的一段 500–1100 → 今天的点 1050–1330 → 来源行 1300–1600 */
+.tl .grow { transform-box: fill-box; transform-origin: 0 50%; }
+.tl .pop { transform-box: fill-box; transform-origin: 50% 50%; }
+html.motion .band h1 { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .byline { animation: rise .5s var(--ease-out) .18s both; }
+html.motion .band .meta { animation: rise .5s var(--ease-out) .22s both; }
+html.motion .lead { animation: rise .45s var(--ease-out) .25s both; }
+html.motion .tl .frame { animation: fade .35s ease-out .35s both; }
+html.motion .tl .track { animation: draw-x .45s var(--ease-draw) .35s both; }
+html.motion .tl .done { animation: draw-x .6s var(--ease-out) .5s both; }
+html.motion .tl .pop { animation: pop .28s var(--ease-out) var(--d) both; }
+html.motion .tl .late { animation: rise .3s var(--ease-out) var(--d) both; }
+.trial .source { --src-delay: 1.3s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span>岗位定位</span><span>目标回顾</span><span>完成情况</span><span>IT 规划</span><span>团队管理</span><span>自我评价</span><span>未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">转正述职</h1>
+  <p class="byline"><u>林灶辉</u>　战略经营部　2026-10-27</p>
+  <p class="meta">AI 创新助理　试用期 2026-07-21 至 2027-01-21</p>
+</section>
+
+<p class="assert lead">今天讲三件事：做了什么、没做到什么、接下来怎么做</p>
+
+<figure class="trial">
+  <svg class="tl" width="1708" height="196" viewBox="0 0 1708 196" role="img"
+       aria-label="试用期时间轴：2026-07-21 开始，2027-01-21 期满，10-27 述职，试用期过半">
+    <!-- 7/21 → 1/21 共 184 天，x = 8 + 天数 × 1692/184；10/27 是第 98 天 -->
+    <g class="frame">
+      <text x="0" y="24" class="ct">试用期</text>
+      <text x="58.5" y="152" class="mo" text-anchor="middle">7 月</text>
+      <line x1="109" x2="109" y1="112" y2="124" class="tick"/><text x="251.5" y="152" class="mo" text-anchor="middle">8 月</text>
+      <line x1="394" x2="394" y1="112" y2="124" class="tick"/><text x="532" y="152" class="mo" text-anchor="middle">9 月</text>
+      <line x1="670" x2="670" y1="112" y2="124" class="tick"/><text x="812.5" y="152" class="mo" text-anchor="middle">10 月</text>
+      <line x1="955" x2="955" y1="112" y2="124" class="tick"/><text x="1093" y="152" class="mo" text-anchor="middle">11 月</text>
+      <line x1="1231" x2="1231" y1="112" y2="124" class="tick"/><text x="1373.5" y="152" class="mo" text-anchor="middle">12 月</text>
+      <line x1="1516" x2="1516" y1="112" y2="124" class="tick"/><text x="1608" y="152" class="mo" text-anchor="middle">1 月</text>
+      <text x="0" y="192" class="d">2026-07-21 开始</text>
+      <text x="1708" y="192" class="d" text-anchor="end">2027-01-21 期满</text>
+    </g>
+    <line x1="8" x2="1700" y1="100" y2="100" class="track grow"/>
+    <line x1="8" x2="909" y1="100" y2="100" class="done grow"/>
+    <circle cx="8" cy="100" r="9" class="end pop" style="--d:450ms"/>
+    <circle cx="1700" cy="100" r="9" class="end open pop" style="--d:800ms"/>
+    <line x1="909" x2="909" y1="52" y2="86" class="stem pop" style="--d:1050ms"/>
+    <circle cx="909" cy="100" r="14" class="now pop" style="--d:1050ms"/>
+    <g class="late" style="--d:1100ms"><text x="909" y="38" class="k" text-anchor="middle">10-27 今天述职，试用期过半</text></g>
+  </svg>
+  <figcaption class="source">来源：转正述职报告；试用期 2026-07-21 至 2027-01-21</figcaption>
+</figure>
+</body>
+</html>

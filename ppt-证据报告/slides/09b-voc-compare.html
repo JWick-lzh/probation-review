@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>VOC 竞品对比截图</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：logo 挪到右端，导航右移让出左上角（演示外壳的「概览」按钮在那里） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+
+/* ── 09b VOC 竞品对比截图：左图右注；截图 2041×889，按原比例放 1160 宽（高 505），不裁 ── */
+.band { height: 186px; padding-top: 34px; }
+.band .assert { font-size: var(--fs-assert); line-height: 1.2; }
+.band .sub { margin-top: 6px; font-size: var(--fs-body); color: var(--ink-2); }
+
+.shot { position: absolute; left: var(--gutter); top: 318px; width: 1160px; }
+.shot .frame { width: 1160px; aspect-ratio: 2041 / 889; border: 1px solid var(--rule); background: #fff; }
+.shot img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.shot .source { margin-top: 14px; }
+
+.side.notes { left: 1400px; top: 328px; width: 414px; }
+.side.notes h3 + p { margin-top: 10px; }
+.side.notes p + h3 { margin-top: 44px; }
+
+/* 时间轴（ms）：红线 0–600 → 标题 100–700 → 截图 250–700 → 侧栏 350–750 → 来源行 1300–1600 */
+html.motion .band .assert { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .sub { animation: rise .5s var(--ease-out) .2s both; }
+html.motion .shot .frame { animation: fade .45s ease-out .25s both; }
+html.motion .side.notes { animation: fade .4s ease-out .35s both; }
+.shot .source { --src-delay: 1.3s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span>岗位定位</span><span>目标回顾</span><span class="on" aria-current="true">完成情况</span><span>IT 规划</span><span>团队管理</span><span>自我评价</span><span>未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">竞品对比 9/24 发出，还在测试环境</h1>
+  <p class="sub">同一个时间窗里，把 Y30 和竞品放在一起看</p>
+</section>
+
+<figure class="shot">
+  <div class="frame"><img src="../assets/voc-shot-1.png" alt="VOC「竞品对比」页：Y30 和徕芬 TB01-镜面款并排，2026-06-01 至 07-01，比差评率、当前评分、评价数量分布和前 3 差评、前 3 好评"></div>
+  <figcaption class="source">来源：述职报告截图，VOC「竞品对比」页，Y30 对徕芬 TB01，2026-06-01 至 07-01</figcaption>
+</figure>
+
+<aside class="side notes">
+  <h3>看什么</h3>
+  <p>差评率、评分、差评落在<br>哪些功能点，两边并排。</p>
+  <h3>怎么比</h3>
+  <p>最多 4 列，所有列<br>共用一个时间窗。</p>
+  <h3>截图里的数</h3>
+  <p>竞品这一列有星级的<br>只有 14 条，样本小。</p>
+</aside>
+</body>
+</html>

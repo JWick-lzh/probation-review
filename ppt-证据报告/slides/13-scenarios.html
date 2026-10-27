@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>G3 场景挖掘</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：logo 挪到右端，导航右移让出左上角（演示外壳的「概览」按钮在那里） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+/* 「≥」在 Noto Sans SC / PingFang SC 下会画成斜的「⩾」 */
+.ge { font-family: "Helvetica Neue", Arial, "PingFang SC", sans-serif; }
+
+/* ── 13 场景挖掘：三项到线 + PoC 截图 ── */
+.band { height: 186px; padding-top: 34px; }
+.band .assert { font-size: var(--fs-assert); line-height: 1.2; }
+.band .sub { margin-top: 6px; font-size: var(--fs-body); color: var(--ink-2); }
+
+.krs { position: absolute; left: var(--gutter); top: 318px; width: 1240px; display: grid;
+  grid-template-columns: repeat(3, 1fr); column-gap: 40px; }
+.kr .num { font-size: 56px; font-weight: 700; line-height: 1.05; color: var(--ink); }
+.kr .num span { display: inline-block; }
+.kr .meter { position: relative; height: 8px; margin-top: 12px; background: var(--track); }
+.kr .meter i { position: absolute; inset: 0; background: var(--s-done); transform-origin: 0 50%; }
+.kr h3 { margin-top: 14px; font-size: var(--fs-body); font-weight: 700; color: var(--ink); }
+.kr ul { list-style: none; margin-top: 6px; }
+.kr li { font-size: 22px; line-height: 1.5; color: var(--ink-2); }
+.kr li.more { color: var(--muted); }
+
+.shot { position: absolute; left: var(--gutter); top: 652px; width: 1160px; }
+.shot .frame { width: 1160px; aspect-ratio: 2106 / 590; border: 1px solid var(--rule); background: #fff; }
+.shot img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.shot .source { margin-top: 14px; }
+
+.side.notes { left: 1400px; top: 328px; width: 414px; }
+.side.notes h3 + p { margin-top: 10px; }
+.side.notes p + h3 { margin-top: 44px; }
+
+/* 时间轴（ms）：红线 0–600 → 标题 100–700 → 三项依次 300–900，进度条长满 450–1150
+   → 截图 600–1050 → 侧栏 350–750 → 来源行 1300–1600 */
+html.motion .band .assert { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .sub { animation: rise .5s var(--ease-out) .2s both; }
+html.motion .kr { animation: rise .45s var(--ease-out) var(--d) both; }
+html.motion .kr .meter i { animation: draw-x .55s var(--ease-out) calc(var(--d) + 150ms) both; }
+html.motion .shot .frame { animation: fade .45s ease-out .6s both; }
+html.motion .side.notes { animation: fade .4s ease-out .35s both; }
+.shot .source { --src-delay: 1.3s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span>岗位定位</span><span>目标回顾</span><span class="on" aria-current="true">完成情况</span><span>IT 规划</span><span>团队管理</span><span>自我评价</span><span>未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">场景挖掘的 3 项基线全部达到</h1>
+  <p class="sub">识别场景、出方案、做 PoC，三项都到了基线档</p>
+</section>
+
+<div class="krs" role="img" aria-label="场景挖掘三项：识别场景 5 / 5，可执行方案 3 / 3，PoC 1 / 1">
+  <div class="kr" style="--d:300ms">
+    <p class="num"><span>5 / 5</span></p>
+    <div class="meter"><i></i></div>
+    <h3>识别 <span class="ge">≥</span>5 个场景</h3>
+    <ul><li>供应商模具周期管理</li><li>AI 辅助 3D 内容</li><li>飞书使用诊断</li><li>AI 兴趣活动　等</li><li class="more">第 4 期汇报列到 9 个</li></ul>
+  </div>
+  <div class="kr" style="--d:420ms">
+    <p class="num"><span>3 / 3</span></p>
+    <div class="meter"><i></i></div>
+    <h3><span class="ge">≥</span>3 个可执行方案</h3>
+    <ul><li>GTM 三步走 MVP</li><li>3D 内容实测建议</li><li>AI 兴趣活动方案</li></ul>
+  </div>
+  <div class="kr" style="--d:540ms">
+    <p class="num"><span>1 / 1</span></p>
+    <div class="meter"><i></i></div>
+    <h3><span class="ge">≥</span>1 个 PoC</h3>
+    <ul><li>美区库存看板（下图）</li></ul>
+  </div>
+</div>
+
+<figure class="shot">
+  <div class="frame">
+    <img src="../assets/inventory-poc.jpg" alt="美区库存看板：更新每周一、周三 09:30 自动同步，站点亚马逊、独立站、Tiktok；销量趋势和库存健康状态表">
+  </div>
+  <figcaption class="source">来源：美区库存看板（PoC），双周汇报第 2 期截图；完成度取试用期目标跟踪表 9-30 版</figcaption>
+</figure>
+
+<aside class="side notes">
+  <h3>PoC 是什么</h3>
+  <p>美区库存看板，用多维表格做，<br>定时自动同步，同步时间见图。</p>
+  <h3>口径</h3>
+  <p>按目标跟踪表 9-30 版的<br>基线档计；识别的场景，<br>第 4 期汇报列到 9 个。</p>
+</aside>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>结尾</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* 结尾页：整页 logo 蓝大色块，只有一句话。蓝底上的字纯白（对比度 4.68:1） */
+
+  html, body { background: var(--blue); }
+  body { color: #FFFFFF; }
+
+  .runhead {
+    position: absolute; left: var(--m); right: var(--m); top: 40px;
+    display: flex; justify-content: flex-end; align-items: baseline;
+    font-size: var(--fs-label); line-height: 1.2;
+  }
+  #rule-top { left: var(--m); width: var(--content-w); top: 78px; border-top-color: #FFFFFF; }
+
+  .quote {
+    position: absolute; left: var(--m); top: 420px;
+    font-family: var(--font-giant); font-size: 184px; font-weight: 900;
+    line-height: 1.1; letter-spacing: -0.01em; white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+
+  <div class="runhead"><span>转正述职　林灶辉</span></div>
+  <div class="rule-h strong" id="rule-top"></div>
+
+  <h1 class="quote"><span class="ln"><span>善战者无赫赫之功</span></span></h1>
+
+<script src="../shared/motion.js"></script>
+<script>
+  (function () {
+    var $ = function (s) { return document.querySelector(s); };
+    var drawX = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }];
+    var rise = [{ transform: 'translateY(135%)' }, { transform: 'none' }];
+
+    P5.tween($('#rule-top'), drawX, { duration: 700 });
+    P5.tween($('.quote .ln > span'), rise, { delay: 120, duration: 800 });
+
+    P5.go();
+  })();
+</script>
+</body>
+</html>

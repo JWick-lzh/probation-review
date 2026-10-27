@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>G2 会议</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* 骨架：页眉 → 左上巨数字 635（主语写死在旁边：CEO 日历上的会）+ 右侧 635 格点阵（蓝 = 有星级的 355 场）→ 结论句 → 底部四栏
+     635 场、534.9 小时是 CEO 的会，不是述职人的会 */
+
+  .runhead {
+    position: absolute; left: var(--m); right: var(--m); top: 40px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: var(--fs-label); line-height: 1.2;
+  }
+  .runhead b { font-weight: 700; }
+  #rule-top { left: var(--m); width: var(--content-w); top: 78px; }
+
+  .giant {
+    position: absolute; left: 76px; top: 50px;
+    font-family: var(--font-giant); font-weight: 900; line-height: 1;
+    font-size: 520px; letter-spacing: -0.04em; white-space: nowrap;
+  }
+
+  /* 右侧：主语 + 点阵 + 图例 */
+  .who { position: absolute; left: 1104px; width: 720px; top: 118px; }
+  .who > .rule-h { left: 0; width: 100%; top: 0; }
+  .who h2 { padding-top: 16px; font-size: 32px; font-weight: 900; line-height: 1.25; }
+  .who p { margin-top: 4px; font-size: var(--fs-body); line-height: 1.4; color: var(--ink-2); }
+  .grid { display: block; margin-top: 20px; width: 720px; height: 288px; overflow: visible; }
+  .grid rect.g, .grid rect.b { transform-box: fill-box; }
+  .legend { margin-top: 12px; display: flex; gap: 28px; font-size: var(--fs-label); color: var(--muted); line-height: 1.2; }
+  .legend span { display: inline-flex; align-items: center; gap: 8px; }
+  .sw { width: 16px; height: 16px; display: inline-block; }
+
+  .claim {
+    position: absolute; left: var(--m); top: 604px;
+    font-family: var(--font-giant); font-size: 80px; font-weight: 900;
+    line-height: 1.06; letter-spacing: -0.015em; white-space: nowrap;
+  }
+
+  #rule-facts { left: var(--m); width: var(--content-w); top: 764px; }
+  .facts {
+    position: absolute; left: var(--m); width: var(--content-w); top: 766px; height: 170px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+  }
+  .facts .rule-v { top: 0; height: 170px; }
+  .fact { padding: 16px 28px 0; position: relative; }
+  .fact:first-child { padding-left: 0; }
+  .fact .k { font-size: var(--fs-label); font-weight: 700; color: var(--muted); line-height: 1.2; }
+  .fact .v { font-family: var(--font-giant); font-weight: 900; font-size: 60px; line-height: 1; margin-top: 6px; letter-spacing: -0.035em; white-space: nowrap; }
+  .fact .v i { font-style: normal; font-family: var(--font-text); font-size: var(--fs-lead); font-weight: 700; letter-spacing: 0; margin-left: 6px; }
+  .fact > small { display: block; margin-top: 10px; font-size: var(--fs-label); line-height: 1.35; color: var(--ink-2); }
+
+  .foot {
+    position: absolute; left: var(--m); right: var(--m); top: 1000px;
+    font-size: var(--fs-label); line-height: 1.2; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+  <div class="runhead"><b>三、工作目标完成情况</b><span>转正述职　林灶辉</span></div>
+  <div class="rule-h strong" id="rule-top"></div>
+
+  <div class="giant" role="img" aria-label="CEO 日历上 635 场会">
+    <span class="odo" aria-hidden="true"><span class="strip" style="--n:6"><b>0</b><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b><b>6</b></span></span><span class="odo" aria-hidden="true"><span class="strip" style="--n:3"><b>0</b><b>1</b><b>2</b><b>3</b></span></span><span class="odo" aria-hidden="true"><span class="strip" style="--n:5"><b>0</b><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b></span></span>
+  </div>
+
+  <aside class="who">
+    <div class="rule-h strong"></div>
+    <h2 class="ln"><span>CEO 日历上的会</span></h2>
+    <p class="ln"><span>5/24–10/21，共 635 场、534.9 小时</span></p>
+    <!-- 一格一场：每行 40 格，635 = 15 行 × 40 + 35；蓝 355 = 8 行 × 40 + 35 -->
+    <svg class="grid" viewBox="0 0 720 288" role="img" aria-label="635 场会里 355 场有星级">
+      <defs>
+        <pattern id="pg" width="18" height="18" patternUnits="userSpaceOnUse"><rect width="14" height="14" fill="#E2E2E2"/></pattern>
+        <pattern id="pb" width="18" height="18" patternUnits="userSpaceOnUse"><rect width="14" height="14" fill="#0073E4"/></pattern>
+      </defs>
+      <rect class="g" x="0" y="0" width="720" height="270" fill="url(#pg)"/>
+      <rect class="g" x="0" y="270" width="630" height="18" fill="url(#pg)"/>
+      <rect class="b" x="0" y="0" width="720" height="144" fill="url(#pb)"/>
+      <rect class="b" x="0" y="144" width="630" height="18" fill="url(#pb)"/>
+    </svg>
+    <p class="legend"><span><i class="sw" style="background:#0073E4"></i>有星级 355 场</span><span><i class="sw" style="background:#E2E2E2"></i>没有星级</span><span>一格一场会</span></p>
+  </aside>
+
+  <h1 class="claim"><span class="ln"><span>CEO 5 个月开了 635 场会，现在能一场场看</span></span></h1>
+
+  <div class="rule-h strong" id="rule-facts"></div>
+  <section class="facts">
+    <div class="fact">
+      <p class="k">CEO 的会议总时长</p>
+      <p class="v">534.9<i>小时</i></p>
+      <small>5/24–10/21，CEO 日历</small>
+    </div>
+    <div class="fact">
+      <div class="rule-v" style="left:0"></div>
+      <p class="k">有星级</p>
+      <p class="v"><span data-to="355">355</span><i>场</i></p>
+      <small>日历同步进 CEO 会议看板</small>
+    </div>
+    <div class="fact">
+      <div class="rule-v" style="left:0"></div>
+      <p class="k">007 会议助手</p>
+      <p class="v">9/23<i>发布</i></p>
+      <small>会后提待办、双周提醒</small>
+    </div>
+    <div class="fact">
+      <div class="rule-v" style="left:0"></div>
+      <p class="k">1 个 CEO 场景落地</p>
+      <p class="v">达成</p>
+      <small>这一项达到基线</small>
+    </div>
+  </section>
+
+  <footer class="foot">口径：CEO 会议看板线上库，只读查询，截至 10-25；635 场、534.9 小时都是 CEO 日历上的会</footer>
+
+<script src="../shared/motion.js"></script>
+<script>
+  (function () {
+    var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+    var drawX = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }];
+    var drawY = [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }];
+    var rise = [{ transform: 'translateY(135%)' }, { transform: 'none' }];
+    var fade = [{ opacity: 0 }, { opacity: 1 }];
+
+    P5.tween($('#rule-top'), drawX, { duration: 700 });
+    $$('.giant .strip').forEach(function (s, i) {
+      var n = parseFloat(s.style.getPropertyValue('--n'));
+      P5.tween(s, [{ transform: 'translateY(0)' }, { transform: 'translateY(' + (-n) + 'em)' }],
+        { delay: 60 + i * 90, duration: 1050 - i * 80, easing: 'cubic-bezier(.22,.8,.12,1)' });
+    });
+
+    // 主语先出，再长点阵：灰格整片铺开，蓝格一行行往下长，最后一行从左长到第 35 格
+    P5.tween($('.who > .rule-h'), drawX, { delay: 160, duration: 600 });
+    $$('.who .ln > span').forEach(function (s, i) { P5.tween(s, rise, { delay: 220 + i * 90, duration: 650 }); });
+    var g = $$('.grid rect.g'), b = $$('.grid rect.b');
+    P5.tween(g[0], [{ opacity: 0 }, { opacity: 1 }], { delay: 340, duration: 420 });
+    P5.tween(g[1], [{ opacity: 0 }, { opacity: 1 }], { delay: 420, duration: 420 });
+    P5.tween(b[0], [{ transform: 'scaleY(0)', transformOrigin: '0 0' }, { transform: 'scaleY(1)', transformOrigin: '0 0' }], { delay: 520, duration: 560, easing: 'steps(8, end)' });
+    P5.tween(b[1], [{ transform: 'scaleX(0)', transformOrigin: '0 0' }, { transform: 'scaleX(1)', transformOrigin: '0 0' }], { delay: 1080, duration: 300, easing: 'steps(35, end)' });
+    P5.tween($('.legend'), fade, { delay: 900, duration: 450 });
+
+    P5.tween($('.claim .ln > span'), rise, { delay: 420, duration: 800 });
+
+    P5.tween($('#rule-facts'), drawX, { delay: 600, duration: 750 });
+    $$('.facts .rule-v').forEach(function (v, i) { P5.tween(v, drawY, { delay: 760 + i * 60, duration: 500 }); });
+    $$('.fact').forEach(function (f, i) { P5.tween(f, fade, { delay: 720 + i * 70, duration: 450 }); });
+    $$('.facts [data-to]').forEach(function (n, i) { P5.count(n, { delay: 760 + i * 70, duration: 650 }); });
+
+    P5.go();
+  })();
+</script>
+</body>
+</html>

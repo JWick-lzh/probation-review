@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-total="1700" data-probe="转正述职试用期至述职人林灶辉战略经营部创新助理今天讲三件事做了什么没做到接下来怎么日期系统提效工具场景挖掘专利星际圈">
+<head>
+<meta charset="UTF-8">
+<title>01 封面</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+/* ───────── 左：5 个目标，面积严格按权重 ─────────
+   拆页后底部 14 根条挪到第 2 页，几何主图整体放大 1.1 倍、落在底线上。
+   1% 权重 = 5,760 × 1.21 = 6,969.6 px²
+   VOC 40%   方块 528 × 528                          = 278,784
+   CEO 20%   四分之一圆 R = 421.28   πR²/4            ≈ 139,392
+   场景 20%  方块 373.35 × 373.35                     ≈ 139,392
+   专利 10%  圆 直径 297.89           π(d/2)²         ≈  69,696
+   星际圈 10% 四分之一圆 R = 297.89   πR²/4            ≈  69,696
+   场景、星际圈的底边 = 底线 y 1008 */
+.shape { position: absolute; display: flex; flex-direction: column; }
+.shape .nm { font-size: var(--fs-body); font-weight: 700; line-height: 1.25; letter-spacing: .04em; }
+.shape .w  { font-weight: 900; line-height: 1; letter-spacing: -.01em; margin-top: 10px; }
+
+.voc    { left: 96px;     top: 106.65px;  width: 528px;    height: 528px;    background: var(--red);    color: var(--paper); padding: 48px; }
+.voc .w { font-size: var(--fs-num-xl); }
+.ceo    { left: 624px;    top: 213.37px;  width: 421.28px; height: 421.28px; background: var(--ink);    color: var(--paper);
+          border-top-right-radius: 100%; justify-content: flex-end; padding: 42px; }
+.ceo .w, .scene .w { font-size: var(--fs-num-l); }
+.scene  { left: 624px;    top: 634.65px;  width: 373.35px; height: 373.35px; background: var(--yellow); color: var(--ink); padding: 42px; }
+.patent { left: 326.11px; top: 634.65px;  width: 297.89px; height: 297.89px; background: var(--blue);   color: var(--paper);
+          border-radius: 50%; align-items: center; justify-content: center; text-align: center; }
+.patent .nm, .star .nm { font-size: var(--fs-body-s); }
+.patent .w, .star .w { font-size: var(--fs-num-m); margin-top: 8px; }
+.star   { left: 997.35px; top: 710.11px;  width: 297.89px; height: 297.89px; background: var(--ink);    color: var(--paper);
+          border-top-right-radius: 100%; justify-content: flex-end; padding: 30px; }
+
+/* 入场：按权重从小到大落进网格（同权重先落下面的），弹簧缓动 */
+.shape.anim { animation: drop 700ms var(--spring); }
+.patent { --drop: -940px;  animation-delay: 0ms !important; }
+.star   { --drop: -1016px; animation-delay: 90ms !important; }
+.scene  { --drop: -1016px; animation-delay: 180ms !important; }
+.ceo    { --drop: -642px;  animation-delay: 270ms !important; animation-duration: 720ms !important; }
+.voc    { --drop: -642px;  animation-delay: 360ms !important; animation-duration: 760ms !important; }
+
+/* ───────── 右：竖排标题 + 封面信息 ───────── */
+.vt { position: absolute; left: 1345px; top: 106px; writing-mode: vertical-rl;
+      font-family: var(--serif); font-weight: 900; font-size: var(--fs-title); line-height: 1; letter-spacing: .14em; }
+.vt.anim { animation: reveal-down 640ms var(--ease-out) 120ms; }
+.vside { position: absolute; left: 1503px; top: 118px; writing-mode: vertical-rl;
+         font-size: var(--fs-label); font-weight: 500; letter-spacing: .3em; color: var(--ink-2); }
+.vside.anim { animation: reveal-down 600ms var(--ease-out) 380ms; }
+
+.info { position: absolute; left: 1577px; top: 114px; width: 247px; }
+.info section + section { margin-top: 52px; }
+.info .tag { margin-bottom: 14px; }
+.info .lead { font-size: var(--fs-lead); font-weight: 700; line-height: 1.5; }
+.info .txt  { font-size: var(--fs-body); font-weight: 500; line-height: 1.55; }
+.info .name { font-size: var(--fs-num-m); font-weight: 900; line-height: 1.15; letter-spacing: .06em; margin-bottom: 6px; }
+.info section.anim { animation: reveal-right 520ms var(--ease-out); }
+.info section:nth-child(1) { animation-delay: 460ms !important; }
+.info section:nth-child(2) { animation-delay: 580ms !important; }
+
+.sig { position: absolute; left: 1345px; top: 938px; font-size: var(--fs-body-s); font-weight: 700; letter-spacing: .2em; }
+.sig.anim { animation: reveal-right 500ms var(--ease-out) 1000ms; }
+.cover-rule { left: 96px; right: 96px; top: 1008px; transform-origin: 0 50%; }
+.cover-rule.anim { animation: draw-x 600ms var(--ease-out) 900ms; }
+</style>
+</head>
+<body>
+
+  <!-- 5 个目标：DOM 顺序 = 落地顺序，后落的压在上面 -->
+  <div class="shape patent anim"><span class="nm">专利创新 AI</span><span class="w" data-to="10" data-suf="%" data-delay="160" data-dur="520">10%</span></div>
+  <div class="shape star anim"><span class="nm">星际圈</span><span class="w" data-to="10" data-suf="%" data-delay="250" data-dur="520">10%</span></div>
+  <div class="shape scene anim"><span class="nm">AI 场景挖掘</span><span class="w" data-to="20" data-suf="%" data-delay="340" data-dur="520">20%</span></div>
+  <div class="shape ceo anim"><span class="nm">CEO 提效工具</span><span class="w" data-to="20" data-suf="%" data-delay="430" data-dur="520">20%</span></div>
+  <div class="shape voc anim"><span class="nm">VOC 系统</span><span class="w" data-to="40" data-suf="%" data-delay="520" data-dur="560">40%</span></div>
+
+  <h1 class="vt anim">转正述职</h1>
+  <div class="vside anim">试用期　2026-07-21 至 2027-01-21</div>
+
+  <div class="info">
+    <section class="anim">
+      <span class="tag">述职人</span>
+      <p class="name">林灶辉</p>
+      <p class="txt">战略经营部<br>AI 创新助理</p>
+    </section>
+    <section class="anim">
+      <span class="tag">今天讲三件事</span>
+      <p class="lead">做了什么<br>没做到什么<br>接下来怎么做</p>
+    </section>
+  </div>
+
+  <div class="sig anim">述职日期　2026-10-27</div>
+  <div class="rule cover-rule anim"></div>
+
+<script src="../shared/motion.js"></script>
+</body>
+</html>

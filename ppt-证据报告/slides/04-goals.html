@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>5 个目标</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：logo 挪到右端，导航右移让出左上角（演示外壳的「概览」按钮在那里） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+
+/* ── 04 5 个目标 ── */
+.band { height: 186px; padding-top: 34px; }
+.band .assert { font-size: var(--fs-assert); line-height: 1.2; }
+.band .sub { margin-top: 6px; font-size: var(--fs-body); color: var(--ink-2); }
+
+.chart { position: absolute; left: var(--gutter); top: 318px; width: 1240px; }
+.plot { display: block; overflow: visible; }
+.chart .source { margin-top: 14px; }
+
+.plot .hd { font-size: var(--fs-label); font-weight: 700; fill: var(--muted); letter-spacing: .08em; }
+.plot .goal { font-size: 28px; font-weight: 700; fill: var(--ink); }
+.plot .why { font-size: var(--fs-label); fill: var(--muted); }
+.plot .why .n { font-weight: 700; fill: var(--ink-2); }
+.plot .wbar { fill: var(--s-done); }
+.plot .val { font-size: 30px; font-weight: 700; fill: var(--ink); }
+.plot .axis { stroke: #B8C2CE; stroke-width: 2; }
+.plot .brace { fill: none; stroke: var(--ink-2); stroke-width: 2; }
+.plot .sum-l { font-size: var(--fs-label); fill: var(--ink-2); }
+.plot .sum-n { font-size: 36px; font-weight: 700; fill: var(--ink); }
+
+.side.read { left: 1400px; top: 328px; width: 414px; }
+.side.read h3 + p { margin-top: 10px; }
+.side.read p + h3 { margin-top: 44px; }
+
+/* 时间轴（ms）：红线 0–600 → 标题 100–700 → 框架 250–650 → 5 根柱子依次长出 400–1100
+   → 合计括号 1000–1300 → 来源行 1300–1600 */
+.plot .grow { transform-box: fill-box; transform-origin: 0 50%; }
+.plot .vy { transform-box: fill-box; transform-origin: 50% 0; }
+html.motion .band .assert { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .sub { animation: rise .5s var(--ease-out) .2s both; }
+html.motion .side.read { animation: fade .4s ease-out .3s both; }
+html.motion .plot .frame { animation: fade .4s ease-out .25s both; }
+html.motion .plot .grow { animation: draw-x .5s var(--ease-out) var(--d) both; }
+html.motion .plot .ride { animation: ride .5s var(--ease-out) var(--d) both; }
+html.motion .plot .vy { animation: draw-y .3s var(--ease-draw) 1s both; }
+html.motion .plot .sum { animation: fade .3s ease-out 1.05s both; }
+.chart .source { --src-delay: 1.3s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span>岗位定位</span><span class="on" aria-current="true">目标回顾</span><span>完成情况</span><span>IT 规划</span><span>团队管理</span><span>自我评价</span><span>未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">5 个目标里，VOC 一项占 40%</h1>
+  <p class="sub">7/30 定了 5 个目标、14 项指标；VOC、CEO 提效、场景挖掘三项合计 80%</p>
+</section>
+
+<figure class="chart">
+  <svg class="plot" width="1240" height="600" viewBox="0 0 1240 600" role="img"
+       aria-label="5 个目标的权重：VOC 系统 40%，CEO 提效工具 20%，AI 场景挖掘 20%，专利创新 AI 10%，星际圈 10%；前三项合计 80%">
+    <!-- 横向柱：x = 440 + 权重 × 15 -->
+    <g class="frame">
+      <text x="0" y="24" class="hd">目标　指标数　要解决的问题</text>
+      <text x="440" y="24" class="hd">权重</text>
+      <line x1="440" x2="440" y1="54" y2="596" class="axis"/>
+
+      <text x="0" y="100" class="goal">VOC 系统</text>
+      <text x="0" y="136" class="why"><tspan class="n">3 项</tspan>　产品决策能直接看到用户评论</text>
+      <text x="0" y="208" class="goal">CEO 提效工具</text>
+      <text x="0" y="244" class="why"><tspan class="n">2 项</tspan>　会议和汇报能回看、能追踪</text>
+      <text x="0" y="316" class="goal">AI 场景挖掘</text>
+      <text x="0" y="352" class="why"><tspan class="n">3 项</tspan>　公司的 AI 投入有先后顺序</text>
+      <text x="0" y="424" class="goal">专利创新 AI</text>
+      <text x="0" y="460" class="why"><tspan class="n">3 项</tspan>　降低创新提案的门槛</text>
+      <text x="0" y="532" class="goal">星际圈</text>
+      <text x="0" y="568" class="why"><tspan class="n">3 项</tspan>　员工自己会用 AI</text>
+    </g>
+
+    <rect x="441" y="80" width="600" height="44" class="wbar grow" style="--d:400ms"/>
+    <g class="ride" data-ride style="--dx:600px;--d:400ms"><text x="1057" y="113" class="val"><tspan data-count="40" data-fmt="{}%">40%</tspan></text></g>
+    <rect x="441" y="188" width="300" height="44" class="wbar grow" style="--d:500ms"/>
+    <g class="ride" data-ride style="--dx:300px;--d:500ms"><text x="757" y="221" class="val"><tspan data-count="20" data-fmt="{}%">20%</tspan></text></g>
+    <rect x="441" y="296" width="300" height="44" class="wbar grow" style="--d:600ms"/>
+    <g class="ride" data-ride style="--dx:300px;--d:600ms"><text x="757" y="329" class="val"><tspan data-count="20" data-fmt="{}%">20%</tspan></text></g>
+    <rect x="441" y="404" width="150" height="44" class="wbar grow" style="--d:700ms"/>
+    <g class="ride" data-ride style="--dx:150px;--d:700ms"><text x="607" y="437" class="val"><tspan data-count="10" data-fmt="{}%">10%</tspan></text></g>
+    <rect x="441" y="512" width="150" height="44" class="wbar grow" style="--d:800ms"/>
+    <g class="ride" data-ride style="--dx:150px;--d:800ms"><text x="607" y="545" class="val"><tspan data-count="10" data-fmt="{}%">10%</tspan></text></g>
+
+    <path d="M1132 80 H1146 V340 H1132" class="brace vy"/>
+    <g class="sum">
+      <text x="1164" y="198" class="sum-l">三项合计</text>
+      <text x="1164" y="240" class="sum-n">80%</text>
+    </g>
+  </svg>
+  <figcaption class="source">来源：试用期目标跟踪表（7/30 定稿，9-30 最后回填）</figcaption>
+</figure>
+
+<aside class="side read">
+  <h3>为什么是这 5 个</h3>
+  <p>入职当周 CEO 提了 4 项需求：VOC、知识产权创新、个人效率、语音 AI 评估。</p>
+  <p style="margin-top:14px">7/30 和 AI 推广一起定成 5 个目标。</p>
+  <h3>口径</h3>
+  <p>每项指标分基线和超预期两档，<br>今天按基线算。</p>
+</aside>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>岗位定位</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* 骨架：页眉 → 左上巨数字「3」（三类事）+ 右侧细线表（汇报线、怎么做、从哪来）→ 结论句 → 底部三栏就是这三类事 */
+
+  .runhead {
+    position: absolute; left: var(--m); right: var(--m); top: 40px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: var(--fs-label); line-height: 1.2;
+  }
+  .runhead b { font-weight: 700; }
+  #rule-top { left: var(--m); width: var(--content-w); top: 78px; }
+
+  .giant {
+    position: absolute; left: 73px; top: 44px;
+    font-family: var(--font-giant); font-weight: 900; line-height: 1;
+    font-size: 560px; letter-spacing: -0.04em; white-space: nowrap;
+  }
+
+  /* 右侧细线表：左标签 右内容 */
+  .tbl { position: absolute; left: 672px; width: 1152px; top: 128px; }
+  .tr { position: relative; display: grid; grid-template-columns: 176px 1fr; padding: 22px 0 24px; }
+  .tr .rule-h { left: 0; width: 100%; top: 0; }
+  .tr .k { font-size: var(--fs-label); font-weight: 700; color: var(--muted); line-height: 1.5; padding-top: 6px; }
+  .tr .d { font-size: var(--fs-lead); line-height: 1.45; }
+  .tr .d b { font-weight: 700; }
+
+  .claim {
+    position: absolute; left: var(--m); top: 572px;
+    font-family: var(--font-giant); font-size: var(--fs-head); font-weight: 900;
+    line-height: 1.06; letter-spacing: -0.015em; white-space: nowrap;
+  }
+
+  /* 底部三栏：一栏一类事 */
+  #rule-facts { left: var(--m); width: var(--content-w); top: 736px; }
+  .facts {
+    position: absolute; left: var(--m); width: var(--content-w); top: 738px; height: 222px;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+  }
+  .facts .rule-v { top: 0; height: 222px; }
+  .fact { padding: 18px 32px 0; position: relative; }
+  .fact:first-child { padding-left: 0; }
+  .fact .k { font-size: var(--fs-lead); font-weight: 700; line-height: 1.2; }
+  .fact .v { font-family: var(--font-giant); font-weight: 900; font-size: 64px; line-height: 1.05; margin-top: 14px; letter-spacing: -0.01em; white-space: nowrap; }
+  .fact .d { margin-top: 18px; font-size: var(--fs-body); line-height: 1.4; color: var(--ink-2); }
+
+  .foot {
+    position: absolute; left: var(--m); right: var(--m); top: 1000px;
+    font-size: var(--fs-label); line-height: 1.2; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+  <div class="runhead"><b>一、岗位定位</b><span>转正述职　林灶辉</span></div>
+  <div class="rule-h strong" id="rule-top"></div>
+
+  <div class="giant" role="img" aria-label="三类事">
+    <span class="odo" aria-hidden="true"><span class="strip" style="--n:3"><b>0</b><b>1</b><b>2</b><b>3</b></span></span>
+  </div>
+
+  <section class="tbl">
+    <div class="tr"><div class="rule-h strong"></div><p class="k">部门</p><p class="d ln"><span><b>战略经营部</b></span></p></div>
+    <div class="tr"><div class="rule-h"></div><p class="k">怎么做</p><p class="d ln"><span>从定义问题到上线迭代都自己做，不占研发排期</span></p></div>
+    <div class="tr"><div class="rule-h"></div><p class="k">岗位从哪来</p><p class="d ln"><span>入职当周 CEO 提了 4 项需求，7/30 定成 5 个目标、14 项指标</span></p></div>
+  </section>
+
+  <h1 class="claim"><span class="ln"><span>直属 CEO，做三类事</span></span></h1>
+
+  <div class="rule-h strong" id="rule-facts"></div>
+  <section class="facts">
+    <div class="fact">
+      <p class="k">给 CEO</p>
+      <p class="v">提效工具</p>
+      <p class="d">会议、汇报、时间</p>
+    </div>
+    <div class="fact">
+      <div class="rule-v" style="left:0"></div>
+      <p class="k">给业务</p>
+      <p class="v">AI 产品</p>
+      <p class="d">VOC 评论分析</p>
+    </div>
+    <div class="fact">
+      <div class="rule-v" style="left:0"></div>
+      <p class="k">给公司</p>
+      <p class="v">AI 的底座和方法</p>
+      <p class="d">IT 规划、指标方法论、组件库、星际圈</p>
+    </div>
+  </section>
+
+  <footer class="foot">口径：试用期目标跟踪表（7/30 定稿）；职位 AI 创新助理</footer>
+
+<script src="../shared/motion.js"></script>
+<script>
+  (function () {
+    var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+    var drawX = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }];
+    var drawY = [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }];
+    var rise = [{ transform: 'translateY(135%)' }, { transform: 'none' }];
+    var fade = [{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'none' }];
+
+    P5.tween($('#rule-top'), drawX, { duration: 700 });
+    P5.tween($('.giant .strip'), [{ transform: 'translateY(0)' }, { transform: 'translateY(-3em)' }],
+      { delay: 60, duration: 1000, easing: 'cubic-bezier(.22,.8,.12,1)' });
+
+    $$('.tr').forEach(function (r, i) {
+      P5.tween(r.querySelector('.rule-h'), drawX, { delay: 220 + i * 110, duration: 600 });
+      P5.tween(r.querySelector('.k'), [{ opacity: 0 }, { opacity: 1 }], { delay: 300 + i * 110, duration: 500 });
+      P5.tween(r.querySelector('.ln > span'), rise, { delay: 280 + i * 110, duration: 700 });
+    });
+    P5.tween($('.claim .ln > span'), rise, { delay: 420, duration: 800 });
+
+    P5.tween($('#rule-facts'), drawX, { delay: 560, duration: 750 });
+    $$('.facts .rule-v').forEach(function (v, i) { P5.tween(v, drawY, { delay: 720 + i * 70, duration: 550 }); });
+    $$('.fact').forEach(function (f, i) { P5.tween(f, fade, { delay: 700 + i * 90, duration: 650 }); });
+
+    P5.go();
+  })();
+</script>
+</body>
+</html>

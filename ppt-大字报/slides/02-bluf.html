@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>一句话结论</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* 原封面的大字报（4/14 + 结论句 + 底部四栏）移到第 2 页：
+     页眉换成 07 页的章节式；右侧注释换成「没做到的三件」，坏消息和结论同屏 */
+
+  .runhead {
+    position: absolute; left: var(--m); right: var(--m); top: 40px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: var(--fs-label); line-height: 1.2;
+  }
+  .runhead b { font-weight: 700; }
+  #rule-top { left: var(--m); width: var(--content-w); top: 78px; }
+
+  /* 巨数字：同原封面，整体上移到页眉线下 */
+  .giant {
+    position: absolute; left: 76px; top: 20px;
+    font-family: var(--font-giant); font-weight: 900; line-height: 1;
+    font-size: 672px; letter-spacing: -0.04em; white-space: nowrap;
+  }
+  .giant .big { color: var(--blue); }
+  .giant .den { font-size: 0.4em; color: var(--ink); letter-spacing: -0.03em; margin-left: 0.06em; }
+  .giant .slash { display: inline-block; margin-right: -0.04em; transform: scaleY(.875); transform-origin: 50% 13%; }
+
+  /* 右栏：两块，各一条细线起头 */
+  .side { position: absolute; left: 1200px; width: 624px; top: 112px; }
+  .blk + .blk { margin-top: 44px; }
+  .blk .k { font-size: var(--fs-label); font-weight: 700; color: var(--muted); line-height: 1.2; padding-bottom: 12px; position: relative; }
+  .blk .k .rule-h { left: 0; width: 100%; bottom: 0; }
+  .blk ul { list-style: none; padding-top: 14px; }
+  .blk li { font-size: 32px; font-weight: 700; line-height: 1.42; white-space: nowrap; }
+  .blk.ask li { font-size: var(--fs-lead); font-weight: 400; }
+
+  .claim {
+    position: absolute; left: var(--m); top: 636px;
+    font-family: var(--font-giant); font-size: var(--fs-claim); font-weight: 900;
+    line-height: 1.1; letter-spacing: -0.01em;
+  }
+
+  /* 底部辅助数：一条 2px 黑线 + 三条细竖线分四栏（同原封面） */
+  #rule-facts { left: var(--m); width: var(--content-w); top: 830px; }
+  .facts {
+    position: absolute; left: var(--m); width: var(--content-w); top: 832px; height: 134px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+  }
+  .facts .rule-v { top: 0; height: 134px; }
+  .fact { padding: 16px 28px 0; position: relative; }
+  .fact:first-child { padding-left: 0; }
+  .fact .k { font-size: var(--fs-label); font-weight: 700; color: var(--muted); line-height: 1.2; }
+  .fact .v { font-family: var(--font-giant); font-weight: 900; font-size: 60px; line-height: 1; margin-top: 6px; letter-spacing: -0.035em; }
+  .fact .v i { font-style: normal; font-family: var(--font-text); font-size: var(--fs-lead); font-weight: 700; letter-spacing: 0; margin-left: 6px; }
+  .fact small { display: block; margin-top: 8px; font-size: var(--fs-label); line-height: 1.3; color: var(--ink-2); white-space: nowrap; }
+
+  .foot {
+    position: absolute; left: var(--m); right: var(--m); top: 1000px;
+    font-size: var(--fs-label); line-height: 1.2; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+  <div class="runhead"><b>一句话结论</b><span>转正述职　林灶辉</span></div>
+  <div class="rule-h strong" id="rule-top"></div>
+
+  <div class="giant" role="img" aria-label="14 项指标里 4 项达到基线">
+    <span class="big odo" aria-hidden="true"><span class="strip" style="--n:4"><b>0</b><b>1</b><b>2</b><b>3</b><b>4</b></span></span><span class="den" aria-hidden="true"><span class="slash">/</span><span class="odo"><span class="strip" style="--n:1"><b>0</b><b>1</b></span></span><span class="odo"><span class="strip" style="--n:4"><b>0</b><b>1</b><b>2</b><b>3</b><b>4</b></span></span></span>
+  </div>
+
+  <aside class="side">
+    <div class="blk">
+      <p class="k">没做到的三件<span class="rule-h strong"></span></p>
+      <ul>
+        <li class="ln"><span>专利 AI 没启动</span></li>
+        <li class="ln"><span>星际圈运营断档</span></li>
+        <li class="ln"><span>CEO 用得还少</span></li>
+      </ul>
+    </div>
+  </aside>
+
+  <h2 class="claim">
+    <span class="ln"><span>三个月上线 4 个工具，</span></span>
+    <span class="ln"><span>14 项指标 4 项达到基线。</span></span>
+  </h2>
+
+  <div class="rule-h strong" id="rule-facts"></div>
+  <section class="facts">
+    <div class="fact">
+      <p class="k">上线工具</p>
+      <p class="v"><span data-to="4">4</span><i>个</i></p>
+      <small>VOC、工作反馈系统、会议看板、007</small>
+    </div>
+    <div class="fact">
+      <div class="rule-v" style="left:0"></div>
+      <p class="k">进行中</p>
+      <p class="v"><span data-to="6">6</span><i>项</i></p>
+      <small>VOC 3 项、星际圈 2 项、CEO 提效 1 项</small>
+    </div>
+    <div class="fact">
+      <div class="rule-v" style="left:0"></div>
+      <p class="k">没开始</p>
+      <p class="v"><span data-to="4">4</span><i>项</i></p>
+      <small>专利 3 项、星际圈成员数 1 项</small>
+    </div>
+    <div class="fact">
+      <div class="rule-v" style="left:0"></div>
+      <p class="k">代码提交</p>
+      <p class="v"><span data-to="1305" data-comma>1,305</span><i>次</i></p>
+      <small>7/22–10/25，6 个仓库，按作者统计</small>
+    </div>
+  </section>
+
+  <footer class="foot">口径：上线日期取 git 和应用版本记录；指标取目标跟踪表 9-30 版</footer>
+
+<script src="../shared/motion.js"></script>
+<script>
+  (function () {
+    var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+    var drawX = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }];
+    var drawY = [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }];
+    var rise = [{ transform: 'translateY(135%)' }, { transform: 'none' }];
+
+    // 1 页眉细线从左画到右
+    P5.tween($('#rule-top'), drawX, { duration: 700 });
+
+    // 2 巨数字像里程表一样滚到 4，再滚出 /14
+    $$('.giant .strip').forEach(function (s, i) {
+      var n = parseFloat(s.style.getPropertyValue('--n'));
+      P5.tween(s, [{ transform: 'translateY(0)' }, { transform: 'translateY(' + (-n) + 'em)' }],
+        { delay: 60 + i * 110, duration: 1100 - i * 120, easing: 'cubic-bezier(.22,.8,.12,1)' });
+    });
+
+    // 3 右栏：细线画出，条目逐行升起；结论句跟上
+    $$('.side .rule-h').forEach(function (r, i) { P5.tween(r, drawX, { delay: 240 + i * 160, duration: 600 }); });
+    $$('.side .ln > span').forEach(function (s, i) { P5.tween(s, rise, { delay: 300 + i * 60, duration: 650 }); });
+    $$('.claim .ln > span').forEach(function (s, i) { P5.tween(s, rise, { delay: 420 + i * 90, duration: 800 }); });
+
+    // 4 底部黑线画出来，竖线落下，四个辅助数计数
+    P5.tween($('#rule-facts'), drawX, { delay: 520, duration: 800 });
+    $$('.facts .rule-v').forEach(function (v, i) { P5.tween(v, drawY, { delay: 680 + i * 60, duration: 600 }); });
+    $$('.facts [data-to]').forEach(function (n, i) { P5.count(n, { delay: 700 + i * 60, duration: 700 }); });
+
+    P5.go();
+  })();
+</script>
+</body>
+</html>

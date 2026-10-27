@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>方法论</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：logo 挪到右端，导航右移让出左上角（演示外壳的「概览」按钮在那里；与 01–07 同一写法） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+/* ── 23 方法论 ── */
+.band { height: 186px; padding-top: 34px; }
+.band .assert { font-size: var(--fs-assert); line-height: 1.2; white-space: nowrap; }
+.band .sub { margin-top: 6px; font-size: var(--fs-body); color: var(--ink-2); }
+
+.chart { position: absolute; left: var(--gutter); top: 312px; width: 1240px; }
+.plot { display: block; overflow: visible; }
+.chart .source { margin-top: 18px; }
+
+.plot .lgb { font-size: 24px; font-weight: 700; fill: var(--ink); }
+.plot .lg { font-size: 22px; fill: var(--ink-2); }
+.plot .ax { font-size: 20px; fill: var(--muted); }
+.plot .goal { font-size: 26px; font-weight: 700; fill: var(--ink); }
+.plot .kr { font-size: 24px; fill: var(--ink-2); }
+.plot .val { font-size: 26px; font-weight: 700; fill: var(--ink);
+  paint-order: stroke; stroke: #fff; stroke-width: 10px; stroke-linejoin: round; }
+.plot .note { font-size: 22px; font-weight: 500; fill: var(--muted); }
+.plot .sep { stroke: var(--track); stroke-width: 1.5; }
+.plot .track { stroke: var(--track); stroke-width: 2; }
+.plot .dec { stroke: var(--rule); stroke-width: 1.5; fill: none; }
+.plot .dec0 { stroke: #B8C2CE; stroke-width: 2; fill: none; }
+.plot .dot { fill: var(--s-done); stroke: #fff; stroke-width: 3; }
+.plot .lin { fill: var(--s-done); }
+.plot .lintrack { fill: var(--track); }
+
+.side.read { left: 1400px; top: 322px; width: 414px; }
+.side.read h3 + p { margin-top: 10px; }
+.side.read p + p { margin-top: 14px; }
+.side.read p + h3 { margin-top: 44px; }
+
+/* 时间轴（ms）：红线 0–600 → 标题 100–700 → 框架 250–650 → 对数格线 350–800
+   → 三个点从左边滑到各自位置 450–1150 → 普通刻度的长条画出来 900–1450 → 来源行 1300–1600 */
+.plot .pop { transform-box: fill-box; transform-origin: 50% 50%; }
+.plot .dec, .plot .dec0 { transform-box: fill-box; transform-origin: 50% 0; }
+.plot .lin { transform-box: fill-box; transform-origin: 0 50%; }
+html.motion .band .assert { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .sub { animation: rise .5s var(--ease-out) .2s both; }
+html.motion .plot .frame { animation: fade .4s ease-out .25s both; }
+html.motion .plot .dec, html.motion .plot .dec0 { animation: draw-y .45s var(--ease-out) .35s both; }
+html.motion .plot .ride { animation: ride .55s var(--ease-out) var(--d) both; }
+html.motion .plot .lin { animation: draw-x .55s var(--ease-draw) var(--d) both; }
+html.motion .plot .late { animation: fade .3s ease-out var(--d) both; }
+html.motion .side.read { animation: fade .4s ease-out .3s both; }
+.chart .source { --src-delay: 1.3s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span>岗位定位</span><span>目标回顾</span><span>完成情况</span><span>IT 规划</span><span class="on" aria-current="true">团队管理</span><span>自我评价</span><span>未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">正在沉淀方法论：token 的大头在重读旧内容</h1>
+  <p class="sub">《IT/AI 产品高效开发方法论》首页和 8 篇有初稿，计划 10/30 成文；下图是第 5 篇《怎么省 token》用的数</p>
+</section>
+
+<figure class="chart">
+  <!-- 上图对数刻度：x = 300 + (log10(数) − 5) × 150，10 万到 1,000 亿；下图普通刻度：101 亿 = 900 宽 -->
+  <svg class="plot" width="1240" height="600" viewBox="0 0 1240 600" role="img"
+       aria-label="本人两个月的 token 用量，对数刻度：自己打字约 26 万，AI 写出约 1,600 万，重读旧内容约 101 亿。同样三个数按普通刻度画时，前两个细到看不见">
+    <g class="frame">
+      <text x="0" y="30" class="lgb">对数刻度：每往右一格，数大 10 倍</text>
+      <text x="1240" y="30" class="lg" text-anchor="end">单位：token</text>
+      <text x="300" y="78" class="ax" text-anchor="middle">10 万</text>
+      <text x="450" y="78" class="ax" text-anchor="middle">100 万</text>
+      <text x="600" y="78" class="ax" text-anchor="middle">1,000 万</text>
+      <text x="750" y="78" class="ax" text-anchor="middle">1 亿</text>
+      <text x="900" y="78" class="ax" text-anchor="middle">10 亿</text>
+      <text x="1050" y="78" class="ax" text-anchor="middle">100 亿</text>
+      <text x="1200" y="78" class="ax" text-anchor="middle">1,000 亿</text>
+      <text x="0" y="137" class="goal">自己打字</text>
+      <line x1="300" x2="1200" y1="128" y2="128" class="track"/>
+      <text x="0" y="215" class="goal">AI 写出</text>
+      <line x1="300" x2="1200" y1="206" y2="206" class="track"/>
+      <text x="0" y="293" class="goal">重读旧内容</text>
+      <line x1="300" x2="1200" y1="284" y2="284" class="track"/>
+      <line x1="0" x2="1240" y1="354" y2="354" class="sep"/>
+      <text x="0" y="404" class="lgb">同样三个数，按普通刻度画</text>
+      <text x="0" y="459" class="kr">自己打字</text>
+      <rect x="300" y="442" width="900" height="20" class="lintrack"/>
+      <text x="0" y="509" class="kr">AI 写出</text>
+      <rect x="300" y="492" width="900" height="20" class="lintrack"/>
+      <text x="0" y="559" class="kr">重读旧内容</text>
+      <rect x="300" y="542" width="900" height="20" class="lintrack"/>
+    </g>
+    <line x1="300" x2="300" y1="96" y2="314" class="dec0"/>
+    <line x1="450" x2="450" y1="96" y2="314" class="dec"/>
+    <line x1="600" x2="600" y1="96" y2="314" class="dec"/>
+    <line x1="750" x2="750" y1="96" y2="314" class="dec"/>
+    <line x1="900" x2="900" y1="96" y2="314" class="dec"/>
+    <line x1="1050" x2="1050" y1="96" y2="314" class="dec"/>
+    <line x1="1200" x2="1200" y1="96" y2="314" class="dec"/>
+
+    <g class="ride" data-ride style="--dx:62px;--d:450ms"><circle cx="362.2" cy="128" r="13" class="dot"/><text x="386" y="137" class="val">约 26 万</text></g>
+    <g class="ride" data-ride style="--dx:331px;--d:580ms"><circle cx="630.6" cy="206" r="13" class="dot"/><text x="654" y="215" class="val">约 1,600 万</text></g>
+    <g class="ride" data-ride style="--dx:751px;--d:710ms"><circle cx="1050.6" cy="284" r="15" class="dot"/><text x="1074" y="293" class="val">约 101 亿</text></g>
+
+    <rect x="300" y="442" width="0.03" height="20" class="lin"/>
+    <rect x="300" y="492" width="1.43" height="20" class="lin"/>
+    <rect x="300" y="542" width="900" height="20" class="lin" style="--d:900ms"/>
+    <g class="late" style="--d:1050ms">
+      <text x="316" y="459" class="note">细到看不见</text>
+      <text x="316" y="509" class="note">细到看不见</text>
+    </g>
+  </svg>
+  <figcaption class="source">来源：知识库《IT/AI 产品高效开发方法论》第 5 篇《怎么省 token》，按本人两个月的使用记录</figcaption>
+</figure>
+
+<aside class="side read">
+  <h3>怎么读这张图</h3>
+  <p>上图是对数刻度，每往右一格<br>数大 10 倍；下图是同样三个数<br>的普通刻度，前两个看不见。</p>
+  <h3>方法论现在到哪</h3>
+  <p>9/28 CEO 把它列为最重要的<br>产品；10/21 正文开写。</p>
+  <p>先推两个 Skill：「新项目七步<br>引导」和「业务指标校准」。</p>
+  <h3>口径</h3>
+  <p>按我自己两个月的记录。</p>
+</aside>
+</body>
+</html>

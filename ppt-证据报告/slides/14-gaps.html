@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>没做到的</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：logo 挪到右端，导航右移让出左上角（演示外壳的「概览」按钮在那里） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+/* 「≥」在 Noto Sans SC / PingFang SC 下会画成斜的「⩾」 */
+.ge { font-family: "Helvetica Neue", Arial, "PingFang SC", sans-serif; }
+
+/* ── 14 没做到的：上面 6 项指标（同 07 的画法），下面时间线 ── */
+.band { height: 186px; padding-top: 34px; }
+.band .assert { font-size: var(--fs-assert); line-height: 1.2; }
+.band .sub { margin-top: 6px; font-size: var(--fs-body); color: var(--ink-2); }
+
+.chart { position: absolute; left: var(--gutter); top: 318px; width: 1240px; }
+.plot { display: block; overflow: visible; }
+.chart .source { margin-top: 14px; }
+
+.plot .ax { font-size: var(--fs-label); fill: var(--muted); }
+.plot .ax-b { font-weight: 700; fill: var(--ink-2); }
+.plot .goal { font-size: 26px; font-weight: 700; fill: var(--ink); }
+.plot .weight { font-size: var(--fs-label); fill: var(--muted); }
+.plot .kr { font-size: var(--fs-body); fill: var(--ink-2); }
+.plot .val { font-size: var(--fs-body); font-weight: 700; fill: var(--ink);
+  paint-order: stroke; stroke: #fff; stroke-width: 10px; stroke-linejoin: round; }
+.plot .note { font-size: var(--fs-note); font-weight: 500; fill: var(--muted); }
+.plot .note.risk { fill: var(--red); font-weight: 700; }
+.plot .sep { stroke: var(--rule); stroke-width: 1.5; }
+.plot .track { stroke: var(--track); stroke-width: 2; }
+.plot .track.dashed { stroke: #C5CDD7; stroke-dasharray: 3 7; stroke-linecap: round; }
+.plot .g0 { stroke: #B8C2CE; stroke-width: 2; }
+.plot .g50 { stroke: var(--rule); stroke-width: 1.5; stroke-dasharray: 4 6; }
+.plot .g100 { stroke: var(--ink-2); stroke-width: 2; stroke-dasharray: 7 6; }
+.plot .dot { stroke: #fff; stroke-width: 3; }
+.plot .hollow { fill: #fff; stroke: var(--s-none); stroke-width: 3; }
+
+.plot .ct { font-size: 26px; font-weight: 700; fill: var(--ink); }
+.plot .axis { stroke: #8C9AAB; stroke-width: 2; }
+.plot .tick { stroke: #8C9AAB; stroke-width: 2; }
+.plot .mo { font-size: var(--fs-label); fill: var(--muted); }
+.plot .win { fill: url(#hatch); stroke: var(--red); stroke-width: 1.5; }
+.plot .ev { font-size: 22px; fill: var(--ink-2); }
+.plot .ev.bad { fill: var(--red); font-weight: 700; }
+.plot .lead { stroke: #8C9AAB; stroke-width: 1.5; }
+.plot .lead.bad { stroke: var(--red); }
+
+.side.why { left: 1400px; top: 328px; width: 414px; }
+.side.why h3 + p { margin-top: 10px; }
+.side.why p + h3 { margin-top: 44px; }
+
+/* 时间轴（ms）：红线 0–600 → 标题 100–700 → 框架 250–650 → 6 行逐行画出 400–1000
+   → 时间轴 650–1100、专利窗口 900–1200、事件点 950–1300 → 侧栏 300–700 → 来源行 1300–1600 */
+.plot .bar-fill, .plot .axis { transform-box: fill-box; transform-origin: 0 50%; }
+.plot .pop { transform-box: fill-box; transform-origin: 50% 50%; }
+.plot .grid { transform-box: fill-box; transform-origin: 50% 0; }
+html.motion .band .assert { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .sub { animation: rise .5s var(--ease-out) .2s both; }
+html.motion .plot .frame { animation: fade .4s ease-out .25s both; }
+html.motion .plot .grid { animation: draw-y .45s var(--ease-out) .35s both; }
+html.motion .plot .pop { animation: pop .28s var(--ease-out) var(--d) both; }
+html.motion .plot .bar-fill { animation: draw-x .5s var(--ease-out) var(--d) both; }
+html.motion .plot .ride { animation: ride .5s var(--ease-out) var(--d) both; }
+html.motion .plot .axis { animation: draw-x .45s var(--ease-draw) .65s both; }
+html.motion .plot .win { animation: fade .3s ease-out .9s both; }
+html.motion .plot .late { animation: fade .3s ease-out var(--d) both; }
+html.motion .side.why { animation: fade .4s ease-out .3s both; }
+.chart .source { --src-delay: 1.3s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span>岗位定位</span><span>目标回顾</span><span class="on" aria-current="true">完成情况</span><span>IT 规划</span><span>团队管理</span><span>自我评价</span><span>未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">专利 AI 没启动，星际圈运营断档</h1>
+  <p class="sub">专利 3 项指标都是 0；星际圈内容现在 12+ 篇，成员数还没统计</p>
+</section>
+
+<figure class="chart">
+  <svg class="plot" width="1240" height="566" viewBox="0 0 1240 566" role="img"
+       aria-label="专利 3 项都是 0%；星际圈成员未统计、内容 35%（10 月是 12+ 篇）、建圈并运营 70% 有风险。时间线：8/7 星际圈上线，当周发了 3 篇；专利按计划 9/21–10/20 启动，错过了；9/25「AI 圈建立」节点逾期；10/23 自评运营断档">
+    <defs>
+      <pattern id="hatch" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="9" stroke="#CE261E" stroke-width="3"/>
+      </pattern>
+    </defs>
+    <g class="frame">
+      <text x="640" y="24" class="ax" text-anchor="middle">0</text>
+      <text x="890" y="24" class="ax" text-anchor="middle">50%</text>
+      <text x="1140" y="24" class="ax" text-anchor="middle"><tspan class="ax-b">基线</tspan> 100%</text>
+      <text x="0" y="79" class="goal">专利创新 AI</text>
+      <text x="0" y="110" class="weight">权重 10%</text>
+      <text x="270" y="79" class="kr">核心能力搭建</text>
+      <line x1="640" x2="1140" y1="70" y2="70" class="track"/>
+      <text x="270" y="116" class="kr"><tspan class="ge">≥</tspan>3 个案例验证</text>
+      <line x1="640" x2="1140" y1="107" y2="107" class="track"/>
+      <text x="270" y="153" class="kr"><tspan class="ge">≥</tspan>1 轮优化</text>
+      <line x1="640" x2="1140" y1="144" y2="144" class="track"/>
+      <line x1="0" x2="1240" y1="170" y2="170" class="sep"/>
+      <text x="0" y="205" class="goal">星际圈</text>
+      <text x="0" y="236" class="weight">权重 10%</text>
+      <text x="270" y="205" class="kr"><tspan class="ge">≥</tspan>30 名成员</text>
+      <line x1="640" x2="1140" y1="196" y2="196" class="track dashed"/>
+      <text x="270" y="242" class="kr"><tspan class="ge">≥</tspan>12 篇内容</text>
+      <line x1="640" x2="1140" y1="233" y2="233" class="track"/>
+      <text x="270" y="279" class="kr">建圈并运营</text>
+      <line x1="640" x2="1140" y1="270" y2="270" class="track"/>
+      <line x1="0" x2="1240" y1="320" y2="320" class="sep"/>
+
+      <text x="0" y="370" class="ct">时间线</text>
+      <line x1="0" x2="0" y1="470" y2="480" class="tick"/>
+      <line x1="417.8" x2="417.8" y1="470" y2="480" class="tick"/>
+      <line x1="822.2" x2="822.2" y1="470" y2="480" class="tick"/>
+      <line x1="1240" x2="1240" y1="470" y2="480" class="tick"/>
+      <text x="208.9" y="504" class="mo" text-anchor="middle">8 月</text>
+      <text x="620" y="504" class="mo" text-anchor="middle">9 月</text>
+      <text x="1031.1" y="504" class="mo" text-anchor="middle">10 月</text>
+    </g>
+    <line x1="640" x2="640" y1="42" y2="296" class="grid g0"/>
+    <line x1="890" x2="890" y1="42" y2="296" class="grid g50"/>
+    <line x1="1140" x2="1140" y1="42" y2="296" class="grid g100"/>
+
+    <g class="ride" data-ride style="--dx:0px;--d:400ms"><circle cx="640" cy="70" r="11" class="pop dot" style="--d:400ms;fill:var(--s-none)"/><text x="662" y="79" class="val">0%</text></g>
+    <g class="ride" data-ride style="--dx:0px;--d:460ms"><circle cx="640" cy="107" r="11" class="pop dot" style="--d:460ms;fill:var(--s-none)"/><text x="662" y="116" class="val">0%</text></g>
+    <g class="ride" data-ride style="--dx:0px;--d:520ms"><circle cx="640" cy="144" r="11" class="pop dot" style="--d:520ms;fill:var(--s-none)"/><text x="662" y="153" class="val">0%</text></g>
+    <g class="ride" data-ride style="--dx:0px;--d:580ms"><circle cx="640" cy="196" r="10" class="pop hollow" style="--d:580ms"/><text x="662" y="205" class="val">未统计</text></g>
+    <rect x="640" y="230" width="175" height="6" rx="3" class="bar-fill" style="--d:640ms;fill:var(--s-wip)"/>
+    <g class="ride" data-ride style="--dx:175px;--d:640ms"><circle cx="815" cy="233" r="11" class="pop dot" style="--d:640ms;fill:var(--s-wip)"/><text x="837" y="242" class="val"><tspan data-count="35" data-fmt="{}%">35%</tspan><tspan dx="12" class="note">10 月是 12+ 篇</tspan></text></g>
+    <rect x="640" y="267" width="350" height="6" rx="3" class="bar-fill" style="--d:700ms;fill:var(--s-wip)"/>
+    <g class="ride" data-ride style="--dx:350px;--d:700ms"><circle cx="990" cy="270" r="11" class="pop dot" style="--d:700ms;fill:var(--s-wip)"/><text x="1012" y="279" class="val"><tspan data-count="70" data-fmt="{}%">70%</tspan><tspan dx="12" class="note risk">有风险</tspan></text></g>
+
+    <!-- 时间线：8/1 → 10/31，x = 天数 × 1240/92 -->
+    <line x1="0" x2="1240" y1="470" y2="470" class="axis"/>
+    <rect x="687.4" y="456" width="390.8" height="28" class="win"/>
+    <g class="late" style="--d:950ms">
+      <text x="687.4" y="438" class="ev bad">专利：按计划 9/21–10/20 启动，错过了</text>
+    </g>
+    <g class="late" style="--d:950ms">
+      <line x1="80.9" x2="80.9" y1="426" y2="460" class="lead"/>
+      <text x="0" y="414" class="ev">8/7 星际圈上线，当周发了 3 篇</text>
+    </g>
+    <circle cx="80.9" cy="470" r="11" class="pop dot" style="--d:950ms;fill:var(--s-done)"/>
+    <g class="late" style="--d:1100ms">
+      <line x1="741.3" x2="741.3" y1="482" y2="530" class="lead bad"/>
+      <text x="726" y="550" class="ev bad" text-anchor="end">9/25「AI 圈建立」节点逾期</text>
+    </g>
+    <circle cx="741.3" cy="470" r="11" class="pop dot" style="--d:1050ms;fill:var(--s-none)"/>
+    <g class="late" style="--d:1200ms">
+      <line x1="1118.7" x2="1118.7" y1="482" y2="530" class="lead bad"/>
+      <text x="1240" y="550" class="ev bad" text-anchor="end">10/23 自评运营断档</text>
+    </g>
+    <circle cx="1118.7" cy="470" r="11" class="pop dot" style="--d:1150ms;fill:var(--s-none)"/>
+  </svg>
+  <figcaption class="source">来源：完成度取试用期目标跟踪表 9-30 版；12+ 篇是 10 月的数</figcaption>
+</figure>
+
+<aside class="side why">
+  <h3>原因（我排的优先级）</h3>
+  <p>精力放在了权重 80% 的<br>VOC、CEO 提效、场景挖掘上。</p>
+  <h3>补救（计划，日期待确认）</h3>
+  <p>专利 GTM 11 月启动；<br>星际圈每双周 1 篇，<br>成员到 30 人。</p>
+</aside>
+</body>
+</html>

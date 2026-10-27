@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-total="1600" data-probe="我负责把确认过的需求做成产品业务助理 CEO 发现业务痛点定义问题和指标出数据打通实现好推广赋能化之后看活跃迭代升级分工两周工作反馈系统按改版上线时间管理上午提下午交付验收还下不了结论是不带来短现在当试验田在跑群里定的第步口径消息原文取应用发布记录">
+<head>
+<meta charset="UTF-8">
+<title>20 三方分工</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+/* ───────── 左上：10/14 定的四步，沿一条线排开 ─────────
+   颜色＝谁：芥黄＝业务助理（第 1、4 步）、墨黑＝CEO、朱红＝我 */
+.flow-line { position: absolute; left: 186px; top: 188px; width: 910px; height: 4px; background: var(--ink); transform-origin: 0 50%; }
+.flow-line.anim { animation: draw-x 700ms var(--ease-out) 80ms; }
+.step { position: absolute; top: 100px; width: 180px; height: 180px; display: flex; padding: 22px; font-size: var(--fs-num-l); font-weight: 900; line-height: 1; }
+.step.s1 { left: 96px;   background: var(--yellow); color: var(--ink); }
+.step.s2 { left: 399px;  background: var(--ink);    color: var(--paper); border-radius: 50%; align-items: center; justify-content: center; padding: 0; }
+.step.s3 { left: 702px;  background: var(--red);    color: var(--paper); }
+.step.s4 { left: 1006px; background: var(--yellow); color: var(--ink); border-top-right-radius: 100%; align-items: flex-end; }
+.step.anim { animation: drop 640ms var(--spring); --drop: -260px; }
+.step.s1 { animation-delay: 120ms !important; }
+.step.s2 { animation-delay: 220ms !important; }
+.step.s3 { animation-delay: 320ms !important; }
+.step.s4 { animation-delay: 420ms !important; }
+
+.who { position: absolute; top: 306px; width: 270px; }
+.who .nm { font-size: var(--fs-body); font-weight: 900; line-height: 1.3; }
+.who .ds { margin-top: 8px; font-size: var(--fs-body-s); font-weight: 500; line-height: 1.5; }
+.who.me .nm { color: var(--red); }
+.who.anim { animation: reveal-right 480ms var(--ease-out); }
+
+/* ───────── 左下：分工之后两周，按天排（10/14 → 10/22，一天 132.75px） ───────── */
+.after-tag { position: absolute; left: 96px; top: 560px; }
+.after-tag.anim { animation: reveal-right 460ms var(--ease-out) 640ms; }
+.tl-line { position: absolute; left: 110px; top: 704px; width: 1062px; height: 3px; background: var(--ink); transform-origin: 0 50%; }
+.tl-line.anim { animation: draw-x 560ms var(--ease-out) 680ms; }
+.pt { position: absolute; top: 691px; width: 28px; height: 28px; border-radius: 50%; margin-left: -14px; }
+.pt.o { background: var(--paper); border: 4px solid var(--ink); }
+.pt.f { background: var(--red); }
+@keyframes pop { from { transform: scale(0); } }
+.pt.anim { animation: pop 320ms var(--ease-out); }
+.ab { position: absolute; font-size: var(--fs-body-s); font-weight: 500; line-height: 1.5; }
+.ab b { display: block; font-weight: 900; }
+.ab.anim { animation: reveal-right 460ms var(--ease-out); }
+
+/* ───────── 右：竖排标题 + 信息块 ───────── */
+.vt { position: absolute; left: 1236px; top: 80px; writing-mode: vertical-rl;
+      font-family: var(--serif); font-weight: 900; font-size: var(--fs-title-2); line-height: 1.2; letter-spacing: .06em; }
+.vt .ln { display: block; }
+.vt .ln.anim { animation: reveal-down 560ms var(--ease-out); }
+.vt .ln:nth-child(2) { animation-delay: 140ms !important; }
+.vt .ln:nth-child(3) { animation-delay: 280ms !important; }
+
+.info { position: absolute; left: 1604px; top: 84px; width: 220px; }
+.info section + section { margin-top: 52px; }
+.info .tag { margin-bottom: 18px; }
+.info section.anim { animation: reveal-right 520ms var(--ease-out); }
+.info section:nth-child(1) { animation-delay: 420ms !important; }
+.info section:nth-child(2) { animation-delay: 540ms !important; }
+.info .txt { font-size: var(--fs-body-s); font-weight: 500; line-height: 1.6; }
+
+.src { position: absolute; left: 1236px; bottom: 107px; width: 588px; font-size: var(--fs-body-s); font-weight: 500; color: var(--ink-2); letter-spacing: .04em; line-height: 1.5; }
+.src.anim { animation: reveal-right 500ms var(--ease-out) 1000ms; }
+.page-rule { left: 96px; right: 96px; top: 1008px; transform-origin: 0 50%; }
+.page-rule.anim { animation: draw-x 600ms var(--ease-out) 940ms; }
+</style>
+</head>
+<body>
+
+  <div class="flow-line anim"></div>
+  <div class="step s1 anim">1</div>
+  <div class="step s2 anim">2</div>
+  <div class="step s3 anim">3</div>
+  <div class="step s4 anim">4</div>
+
+  <div class="who anim" style="left:96px; animation-delay:300ms"><p class="nm">业务助理</p><p class="ds">发现业务痛点，<br>定义问题和指标，<br>出产品 Demo</p></div>
+  <div class="who anim" style="left:399px; animation-delay:380ms"><p class="nm">CEO</p><p class="ds">确认需求</p></div>
+  <div class="who me anim" style="left:702px; animation-delay:460ms"><p class="nm">我</p><p class="ds">数据打通，产品实现，<br>发现好产品推广赋能</p></div>
+  <div class="who anim" style="left:1006px; width:180px; animation-delay:540ms"><p class="nm">业务助理</p><p class="ds">产品化之后<br>看活跃、看迭代<br>升级产品</p></div>
+
+  <span class="tag after-tag anim">分工之后两周</span>
+  <div class="tl-line anim"></div>
+  <!-- 10/14 x=110；10/18 x=641；10/19 x=773.75；10/22 x=1172 -->
+  <i class="pt o anim" style="left:110px; animation-delay:700ms"></i>
+  <i class="pt f anim" style="left:641px; animation-delay:800ms"></i>
+  <i class="pt f anim" style="left:773.75px; animation-delay:860ms"></i>
+  <i class="pt f anim" style="left:1172px; animation-delay:920ms"></i>
+  <div class="ab anim" style="left:96px; top:740px; animation-delay:760ms"><b>10/14</b>CEO 在群里定分工</div>
+  <div class="ab anim" style="right:1265px; top:740px; width:360px; text-align:right; animation-delay:840ms"><b>10/18</b>工作反馈系统按 CEO 的<br>Demo 改版上线</div>
+  <div class="ab anim" style="left:760px; top:608px; animation-delay:900ms"><b>10/19</b>时间管理上线</div>
+  <div class="ab anim" style="right:734px; top:740px; width:380px; text-align:right; animation-delay:960ms"><b>10/22</b>上午 10:54 提需求<br>下午 16:52 交付验收</div>
+
+  <h1 class="vt" aria-label="10/14 的分工：我负责把确认过的需求做成产品"><span class="ln anim">我负责把</span><span class="ln anim">确认过的需求</span><span class="ln anim">做成产品</span></h1>
+
+  <div class="info">
+    <section class="anim">
+      <span class="tag">还下不了结论</span>
+      <p class="txt">是不是分工带来的，<br>时间还短，<br>下不了结论。<br>现在当试验田在跑</p>
+    </section>
+    <section class="anim">
+      <span class="tag">分工</span>
+      <p class="txt">10/14<br>CEO 在群里定，<br>我负责第 3 步</p>
+    </section>
+  </div>
+
+  <div class="src anim">口径：10/14 CEO 群消息原文；<br>交付时间取应用发布记录</div>
+  <div class="rule page-rule anim"></div>
+
+<script src="../shared/motion.js"></script>
+</body>
+</html>

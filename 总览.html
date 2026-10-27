@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>转正述职三风格总览</title>
+<style>
+  :root {
+    --bg: #F7F7F5; --card: #FFFFFF; --ink: #1A1A1A; --ink-2: #5C5C5C; --line: #E4E4E0; --accent: #0073E4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--ink); font-family: "PingFang SC", "Noto Sans SC", system-ui, sans-serif; font-size: 16px; line-height: 1.6; }
+  main { max-width: 1240px; margin: 0 auto; padding: 56px 24px 96px; }
+  h1 { font-size: 34px; font-weight: 700; letter-spacing: .01em; }
+  .sub { margin-top: 8px; color: var(--ink-2); }
+  h2 { margin-top: 56px; font-size: 22px; font-weight: 700; }
+  h2 + p { margin-top: 6px; color: var(--ink-2); }
+  .grid { margin-top: 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+  .card img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; border-bottom: 1px solid var(--line); background: #eee; }
+  .card .body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .card h3 { font-size: 19px; font-weight: 700; }
+  .card p { color: var(--ink-2); font-size: 15px; }
+  .links { margin-top: auto; display: flex; flex-wrap: wrap; gap: 10px; }
+  .links a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 22px; border: 1px solid var(--line); color: var(--ink); text-decoration: none; font-size: 15px; font-weight: 600; transition: background .15s, border-color .15s, transform .1s; }
+  .links a.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .links a:hover { border-color: var(--ink-2); }
+  .links a.primary:hover { background: #005FC0; }
+  .links a:active { transform: scale(.97); }
+  .links a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  @media (max-width: 960px) { .grid { grid-template-columns: 1fr; } h1 { font-size: 28px; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>转正述职：三种 PPT 与三种网页</h1>
+  <p class="sub">内容都来自述职报告 rev 140，数据截至 2026-10-26。PPT 每版 29 页：和 PPT 规划同序，VOC 两张截图各占一页，所以多了一页「竞品对比」（第 9b 页）。</p>
+
+  <h2>PPT（三种风格）</h2>
+  <p>点「放映」打开 HTML 版：方向键翻页，Esc 回概览。现场投屏建议用 PDF，字体已经嵌进文件，断网也不变样。</p>
+  <div class="grid">
+    <article class="card">
+      <img src="ppt-证据报告/shots/07.png" alt="证据报告版：14 项指标状态页" loading="lazy">
+      <div class="body">
+        <h3>证据报告版</h3>
+        <p>参照 Our World in Data。每页标题是一句能判断真假的结论，左图右注，图下一行「来源」。</p>
+        <div class="links">
+          <a class="primary" href="ppt-证据报告/index.html">放映</a>
+          <a href="ppt-证据报告/转正述职-证据报告版-29页.pdf">PDF</a>
+          <a href="ppt-证据报告/转正述职-证据报告版-29页-可编辑.pptx">可编辑 PPTX</a>
+        </div>
+      </div>
+    </article>
+    <article class="card">
+      <img src="ppt-大字报/shots/02.png" alt="大字报版：4/14 结论页" loading="lazy">
+      <div class="body">
+        <h3>大字报版</h3>
+        <p>新瑞士风格。白底加 logo 蓝，一页一个巨大的数字，蓝色只给做到的部分。</p>
+        <div class="links">
+          <a class="primary" href="ppt-大字报/index.html">放映</a>
+          <a href="ppt-大字报/转正述职-大字报版-29页.pdf">PDF</a>
+          <a href="ppt-大字报/转正述职-大字报版-29页-可编辑.pptx">可编辑 PPTX</a>
+        </div>
+      </div>
+    </article>
+    <article class="card">
+      <img src="ppt-几何/shots/01.png" alt="几何版：按权重画的 5 个目标" loading="lazy">
+      <div class="body">
+        <h3>几何版</h3>
+        <p>参照田中一光。米纸底四色平涂，几何形的面积和填色都对应真实数据，竖排宋体标题。</p>
+        <div class="links">
+          <a class="primary" href="ppt-几何/index.html">放映</a>
+          <a href="ppt-几何/转正述职-几何版-29页.pdf">PDF</a>
+          <a href="ppt-几何/转正述职-几何版-29页-可编辑.pptx">可编辑 PPTX</a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <h2>网页（三种类型）</h2>
+  <p>都是单文件，图片已内嵌，可以直接发给 CEO 会后自己看；电脑和手机都能看。</p>
+  <div class="grid">
+    <article class="card">
+      <img src="网页/shots/滚动叙事-1440.png" alt="滚动叙事网页首屏" loading="lazy">
+      <div class="body">
+        <h3>滚动叙事</h3>
+        <p>参照 The Pudding。一列正文往下读，右边的图跟着段落变：14 个点重排、635 场会填格、额度条长出来。</p>
+        <div class="links"><a class="primary" href="网页/滚动叙事.html">打开</a></div>
+      </div>
+    </article>
+    <article class="card">
+      <img src="网页/shots/数据肖像-1440.png" alt="数据肖像看板首屏" loading="lazy">
+      <div class="body">
+        <h3>数据肖像看板</h3>
+        <p>参照 Giorgia Lupi。5 朵花是 5 个目标，花瓣长度是完成度；点花瓣看证据，按状态筛选。</p>
+        <div class="links"><a class="primary" href="网页/数据肖像.html">打开</a></div>
+      </div>
+    </article>
+    <article class="card">
+      <img src="网页/shots/年度信-1440.png" alt="年度信网页首屏" loading="lazy">
+      <div class="body">
+        <h3>年度信 + 产品阵列</h3>
+        <p>参照 Stripe 年度信和 Apple 产品页。首屏是一封写给 CEO 的信，4 个工具点开是大卡片。</p>
+        <div class="links"><a class="primary" href="网页/年度信.html">打开</a></div>
+      </div>
+    </article>
+  </div>
+</main>
+</body>
+</html>

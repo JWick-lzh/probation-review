@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-total="1600" data-probe="先当第一个客户治好自己主线让目标项目执行结果看得见管得住入口飞书员工自选的工具应用内部业务系统外采为主原生自研轻平台基于开源公司上下文数据底座在建买还是建按层定通用公司特有只一个长尾小场景搭为什么毛病就信息化要解问题做三件事所有统一跟进从变成产品全文规划讨论稿知识库口径原章图蓝重画">
+<head>
+<meta charset="UTF-8">
+<title>17 规划思路</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+/* ───────── 左：按 IT 规划图 1 蓝图重画 ─────────
+   顶上一条主线（朱红），下面五层；颜色＝买还是建：墨黑＝外采、钢蓝＝自研、芥黄＝业务自建 */
+.band { position: absolute; left: 96px; width: 1090px; display: flex; align-items: center; padding: 0 30px; gap: 22px; white-space: nowrap; }
+.band .nm { font-size: var(--fs-body); font-weight: 700; letter-spacing: .02em; }
+.band .ds { font-size: var(--fs-body-s); font-weight: 500; }
+.band.ink  { background: var(--ink);    color: var(--paper); }
+.band.blue { background: var(--blue);   color: var(--paper); }
+.main { top: 80px; height: 96px; background: var(--red); color: var(--paper); }
+.main .nm { font-size: 30px; }
+.l5 { top: 198px; height: 80px; }
+.l4 { top: 292px; height: 150px; padding: 0; gap: 12px; align-items: stretch; }
+.l4 .cell { flex: 1 1 0; display: flex; flex-direction: column; justify-content: center; padding: 0 26px; }
+.l4 .cell .ds { margin-top: 8px; }
+.cell.ink { background: var(--ink); color: var(--paper); }
+.cell.blue { background: var(--blue); color: var(--paper); }
+.cell.yel { background: var(--yellow); color: var(--ink); }
+.l3 { top: 456px; height: 80px; }
+.l2 { top: 550px; height: 80px; }
+.l1 { top: 644px; height: 80px; }
+
+/* 自下而上一层层铺出来，最后铺主线 */
+@keyframes wipe { from { clip-path: inset(0 100% 0 0); } }
+.band.anim { animation: wipe 520ms var(--ease-out); }
+.l1 { animation-delay: 80ms !important; }
+.l2 { animation-delay: 170ms !important; }
+.l3 { animation-delay: 260ms !important; }
+.l4 { animation-delay: 350ms !important; }
+.l5 { animation-delay: 440ms !important; }
+.main { animation-delay: 560ms !important; }
+
+.legend { position: absolute; left: 96px; top: 776px; width: 1090px; }
+.legend .tag { margin-bottom: 18px; }
+.legend ul { list-style: none; display: flex; gap: 44px; }
+.legend li { display: flex; align-items: center; font-size: var(--fs-body-s); font-weight: 500; line-height: 1.3; white-space: nowrap; }
+.legend em { flex: 0 0 30px; height: 30px; margin-right: 12px; }
+.legend.anim { animation: reveal-right 520ms var(--ease-out) 760ms; }
+
+/* ───────── 右：竖排标题 + 信息块 ───────── */
+.vt { position: absolute; left: 1236px; top: 80px; writing-mode: vertical-rl;
+      font-family: var(--serif); font-weight: 900; font-size: var(--fs-title-2); line-height: 1.2; letter-spacing: .06em; }
+.vt .ln { display: block; }
+.vt .ln.anim { animation: reveal-down 560ms var(--ease-out); }
+.vt .ln:nth-child(2) { animation-delay: 140ms !important; }
+.vt .ln:nth-child(3) { animation-delay: 280ms !important; }
+.tcy { text-combine-upright: all; letter-spacing: 0; }
+.tcy.lat { font-size: .84em; }
+
+.info { position: absolute; left: 1604px; top: 84px; width: 220px; }
+.info section + section { margin-top: 48px; }
+.info .tag { margin-bottom: 18px; }
+.info section.anim { animation: reveal-right 520ms var(--ease-out); }
+.info section:nth-child(1) { animation-delay: 420ms !important; }
+.info section:nth-child(2) { animation-delay: 540ms !important; }
+.info section:nth-child(3) { animation-delay: 660ms !important; }
+.info .txt { font-size: var(--fs-body-s); font-weight: 500; line-height: 1.6; }
+.info .txt + .txt { margin-top: 12px; }
+
+.src { position: absolute; left: 1236px; bottom: 107px; width: 588px; font-size: var(--fs-body-s); font-weight: 500; color: var(--ink-2); letter-spacing: .04em; line-height: 1.5; }
+.src.anim { animation: reveal-right 500ms var(--ease-out) 1000ms; }
+.page-rule { left: 96px; right: 96px; top: 1008px; transform-origin: 0 50%; }
+.page-rule.anim { animation: draw-x 600ms var(--ease-out) 940ms; }
+</style>
+</head>
+<body>
+
+  <div class="band main anim"><span class="nm">主线：让「目标 → 项目 → 执行 → 结果」看得见、管得住</span></div>
+  <div class="band ink l5 anim"><span class="nm">入口</span><span class="ds">飞书 ＋ 员工自选的 AI 工具</span></div>
+  <div class="band l4 anim">
+    <div class="cell ink"><span class="nm">内部业务系统</span><span class="ds">外采为主</span></div>
+    <div class="cell blue"><span class="nm">AI 原生自研应用</span><span class="ds">自研</span></div>
+    <div class="cell yel"><span class="nm">业务自建轻应用</span><span class="ds">业务自建</span></div>
+  </div>
+  <div class="band blue l3 anim"><span class="nm">Agent 平台</span><span class="ds">自研，基于开源</span></div>
+  <div class="band blue l2 anim"><span class="nm">公司上下文</span><span class="ds">自研</span></div>
+  <div class="band blue l1 anim"><span class="nm">数据底座</span><span class="ds">自研，在建</span></div>
+
+  <div class="legend anim">
+    <span class="tag">买还是建，按属于哪一层定</span>
+    <ul>
+      <li><em style="background:var(--ink)"></em>通用的买</li>
+      <li><em style="background:var(--blue)"></em>公司特有的只建一个</li>
+      <li><em style="background:var(--yellow)"></em>长尾小场景业务自己搭</li>
+    </ul>
+  </div>
+
+  <h1 class="vt" aria-label="思路：IT 先当第一个客户，先治好自己"><span class="ln anim"><span class="tcy lat">IT</span>先当</span><span class="ln anim">第一个客户</span><span class="ln anim">先治好自己</span></h1>
+
+  <div class="info">
+    <section class="anim">
+      <span class="tag">为什么</span>
+      <p class="txt">IT 自己的毛病，<br>就是公司信息化<br>要解的问题。<br>先治好自己，<br>再推全公司</p>
+    </section>
+    <section class="anim">
+      <span class="tag">先做三件事</span>
+      <p class="txt">所有项目统一跟进</p>
+      <p class="txt">自研系统<br>从项目变成产品</p>
+      <p class="txt">建公司自己的<br>Agent 平台</p>
+    </section>
+    <section class="anim">
+      <span class="tag">全文</span>
+      <p class="txt">《IT 建设规划<br>2026–2028》<br>讨论稿 v2<br>在知识库</p>
+    </section>
+  </div>
+
+  <div class="src anim">口径：IT 规划原文第 3 章，左图按其图 1 蓝图重画</div>
+  <div class="rule page-rule anim"></div>
+
+<script src="../shared/motion.js"></script>
+</body>
+</html>

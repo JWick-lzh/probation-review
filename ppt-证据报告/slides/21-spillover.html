@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>能力外溢</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：logo 挪到右端，导航右移让出左上角（演示外壳的「概览」按钮在那里；与 01–07 同一写法） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+/* ── 21 能力外溢 ── */
+.band { height: 186px; padding-top: 34px; }
+.band .assert { font-size: var(--fs-assert); line-height: 1.2; white-space: nowrap; }
+.band .sub { margin-top: 6px; font-size: var(--fs-body); color: var(--ink-2); }
+
+.chart { position: absolute; left: var(--gutter); top: 312px; width: 1240px; }
+.plot { display: block; overflow: visible; }
+.chart .source { margin-top: 16px; }
+
+.plot .lg { font-size: 22px; fill: var(--ink-2); }
+.plot .ax { font-size: 20px; fill: var(--muted); }
+.plot .dt { font-size: 24px; font-weight: 700; fill: var(--ink-2); }
+.plot .hd { font-size: 26px; font-weight: 700; fill: var(--ink); }
+.plot .dd { font-size: 24px; fill: var(--ink-2); }
+.plot .sep { stroke: var(--track); stroke-width: 1.5; }
+.plot .track { stroke: var(--track); stroke-width: 2; }
+.plot .grid { stroke: var(--rule); stroke-width: 1.5; stroke-dasharray: 4 6; fill: none; }
+.plot .span { fill: var(--s-done); }
+.plot .dot { fill: var(--s-done); stroke: #fff; stroke-width: 3; }
+
+.side.read { left: 1400px; top: 322px; width: 414px; }
+.side.read h3 + p { margin-top: 10px; }
+.side.read p + p { margin-top: 14px; }
+.side.read p + h3 { margin-top: 44px; }
+
+/* 时间轴（ms）：红线 0–600 → 标题 100–700 → 框架 250–650 → 月份线 350–800
+   → 7 件事按日期逐行出现、点落在日期轴上 400–1300 → 来源行 1300–1600 */
+.plot .row { transform-box: fill-box; }
+.plot .span { transform-box: fill-box; transform-origin: 0 50%; }
+.plot .pop { transform-box: fill-box; transform-origin: 50% 50%; }
+.plot .grid { transform-box: fill-box; transform-origin: 50% 0; }
+html.motion .band .assert { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .sub { animation: rise .5s var(--ease-out) .2s both; }
+html.motion .plot .frame { animation: fade .4s ease-out .25s both; }
+html.motion .plot .grid { animation: draw-y .45s var(--ease-out) .35s both; }
+html.motion .plot .row { animation: rise .4s var(--ease-out) var(--d) both; }
+html.motion .plot .span { animation: draw-x .4s var(--ease-out) var(--d) both; }
+html.motion .plot .pop { animation: pop .28s var(--ease-out) var(--d) both; }
+html.motion .side.read { animation: fade .4s ease-out .3s both; }
+.chart .source { --src-delay: 1.3s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span>岗位定位</span><span>目标回顾</span><span>完成情况</span><span>IT 规划</span><span class="on" aria-current="true">团队管理</span><span>自我评价</span><span>未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">能力外溢：身边的人用 AI 快起来了</h1>
+  <p class="sub">只列看得见的行为</p>
+</section>
+
+<figure class="chart">
+  <!-- 日期轴：x = 840 + (距 8/1 的天数) × 4.348，8/1 到 11/1 -->
+  <svg class="plot" width="1240" height="620" viewBox="0 0 1240 620" role="img"
+       aria-label="身边的人用 AI 的行为：8/16 起带业务助理搭 CEO 知识助理，8/31 一起拆成多个智能体；8/19 13 章新手手册发给 SKY、业务助理；10/1–19 CEO 作为需求方发来 5 份 HTML 原型；10/14 三方分工里由业务助理出产品 Demo；10/20 CEO 指引，《公司能力平台》已经发给财务、法务、行政；协助战略运营用 AI 搭可视化的经营管理平台和数据同步平台；协助战略招聘用 AI 主动管理自己的日常，面试纪要自动整理">
+    <g class="frame">
+    <text x="0" y="34" class="lg">日期</text>
+    <text x="150" y="34" class="lg">看得见的行为</text>
+    <text x="907.4" y="34" class="ax" text-anchor="middle">8 月</text>
+    <text x="1040" y="34" class="ax" text-anchor="middle">9 月</text>
+    <text x="1172.6" y="34" class="ax" text-anchor="middle">10 月</text>
+    <line x1="0" x2="1240" y1="132" y2="132" class="sep"/>
+    <line x1="0" x2="1240" y1="214" y2="214" class="sep"/>
+    <line x1="0" x2="1240" y1="296" y2="296" class="sep"/>
+    <line x1="0" x2="1240" y1="378" y2="378" class="sep"/>
+    <line x1="0" x2="1240" y1="460" y2="460" class="sep"/>
+    <line x1="0" x2="1240" y1="542" y2="542" class="sep"/>
+    <line x1="840" x2="1240" y1="73" y2="73" class="track"/>
+    <line x1="840" x2="1240" y1="155" y2="155" class="track"/>
+    <line x1="840" x2="1240" y1="237" y2="237" class="track"/>
+    <line x1="840" x2="1240" y1="319" y2="319" class="track"/>
+    <line x1="840" x2="1240" y1="401" y2="401" class="track"/>
+    <line x1="840" x2="1240" y1="483" y2="483" class="track"/>
+    <line x1="840" x2="1240" y1="565" y2="565" class="track"/>
+    </g>
+    <line x1="974.8" x2="974.8" y1="50" y2="612" class="grid"/>
+    <line x1="1105.2" x2="1105.2" y1="50" y2="612" class="grid"/>
+
+    <g class="row" style="--d:400ms">
+      <text x="0" y="82" class="dt">8/16、8/31</text>
+      <text x="150" y="82" class="hd">业务助理开始搭智能体</text>
+      <text x="150" y="116" class="dd">带她搭 CEO 知识助理，8/31 一起拆成多个智能体</text>
+    </g>
+    <circle cx="905.2" cy="73" r="10" class="pop dot" style="--d:460ms"/>
+    <circle cx="970.4" cy="73" r="10" class="pop dot" style="--d:520ms"/>
+
+    <g class="row" style="--d:520ms">
+      <text x="0" y="164" class="dt">8/19</text>
+      <text x="150" y="164" class="hd">13 章新手手册</text>
+      <text x="150" y="198" class="dd">发给 SKY、业务助理</text>
+    </g>
+    <circle cx="918.3" cy="155" r="10" class="pop dot" style="--d:580ms"/>
+
+    <g class="row" style="--d:640ms">
+      <text x="0" y="246" class="dt">10/1–19</text>
+      <text x="150" y="246" class="hd">CEO 作为需求方，发来 5 份 HTML 原型</text>
+      <text x="150" y="280" class="dd">要的东西直接做成原型发过来</text>
+    </g>
+    <rect x="1105.2" y="232" width="82.6" height="10" rx="5" class="span" style="--d:700ms"/>
+
+    <g class="row" style="--d:760ms">
+      <text x="0" y="328" class="dt">10/14</text>
+      <text x="150" y="328" class="hd">业务助理在分工里出 Demo</text>
+      <text x="150" y="362" class="dd">分工第 1 步：发现业务痛点，定义问题和指标</text>
+    </g>
+    <circle cx="1161.7" cy="319" r="10" class="pop dot" style="--d:820ms"/>
+
+    <g class="row" style="--d:880ms">
+      <text x="0" y="410" class="dt">10/20</text>
+      <text x="150" y="410" class="hd">CEO 指引：《公司能力平台》</text>
+      <text x="150" y="444" class="dd">「已经发给财务、法务，行政，热身开始做起来了」</text>
+    </g>
+    <circle cx="1187.8" cy="401" r="10" class="pop dot" style="--d:940ms"/>
+
+    <g class="row" style="--d:1000ms">
+      <text x="0" y="492" class="dt">—</text>
+      <text x="150" y="492" class="hd">战略运营：经营管理平台、数据同步平台</text>
+      <text x="150" y="526" class="dd">协助用 AI 搭成可视化的平台</text>
+    </g>
+
+    <g class="row" style="--d:1120ms">
+      <text x="0" y="574" class="dt">—</text>
+      <text x="150" y="574" class="hd">战略招聘：日常自己管，面试纪要自动整理</text>
+      <text x="150" y="608" class="dd">协助用 AI 主动管理自己的日常</text>
+    </g>
+  </svg>
+  <figcaption class="source">来源：CEO 群消息、每日记录；10/20 引语为 CEO 16:14 群消息原文</figcaption>
+</figure>
+
+<aside class="side read">
+  <h3>怎么读这张图</h3>
+  <p>左边每行一件看得见的事；<br>右边是日期轴，8 月到 10 月。</p>
+  <p>最后两行没有记日期，<br>不上日期轴。</p>
+  <h3>判断</h3>
+  <p>「快起来了」是判断，依据只是<br>左边这些行为，没有量化指标。</p>
+  <h3>口径</h3>
+  <p>CEO 群消息、每日记录。</p>
+</aside>
+</body>
+</html>

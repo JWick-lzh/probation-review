@@ -1,0 +1,20 @@
+# 只发布三风格成品：三套 PPT、三个网页、总览页
+.DS_Store
+/design-demos/
+/refs/
+/tools/
+/assets/
+/build-brief.md
+/content.md
+/directions.md
+/spec.md
+/ppt-大字报/旧版备份/
+# 截图只留总览页用到的
+/ppt-*/shots/*
+!/ppt-证据报告/shots/07.png
+!/ppt-大字报/shots/02.png
+!/ppt-几何/shots/01.png
+/网页/shots/*
+!/网页/shots/滚动叙事-1440.png
+!/网页/shots/数据肖像-1440.png
+!/网页/shots/年度信-1440.png

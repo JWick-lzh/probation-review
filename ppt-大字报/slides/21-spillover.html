@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>能力外溢</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* 骨架：左半巨数字 2（协助战略运营用 AI 搭的两个平台）+ 结论句；右半是「看得见的行为」，有日期的按日期排 */
+
+  .runhead {
+    position: absolute; left: var(--m); right: var(--m); top: 40px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: var(--fs-label); line-height: 1.2;
+  }
+  .runhead b { font-weight: 700; }
+  #rule-top { left: var(--m); width: var(--content-w); top: 78px; }
+
+  .giant {
+    position: absolute; left: 70px; top: 56px;
+    font-family: var(--font-giant); font-weight: 900; line-height: 1;
+    font-size: 640px; letter-spacing: -0.04em; white-space: nowrap; color: var(--blue);
+  }
+  .gcap { position: absolute; left: 500px; top: 420px; width: 440px; }
+  .gcap h3 { font-family: var(--font-giant); font-size: 56px; font-weight: 900; line-height: 1.1; letter-spacing: -0.01em; }
+  .gcap p { margin-top: 12px; font-size: var(--fs-body); line-height: 1.4; }
+
+  .claim {
+    position: absolute; left: var(--m); top: 700px;
+    font-family: var(--font-giant); font-size: var(--fs-title); font-weight: 900;
+    line-height: 1.12; letter-spacing: -0.01em; white-space: nowrap;
+  }
+
+  .acts { position: absolute; left: 1008px; width: 816px; top: 112px; }
+  .acts > p { font-size: var(--fs-label); font-weight: 700; color: var(--muted); line-height: 1.2; }
+  .acts ol { margin-top: 18px; }
+  .acts li { list-style: none; position: relative; display: grid; grid-template-columns: 172px 1fr; height: 128px; padding-top: 20px; }
+  .acts li .rule-h { left: 0; top: 0; width: 100%; }
+  .acts li:first-child .rule-h { border-top: var(--strong); }
+  .acts li b { font-family: var(--font-giant); font-size: 36px; font-weight: 900; line-height: 1; letter-spacing: -0.02em; white-space: nowrap; }
+  .acts li span { font-size: var(--fs-body); line-height: 1.45; }
+  .acts li.hit b { color: var(--blue); }
+
+  .foot {
+    position: absolute; left: var(--m); right: var(--m); top: 1000px;
+    font-size: var(--fs-label); line-height: 1.2; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+  <div class="runhead"><b>三、团队管理</b><span>转正述职　林灶辉</span></div>
+  <div class="rule-h strong" id="rule-top"></div>
+
+  <div class="giant" role="img" aria-label="协助战略运营用 AI 搭了 2 个平台：经营管理平台、数据同步平台"><span class="odo-src" aria-hidden="true">2</span></div>
+  <div class="gcap">
+    <h3><span class="ln"><span>个平台</span></span></h3>
+    <p><span class="ln"><span>协助战略运营用 AI 搭起来：<br>经营管理平台、数据同步平台</span></span></p>
+  </div>
+
+  <h2 class="claim">
+    <span class="ln"><span>能力外溢：</span></span>
+    <span class="ln"><span>身边的人用 AI 快起来了。</span></span>
+  </h2>
+
+  <section class="acts">
+    <p>看得见的行为</p>
+    <ol>
+      <li><div class="rule-h"></div><b>8/16</b><span>带业务助理搭 CEO 知识助理，8/31 一起拆成多个智能体；<br>现在分工里由她出产品 Demo</span></li>
+      <li><div class="rule-h"></div><b>8/19</b><span>写了 13 章新手手册，发给 SKY、业务助理</span></li>
+      <li class="hit"><div class="rule-h"></div><b>战略运营</b><span>协助用 AI 搭了可视化的经营管理平台<br>和数据同步平台</span></li>
+      <li class="hit"><div class="rule-h"></div><b>战略招聘</b><span>协助用 AI 主动管理自己的日常，<br>面试纪要自动整理</span></li>
+      <li><div class="rule-h"></div><b>10/1–19</b><span>CEO 作为需求方，陆续发来 5 份 HTML 原型</span></li>
+      <li><div class="rule-h"></div><b>10/20</b><span>CEO 指引：他的《公司能力平台》<br>「已经发给财务、法务，行政，热身开始做起来了」</span></li>
+    </ol>
+  </section>
+
+  <footer class="foot">口径：带日期的取 CEO 群消息、每日记录；战略运营、战略招聘两条没有记日期</footer>
+
+<script src="../shared/motion.js"></script>
+<script>
+  (function () {
+    var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+    function odoize(el) {
+      var txt = el.textContent; el.textContent = '';
+      for (var i = 0; i < txt.length; i++) {
+        var ch = txt.charAt(i);
+        if (/\d/.test(ch)) {
+          var d = +ch, n = d === 0 ? 10 : d;
+          var o = document.createElement('span'), s = document.createElement('span');
+          o.className = 'odo'; s.className = 'strip'; s.style.setProperty('--n', n);
+          for (var k = 0; k <= n; k++) { var b = document.createElement('b'); b.textContent = k % 10; s.appendChild(b); }
+          o.appendChild(s); el.appendChild(o);
+        } else el.appendChild(document.createTextNode(ch));
+      }
+      return Array.prototype.slice.call(el.querySelectorAll('.strip'));
+    }
+
+    var drawX = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }];
+    var rise = [{ transform: 'translateY(135%)' }, { transform: 'none' }];
+    var up = [{ transform: 'translateY(20px)', clipPath: 'inset(0 0 100% 0)' }, { transform: 'none', clipPath: 'inset(0 0 0 0)' }];
+
+    P5.tween($('#rule-top'), drawX, { duration: 700 });
+    odoize($('.giant .odo-src')).forEach(function (s) {
+      var n = parseFloat(s.style.getPropertyValue('--n'));
+      P5.tween(s, [{ transform: 'translateY(0)' }, { transform: 'translateY(' + (-n) + 'em)' }],
+        { delay: 60, duration: 1100, easing: 'cubic-bezier(.22,.8,.12,1)' });
+    });
+    $$('.gcap .ln > span').forEach(function (s, i) { P5.tween(s, rise, { delay: 360 + i * 80, duration: 700 }); });
+    $$('.claim .ln > span').forEach(function (s, i) { P5.tween(s, rise, { delay: 460 + i * 90, duration: 800 }); });
+
+    P5.tween($('.acts > p'), up, { delay: 200, duration: 500 });
+    $$('.acts li').forEach(function (li, i) {
+      var t = 260 + i * 110;
+      P5.tween(li.querySelector('.rule-h'), drawX, { delay: t, duration: 600 });
+      P5.tween(li.querySelector('b'), up, { delay: t + 60, duration: 520 });
+      P5.tween(li.querySelector('span'), up, { delay: t + 100, duration: 520 });
+    });
+
+    P5.go();
+  })();
+</script>
+</body>
+</html>

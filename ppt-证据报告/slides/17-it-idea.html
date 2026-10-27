@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>规划思路</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：logo 挪到右端，导航右移让出左上角（演示外壳的「概览」按钮在那里；与 01–07 同一写法） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+/* ── 17 规划思路 ── */
+.band { height: 186px; padding-top: 34px; }
+.band .assert { font-size: var(--fs-assert); line-height: 1.2; white-space: nowrap; }
+.band .sub { margin-top: 6px; font-size: var(--fs-body); color: var(--ink-2); }
+
+.chart { position: absolute; left: var(--gutter); top: 322px; width: 1000px; }
+.shot { display: block; width: 1000px; height: 650px; object-fit: contain; object-position: left top;
+  border: 1px solid var(--rule); background: #FAFAFA; }
+.chart .source { margin-top: 16px; }
+
+.side.read { left: 1400px; top: 322px; width: 414px; }
+.side.read h3 + p, .side.read h3 + ul { margin-top: 10px; }
+.side.read p + p { margin-top: 14px; }
+.side.read p + h3, .side.read ul + h3 { margin-top: 38px; }
+.three { list-style: none; }
+.three li { font-size: var(--fs-body); line-height: 1.45; color: var(--ink); font-weight: 700;
+  padding: 10px 0; border-bottom: 1px solid var(--rule); }
+.three li:first-child { border-top: 1px solid var(--rule); }
+
+/* 时间轴（ms）：红线 0–600 → 标题 100–700 → 蓝图从上往下揭开 300–1100 → 侧栏三件事逐条 450–1000 → 来源行 1300–1600 */
+html.motion .band .assert { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .sub { animation: rise .5s var(--ease-out) .2s both; }
+html.motion .shot { animation: wipe-down .8s var(--ease-draw) .3s both; }
+html.motion .side.read { animation: fade .4s ease-out .35s both; }
+html.motion .three li { animation: rise .4s var(--ease-out) var(--d) both; }
+@keyframes wipe-down { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+.chart .source { --src-delay: 1.3s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span>岗位定位</span><span>目标回顾</span><span>完成情况</span><span class="on" aria-current="true">IT 规划</span><span>团队管理</span><span>自我评价</span><span>未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">思路：IT 先当第一个客户，先治好自己</h1>
+  <p class="sub">IT 自己的毛病，就是公司信息化要解的问题；主线是让「目标 → 项目 → 执行 → 结果」看得见、管得住</p>
+</section>
+
+<figure class="chart">
+  <img class="shot" src="../assets/it-blueprint.png" alt="IT 规划图 1 蓝图：主线是让「目标 → 项目 → 执行 → 结果」看得见、管得住、能复用；五层结构（数据底座、公司上下文、Agent 平台、应用、入口）和三个产品组">
+  <figcaption class="source">来源：《IT 建设规划 2026–2028》讨论稿 v2 第 3 章，图 1 蓝图；全文在知识库「AI 规划」目录</figcaption>
+</figure>
+
+<aside class="side read">
+  <h3>先做三件事</h3>
+  <ul class="three">
+    <li style="--d:450ms">所有项目统一跟进</li>
+    <li style="--d:560ms">自研系统从项目变成产品</li>
+    <li style="--d:670ms">建公司自己的 Agent 平台</li>
+  </ul>
+  <h3>买还是建，按层定</h3>
+  <p>通用的买；<br>公司特有的只建一个；<br>长尾小场景业务自己搭。</p>
+  <h3>口径</h3>
+  <p>IT 规划原文第 3 章；讨论稿 v2，<br>10/9 成稿，还没批准。</p>
+</aside>
+</body>
+</html>

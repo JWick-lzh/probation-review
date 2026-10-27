@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-total="1600" data-probe="飞书额度用量跟着上来万点整圆年度已用红扇面方说预计来访时按现在的速度纪要专用月初完通用点数底其中专业版约掉口径取管理后台诊断报告">
+<head>
+<meta charset="UTF-8">
+<title>22 AI 用量</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+/* ───────── 左：两个同样大的圆 = 同一份年度额度 618 万点；红色扇面角度 = 已用比例 ─────────
+   8/17：11% → 39.6°；10/23：58.70% → 211.3°（同 07 页的填色语法：描边＝容量，填色＝用掉的） */
+.pie { position: absolute; top: 96px; width: 470px; height: 470px; border-radius: 50%; border: 4px solid var(--ink);
+       background: conic-gradient(var(--red) calc(var(--p) * 360deg), transparent 0); background-clip: padding-box; }
+.pie.a { left: 96px; }
+.pie.b { left: 716px; }
+.pie.anim { animation: sweep 900ms var(--ease-out); }
+.pie.a { animation-delay: 160ms !important; }
+.pie.b { animation-delay: 360ms !important; animation-duration: 1000ms !important; }
+
+/* 两圆之间的时间线 */
+.span { position: absolute; left: 566px; top: 329px; width: 150px; height: 4px; background: var(--ink); transform-origin: 0 50%; }
+.span.anim { animation: draw-x 360ms var(--ease-out) 300ms; }
+
+.read { position: absolute; top: 604px; width: 470px; }
+.read.a { left: 96px; }
+.read.b { left: 716px; }
+.read .dt { font-size: var(--fs-lead); font-weight: 900; line-height: 1.2; }
+.read .pc { margin-top: 10px; font-weight: 900; line-height: 1; letter-spacing: -.01em; }
+.read.a .pc { font-size: var(--fs-num-l); }
+.read.b .pc { font-size: var(--fs-num-xl); color: var(--red); }
+.read .pt { margin-top: 14px; font-size: var(--fs-body); font-weight: 500; line-height: 1.3; }
+.read.anim { animation: reveal-right 500ms var(--ease-out); }
+.read.a { animation-delay: 560ms !important; }
+.read.b { animation-delay: 760ms !important; }
+
+/* ───────── 右：竖排标题 + 信息块 ───────── */
+.vt { position: absolute; left: 1236px; top: 80px; writing-mode: vertical-rl;
+      font-family: var(--serif); font-weight: 900; font-size: var(--fs-title-2); line-height: 1.2; letter-spacing: .06em; }
+.vt .ln { display: block; }
+.vt .ln.anim { animation: reveal-down 560ms var(--ease-out); }
+.vt .ln:nth-child(2) { animation-delay: 140ms !important; }
+.tcy { text-combine-upright: all; letter-spacing: 0; }
+.tcy.lat { font-size: .84em; }
+
+.info { position: absolute; left: 1492px; top: 84px; width: 332px; }
+.info section + section { margin-top: 48px; }
+.info .tag { margin-bottom: 18px; }
+.info section.anim { animation: reveal-right 520ms var(--ease-out); }
+.info section:nth-child(1) { animation-delay: 420ms !important; }
+.info section:nth-child(2) { animation-delay: 540ms !important; }
+.info section:nth-child(3) { animation-delay: 660ms !important; }
+.info .num { font-size: var(--fs-num-m); font-weight: 900; line-height: 1; margin-bottom: 12px; }
+.info .num small { font-size: var(--fs-body); font-weight: 700; margin-left: 6px; }
+.info .txt { font-size: var(--fs-body-s); font-weight: 500; line-height: 1.6; }
+.info .key { display: flex; align-items: center; font-size: var(--fs-body-s); font-weight: 500; line-height: 1.6; }
+.info .key em { flex: 0 0 26px; height: 26px; margin-right: 12px; border-radius: 50%; }
+
+.src { position: absolute; left: 1236px; bottom: 107px; width: 588px; font-size: var(--fs-body-s); font-weight: 500; color: var(--ink-2); letter-spacing: .04em; line-height: 1.5; }
+.src.anim { animation: reveal-right 500ms var(--ease-out) 1000ms; }
+.page-rule { left: 96px; right: 96px; top: 1008px; transform-origin: 0 50%; }
+.page-rule.anim { animation: draw-x 600ms var(--ease-out) 940ms; }
+</style>
+</head>
+<body>
+
+  <div class="pie a anim" style="--p:.11" role="img" aria-label="8/17 已用 11%"></div>
+  <div class="span anim"></div>
+  <div class="pie b anim" style="--p:.587" role="img" aria-label="10/23 已用 58.70%"></div>
+
+  <div class="read a anim">
+    <p class="dt">8/17</p>
+    <p class="pc">11%</p>
+    <p class="pt">68.35 万点</p>
+  </div>
+  <div class="read b anim">
+    <p class="dt">10/23</p>
+    <p class="pc">58.70%</p>
+    <p class="pt">362.76 万点</p>
+  </div>
+
+  <h1 class="vt" aria-label="用量跟着上来：飞书 AI 额度用了 58.70%"><span class="ln anim">飞书<span class="tcy lat">AI</span>额度</span><span class="ln anim">用量跟着上来</span></h1>
+
+  <div class="info">
+    <section class="anim">
+      <span class="tag">整圆</span>
+      <p class="num">618<small>万点</small></p>
+      <p class="txt">飞书 AI 年度额度</p>
+      <p class="key" style="margin-top:10px"><em style="background:var(--red)"></em>红色＝已经用掉的</p>
+    </section>
+    <section class="anim">
+      <span class="tag">飞书方的预计</span>
+      <p class="txt">10/21 来访时说，<br>按现在的速度：<br>纪要专用额度 11 月初用完，<br>通用点数 11 月底用完</p>
+    </section>
+    <section class="anim">
+      <span class="tag">其中</span>
+      <p class="txt">aily 专业版 9/13–10/19<br>约用掉 32 万点</p>
+    </section>
+  </div>
+
+  <div class="src anim">口径：8/17 取飞书管理后台，10/23 取飞书诊断报告</div>
+  <div class="rule page-rule anim"></div>
+
+<script src="../shared/motion.js"></script>
+</body>
+</html>

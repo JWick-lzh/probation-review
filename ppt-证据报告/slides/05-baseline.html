@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>8 月摸底</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：logo 挪到右端，导航右移让出左上角（演示外壳的「概览」按钮在那里） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+
+/* ── 05 8 月摸底：左图右注 ── */
+.band { height: 186px; padding-top: 34px; }
+.band .assert { font-size: var(--fs-assert); line-height: 1.2; }
+.band .sub { margin-top: 6px; font-size: var(--fs-body); color: var(--ink-2); }
+
+.shot { position: absolute; left: var(--gutter); top: 318px; width: 1160px; }
+.shot .frame { position: relative; width: 1160px; aspect-ratio: 2448 / 1384; border: 1px solid var(--rule); background: #fff; }
+.shot img { display: block; width: 100%; height: 100%; object-fit: contain; }
+/* 截图上的批注框：圈出「179 人｜使用渗透率 13.68%」，位置按原图像素换算成百分比 */
+.shot .mark { position: absolute; left: 35.9%; top: 13%; width: 18%; height: 5.6%;
+  border: 3px solid var(--red); }
+.shot .source { margin-top: 14px; }
+
+.side.notes { left: 1400px; top: 328px; width: 414px; }
+.side .kpi { font-size: 64px; font-weight: 700; line-height: 1.05; color: var(--ink); letter-spacing: -.01em; }
+.side.notes .kpi + p { margin-top: 10px; }
+.side.notes h3 { margin-top: 44px; }
+.side.notes h3 + p, .side.notes h3 + .quota { margin-top: 10px; }
+.quota { position: relative; height: 16px; background: var(--track); }
+.quota i { position: absolute; left: 0; top: 0; bottom: 0; width: 11%; background: var(--s-done); }
+.quota + p { margin-top: 10px; }
+.side.notes .judge { color: var(--ink); }
+
+/* 时间轴（ms）：红线 0–600 → 标题 100–700 → 截图 250–700 → 批注框 800–1100
+   → 侧栏 350–750、额度条 700–1200 → 来源行 1300–1600 */
+@keyframes mark { from { opacity: 0; transform: scale(1.3); } to { opacity: 1; transform: none; } }
+.quota i { transform-origin: 0 50%; }
+html.motion .band .assert { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .sub { animation: rise .5s var(--ease-out) .2s both; }
+html.motion .shot .frame { animation: fade .45s ease-out .25s both; }
+html.motion .shot .mark { animation: mark .3s var(--ease-out) .8s both; }
+html.motion .side.notes { animation: fade .4s ease-out .35s both; }
+html.motion .quota i { animation: draw-x .5s var(--ease-out) .7s both; }
+.shot .source { --src-delay: 1.3s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span>岗位定位</span><span class="on" aria-current="true">目标回顾</span><span>完成情况</span><span>IT 规划</span><span>团队管理</span><span>自我评价</span><span>未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">8/16 当天，用飞书 AI 的人不到 14%</h1>
+  <p class="sub">定完目标后的第一次摸底；单日数据，和下一页的诊断数（近 7 个工作日口径）不是一个数</p>
+</section>
+
+<figure class="shot">
+  <div class="frame">
+    <img src="../assets/feishu-ai-0816.jpg" alt="飞书管理后台 AI 使用数据：8/16 使用次数 435，使用人数 179 人，使用渗透率 13.68%，人均使用 2.43 次">
+    <div class="mark" aria-hidden="true"></div>
+  </div>
+  <figcaption class="source">来源：飞书管理后台「AI 使用数据」截图，8/16 单日（每日记录 8/17 段）；红框为本页所加；截图中人名已换成岗位</figcaption>
+</figure>
+
+<aside class="side notes">
+  <p class="kpi">13.68%</p>
+  <p>8/16 当天的渗透率，<br>179 人用过飞书 AI。</p>
+  <h3>年度额度</h3>
+  <div class="quota" role="img" aria-label="年度额度用了 11%"><i></i></div>
+  <p>618 万点，到 8/17 只用了<br>68.35 万点（11%）。</p>
+  <h3>判断</h3>
+  <p class="judge">工具买了，用的人少。<br>这印证了场景挖掘和星际圈<br>两项要做。</p>
+</aside>
+</body>
+</html>

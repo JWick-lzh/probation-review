@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-total="1700" data-probe="上线了业务场景只有个在用诊断看板交给吴程程竞品对比发出还测试环境核心能力生产共次部署瘦身轮优化换掉指标维度清旧数据重跑补防水标签阈值可调源渠道打通亚马逊靠部分没接下来计划正式到口径完成度取目标跟踪表版记录确认">
+<head>
+<meta charset="UTF-8">
+<title>08 G1 VOC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+/* ───────── 左上：「3 个场景在用」= 3 个格位，在用的填朱红 ─────────
+   格 300、间距 40；只有 Y30 诊断看板在用；竞品对比发出了但还在测试环境，不填 */
+.lab { position: absolute; left: 96px; font-size: var(--fs-label); font-weight: 700; color: var(--red); letter-spacing: .2em; }
+.lab.anim { animation: reveal-right 480ms var(--ease-out); }
+
+.slot { position: absolute; top: 124px; width: 300px; height: 300px; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; }
+.slot.on  { background: var(--red); color: var(--paper); }
+.slot.off { border: 4px solid var(--red); color: var(--ink); }
+.slot .nm { font-size: var(--fs-lead); font-weight: 700; line-height: 1.3; }
+.slot .d  { font-size: var(--fs-body-s); font-weight: 500; line-height: 1.5; margin-top: 6px; }
+.slot.anim { animation: drop 700ms var(--spring); --drop: -460px; }
+
+/* ───────── 左中：另两项指标，条长＝完成度 ───────── */
+.kr { position: absolute; left: 96px; width: 1090px; }
+.kr .k  { font-size: var(--fs-body-s); font-weight: 700; line-height: 1.3; }
+.kr .bar { position: relative; width: 904px; height: 40px; margin-top: 10px; border: 4px solid var(--red); }
+.kr .bar b { position: absolute; inset: 0; background: var(--red); transform-origin: 0 50%; transform: scaleX(var(--f)); }
+.kr .bar b.anim { animation: draw-x 620ms var(--ease-out); }
+.kr .v  { position: absolute; left: 932px; top: 37px; font-size: var(--fs-num-m); font-weight: 900; line-height: 1; letter-spacing: -.01em; }
+.kr .e  { font-size: var(--fs-body-s); font-weight: 500; color: var(--ink-2); line-height: 1.4; margin-top: 10px; white-space: nowrap; }
+
+/* ───────── 左下：数据源 7 个渠道 ───────── */
+.ch { position: absolute; top: 852px; width: 72px; height: 72px; border: 4px solid var(--red); }
+.ch.full { background: var(--red); }
+.ch.half { background: linear-gradient(to top, var(--red) 50%, transparent 50%); }
+@keyframes pop { from { transform: scale(0); } }
+.ch.anim { animation: pop 340ms var(--ease-out); }
+.lg { position: absolute; left: 712px; top: 838px; list-style: none; font-size: var(--fs-body-s); font-weight: 500; line-height: 1.42; }
+.lg li { display: flex; align-items: center; gap: 12px; }
+.lg i { flex: 0 0 20px; height: 20px; border: 3px solid var(--red); }
+.lg i.full { background: var(--red); }
+.lg i.half { background: linear-gradient(to top, var(--red) 50%, transparent 50%); }
+.lg.anim { animation: reveal-right 480ms var(--ease-out) 1060ms; }
+
+/* ───────── 右：竖排断言标题 + 信息块 ───────── */
+.vt { position: absolute; left: 1236px; top: 80px; writing-mode: vertical-rl;
+      font-family: var(--serif); font-weight: 900; font-size: var(--fs-title-2); line-height: 1.2; letter-spacing: .06em; }
+.vt .l { display: block; }
+.vt .l.anim { animation: reveal-down 560ms var(--ease-out); }
+.vt .l:nth-child(2) { animation-delay: 140ms !important; }
+.tcy { text-combine-upright: all; }
+.up  { text-orientation: upright; }
+
+.info { position: absolute; left: 1500px; top: 84px; width: 324px; }
+.info section + section { margin-top: 48px; }
+.info .tag { margin-bottom: 14px; }
+.info .big { font-size: var(--fs-num-xl); font-weight: 900; line-height: 1; letter-spacing: -.01em; color: var(--red); }
+.info .txt { font-size: var(--fs-body); font-weight: 500; line-height: 1.55; }
+.info section.anim { animation: reveal-right 520ms var(--ease-out); }
+.info section:nth-child(1) { animation-delay: 420ms !important; }
+.info section:nth-child(2) { animation-delay: 540ms !important; }
+
+.src { position: absolute; left: 1236px; bottom: 107px; width: 588px; font-size: var(--fs-body-s); font-weight: 500; color: var(--ink-2); letter-spacing: .04em; line-height: 1.5; }
+.src.anim { animation: reveal-right 500ms var(--ease-out) 1000ms; }
+.page-rule { left: 96px; right: 96px; top: 1008px; transform-origin: 0 50%; }
+.page-rule.anim { animation: draw-x 600ms var(--ease-out) 940ms; }
+</style>
+</head>
+<body>
+
+  <div class="lab anim" style="top:80px">3 个场景在用</div>
+  <div class="slot on anim" style="left:96px;animation-delay:0ms"><span class="nm">Y30 诊断看板</span><span class="d">9/21 交给业务<br>吴程程</span></div>
+  <div class="slot off anim" style="left:436px;animation-delay:90ms"><span class="nm">竞品对比</span><span class="d">9/24 发出<br>还在测试环境</span></div>
+  <div class="slot off anim" style="left:776px;animation-delay:180ms"></div>
+
+  <div class="kr" style="top:476px">
+    <div class="k">核心能力上线</div>
+    <div class="bar"><b class="anim" style="--f:.90;animation-delay:420ms"></b></div>
+    <div class="v" data-to="90" data-suf="%" data-delay="420" data-dur="620">90%</div>
+    <div class="e">8/11 V1.0 上线生产；共 12 次生产部署；10/21 V2.0 瘦身</div>
+  </div>
+  <div class="kr" style="top:640px">
+    <div class="k">1 轮优化</div>
+    <div class="bar"><b class="anim" style="--f:.80;animation-delay:560ms"></b></div>
+    <div class="v" data-to="80" data-suf="%" data-delay="560" data-dur="620">80%</div>
+    <div class="e">换掉 3 个指标维度、清旧数据重跑、补「防水」标签、阈值可调</div>
+  </div>
+
+  <div class="lab anim" style="top:806px;animation-delay:760ms">数据源 7 个渠道</div>
+  <i class="ch full anim" style="left:96px;animation-delay:820ms"></i>
+  <i class="ch full anim" style="left:180px;animation-delay:860ms"></i>
+  <i class="ch full anim" style="left:264px;animation-delay:900ms"></i>
+  <i class="ch full anim" style="left:348px;animation-delay:940ms"></i>
+  <i class="ch half anim" style="left:432px;animation-delay:980ms"></i>
+  <i class="ch anim" style="left:516px;animation-delay:1020ms"></i>
+  <i class="ch anim" style="left:600px;animation-delay:1060ms"></i>
+  <ul class="lg anim">
+    <li><i class="full"></i>4 个打通</li>
+    <li><i class="half"></i>亚马逊靠 RPA 部分打通</li>
+    <li><i></i>2 个没打通</li>
+  </ul>
+
+  <!-- 断言标题：VOC 上线了，业务场景只有 1 个（VOC 直立排，1 横排组合） -->
+  <h1 class="vt" aria-label="VOC 上线了，业务场景只有 1 个"><span class="l anim"><span class="up">VOC</span>上线了</span><span class="l anim">业务场景只有<span class="tcy">1</span>个</span></h1>
+
+  <div class="info">
+    <section class="anim">
+      <span class="tag">场景在用</span>
+      <p class="big"><span data-to="1" data-suf="/3" data-delay="420" data-dur="480">1/3</span></p>
+    </section>
+    <section class="anim">
+      <span class="tag">接下来（计划）</span>
+      <p class="txt">11/8 正式上线<br>场景补到 3 个</p>
+    </section>
+  </div>
+
+  <div class="src anim">口径：完成度取目标跟踪表 9-30 版；<br>部署次数取 VOC 生产部署记录；<br>渠道取 10/10《Voc数据打通确认》</div>
+  <div class="rule page-rule anim"></div>
+
+<script src="../shared/motion.js"></script>
+</body>
+</html>

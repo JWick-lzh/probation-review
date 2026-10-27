@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-total="1700" data-probe="竞品对比月日发出还在测试环境页对徕芬镜面款至述职报告截图着讲和并排比差评率评分落在哪些功能点怎么最多列里用了共一个时间窗口径有星级的只有条取自目标表">
+<head>
+<meta charset="UTF-8">
+<title>09b VOC 竞品对比截图</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+/* ───────── 左：朱红平涂画框（VOC）+ 截图 ─────────
+   截图 2041×889，按原比例放 1000 × 435.6，不裁 */
+.frame { position: absolute; left: 96px; top: 80px; width: 1064px; background: var(--red); }
+.frame .shot { display: block; margin: 32px 32px 0; width: 1000px; height: 435.6px; object-fit: contain; background: #fff; }
+.frame .cap { height: 64px; display: flex; align-items: center; padding: 0 32px; font-size: var(--fs-label); font-weight: 700; color: var(--paper); letter-spacing: .04em; }
+.frame.anim { animation: drop 720ms var(--spring); --drop: -820px; }
+
+/* ───────── 左下：一排说明 ───────── */
+.row { position: absolute; left: 96px; top: 700px; width: 1064px; display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 48px; }
+.row .tag { margin-bottom: 14px; }
+.row .txt { font-size: var(--fs-body-s); font-weight: 500; line-height: 1.6; }
+.row > div.anim { animation: reveal-right 520ms var(--ease-out); }
+.row > div:nth-child(1) { animation-delay: 480ms !important; }
+.row > div:nth-child(2) { animation-delay: 580ms !important; }
+.row > div:nth-child(3) { animation-delay: 680ms !important; }
+/* 4 个列格位：截图里用了 2 列，填朱红 */
+.cols { display: flex; gap: 10px; margin-bottom: 14px; }
+.cols i { flex: 0 0 40px; height: 64px; border: 4px solid var(--red); }
+.cols i.on { background: var(--red); }
+
+/* ───────── 右：竖排断言标题 ───────── */
+.vt { position: absolute; left: 1236px; top: 80px; writing-mode: vertical-rl;
+      font-family: var(--serif); font-weight: 900; font-size: var(--fs-title-2); line-height: 1.2; letter-spacing: .06em; }
+.vt .l { display: block; }
+.vt .l.anim { animation: reveal-down 560ms var(--ease-out); }
+.vt .l:nth-child(2) { animation-delay: 140ms !important; }
+.vt .l:nth-child(3) { animation-delay: 280ms !important; }
+.tcy { text-combine-upright: all; }
+
+.src { position: absolute; left: 1236px; bottom: 107px; width: 588px; font-size: var(--fs-body-s); font-weight: 500; color: var(--ink-2); letter-spacing: .04em; line-height: 1.5; }
+.src.anim { animation: reveal-right 500ms var(--ease-out) 1000ms; }
+.page-rule { left: 96px; right: 96px; top: 1008px; transform-origin: 0 50%; }
+.page-rule.anim { animation: draw-x 600ms var(--ease-out) 940ms; }
+</style>
+</head>
+<body>
+
+  <figure class="frame anim">
+    <img class="shot" src="../assets/voc-shot-1.png" alt="VOC「竞品对比」页：Y30 和徕芬 TB01-镜面款并排，2026-06-01 至 07-01，比差评率、当前评分、评价数量分布和前 3 差评、前 3 好评">
+    <figcaption class="cap">VOC「竞品对比」页，Y30 对徕芬 TB01，2026-06-01 至 07-01</figcaption>
+  </figure>
+
+  <div class="row">
+    <div class="anim">
+      <span class="tag">对着截图讲</span>
+      <p class="txt">Y30 和竞品并排<br>比差评率、评分<br>差评落在哪些功能点</p>
+    </div>
+    <div class="anim">
+      <div class="cols" aria-label="最多 4 列，截图里用了 2 列"><i class="on"></i><i class="on"></i><i></i><i></i></div>
+      <p class="txt">最多 4 列，截图里用了 2 列<br>所有列共用一个时间窗</p>
+    </div>
+    <div class="anim">
+      <span class="tag">截图口径</span>
+      <p class="txt">竞品这一列有星级的<br>只有 14 条，样本小</p>
+    </div>
+  </div>
+
+  <!-- 断言标题：竞品对比 9/24 发出，还在测试环境 -->
+  <h1 class="vt" aria-label="竞品对比 9 月 24 日发出，还在测试环境"><span class="l anim">竞品对比</span><span class="l anim"><span class="tcy">9</span>月<span class="tcy">24</span>日发出</span><span class="l anim">还在测试环境</span></h1>
+
+  <div class="src anim">口径：截图取自述职报告；9/24 发出、还在测试环境取述职报告 G1 目标表</div>
+  <div class="rule page-rule anim"></div>
+
+<script src="../shared/motion.js"></script>
+</body>
+</html>

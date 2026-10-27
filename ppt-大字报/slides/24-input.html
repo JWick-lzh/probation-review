@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>投入</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* 骨架（同封面主语法）：左上巨数字 1,305 → 右上每月提交四根柱（7 月、10 月不是整月，用斜线柱 + 柱下注明）
+     → 结论句 → 底部细线三栏 */
+
+  .runhead {
+    position: absolute; left: var(--m); right: var(--m); top: 40px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: var(--fs-label); line-height: 1.2;
+  }
+  .runhead b { font-weight: 700; }
+  #rule-top { left: var(--m); width: var(--content-w); top: 78px; }
+
+  .giant {
+    position: absolute; left: 78px; top: 84px;
+    font-family: var(--font-giant); font-weight: 900; line-height: 1;
+    font-size: 380px; letter-spacing: -0.04em; white-space: nowrap; color: var(--blue);
+  }
+  .giant .unit { font-size: 0.16em; letter-spacing: 0; color: var(--ink); margin-left: 0.1em; }
+
+  /* 每月柱：591 次 = 300px */
+  .chart { position: absolute; left: 1264px; width: 560px; top: 108px; height: 450px; }
+  .chart h3 { font-size: var(--fs-label); font-weight: 700; color: var(--muted); line-height: 1.2; }
+  .chart .base { position: absolute; left: 0; width: 100%; top: 362px; border-top: var(--strong); transform-origin: 0 50%; }
+  .col { position: absolute; bottom: 88px; width: 96px; }
+  .col .bar { position: absolute; left: 0; bottom: 0; width: 96px; background: var(--blue); transform-origin: 50% 100%; }
+  .col .bar.part { background: repeating-linear-gradient(135deg, var(--blue) 0 7px, #FFFFFF 7px 11px); box-shadow: inset 0 0 0 2px var(--blue); }
+  .col .v { position: absolute; left: 0; width: 96px; text-align: center; font-family: var(--font-giant); font-size: 32px; font-weight: 900; line-height: 1; letter-spacing: -0.02em; }
+  .col .m { position: absolute; left: 0; width: 120px; top: 100%; margin-top: 14px; font-size: var(--fs-body); line-height: 1.2; white-space: nowrap; }
+  .col .m small { display: block; margin-top: 6px; font-size: var(--fs-label); color: var(--muted); }
+
+  .claim {
+    position: absolute; left: var(--m); top: 566px;
+    font-family: var(--font-giant); font-size: var(--fs-claim); font-weight: 900;
+    line-height: 1.1; letter-spacing: -0.01em; white-space: nowrap;
+  }
+
+  #rule-facts { left: var(--m); width: var(--content-w); top: 806px; }
+  .facts {
+    position: absolute; left: var(--m); width: var(--content-w); top: 808px; height: 150px;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+  }
+  .facts .rule-v { top: 0; height: 150px; left: 0; }
+  .fact { padding: 16px 32px 0; position: relative; }
+  .fact:first-child { padding-left: 0; }
+  .fact .k { font-size: var(--fs-label); font-weight: 700; color: var(--muted); line-height: 1.2; }
+  .fact .v { font-family: var(--font-giant); font-weight: 900; font-size: 60px; line-height: 1; margin-top: 8px; letter-spacing: -0.035em; }
+  .fact .v i { font-style: normal; font-family: var(--font-text); font-size: var(--fs-lead); font-weight: 700; letter-spacing: 0; margin-left: 6px; }
+  .fact p.s { margin-top: 10px; font-size: var(--fs-body); line-height: 1.35; color: var(--ink-2); }
+
+  .foot {
+    position: absolute; left: var(--m); right: var(--m); top: 1000px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: var(--fs-label); line-height: 1.2; color: var(--muted);
+  }
+  .foot .lg { display: inline-flex; align-items: center; gap: 8px; }
+  .foot .sw { width: 20px; height: 20px; display: inline-block; background: repeating-linear-gradient(135deg, var(--blue) 0 4px, #FFFFFF 4px 7px); box-shadow: inset 0 0 0 1.5px var(--blue); }
+</style>
+</head>
+<body>
+
+  <div class="runhead"><b>三、投入</b><span>转正述职　林灶辉</span></div>
+  <div class="rule-h strong" id="rule-top"></div>
+
+  <div class="giant" role="img" aria-label="7/22 到 10/25 代码提交 1,305 次">
+    <span class="odo-src" aria-hidden="true">1,305</span><span class="unit" aria-hidden="true">次</span>
+  </div>
+
+  <section class="chart" aria-label="每月代码提交次数：7 月 54（只算 22–31 日），8 月 119，9 月 541，10 月 591（截至 25 日）">
+    <h3>每月代码提交</h3>
+    <div class="col" style="left:0"><div class="bar part" style="height:27px"></div><p class="v" style="bottom:39px" data-to="54">54</p><p class="m">7 月<small>只算 22–31 日</small></p></div>
+    <div class="col" style="left:154px"><div class="bar" style="height:60px"></div><p class="v" style="bottom:72px" data-to="119">119</p><p class="m">8 月</p></div>
+    <div class="col" style="left:308px"><div class="bar" style="height:275px"></div><p class="v" style="bottom:287px" data-to="541">541</p><p class="m">9 月</p></div>
+    <div class="col" style="left:462px"><div class="bar part" style="height:300px"></div><p class="v" style="bottom:312px" data-to="591">591</p><p class="m">10 月<small>截至 25 日</small></p></div>
+    <div class="base"></div>
+  </section>
+
+  <h2 class="claim">
+    <span class="ln"><span>三个月代码提交 1,305 次，</span></span>
+    <span class="ln"><span>上线发布 225 次。</span></span>
+  </h2>
+
+  <div class="rule-h strong" id="rule-facts"></div>
+  <section class="facts">
+    <div class="fact">
+      <p class="k">上线发布</p>
+      <p class="v"><span data-to="225">225</span><i>次</i></p>
+      <p class="s">妙搭 213 次 + VOC 生产部署 12 次</p>
+    </div>
+    <div class="fact">
+      <div class="rule-v"></div>
+      <p class="k">9 月起每月提交</p>
+      <p class="v"><span data-to="500">500</span><i>次以上</i></p>
+      <p class="s">产品从 1 个变成 4 个</p>
+    </div>
+    <div class="fact">
+      <div class="rule-v"></div>
+      <p class="k">8 月打卡</p>
+      <p class="v"><span data-to="259">259</span><i>小时</i></p>
+      <p class="s">21 个工作日</p>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>口径：7/22–10/25，6 个仓库，按作者统计；发布指本人账号操作</span>
+    <span class="lg"><i class="sw"></i>斜线柱：不是整月</span>
+  </footer>
+
+<script src="../shared/motion.js"></script>
+<script>
+  (function () {
+    var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+    function odoize(el) {
+      var txt = el.textContent; el.textContent = '';
+      for (var i = 0; i < txt.length; i++) {
+        var ch = txt.charAt(i);
+        if (/\d/.test(ch)) {
+          var d = +ch, n = d === 0 ? 10 : d;
+          var o = document.createElement('span'), s = document.createElement('span');
+          o.className = 'odo'; s.className = 'strip'; s.style.setProperty('--n', n);
+          for (var k = 0; k <= n; k++) { var b = document.createElement('b'); b.textContent = k % 10; s.appendChild(b); }
+          o.appendChild(s); el.appendChild(o);
+        } else el.appendChild(document.createTextNode(ch));
+      }
+      return Array.prototype.slice.call(el.querySelectorAll('.strip'));
+    }
+
+    var drawX = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }];
+    var drawY = [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }];
+    var rise = [{ transform: 'translateY(135%)' }, { transform: 'none' }];
+
+    P5.tween($('#rule-top'), drawX, { duration: 700 });
+    odoize($('.giant .odo-src')).forEach(function (s, i) {
+      var n = parseFloat(s.style.getPropertyValue('--n'));
+      P5.tween(s, [{ transform: 'translateY(0)' }, { transform: 'translateY(' + (-n) + 'em)' }],
+        { delay: 60 + i * 100, duration: 1100 - i * 100, easing: 'cubic-bezier(.22,.8,.12,1)' });
+    });
+
+    // 柱子按数据从基线长出来，数字跟着计数
+    P5.tween($('.chart .base'), drawX, { delay: 240, duration: 600 });
+    $$('.col').forEach(function (c, i) {
+      var t = 340 + i * 110;
+      P5.tween(c.querySelector('.bar'), drawY, { delay: t, duration: 700, easing: 'cubic-bezier(.3,.7,.2,1)' });
+      P5.tween(c.querySelector('.v'), [{ transform: 'translateY(' + c.querySelector('.bar').style.height + ')' }, { transform: 'none' }], { delay: t, duration: 700, easing: 'cubic-bezier(.3,.7,.2,1)' });
+      P5.count(c.querySelector('.v'), { delay: t, duration: 700 });
+    });
+    P5.tween($('.chart h3'), [{ transform: 'translateY(16px)', clipPath: 'inset(0 0 100% 0)' }, { transform: 'none', clipPath: 'inset(0 0 0 0)' }], { delay: 200, duration: 500 });
+
+    $$('.claim .ln > span').forEach(function (s, i) { P5.tween(s, rise, { delay: 420 + i * 90, duration: 800 }); });
+
+    P5.tween($('#rule-facts'), drawX, { delay: 560, duration: 800 });
+    $$('.facts .rule-v').forEach(function (v, i) { P5.tween(v, drawY, { delay: 720 + i * 60, duration: 600 }); });
+    $$('.facts [data-to]').forEach(function (n, i) { P5.count(n, { delay: 740 + i * 60, duration: 700 }); });
+
+    P5.go();
+  })();
+</script>
+</body>
+</html>

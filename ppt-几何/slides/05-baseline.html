@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-total="1700" data-probe="月日当天用飞书的人不到管理后台使用数据单日过渗透率到用掉额度年度万点判断工具买了少印证场景挖掘和星际圈两项要做口径截图每记录段是下一页近个工作不一数中名已换成岗位">
+<head>
+<meta charset="UTF-8">
+<title>05 8 月摸底</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+/* ───────── 左：钢蓝平涂画框 + 截图 ─────────
+   截图 2448×1384，按原比例放 1000 × 565.4，不裁 */
+.frame { position: absolute; left: 96px; top: 80px; width: 1064px; background: var(--blue); }
+.frame .shot { display: block; margin: 32px 32px 0; width: 1000px; height: 565.4px; object-fit: contain; background: #fff; }
+.frame .cap { height: 64px; display: flex; align-items: center; padding: 0 32px; font-size: var(--fs-label); font-weight: 500; color: var(--paper); letter-spacing: .04em; }
+.frame.anim { animation: drop 720ms var(--spring); --drop: -820px; }
+
+/* 截图下面一排关键数 */
+.nums { position: absolute; left: 96px; top: 790px; width: 1064px; display: grid; grid-template-columns: 1fr 1fr 1.25fr; column-gap: 48px; }
+.nums .tag { margin-bottom: 10px; }
+.nums .n { font-size: var(--fs-num-l); font-weight: 900; line-height: 1; letter-spacing: -.01em; white-space: nowrap; }
+.nums .n small { font-size: var(--fs-body); font-weight: 700; margin-left: 8px; letter-spacing: 0; }
+.nums .sub { font-size: var(--fs-body-s); font-weight: 500; line-height: 1.45; margin-top: 10px; }
+.nums > div.anim { animation: reveal-right 520ms var(--ease-out); }
+.nums > div:nth-child(1) { animation-delay: 560ms !important; }
+.nums > div:nth-child(2) { animation-delay: 660ms !important; }
+.nums > div:nth-child(3) { animation-delay: 760ms !important; }
+/* 额度条：整条 = 618 万点，填墨 = 68.35 万点 */
+.qbar { position: relative; margin-top: 14px; height: 22px; border: 3px solid var(--ink); }
+.qbar b { position: absolute; inset: 0; background: var(--ink); transform-origin: 0 50%; transform: scaleX(var(--f)); }
+.qbar b.anim { animation: draw-x 600ms var(--ease-out) 900ms; }
+
+/* ───────── 右：竖排断言标题 + 信息块 ───────── */
+.vt { position: absolute; left: 1236px; top: 80px; writing-mode: vertical-rl;
+      font-family: var(--serif); font-weight: 900; font-size: var(--fs-title-2); line-height: 1.2; letter-spacing: .06em; }
+.vt .l { display: block; }
+.vt .l.anim { animation: reveal-down 560ms var(--ease-out); }
+.vt .l:nth-child(2) { animation-delay: 140ms !important; }
+.vt .l:nth-child(3) { animation-delay: 280ms !important; }
+.tcy { text-combine-upright: all; }
+.up  { text-orientation: upright; }
+
+.info { position: absolute; left: 1604px; top: 84px; width: 220px; }
+.info .tag { margin-bottom: 14px; }
+.info .txt-s { font-size: var(--fs-body-s); font-weight: 500; line-height: 1.6; }
+.info section.anim { animation: reveal-right 520ms var(--ease-out) 460ms; }
+
+.src { position: absolute; left: 1236px; bottom: 107px; width: 588px; font-size: var(--fs-body-s); font-weight: 500; color: var(--ink-2); letter-spacing: .04em; line-height: 1.5; }
+.src.anim { animation: reveal-right 500ms var(--ease-out) 1000ms; }
+.page-rule { left: 96px; right: 96px; top: 1008px; transform-origin: 0 50%; }
+.page-rule.anim { animation: draw-x 600ms var(--ease-out) 940ms; }
+</style>
+</head>
+<body>
+
+  <figure class="frame anim">
+    <img class="shot" src="../assets/feishu-ai-0816.jpg" alt="飞书管理后台 AI 使用数据：8/16 使用人数 179 人，使用渗透率 13.68%">
+    <figcaption class="cap">飞书管理后台 AI 使用数据，8/16 单日</figcaption>
+  </figure>
+
+  <div class="nums">
+    <div class="anim">
+      <span class="tag">8/16 当天用过</span>
+      <div class="n"><span data-to="179" data-delay="560" data-dur="640">179</span><small>人</small></div>
+    </div>
+    <div class="anim">
+      <span class="tag">使用渗透率</span>
+      <div class="n">13.68%</div>
+      <p class="sub">单日口径</p>
+    </div>
+    <div class="anim">
+      <span class="tag">到 8/17 用掉的额度</span>
+      <div class="n">68.35<small>万点</small></div>
+      <div class="qbar" aria-label="年度额度 618 万点，用掉 68.35 万点"><b class="anim" style="--f:.1106"></b></div>
+      <p class="sub">整条＝年度额度 618 万点</p>
+    </div>
+  </div>
+
+  <!-- 断言标题：8/16 当天用飞书 AI 的人不到 14%（竖排三列，换列代替标点） -->
+  <h1 class="vt" aria-label="8 月 16 日当天，用飞书 AI 的人不到 14%"><span class="l anim"><span class="tcy">8</span>月<span class="tcy">16</span>日当天</span><span class="l anim">用飞书<span class="tcy">AI</span>的人</span><span class="l anim">不到<span class="tcy">14</span><span class="up">%</span></span></h1>
+
+  <div class="info">
+    <section class="anim">
+      <span class="tag">判断</span>
+      <p class="txt-s">工具买了，<br>用的人少。<br>这印证了场景挖掘<br>和星际圈两项要做</p>
+    </section>
+  </div>
+
+  <div class="src anim">口径：飞书管理后台截图（每日记录 8/17 段）；<br>8/16 是单日数据，和下一页的 24.2%<br>（近 7 个工作日口径）不是一个数；<br>截图中人名已换成岗位</div>
+  <div class="rule page-rule anim"></div>
+
+<script src="../shared/motion.js"></script>
+</body>
+</html>

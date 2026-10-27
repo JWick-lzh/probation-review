@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>G3 场景挖掘</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* 截图是横长图（2106×590），所以换成上下构图：左上巨数字 3/3（蓝 = 做到的）| 右边结论句 + 三栏基线 → 下面通栏截图（PoC 证据）→ 口径行 */
+
+  .runhead {
+    position: absolute; left: var(--m); right: var(--m); top: 40px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: var(--fs-label); line-height: 1.2;
+  }
+  .runhead b { font-weight: 700; }
+  #rule-top { left: var(--m); width: var(--content-w); top: 78px; }
+
+  .giant {
+    position: absolute; left: 80px; top: 64px;
+    font-family: var(--font-giant); font-weight: 900; line-height: 1;
+    font-size: 420px; letter-spacing: -0.04em; white-space: nowrap;
+  }
+  .giant .big { color: var(--blue); }
+  .giant .den { font-size: 0.4em; color: var(--ink); letter-spacing: -0.03em; margin-left: 0.02em; }
+  .giant .slash { display: inline-block; margin-right: -0.04em; transform: scaleY(.875); transform-origin: 50% 13%; }
+
+  .claim {
+    position: absolute; left: 672px; top: 110px;
+    font-family: var(--font-giant); font-size: 72px; font-weight: 900;
+    line-height: 1.1; letter-spacing: -0.01em; white-space: nowrap;
+  }
+
+  /* 三栏基线 */
+  #rule-facts { left: 672px; width: 1152px; top: 228px; }
+  .facts {
+    position: absolute; left: 672px; width: 1152px; top: 230px; height: 206px;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+  }
+  .facts .rule-v { top: 0; height: 206px; }
+  .fact { padding: 16px 24px 0; position: relative; }
+  .fact:first-child { padding-left: 0; }
+  .fact .k { font-size: var(--fs-label); font-weight: 700; color: var(--muted); line-height: 1.2; }
+  .fact .v { font-family: var(--font-giant); font-weight: 900; font-size: 60px; line-height: 1; margin-top: 6px; letter-spacing: -0.035em; white-space: nowrap; }
+  .fact .v small { font-size: 0.5em; letter-spacing: -0.01em; margin-left: 0.04em; }
+  .fact > small { display: block; margin-top: 10px; font-size: var(--fs-label); line-height: 1.35; color: var(--ink-2); }
+
+  /* 通栏截图 */
+  .shot { position: absolute; left: var(--m); top: 476px; width: 1728px; aspect-ratio: 2106 / 590; }
+  .shot img { display: block; width: 100%; height: 100%; object-fit: contain; box-shadow: 0 0 0 1px var(--rule); }
+
+  .foot {
+    position: absolute; left: var(--m); right: var(--m); top: 1000px;
+    display: flex; justify-content: space-between;
+    font-size: var(--fs-label); line-height: 1.2; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+  <div class="runhead"><b>三、工作目标完成情况</b><span>转正述职　林灶辉</span></div>
+  <div class="rule-h strong" id="rule-top"></div>
+
+  <div class="giant" role="img" aria-label="场景挖掘 3 项基线，3 项达到">
+    <span class="big odo" aria-hidden="true"><span class="strip" style="--n:3"><b>0</b><b>1</b><b>2</b><b>3</b></span></span><span class="den" aria-hidden="true"><span class="slash">/</span>3</span>
+  </div>
+
+  <h1 class="claim"><span class="ln"><span>场景挖掘的 3 项基线全部达到</span></span></h1>
+
+  <div class="rule-h strong" id="rule-facts"></div>
+  <section class="facts">
+    <div class="fact">
+      <p class="k">识别场景</p>
+      <p class="v"><span data-to="5">5</span><small>/5</small></p>
+      <small>供应商模具周期管理、<br>AI 辅助 3D 内容、飞书使用诊断、<br>AI 兴趣活动；第 4 期汇报列到 9 个</small>
+    </div>
+    <div class="fact">
+      <div class="rule-v" style="left:0"></div>
+      <p class="k">可执行方案</p>
+      <p class="v"><span data-to="3">3</span><small>/3</small></p>
+      <small>GTM 三步走 MVP、<br>3D 内容实测建议、<br>AI 兴趣活动方案</small>
+    </div>
+    <div class="fact">
+      <div class="rule-v" style="left:0"></div>
+      <p class="k">PoC</p>
+      <p class="v"><span data-to="1">1</span><small>/1</small></p>
+      <small>美区库存看板（下图），<br>多维表格做的，自动同步</small>
+    </div>
+  </section>
+
+  <figure class="shot">
+    <img src="../assets/inventory-poc.jpg" alt="美区库存看板（PoC）：多维表格仪表盘，含销量趋势和库存健康状态表">
+  </figure>
+
+  <footer class="foot"><span>口径：目标跟踪表 9-30 版；第 4 期汇报场景列到 9 个</span><span>图：美区库存看板（PoC），双周汇报第 2 期截图</span></footer>
+
+<script src="../shared/motion.js"></script>
+<script>
+  (function () {
+    var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+    var drawX = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }];
+    var drawY = [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }];
+    var rise = [{ transform: 'translateY(135%)' }, { transform: 'none' }];
+    var fade = [{ opacity: 0 }, { opacity: 1 }];
+
+    P5.tween($('#rule-top'), drawX, { duration: 700 });
+    P5.tween($('.giant .strip'), [{ transform: 'translateY(0)' }, { transform: 'translateY(-3em)' }],
+      { delay: 60, duration: 1000, easing: 'cubic-bezier(.22,.8,.12,1)' });
+    P5.tween($('.giant .den'), fade, { delay: 360, duration: 500 });
+    P5.tween($('.claim .ln > span'), rise, { delay: 200, duration: 750 });
+
+    P5.tween($('#rule-facts'), drawX, { delay: 360, duration: 700 });
+    $$('.facts .rule-v').forEach(function (v, i) { P5.tween(v, drawY, { delay: 520 + i * 70, duration: 500 }); });
+    $$('.fact').forEach(function (f, i) { P5.tween(f, fade, { delay: 480 + i * 80, duration: 450 }); });
+    $$('.facts [data-to]').forEach(function (n, i) { P5.count(n, { delay: 500 + i * 80, duration: 600 }); });
+
+    P5.tween($('.shot img'), [{ opacity: 0, transform: 'translateY(24px)' }, { opacity: 1, transform: 'none' }], { delay: 700, duration: 700 });
+    P5.tween($('.foot'), fade, { delay: 1000, duration: 500 });
+
+    P5.go();
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>指标以外</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：logo 挪到右端，导航右移让出左上角（演示外壳的「概览」按钮在那里；与 01–07 同一写法） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+/* ── 15 指标以外 ── */
+.band { height: 186px; padding-top: 34px; }
+.band .assert { font-size: var(--fs-assert); line-height: 1.2; white-space: nowrap; }
+.band .sub { margin-top: 6px; font-size: var(--fs-body); color: var(--ink-2); }
+
+.chart { position: absolute; left: var(--gutter); top: 312px; width: 1240px; }
+.plot { display: block; overflow: visible; }
+.chart .source { margin-top: 18px; }
+
+.plot .lg { font-size: 22px; fill: var(--ink-2); }
+.plot .ax { font-size: 20px; fill: var(--muted); }
+.plot .goal { font-size: 26px; font-weight: 700; fill: var(--ink); }
+.plot .weight { font-size: 20px; fill: var(--muted); }
+.plot .val { font-size: 24px; font-weight: 700; fill: var(--ink);
+  paint-order: stroke; stroke: #fff; stroke-width: 10px; stroke-linejoin: round; }
+.plot .big { font-size: 26px; font-weight: 700; fill: var(--ink); }
+.plot .sep { stroke: var(--track); stroke-width: 1.5; }
+.plot .track { stroke: var(--track); stroke-width: 2; }
+.plot .grid { stroke: var(--rule); stroke-width: 1.5; stroke-dasharray: 4 6; fill: none; }
+.plot .cut { stroke: var(--ink-2); stroke-width: 2; stroke-dasharray: 7 6; fill: none; }
+.plot .dot { fill: var(--s-done); stroke: #fff; stroke-width: 3; }
+.plot .cell.mine { fill: var(--s-done); }
+.plot .cell.other { fill: #fff; stroke: #8E9AA8; stroke-width: 2; }
+
+.side.read { left: 1400px; top: 322px; width: 414px; }
+.side.read h3 + p { margin-top: 10px; }
+.side.read p + p { margin-top: 14px; }
+.side.read p + h3 { margin-top: 44px; }
+
+/* 时间轴（ms）：红线 0–600 → 标题 100–600 → 框架 250–650 → 月份线 350–800
+   → 产出按日期先后落点 450–1180 → 79 格逐格出现 520–1500 → 来源行 1300–1600 */
+.plot .pop { transform-box: fill-box; transform-origin: 50% 50%; }
+.plot .grid, .plot .cut { transform-box: fill-box; transform-origin: 50% 0; }
+html.motion .band .assert { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .sub { animation: rise .5s var(--ease-out) .2s both; }
+html.motion .plot .frame { animation: fade .4s ease-out .25s both; }
+html.motion .plot .grid, html.motion .plot .cut { animation: draw-y .45s var(--ease-out) .35s both; }
+html.motion .plot .pop { animation: pop .28s var(--ease-out) var(--d) both; }
+html.motion .plot .ride { animation: ride .3s var(--ease-out) var(--d) both; }
+html.motion .side.read { animation: fade .4s ease-out .3s both; }
+.chart .source { --src-delay: 1.3s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span>岗位定位</span><span>目标回顾</span><span class="on" aria-current="true">完成情况</span><span>IT 规划</span><span>团队管理</span><span>自我评价</span><span>未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">指标以外：一份 IT 规划，77 篇知识库文档</h1>
+  <p class="sub">14 项考核指标之外的 6 项产出；点是完成或上线的日期</p>
+</section>
+
+<figure class="chart">
+  <svg class="plot" width="1240" height="600" viewBox="0 0 1240 600" role="img"
+       aria-label="指标以外的产出时间线：飞书 AI 诊断 8/6、8/17、10/21；集团目标驾驶舱 v2 9/9 上线；IT 建设规划讨论稿 v2 和经营指标方法论 4 篇 10/9；usmile-ui 组件库 10/19 v0.1.0、10/22 v0.2.0。知识库主空间 79 篇，本人写 77 篇">
+    <g class="frame">
+    <text x="0" y="36" class="lg">产出</text>
+    <text x="592.5" y="36" class="ax" text-anchor="middle">8 月</text>
+    <text x="833.4" y="36" class="ax" text-anchor="middle">9 月</text>
+    <text x="1074.4" y="36" class="ax" text-anchor="middle">10 月</text>
+    <text x="0" y="100" class="goal">IT 建设规划 2026–2028</text>
+    <text x="0" y="131" class="weight">讨论稿 v2，下一节讲</text>
+    <line x1="470" x2="1196.8" y1="91" y2="91" class="track"/>
+    <line x1="0" x2="1240" y1="152" y2="152" class="sep"/>
+    <text x="0" y="187" class="goal">经营指标方法论</text>
+    <text x="0" y="218" class="weight">4 篇：终局、指标库、看板、操作指北</text>
+    <line x1="470" x2="1196.8" y1="178" y2="178" class="track"/>
+    <line x1="0" x2="1240" y1="239" y2="239" class="sep"/>
+    <text x="0" y="274" class="goal">usmile-ui 组件库</text>
+    <text x="0" y="305" class="weight">内部系统共用一套前端</text>
+    <line x1="470" x2="1196.8" y1="265" y2="265" class="track"/>
+    <line x1="0" x2="1240" y1="326" y2="326" class="sep"/>
+    <text x="0" y="361" class="goal">集团目标驾驶舱 v2</text>
+    <text x="0" y="392" class="weight">后来并入工作反馈系统</text>
+    <line x1="470" x2="1196.8" y1="352" y2="352" class="track"/>
+    <line x1="0" x2="1240" y1="413" y2="413" class="sep"/>
+    <text x="0" y="448" class="goal">飞书 AI 使用与额度诊断</text>
+    <text x="0" y="479" class="weight">做了 3 次，提出按场景分配额度，待反馈</text>
+    <line x1="470" x2="1196.8" y1="439" y2="439" class="track"/>
+    <line x1="0" x2="1240" y1="500" y2="500" class="sep"/>
+    <text x="0" y="541" class="goal">知识库主空间</text>
+    <text x="0" y="572" class="weight">共 79 篇，按创建人统计</text>
+    <text x="470" y="592" class="lg"><tspan class="big">77</tspan><tspan> 篇是我写的（深色）</tspan><tspan dx="28" class="big">2</tspan><tspan> 篇是别人写的（空心）</tspan></text>
+    </g>
+    <line x1="714.9" x2="714.9" y1="54" y2="465" class="grid"/>
+    <line x1="951.9" x2="951.9" y1="54" y2="465" class="grid"/>
+    <!-- 按日期先后落点 -->
+    <circle cx="509.5" cy="439" r="11" class="pop dot" style="--d:450ms"/>
+    <g class="ride" data-ride style="--dx:10px;--d:450ms"><text x="530" y="448" class="val">8/6</text></g>
+    <circle cx="596.4" cy="439" r="11" class="pop dot" style="--d:540ms"/>
+    <g class="ride" data-ride style="--dx:10px;--d:540ms"><text x="617" y="448" class="val">8/17</text></g>
+    <circle cx="778.1" cy="352" r="11" class="pop dot" style="--d:640ms"/>
+    <g class="ride" data-ride style="--dx:10px;--d:640ms"><text x="799" y="361" class="val">9/9 上线</text></g>
+    <circle cx="1015.1" cy="91" r="13" class="pop dot" style="--d:740ms"/>
+    <g class="ride" data-ride style="--dx:10px;--d:740ms"><text x="1038" y="100" class="val">10/9 成稿</text></g>
+    <circle cx="1015.1" cy="178" r="11" class="pop dot" style="--d:800ms"/>
+    <g class="ride" data-ride style="--dx:10px;--d:800ms"><text x="1036" y="187" class="val">10/9 完成</text></g>
+    <circle cx="1094.1" cy="265" r="11" class="pop dot" style="--d:900ms"/>
+    <circle cx="1117.8" cy="265" r="11" class="pop dot" style="--d:980ms"/>
+    <g class="ride" data-ride style="--dx:-10px;--d:980ms"><text x="1070" y="274" class="val" text-anchor="end">10/19 v0.1.0　10/22 v0.2.0</text></g>
+    <circle cx="1109.9" cy="439" r="11" class="pop dot" style="--d:940ms"/>
+    <g class="ride" data-ride style="--dx:10px;--d:940ms"><text x="1131" y="448" class="val">10/21</text></g>
+    <!-- 79 格：每格一篇 -->
+    <rect x="470.00" y="516" width="15" height="15" class="pop cell mine" style="--d:520ms"/>
+    <rect x="488.25" y="516" width="15" height="15" class="pop cell mine" style="--d:529ms"/>
+    <rect x="506.50" y="516" width="15" height="15" class="pop cell mine" style="--d:538ms"/>
+    <rect x="524.75" y="516" width="15" height="15" class="pop cell mine" style="--d:547ms"/>
+    <rect x="543.00" y="516" width="15" height="15" class="pop cell mine" style="--d:556ms"/>
+    <rect x="561.25" y="516" width="15" height="15" class="pop cell mine" style="--d:565ms"/>
+    <rect x="579.50" y="516" width="15" height="15" class="pop cell mine" style="--d:574ms"/>
+    <rect x="597.75" y="516" width="15" height="15" class="pop cell mine" style="--d:583ms"/>
+    <rect x="616.00" y="516" width="15" height="15" class="pop cell mine" style="--d:592ms"/>
+    <rect x="634.25" y="516" width="15" height="15" class="pop cell mine" style="--d:601ms"/>
+    <rect x="652.50" y="516" width="15" height="15" class="pop cell mine" style="--d:610ms"/>
+    <rect x="670.75" y="516" width="15" height="15" class="pop cell mine" style="--d:619ms"/>
+    <rect x="689.00" y="516" width="15" height="15" class="pop cell mine" style="--d:628ms"/>
+    <rect x="707.25" y="516" width="15" height="15" class="pop cell mine" style="--d:637ms"/>
+    <rect x="725.50" y="516" width="15" height="15" class="pop cell mine" style="--d:646ms"/>
+    <rect x="743.75" y="516" width="15" height="15" class="pop cell mine" style="--d:655ms"/>
+    <rect x="762.00" y="516" width="15" height="15" class="pop cell mine" style="--d:664ms"/>
+    <rect x="780.25" y="516" width="15" height="15" class="pop cell mine" style="--d:673ms"/>
+    <rect x="798.50" y="516" width="15" height="15" class="pop cell mine" style="--d:682ms"/>
+    <rect x="816.75" y="516" width="15" height="15" class="pop cell mine" style="--d:691ms"/>
+    <rect x="835.00" y="516" width="15" height="15" class="pop cell mine" style="--d:700ms"/>
+    <rect x="853.25" y="516" width="15" height="15" class="pop cell mine" style="--d:709ms"/>
+    <rect x="871.50" y="516" width="15" height="15" class="pop cell mine" style="--d:718ms"/>
+    <rect x="889.75" y="516" width="15" height="15" class="pop cell mine" style="--d:727ms"/>
+    <rect x="908.00" y="516" width="15" height="15" class="pop cell mine" style="--d:736ms"/>
+    <rect x="926.25" y="516" width="15" height="15" class="pop cell mine" style="--d:745ms"/>
+    <rect x="944.50" y="516" width="15" height="15" class="pop cell mine" style="--d:754ms"/>
+    <rect x="962.75" y="516" width="15" height="15" class="pop cell mine" style="--d:763ms"/>
+    <rect x="981.00" y="516" width="15" height="15" class="pop cell mine" style="--d:772ms"/>
+    <rect x="999.25" y="516" width="15" height="15" class="pop cell mine" style="--d:781ms"/>
+    <rect x="1017.50" y="516" width="15" height="15" class="pop cell mine" style="--d:790ms"/>
+    <rect x="1035.75" y="516" width="15" height="15" class="pop cell mine" style="--d:799ms"/>
+    <rect x="1054.00" y="516" width="15" height="15" class="pop cell mine" style="--d:808ms"/>
+    <rect x="1072.25" y="516" width="15" height="15" class="pop cell mine" style="--d:817ms"/>
+    <rect x="1090.50" y="516" width="15" height="15" class="pop cell mine" style="--d:826ms"/>
+    <rect x="1108.75" y="516" width="15" height="15" class="pop cell mine" style="--d:835ms"/>
+    <rect x="1127.00" y="516" width="15" height="15" class="pop cell mine" style="--d:844ms"/>
+    <rect x="1145.25" y="516" width="15" height="15" class="pop cell mine" style="--d:853ms"/>
+    <rect x="1163.50" y="516" width="15" height="15" class="pop cell mine" style="--d:862ms"/>
+    <rect x="1181.75" y="516" width="15" height="15" class="pop cell mine" style="--d:871ms"/>
+    <rect x="470.00" y="537" width="15" height="15" class="pop cell mine" style="--d:880ms"/>
+    <rect x="488.25" y="537" width="15" height="15" class="pop cell mine" style="--d:889ms"/>
+    <rect x="506.50" y="537" width="15" height="15" class="pop cell mine" style="--d:898ms"/>
+    <rect x="524.75" y="537" width="15" height="15" class="pop cell mine" style="--d:907ms"/>
+    <rect x="543.00" y="537" width="15" height="15" class="pop cell mine" style="--d:916ms"/>
+    <rect x="561.25" y="537" width="15" height="15" class="pop cell mine" style="--d:925ms"/>
+    <rect x="579.50" y="537" width="15" height="15" class="pop cell mine" style="--d:934ms"/>
+    <rect x="597.75" y="537" width="15" height="15" class="pop cell mine" style="--d:943ms"/>
+    <rect x="616.00" y="537" width="15" height="15" class="pop cell mine" style="--d:952ms"/>
+    <rect x="634.25" y="537" width="15" height="15" class="pop cell mine" style="--d:961ms"/>
+    <rect x="652.50" y="537" width="15" height="15" class="pop cell mine" style="--d:970ms"/>
+    <rect x="670.75" y="537" width="15" height="15" class="pop cell mine" style="--d:979ms"/>
+    <rect x="689.00" y="537" width="15" height="15" class="pop cell mine" style="--d:988ms"/>
+    <rect x="707.25" y="537" width="15" height="15" class="pop cell mine" style="--d:997ms"/>
+    <rect x="725.50" y="537" width="15" height="15" class="pop cell mine" style="--d:1006ms"/>
+    <rect x="743.75" y="537" width="15" height="15" class="pop cell mine" style="--d:1015ms"/>
+    <rect x="762.00" y="537" width="15" height="15" class="pop cell mine" style="--d:1024ms"/>
+    <rect x="780.25" y="537" width="15" height="15" class="pop cell mine" style="--d:1033ms"/>
+    <rect x="798.50" y="537" width="15" height="15" class="pop cell mine" style="--d:1042ms"/>
+    <rect x="816.75" y="537" width="15" height="15" class="pop cell mine" style="--d:1051ms"/>
+    <rect x="835.00" y="537" width="15" height="15" class="pop cell mine" style="--d:1060ms"/>
+    <rect x="853.25" y="537" width="15" height="15" class="pop cell mine" style="--d:1069ms"/>
+    <rect x="871.50" y="537" width="15" height="15" class="pop cell mine" style="--d:1078ms"/>
+    <rect x="889.75" y="537" width="15" height="15" class="pop cell mine" style="--d:1087ms"/>
+    <rect x="908.00" y="537" width="15" height="15" class="pop cell mine" style="--d:1096ms"/>
+    <rect x="926.25" y="537" width="15" height="15" class="pop cell mine" style="--d:1105ms"/>
+    <rect x="944.50" y="537" width="15" height="15" class="pop cell mine" style="--d:1114ms"/>
+    <rect x="962.75" y="537" width="15" height="15" class="pop cell mine" style="--d:1123ms"/>
+    <rect x="981.00" y="537" width="15" height="15" class="pop cell mine" style="--d:1132ms"/>
+    <rect x="999.25" y="537" width="15" height="15" class="pop cell mine" style="--d:1141ms"/>
+    <rect x="1017.50" y="537" width="15" height="15" class="pop cell mine" style="--d:1150ms"/>
+    <rect x="1035.75" y="537" width="15" height="15" class="pop cell mine" style="--d:1159ms"/>
+    <rect x="1054.00" y="537" width="15" height="15" class="pop cell mine" style="--d:1168ms"/>
+    <rect x="1072.25" y="537" width="15" height="15" class="pop cell mine" style="--d:1177ms"/>
+    <rect x="1090.50" y="537" width="15" height="15" class="pop cell mine" style="--d:1186ms"/>
+    <rect x="1108.75" y="537" width="15" height="15" class="pop cell mine" style="--d:1195ms"/>
+    <rect x="1127.00" y="537" width="15" height="15" class="pop cell mine" style="--d:1204ms"/>
+    <rect x="1145.25" y="537" width="15" height="15" class="pop cell other" style="--d:1213ms"/>
+    <rect x="1163.50" y="537" width="15" height="15" class="pop cell other" style="--d:1222ms"/>
+  </svg>
+  <figcaption class="source">来源：知识库主空间按创建人统计（10-26）；各项日期取述职报告「指标以外的产出」</figcaption>
+</figure>
+
+<aside class="side read">
+  <h3>怎么读这张图</h3>
+  <p>上面 5 行，每行一项产出，<br>点落在完成或上线那天。</p>
+  <p>最下面一行，每格是一篇<br>知识库文档。</p>
+  <h3>口径</h3>
+  <p>知识库按创建人统计，10-26。</p>
+  <p>IT 规划是讨论稿 v2，<br>还没批准。</p>
+</aside>
+</body>
+</html>

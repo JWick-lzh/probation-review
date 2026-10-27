@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>企业 AI 中台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* 骨架：标题 → 三个巨数字 1 / 2 / 1 坐在一条主线上：门户 → 两条路 → 一份数据；
+     第二条路从主线拐下去再拐回来，「两条路」就是线本身 → 底部细线两栏：为什么建、怎么建。
+     平台还没做出来，所以这一页不用蓝色（蓝色只给做到的部分） */
+
+  .runhead {
+    position: absolute; left: var(--m); right: var(--m); top: 40px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: var(--fs-label); line-height: 1.2;
+  }
+  .runhead b { font-weight: 700; }
+  #rule-top { left: var(--m); width: var(--content-w); top: 78px; }
+
+  h1 {
+    position: absolute; left: var(--m); top: 108px;
+    font-family: var(--font-giant); font-size: var(--fs-head); font-weight: 900;
+    line-height: 1.06; letter-spacing: -0.015em; white-space: nowrap;
+  }
+
+  .num {
+    position: absolute; top: 236px;
+    font-family: var(--font-giant); font-weight: 900; font-size: 260px; line-height: 1; letter-spacing: -0.04em; white-space: nowrap;
+  }
+  .num .u { font-size: 48px; letter-spacing: 0; margin-left: 20px; }
+  #nA { left: 82px; } #nB { left: 586px; } #nC { left: 1410px; }
+
+  /* 线：主线 Y1=512，第二条路 Y2=680，拐点 x=560 / 1384 */
+  .roads { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; pointer-events: none; overflow: visible; }
+  .roads path { fill: none; stroke: var(--ink); stroke-width: 2; stroke-dasharray: 1; stroke-linejoin: miter; }
+  .knot { position: absolute; width: 14px; height: 14px; background: var(--ink); }
+  #k1 { left: 553px; top: 505px; } #k2 { left: 1377px; top: 505px; }
+
+  .txt { position: absolute; font-size: var(--fs-body); line-height: 1.4; }
+  .txt b { display: block; font-size: var(--fs-lead); font-weight: 900; line-height: 1.3; margin-bottom: 4px; }
+  #tA { left: var(--m); width: 440px; top: 530px; }
+  #tB1 { left: 664px; width: 680px; top: 528px; }
+  #tB2 { left: 664px; width: 680px; top: 662px; }
+  #tC { left: 1424px; width: 400px; top: 530px; }
+
+  #rule-base { left: var(--m); width: var(--content-w); top: 830px; }
+  .base {
+    position: absolute; left: var(--m); width: var(--content-w); top: 832px; height: 140px;
+    display: grid; grid-template-columns: repeat(2, 1fr);
+  }
+  .base .rule-v { top: 0; height: 140px; left: 0; }
+  .cell { position: relative; padding: 16px 28px 0; }
+  .cell:first-child { padding-left: 0; }
+  .cell .k { font-size: var(--fs-label); font-weight: 700; color: var(--muted); line-height: 1.2; }
+  .cell p:last-child { margin-top: 8px; font-size: var(--fs-body); line-height: 1.4; }
+  .cell p b { font-weight: 900; }
+
+  .foot {
+    position: absolute; left: var(--m); right: var(--m); top: 1000px;
+    font-size: var(--fs-label); line-height: 1.2; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+  <div class="runhead"><b>三、指标以外：IT 规划</b><span>转正述职　林灶辉</span></div>
+  <div class="rule-h strong" id="rule-top"></div>
+
+  <h1><span class="ln"><span>Agent 平台：企业 AI 中台</span></span></h1>
+
+  <div class="num" id="nA" role="img" aria-label="一个门户"><span class="odo-src" aria-hidden="true">1</span><span class="u" aria-hidden="true">个门户</span></div>
+  <div class="num" id="nB" role="img" aria-label="两条路"><span class="odo-src" aria-hidden="true">2</span><span class="u" aria-hidden="true">条路</span></div>
+  <div class="num" id="nC" role="img" aria-label="一份数据"><span class="odo-src" aria-hidden="true">1</span><span class="u" aria-hidden="true">份数据</span></div>
+
+  <svg class="roads" viewBox="0 0 1920 1080" aria-hidden="true">
+    <path id="y1" pathLength="1" d="M96 513 H1824"/>
+    <path id="y2" pathLength="1" d="M560 513 L640 641 H1304 L1384 513"/>
+  </svg>
+  <i class="knot" id="k1"></i><i class="knot" id="k2"></i>
+
+  <div class="txt" id="tA"><span class="ln"><span><b>员工从飞书工作台进门户</b>平台落地后员工看到的样子</span></span></div>
+  <div class="txt" id="tB1"><span class="ln"><span><b>会用 AI 编程的人</b>在自己的 Claude Code、Codex 里一句话发布应用</span></span></div>
+  <div class="txt" id="tB2"><span class="ln"><span><b>不会 AI 编程的人</b>在网页里对话，也能做出应用</span></span></div>
+  <div class="txt" id="tC"><span class="ln"><span><b>同一份飞书数据和业务库</b>所有应用都读它，<br>谁能看什么由平台统一管</span></span></div>
+
+  <div class="rule-h strong" id="rule-base"></div>
+  <section class="base">
+    <div class="cell">
+      <p class="k">为什么自己建</p>
+      <p>业务 SOP 是公司的打法，装进外采平台就带不走</p>
+    </div>
+    <div class="cell">
+      <div class="rule-v"></div>
+      <p class="k">怎么建</p>
+      <p>底层基于开源搭，我们只写公司规矩和业务技能</p>
+    </div>
+  </section>
+
+  <footer class="foot">口径：企业 AI 中台设计记录，2026-10-13</footer>
+
+<script src="../shared/motion.js"></script>
+<script>
+  (function () {
+    var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+    function odoize(el) {
+      var txt = el.textContent; el.textContent = '';
+      for (var i = 0; i < txt.length; i++) {
+        var ch = txt.charAt(i);
+        if (/\d/.test(ch)) {
+          var d = +ch, n = d === 0 ? 10 : d;
+          var o = document.createElement('span'), s = document.createElement('span');
+          o.className = 'odo'; s.className = 'strip'; s.style.setProperty('--n', n);
+          for (var k = 0; k <= n; k++) { var b = document.createElement('b'); b.textContent = k % 10; s.appendChild(b); }
+          o.appendChild(s); el.appendChild(o);
+        } else el.appendChild(document.createTextNode(ch));
+      }
+      return Array.prototype.slice.call(el.querySelectorAll('.strip'));
+    }
+
+    var drawX = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }];
+    var drawY = [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }];
+    var rise = [{ transform: 'translateY(135%)' }, { transform: 'none' }];
+
+    P5.tween($('#rule-top'), drawX, { duration: 700 });
+    P5.tween($('h1 .ln > span'), rise, { delay: 60, duration: 750 });
+
+    // 三个巨数字依次滚到位，节奏跟着线走
+    ['#nA', '#nB', '#nC'].forEach(function (id, i) {
+      odoize($(id + ' .odo-src')).forEach(function (s) {
+        var n = parseFloat(s.style.getPropertyValue('--n'));
+        P5.tween(s, [{ transform: 'translateY(0)' }, { transform: 'translateY(' + (-n) + 'em)' }],
+          { delay: 160 + i * 260, duration: 800, easing: 'cubic-bezier(.22,.8,.12,1)' });
+      });
+    });
+
+    // 线：主线从左画到右；第二条路从拐点往下、往右、再往上并回主线
+    var drawPath = [{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }];
+    P5.tween($('#y1'), drawPath, { delay: 280, duration: 1000 });
+    P5.tween($('#y2'), drawPath, { delay: 560, duration: 900, easing: 'cubic-bezier(.45,.05,.3,1)' });
+    $$('.knot').forEach(function (k, i) { P5.tween(k, [{ transform: 'scale(0)' }, { transform: 'none' }], { delay: 500 + i * 820, duration: 300 }); });
+
+    [['#tA', 380], ['#tB1', 620], ['#tB2', 820], ['#tC', 1060]].forEach(function (p) {
+      P5.tween($(p[0] + ' .ln > span'), rise, { delay: p[1], duration: 600 });
+    });
+
+    P5.tween($('#rule-base'), drawX, { delay: 700, duration: 800 });
+    $$('.base .rule-v').forEach(function (v, i) { P5.tween(v, drawY, { delay: 860 + i * 60, duration: 500 }); });
+    $$('.cell').forEach(function (c, i) { P5.tween(c, [{ transform: 'translateY(16px)', clipPath: 'inset(0 0 100% 0)' }, { transform: 'none', clipPath: 'inset(0 0 0 0)' }], { delay: 900 + i * 80, duration: 600 }); });
+
+    P5.go();
+  })();
+</script>
+</body>
+</html>

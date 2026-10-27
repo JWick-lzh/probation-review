@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>飞书诊断</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：logo 挪到右端，导航右移让出左上角（演示外壳的「概览」按钮在那里） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+
+/* ── 06 飞书诊断：左图右注 ── */
+.band { height: 186px; padding-top: 34px; }
+.band .assert { font-size: var(--fs-assert); line-height: 1.2; }
+.band .sub { margin-top: 6px; font-size: var(--fs-body); color: var(--ink-2); }
+
+.shot { position: absolute; left: var(--gutter); top: 318px; width: 1160px; }
+.shot .frame { position: relative; width: 1160px; aspect-ratio: 1465 / 812; border: 1px solid var(--rule); background: #fff; }
+.shot img { display: block; width: 100%; height: 100%; object-fit: contain; }
+/* 批注框：圈出「消耗率 58.70%；近 7 个工作日 AI DAU 为 692」，按原图像素换算成百分比 */
+.shot .mark { position: absolute; left: 52%; top: 28.1%; width: 41.6%; height: 5.3%;
+  border: 3px solid var(--red); }
+.shot .source { margin-top: 14px; }
+
+.side.notes { left: 1400px; top: 328px; width: 414px; }
+.side .kpi { font-size: 64px; font-weight: 700; line-height: 1.05; color: var(--ink); letter-spacing: -.01em; }
+.side .kpi small { font-size: 32px; font-weight: 700; margin-left: 6px; }
+.kpi-r { display: inline-block; }
+.side.notes .kpi + p { margin-top: 10px; }
+.side.notes p + .kpi { margin-top: 40px; }
+.side.notes h3 { margin-top: 44px; }
+.side.notes h3 + p { margin-top: 10px; }
+
+/* 时间轴（ms）：红线 0–600 → 标题 100–700 → 截图 250–700 → 批注框 800–1100
+   → 侧栏 350–750、692 计数 600–1100 → 来源行 1300–1600 */
+@keyframes mark { from { opacity: 0; transform: scale(1.15); } to { opacity: 1; transform: none; } }
+html.motion .band .assert { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .sub { animation: rise .5s var(--ease-out) .2s both; }
+html.motion .shot .frame { animation: fade .45s ease-out .25s both; }
+html.motion .shot .mark { animation: mark .3s var(--ease-out) .8s both; }
+html.motion .side.notes { animation: fade .4s ease-out .35s both; }
+html.motion .kpi-r { animation: ride .5s var(--ease-out) .6s both; }
+.shot .source { --src-delay: 1.3s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span>岗位定位</span><span class="on" aria-current="true">目标回顾</span><span>完成情况</span><span>IT 规划</span><span>团队管理</span><span>自我评价</span><span>未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">9 月渗透率 24.2%，10/23 日活 692 人</h1>
+  <p class="sub">都出自飞书客户成功的诊断报告：9 月版给了渗透率；10/23 更新版给了日活，没再给渗透率</p>
+</section>
+
+<figure class="shot">
+  <div class="frame">
+    <img src="../assets/diag-1023.png" alt="飞书诊断报告 1.2 AI 用量总结，数据截至 2026.10.23：通用额度已消耗 3,627,641 / 6,180,000 点，消耗率 58.70%；近 7 个工作日 AI DAU 为 692">
+    <div class="mark" aria-hidden="true"></div>
+  </div>
+  <figcaption class="source">来源：《Usmile 飞书使用诊断与 AI 场景运营计划》「AI 用量总结」，数据截至 2026.10.23；红框为本页所加</figcaption>
+</figure>
+
+<aside class="side notes">
+  <p class="kpi">24.2%</p>
+  <p>9 月版：257 / 1,061 人。<br>口径是近 7 个工作日内，在任一<br>飞书 AI 产品上有用量的人<br>（9/23 对齐会飞书方原话）。</p>
+  <p class="kpi"><span class="kpi-r" data-ride style="--dx:14px"><span data-count="692">692</span></span><small>人</small></p>
+  <p>10/23 更新版（左图）：<br>近 7 个工作日 AI 日活，<br>原文没再给渗透率。</p>
+  <h3>口径</h3>
+  <p>和上一页 8/16 的单日渗透率<br>不是一个数，两页的数不能比。</p>
+</aside>
+</body>
+</html>

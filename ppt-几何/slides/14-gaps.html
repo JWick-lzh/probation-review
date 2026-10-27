@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-total="1700" data-probe="专利没启动星际圈断档创新项都是按计划应在错过了内容篇月成员数统计上线当周发建圈节点逾期自评运营精力放权重的三这是我排优先级原因补救待确认每双到人提效场景挖掘口径目标跟踪表版">
+<head>
+<meta charset="UTF-8">
+<title>14 没做到的</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+/* ───────── 左上：两条时间线（8/1 至 10/27，x = 400 + 天数 × 9.034） ─────────
+   8/7 → 454.2　9/1 → 680.1　9/21 → 860.7　9/25 → 896.9　10/1 → 951.1　10/20 → 1122.7　10/23 → 1149.8　10/27 → 1186 */
+.gname { position: absolute; left: 96px; font-size: var(--fs-body); font-weight: 700; line-height: 1.3; }
+.gsub  { position: absolute; left: 96px; font-size: var(--fs-body-s); font-weight: 500; line-height: 1.5; }
+.gname.anim, .gsub.anim { animation: reveal-right 460ms var(--ease-out); }
+
+/* 专利：3 项都是 0（空心圆） */
+.zc { position: absolute; top: 146px; width: 56px; height: 56px; border: 4px solid var(--blue); border-radius: 50%; }
+.zc.anim { animation: pop 360ms var(--ease-out); }
+@keyframes pop { from { transform: scale(0); } }
+/* 专利：计划启动窗口 9/21–10/20，空着 */
+.win { position: absolute; left: 860.7px; top: 104px; width: 262px; height: 156px; border: 4px solid var(--blue);
+       display: flex; flex-direction: column; justify-content: center; padding: 0 18px; }
+.win .t { font-size: var(--fs-body-s); font-weight: 500; line-height: 1.45; }
+.win .x { font-size: var(--fs-body); font-weight: 700; color: var(--red); line-height: 1.4; margin-top: 4px; }
+.win.anim { animation: drop 640ms var(--spring); --drop: -300px; }
+
+/* 星际圈：三个时间点 */
+.qc { position: absolute; left: 454.2px; top: 404px; width: 72px; height: 72px; background: var(--ink); border-top-right-radius: 100%; }
+.qc.anim { animation: drop 620ms var(--spring); --drop: -500px; }
+.mk { position: absolute; top: 436px; width: 40px; height: 40px; background: var(--red); transform: translateX(-50%); }
+.mk.anim { animation: pop 360ms var(--ease-out); }
+.ev { position: absolute; font-size: var(--fs-body-s); font-weight: 500; line-height: 1.4; white-space: nowrap; }
+.ev b { font-weight: 700; }
+.ev.anim { animation: reveal-right 420ms var(--ease-out); }
+
+/* 时间轴 */
+.axis { position: absolute; left: 400px; top: 566px; width: 786px; height: 3px; background: var(--ink); transform-origin: 0 50%; }
+.axis.anim { animation: draw-x 600ms var(--ease-out) 200ms; }
+.tick { position: absolute; top: 566px; width: 3px; height: 16px; background: var(--ink); transform: translateX(-1.5px); }
+.tk { position: absolute; top: 590px; font-size: var(--fs-label); font-weight: 500; color: var(--ink-2); transform: translateX(-50%); white-space: nowrap; }
+
+/* ───────── 左下：精力去向 = 权重条（整条 = 100%） ───────── */
+.why { position: absolute; left: 96px; top: 696px; font-size: var(--fs-body-s); font-weight: 700; }
+.wbar { position: absolute; left: 96px; top: 740px; width: 1090px; height: 80px; display: flex; }
+.wbar i { position: relative; height: 100%; }
+.wbar i.anim { animation: grow-y 460ms var(--ease-out); transform-origin: 50% 100%; }
+.wbar .voc { flex: 0 0 436px; background: var(--red); }
+.wbar .ceo { flex: 0 0 218px; background: var(--ink); }
+.wbar .scn { flex: 0 0 218px; background: var(--yellow); }
+.wbar .pat { flex: 0 0 109px; border: 4px solid var(--blue); }
+.wbar .star { flex: 0 0 109px; border: 4px solid var(--ink); border-left-width: 0; }
+.wl { position: absolute; top: 832px; font-size: 20px; font-weight: 700; white-space: nowrap; }
+
+/* ───────── 右：竖排断言标题 + 信息块 ───────── */
+.vt { position: absolute; left: 1236px; top: 80px; writing-mode: vertical-rl;
+      font-family: var(--serif); font-weight: 900; font-size: var(--fs-title-2); line-height: 1.2; letter-spacing: .06em; }
+.vt .l { display: block; }
+.vt .l.anim { animation: reveal-down 560ms var(--ease-out); }
+.vt .l:nth-child(2) { animation-delay: 140ms !important; }
+.tcy { text-combine-upright: all; }
+
+.info { position: absolute; left: 1500px; top: 84px; width: 324px; }
+.info section + section { margin-top: 48px; }
+.info .tag { margin-bottom: 14px; }
+.info .txt-s { font-size: var(--fs-body-s); font-weight: 500; line-height: 1.6; }
+.info section.anim { animation: reveal-right 520ms var(--ease-out); }
+.info section:nth-child(1) { animation-delay: 460ms !important; }
+.info section:nth-child(2) { animation-delay: 580ms !important; }
+
+.src { position: absolute; left: 1236px; bottom: 107px; width: 588px; font-size: var(--fs-body-s); font-weight: 500; color: var(--ink-2); letter-spacing: .04em; line-height: 1.5; }
+.src.anim { animation: reveal-right 500ms var(--ease-out) 1000ms; }
+.page-rule { left: 96px; right: 96px; top: 1008px; transform-origin: 0 50%; }
+.page-rule.anim { animation: draw-x 600ms var(--ease-out) 940ms; }
+</style>
+</head>
+<body>
+
+
+  <!-- 专利创新 AI：3 项都是 0；计划 9/21–10/20 启动，错过了 -->
+  <div class="gname anim" style="top:96px">专利创新 AI</div>
+  <i class="zc anim" style="left:96px;animation-delay:120ms"></i>
+  <i class="zc anim" style="left:164px;animation-delay:170ms"></i>
+  <i class="zc anim" style="left:232px;animation-delay:220ms"></i>
+  <div class="gsub anim" style="top:214px;animation-delay:160ms">3 项都是 0</div>
+  <div class="win anim" style="animation-delay:320ms"><span class="t">按计划应在<br>9/21–10/20 启动</span><span class="x">错过了</span></div>
+
+  <!-- 星际圈：8/7 上线、当周 3 篇；9/25 建圈节点逾期；10/23 自评运营断档 -->
+  <div class="gname anim" style="top:340px;animation-delay:200ms">星际圈</div>
+  <div class="gsub anim" style="top:386px;animation-delay:240ms">内容 12+ 篇（10 月）<br>成员数没统计</div>
+  <div class="ev anim" style="left:454.2px;top:330px;animation-delay:520ms"><b>8/7 上线</b><br>当周发 3 篇</div>
+  <div class="qc anim" style="animation-delay:480ms"></div>
+  <div class="ev anim" style="left:876.9px;top:350px;animation-delay:640ms"><b>9/25</b> 建圈节点逾期</div>
+  <i class="mk anim" style="left:896.9px;animation-delay:600ms"></i>
+  <div class="ev anim" style="right:734px;top:488px;text-align:right;animation-delay:760ms"><b>10/23</b> 自评运营断档</div>
+  <i class="mk anim" style="left:1149.8px;animation-delay:720ms"></i>
+
+  <div class="axis anim"></div>
+  <i class="tick" style="left:400px"></i><i class="tick" style="left:680.1px"></i><i class="tick" style="left:951.1px"></i><i class="tick" style="left:1184.5px"></i>
+  <div class="tk" style="left:400px">8/1</div>
+  <div class="tk" style="left:680.1px">9/1</div>
+  <div class="tk" style="left:951.1px">10/1</div>
+  <div class="tk" style="left:1160px">10/27</div>
+
+  <!-- 权重条：VOC 40 / CEO 提效 20 / 场景挖掘 20 / 专利 10 / 星际圈 10（1% = 10.9px） -->
+  <div class="why">权重：前三项合计 80%，专利、星际圈各 10%</div>
+  <div class="wbar" aria-label="权重：VOC 40%，CEO 提效 20%，场景挖掘 20%，专利 10%，星际圈 10%">
+    <i class="voc anim" style="animation-delay:820ms"></i><i class="ceo anim" style="animation-delay:870ms"></i><i class="scn anim" style="animation-delay:920ms"></i><i class="pat"></i><i class="star"></i>
+  </div>
+  <div class="wl" style="left:96px">VOC 40%</div>
+  <div class="wl" style="left:532px">CEO 提效 20%</div>
+  <div class="wl" style="left:750px">场景挖掘 20%</div>
+  <div class="wl" style="left:972px;color:var(--blue)">专利 10%</div>
+  <div class="wl" style="left:1081px">星际圈 10%</div>
+
+  <!-- 断言标题：专利 AI 没启动，星际圈断档 -->
+  <h1 class="vt" aria-label="专利 AI 没启动，星际圈断档"><span class="l anim">专利<span class="tcy">AI</span>没启动</span><span class="l anim">星际圈断档</span></h1>
+
+  <div class="info">
+    <section class="anim">
+      <span class="tag">原因</span>
+      <p class="txt-s">精力放在权重 80% 的三项上<br>这是我排的优先级</p>
+    </section>
+    <section class="anim">
+      <span class="tag">补救（计划，待确认）</span>
+      <p class="txt-s">专利 GTM 11 月启动<br>星际圈每双周 1 篇<br>成员到 30 人</p>
+    </section>
+  </div>
+
+  <div class="src anim">口径：目标跟踪表 9-30 版；<br>12+ 篇是 10 月的数</div>
+  <div class="rule page-rule anim"></div>
+
+<script src="../shared/motion.js"></script>
+</body>
+</html>

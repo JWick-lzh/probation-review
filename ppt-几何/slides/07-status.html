@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-total="1700" data-probe="项指标达到基线还没开始专利创新星际圈系统提效工具场景挖掘核心能力搭建案例验证轮优化建圈并运营篇内容名成员未统计上线在用使用落地识别方案汇总进行中怎么读上排面积权重填色完成度没完的排在前面有风险月是口径目标跟踪表版回填">
+<head>
+<meta charset="UTF-8">
+<title>07 14 项指标状态</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+/* ───────── 左：5 列 = 5 个目标，按「没完成的多少」从左到右排 ─────────
+   列宽 222，第 i 列 left = 96 + 222·i
+   上排：目标图形，面积按权重（封面的 200/480 缩放）
+     VOC 方块 200 · CEO 四分之一圆 R 159.58 · 场景方块 141.42 · 专利圆 d 112.84 · 星际圈四分之一圆 R 112.84
+   下面：每项指标一个几何单元（112），填色面积 = 完成度
+     方块：从底往上填，高度 = 完成度
+     圆 / 四分之一圆：按角度扫，角度 = 完成度 × 360° / 90°（面积与角度成正比） */
+.col { position: absolute; top: 80px; width: 222px; height: 880px; }
+.col.c1 { left: 96px;   --c: var(--blue); }
+.col.c2 { left: 318px;  --c: var(--ink); }
+.col.c3 { left: 540px;  --c: var(--red); }
+.col.c4 { left: 762px;  --c: var(--ink); }
+.col.c5 { left: 984px;  --c: var(--yellow); }
+
+/* 目标图形，底边对齐在 y=280 */
+.emb { position: absolute; left: 0; bottom: calc(880px - 200px); display: flex; flex-direction: column;
+       background: var(--c); color: var(--paper); font-weight: 900; line-height: 1; letter-spacing: -.01em; }
+.emb.sq   { padding: 18px; }
+.emb.fan  { border-top-right-radius: 100%; justify-content: flex-end; padding: 16px; }
+.emb.circ { border-radius: 50%; align-items: center; justify-content: center; }
+.c1 .emb { width: 112.84px; height: 112.84px; font-size: 30px; }
+.c2 .emb { width: 112.84px; height: 112.84px; font-size: 30px; padding: 14px; }
+.c3 .emb { width: 200px;    height: 200px;    font-size: var(--fs-num-m); padding: 22px; }
+.c4 .emb { width: 159.58px; height: 159.58px; font-size: var(--fs-num-s); padding: 20px; }
+.c5 .emb { width: 141.42px; height: 141.42px; font-size: var(--fs-num-s); color: var(--ink); }
+.emb.anim { animation: drop 680ms var(--spring); --drop: -320px; }
+.c1 .emb { animation-delay: 0ms !important; }
+.c2 .emb { animation-delay: 80ms !important; }
+.c3 .emb { animation-delay: 160ms !important; }
+.c4 .emb { animation-delay: 240ms !important; }
+.c5 .emb { animation-delay: 320ms !important; }
+
+.gname { position: absolute; left: 0; top: 216px; font-size: 26px; font-weight: 700; letter-spacing: .02em; line-height: 1.3; white-space: nowrap; }
+
+/* 指标单元 */
+.cells { position: absolute; left: 0; top: 284px; }
+.cell { position: relative; height: 206px; width: 222px; }
+.cell .row { display: flex; align-items: flex-end; gap: 12px; }
+.u { position: relative; flex: 0 0 112px; height: 112px; border: 4px solid var(--c); }
+.u.sq b { position: absolute; inset: 0; background: var(--c); transform-origin: 50% 100%; transform: scaleY(var(--f)); }
+.u.sq b.anim { animation: grow-y 560ms var(--ease-out); }
+.u.fan  { border-top-right-radius: 100%; background: conic-gradient(from 0deg at 0% 100%, var(--c) calc(var(--p) * 90deg), transparent 0); background-clip: padding-box; }
+.u.circ { border-radius: 50%; background: conic-gradient(var(--c) calc(var(--p) * 360deg), transparent 0); background-clip: padding-box; }
+.u.anim { animation: sweep 560ms var(--ease-out); }
+
+.val { display: flex; flex-direction: column; align-items: flex-start; padding-bottom: 2px; }
+.v   { font-size: 34px; font-weight: 900; line-height: 1; letter-spacing: -.01em; }
+.vt-word { font-size: 26px; font-weight: 700; line-height: 1.1; }
+.risk { font-size: 20px; font-weight: 700; color: var(--red); line-height: 1; margin-bottom: 10px; letter-spacing: .04em; }
+.nm  { margin-top: 10px; font-size: var(--fs-body-s); font-weight: 500; line-height: 1.4; white-space: nowrap; }
+.note { font-size: var(--fs-note); font-weight: 500; color: var(--ink-2); line-height: 1.4; white-space: nowrap; }
+
+/* ───────── 右：竖排断言标题 + 汇总 ───────── */
+.vt { position: absolute; left: 1236px; top: 80px; height: 720px; writing-mode: vertical-rl;
+      font-family: var(--serif); font-weight: 900; font-size: var(--fs-title-2); line-height: 1.2; letter-spacing: .06em; }
+.vt .ln { display: block; }
+.vt .ln.anim { animation: reveal-down 560ms var(--ease-out); }
+.vt .ln:nth-child(2) { animation-delay: 140ms !important; }
+.vt .ln:nth-child(3) { animation-delay: 280ms !important; }
+.tcy { text-combine-upright: all; }
+
+.info { position: absolute; left: 1604px; top: 84px; width: 220px; }
+.info section + section { margin-top: 52px; }
+.info .tag { margin-bottom: 18px; }
+.info section.anim { animation: reveal-right 520ms var(--ease-out); }
+.info section:nth-child(1) { animation-delay: 420ms !important; }
+.info section:nth-child(2) { animation-delay: 540ms !important; }
+.sum { list-style: none; display: grid; grid-template-columns: 22px 1fr auto; column-gap: 14px; row-gap: 14px; align-items: center; }
+.sum em { position: relative; height: 32px; border: 3px solid var(--ink); }
+.sum em b { position: absolute; inset: 0; background: var(--ink); }
+.sum .lb { font-size: var(--fs-body-s); font-weight: 500; }
+.sum .n  { font-size: var(--fs-num-m); font-weight: 900; line-height: 1; text-align: right; min-width: 1ch; }
+.how { font-size: var(--fs-body-s); font-weight: 500; line-height: 1.6; }
+
+.src { position: absolute; left: 1236px; top: 940px; font-size: var(--fs-label); font-weight: 500; color: var(--ink-2); letter-spacing: .04em; }
+.src.anim { animation: reveal-right 500ms var(--ease-out) 1000ms; }
+.page-rule { left: 96px; right: 96px; top: 1008px; transform-origin: 0 50%; }
+.page-rule.anim { animation: draw-x 600ms var(--ease-out) 940ms; }
+</style>
+</head>
+<body>
+
+  <!-- 数据：目标跟踪表 9-30 版。列 = 目标（没完成的多的在左），列内 = 指标（没完成的在上）
+       顺序拼起来正好是：未开始 4 → 进行中 6 → 达到基线 4 -->
+
+  <!-- 专利创新 AI 10%：3 项未开始 -->
+  <div class="col c1">
+    <div class="emb circ anim"><span data-to="10" data-suf="%" data-delay="140" data-dur="480">10%</span></div>
+    <div class="gname">专利创新 AI</div>
+    <div class="cells">
+      <div class="cell"><div class="row"><i class="u circ" style="--p:0"></i><div class="val"><span class="v">0%</span></div></div><div class="nm">核心能力搭建</div></div>
+      <div class="cell"><div class="row"><i class="u circ" style="--p:0"></i><div class="val"><span class="v">0%</span></div></div><div class="nm">3 个案例验证</div></div>
+      <div class="cell"><div class="row"><i class="u circ" style="--p:0"></i><div class="val"><span class="v">0%</span></div></div><div class="nm">1 轮优化</div></div>
+    </div>
+  </div>
+
+  <!-- 星际圈 10%：成员数未统计（未开始）、12 篇内容 35%、建圈并运营 70%（有风险） -->
+  <div class="col c2">
+    <div class="emb fan anim"><span data-to="10" data-suf="%" data-delay="220" data-dur="480">10%</span></div>
+    <div class="gname">星际圈</div>
+    <div class="cells">
+      <div class="cell"><div class="row"><i class="u fan" style="--p:0"></i><div class="val"><span class="vt-word">未统计</span></div></div><div class="nm">30 名成员</div></div>
+      <div class="cell"><div class="row"><i class="u fan anim" style="--p:.35;animation-delay:580ms"></i><div class="val"><span class="v" data-to="35" data-suf="%" data-delay="580" data-dur="560">35%</span></div></div><div class="nm">12 篇内容</div><div class="note">9-30 版；10 月是 12+ 篇</div></div>
+      <div class="cell"><div class="row"><i class="u fan anim" style="--p:.70;animation-delay:630ms"></i><div class="val"><span class="risk">有风险</span><span class="v" data-to="70" data-suf="%" data-delay="630" data-dur="560">70%</span></div></div><div class="nm">建圈并运营</div></div>
+    </div>
+  </div>
+
+  <!-- VOC 系统 40%：3 个场景在用 1/3、1 轮优化 80%、核心能力上线 90% -->
+  <div class="col c3">
+    <div class="emb sq anim"><span data-to="40" data-suf="%" data-delay="300" data-dur="520">40%</span></div>
+    <div class="gname">VOC 系统</div>
+    <div class="cells">
+      <div class="cell"><div class="row"><i class="u sq" style="--f:.3333"><b class="anim" style="animation-delay:680ms"></b></i><div class="val"><span class="v" data-to="1" data-suf="/3" data-delay="680" data-dur="560">1/3</span></div></div><div class="nm">3 个场景在用</div></div>
+      <div class="cell"><div class="row"><i class="u sq" style="--f:.80"><b class="anim" style="animation-delay:730ms"></b></i><div class="val"><span class="v" data-to="80" data-suf="%" data-delay="730" data-dur="560">80%</span></div></div><div class="nm">1 轮优化</div></div>
+      <div class="cell"><div class="row"><i class="u sq" style="--f:.90"><b class="anim" style="animation-delay:780ms"></b></i><div class="val"><span class="v" data-to="90" data-suf="%" data-delay="780" data-dur="560">90%</span></div></div><div class="nm">核心能力上线</div></div>
+    </div>
+  </div>
+
+  <!-- CEO 提效工具 20%：1 轮使用优化 60%、1 个场景落地 达成 -->
+  <div class="col c4">
+    <div class="emb fan anim"><span data-to="20" data-suf="%" data-delay="380" data-dur="480">20%</span></div>
+    <div class="gname">CEO 提效工具</div>
+    <div class="cells">
+      <div class="cell"><div class="row"><i class="u fan anim" style="--p:.60;animation-delay:830ms"></i><div class="val"><span class="v" data-to="60" data-suf="%" data-delay="830" data-dur="560">60%</span></div></div><div class="nm">1 轮使用优化</div></div>
+      <div class="cell"><div class="row"><i class="u fan anim" style="--p:1;animation-delay:880ms"></i><div class="val"><span class="vt-word">达成</span></div></div><div class="nm">1 个场景落地</div></div>
+    </div>
+  </div>
+
+  <!-- AI 场景挖掘 20%：3 项全部达到基线 -->
+  <div class="col c5">
+    <div class="emb sq anim"><span data-to="20" data-suf="%" data-delay="460" data-dur="480">20%</span></div>
+    <div class="gname">AI 场景挖掘</div>
+    <div class="cells">
+      <div class="cell"><div class="row"><i class="u sq" style="--f:1"><b class="anim" style="animation-delay:930ms"></b></i><div class="val"><span class="v" data-to="5" data-suf="/5" data-delay="930" data-dur="560">5/5</span></div></div><div class="nm">识别 5 个场景</div></div>
+      <div class="cell"><div class="row"><i class="u sq" style="--f:1"><b class="anim" style="animation-delay:980ms"></b></i><div class="val"><span class="v" data-to="3" data-suf="/3" data-delay="980" data-dur="560">3/3</span></div></div><div class="nm">3 个方案</div></div>
+      <div class="cell"><div class="row"><i class="u sq" style="--f:1"><b class="anim" style="animation-delay:1030ms"></b></i><div class="val"><span class="v" data-to="1" data-suf="/1" data-delay="1030" data-dur="560">1/1</span></div></div><div class="nm">1 个 PoC</div></div>
+    </div>
+  </div>
+
+  <!-- 断言标题：14 项指标，4 项达到基线，4 项还没开始（竖排三列，从右往左读；竖排大字不带逗号，换列即停顿） -->
+  <h1 class="vt" aria-label="14 项指标，4 项达到基线，4 项还没开始"><span class="ln anim"><span class="tcy">14</span>项指标</span><span class="ln anim"><span class="tcy">4</span>项达到基线</span><span class="ln anim"><span class="tcy">4</span>项还没开始</span></h1>
+
+  <div class="info">
+    <section class="anim">
+      <span class="tag">汇总</span>
+      <ul class="sum">
+        <li style="display:contents"><em></em><span class="lb">未开始</span><span class="n" data-to="4" data-delay="1000" data-dur="480">4</span></li>
+        <li style="display:contents"><em><b style="top:50%"></b></em><span class="lb">进行中</span><span class="n" data-to="6" data-delay="1060" data-dur="480">6</span></li>
+        <li style="display:contents"><em><b></b></em><span class="lb">达到基线</span><span class="n" data-to="4" data-delay="1120" data-dur="480">4</span></li>
+      </ul>
+    </section>
+    <section class="anim">
+      <span class="tag">怎么读</span>
+      <p class="how">上排面积＝权重<br>填色面积＝完成度<br>没完成的排在前面</p>
+    </section>
+  </div>
+
+  <div class="src anim">口径：目标跟踪表 9-30 版，10 月没回填</div>
+  <div class="rule page-rule anim"></div>
+
+<script src="../shared/motion.js"></script>
+</body>
+</html>

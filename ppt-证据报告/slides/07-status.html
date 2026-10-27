@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>14 项指标状态</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：logo 挪到右端，导航右移让出左上角（演示外壳的「概览」按钮在那里） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+/* 「≥」在 Noto Sans SC 和 PingFang SC 下都会画成斜的「⩾」，单独换成 Helvetica Neue / Arial（平的「≥」） */
+.ge { font-family: "Helvetica Neue", Arial, "PingFang SC", sans-serif; }
+
+/* ── 02 数据页 ── */
+.band { height: 186px; padding-top: 34px; }
+.band .assert { font-size: var(--fs-assert); line-height: 1.2; }
+.band .sub { margin-top: 6px; font-size: var(--fs-body); color: var(--ink-2); }
+
+.chart { position: absolute; left: var(--gutter); top: 312px; width: 1240px; }
+.plot { display: block; overflow: visible; }
+.chart .source { margin-top: 14px; }
+
+.plot .lg { font-size: 22px; fill: var(--ink-2); }
+.plot .lg-n { font-size: 26px; font-weight: 700; fill: var(--ink); }
+.plot .lg-u { font-size: 22px; fill: var(--ink-2); }
+.plot .ax { font-size: 20px; fill: var(--muted); }
+.plot .ax-b { font-weight: 700; fill: var(--ink-2); }
+.plot .goal { font-size: 26px; font-weight: 700; fill: var(--ink); }
+.plot .weight { font-size: 20px; fill: var(--muted); }
+.plot .kr { font-size: 24px; fill: var(--ink-2); }
+.plot .val { font-size: 24px; font-weight: 700; fill: var(--ink);
+  paint-order: stroke; stroke: #fff; stroke-width: 10px; stroke-linejoin: round; }
+.plot .note { font-size: var(--fs-note); font-weight: 500; fill: var(--muted); }
+.plot .note.risk { fill: var(--red); font-weight: 700; }
+.plot .sep { stroke: var(--track); stroke-width: 1.5; }
+.plot .track { stroke: var(--track); stroke-width: 2; }
+.plot .track.dashed { stroke: #C5CDD7; stroke-dasharray: 3 7; stroke-linecap: round; }
+.plot .grid { fill: none; }
+.plot .g0 { stroke: #B8C2CE; stroke-width: 2; }
+.plot .g50 { stroke: var(--rule); stroke-width: 1.5; stroke-dasharray: 4 6; }
+.plot .g100 { stroke: var(--ink-2); stroke-width: 2; stroke-dasharray: 7 6; }
+.plot .dot { stroke: #fff; stroke-width: 3; }
+.plot .hollow { fill: #fff; stroke: var(--s-none); stroke-width: 3; }
+
+.side.read { left: 1400px; top: 322px; width: 414px; }
+.side.read h3 + p { margin-top: 10px; }
+.side.read p + p { margin-top: 14px; }
+.side.read p + h3 { margin-top: 44px; }
+
+/* 时间轴（ms，从字体就绪算起）：红线 0–600 → 标题 100–600 → 框架 250–650 → 网格 350–800
+   → 14 行逐行画出 450–1685（每行 520，错开 55）→ 来源行 1650–1950 */
+.plot .bar-fill { transform-box: fill-box; transform-origin: 0 50%; }
+.plot .pop { transform-box: fill-box; transform-origin: 50% 50%; }
+.plot .grid { transform-box: fill-box; transform-origin: 50% 0; }
+html.motion .band .assert { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .sub { animation: rise .5s var(--ease-out) .2s both; }
+html.motion .plot .frame { animation: fade .4s ease-out .25s both; }
+html.motion .plot .grid { animation: draw-y .45s var(--ease-out) .35s both; }
+html.motion .plot .pop { animation: pop .28s var(--ease-out) var(--d) both; }
+html.motion .plot .bar-fill { animation: draw-x .52s var(--ease-out) var(--d) both; }
+html.motion .plot .ride { animation: ride .52s var(--ease-out) var(--d) both; }
+html.motion .side.read { animation: fade .4s ease-out .3s both; }
+.chart .source { --src-delay: 1.65s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span>岗位定位</span><span>目标回顾</span><span class="on" aria-current="true">完成情况</span><span>IT 规划</span><span>团队管理</span><span>自我评价</span><span>未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">14 项指标，4 项达到基线，4 项还没开始</h1>
+  <p class="sub">5 个目标下 14 项考核指标的完成度，按基线档计；没完成的排在前面</p>
+</section>
+
+<figure class="chart">
+  <svg class="plot" width="1240" height="656" viewBox="0 0 1240 656" role="img"
+       aria-label="14 项指标完成度点图：专利 3 项 0%；星际圈成员未统计、内容 35%、建圈 70%；VOC 场景 1/3、优化 80%、核心能力 90%；CEO 提效优化 60%、场景落地达成；场景挖掘 3 项达成">
+    <g class="frame">
+    <text x="32" y="36" class="lg"><tspan>未开始</tspan><tspan dx="8" class="lg-n">4</tspan><tspan class="lg-u"> 项</tspan></text>
+    <text x="232" y="36" class="lg"><tspan>进行中</tspan><tspan dx="8" class="lg-n">6</tspan><tspan class="lg-u"> 项</tspan></text>
+    <text x="432" y="36" class="lg"><tspan>达到基线</tspan><tspan dx="8" class="lg-n">4</tspan><tspan class="lg-u"> 项</tspan></text>
+    <text x="640" y="36" class="ax" text-anchor="middle">0</text>
+    <text x="890" y="36" class="ax" text-anchor="middle">50%</text>
+    <text x="1140" y="36" class="ax" text-anchor="middle"><tspan class="ax-b">基线</tspan> 100%</text>
+    <line x1="0" x2="1240" y1="182" y2="182" class="sep"/>
+    <line x1="0" x2="1240" y1="308" y2="308" class="sep"/>
+    <line x1="0" x2="1240" y1="434" y2="434" class="sep"/>
+    <line x1="0" x2="1240" y1="523" y2="523" class="sep"/>
+    <text x="0" y="91" class="goal">专利创新 AI</text>
+    <text x="0" y="122" class="weight">权重 10%</text>
+    <text x="270" y="91" class="kr">核心能力搭建</text>
+    <line x1="640" x2="1140" y1="82" y2="82" class="track"/>
+    <text x="270" y="128" class="kr"><tspan class="ge">≥</tspan>3 个案例验证</text>
+    <line x1="640" x2="1140" y1="119" y2="119" class="track"/>
+    <text x="270" y="165" class="kr"><tspan class="ge">≥</tspan>1 轮优化</text>
+    <line x1="640" x2="1140" y1="156" y2="156" class="track"/>
+    <text x="0" y="217" class="goal">星际圈</text>
+    <text x="0" y="248" class="weight">权重 10%</text>
+    <text x="270" y="217" class="kr"><tspan class="ge">≥</tspan>30 名成员</text>
+    <line x1="640" x2="1140" y1="208" y2="208" class="track dashed"/>
+    <text x="270" y="254" class="kr"><tspan class="ge">≥</tspan>12 篇内容</text>
+    <line x1="640" x2="1140" y1="245" y2="245" class="track"/>
+    <text x="270" y="291" class="kr">建圈并运营</text>
+    <line x1="640" x2="1140" y1="282" y2="282" class="track"/>
+    <text x="0" y="343" class="goal">VOC 系统</text>
+    <text x="0" y="374" class="weight">权重 40%</text>
+    <text x="270" y="343" class="kr"><tspan class="ge">≥</tspan>3 个场景在用</text>
+    <line x1="640" x2="1140" y1="334" y2="334" class="track"/>
+    <text x="270" y="380" class="kr"><tspan class="ge">≥</tspan>1 轮优化</text>
+    <line x1="640" x2="1140" y1="371" y2="371" class="track"/>
+    <text x="270" y="417" class="kr">核心能力上线</text>
+    <line x1="640" x2="1140" y1="408" y2="408" class="track"/>
+    <text x="0" y="469" class="goal">CEO 提效工具</text>
+    <text x="0" y="500" class="weight">权重 20%</text>
+    <text x="270" y="469" class="kr"><tspan class="ge">≥</tspan>1 轮使用优化</text>
+    <line x1="640" x2="1140" y1="460" y2="460" class="track"/>
+    <text x="270" y="506" class="kr"><tspan class="ge">≥</tspan>1 个场景落地</text>
+    <line x1="640" x2="1140" y1="497" y2="497" class="track"/>
+    <text x="0" y="558" class="goal">AI 场景挖掘</text>
+    <text x="0" y="589" class="weight">权重 20%</text>
+    <text x="270" y="558" class="kr">识别 <tspan class="ge">≥</tspan>5 个场景</text>
+    <line x1="640" x2="1140" y1="549" y2="549" class="track"/>
+    <text x="270" y="595" class="kr"><tspan class="ge">≥</tspan>3 个可执行方案</text>
+    <line x1="640" x2="1140" y1="586" y2="586" class="track"/>
+    <text x="270" y="632" class="kr"><tspan class="ge">≥</tspan>1 个 PoC</text>
+    <line x1="640" x2="1140" y1="623" y2="623" class="track"/>
+    </g>
+    <circle cx="11" cy="28" r="11" class="pop legend-dot" style="--d:300ms;fill:var(--s-none)"/>
+    <circle cx="211" cy="28" r="11" class="pop legend-dot" style="--d:420ms;fill:var(--s-wip)"/>
+    <circle cx="411" cy="28" r="11" class="pop legend-dot" style="--d:540ms;fill:var(--s-done)"/>
+    <line x1="640" x2="640" y1="54" y2="648" class="grid g0"/>
+    <line x1="890" x2="890" y1="54" y2="648" class="grid g50"/>
+    <line x1="1140" x2="1140" y1="54" y2="648" class="grid g100"/>
+    <g class="ride" data-ride style="--dx:0px;--d:450ms"><circle cx="640" cy="82" r="11" class="pop dot" style="--d:450ms;fill:var(--s-none)"/><text x="662" y="91" class="val"><tspan data-count="0" data-fmt="{}%">0%</tspan></text></g>
+    <g class="ride" data-ride style="--dx:0px;--d:505ms"><circle cx="640" cy="119" r="11" class="pop dot" style="--d:505ms;fill:var(--s-none)"/><text x="662" y="128" class="val"><tspan data-count="0" data-fmt="{}%">0%</tspan></text></g>
+    <g class="ride" data-ride style="--dx:0px;--d:560ms"><circle cx="640" cy="156" r="11" class="pop dot" style="--d:560ms;fill:var(--s-none)"/><text x="662" y="165" class="val"><tspan data-count="0" data-fmt="{}%">0%</tspan></text></g>
+    <g class="ride" data-ride style="--dx:0px;--d:615ms"><circle cx="640" cy="208" r="10" class="pop hollow" style="--d:615ms"/><text x="662" y="217" class="val"><tspan>未统计</tspan></text></g>
+    <rect x="640" y="242" width="175" height="6" rx="3" class="bar-fill" style="--d:670ms;fill:var(--s-wip)"/>
+    <g class="ride" data-ride style="--dx:175px;--d:670ms"><circle cx="815" cy="245" r="11" class="pop dot" style="--d:670ms;fill:var(--s-wip)"/><text x="837" y="254" class="val"><tspan data-count="35" data-fmt="{}%">35%</tspan><tspan dx="12" class="note">10 月是 12+ 篇</tspan></text></g>
+    <rect x="640" y="279" width="350" height="6" rx="3" class="bar-fill" style="--d:725ms;fill:var(--s-wip)"/>
+    <g class="ride" data-ride style="--dx:350px;--d:725ms"><circle cx="990" cy="282" r="11" class="pop dot" style="--d:725ms;fill:var(--s-wip)"/><text x="1012" y="291" class="val"><tspan data-count="70" data-fmt="{}%">70%</tspan><tspan dx="12" class="note risk">有风险</tspan></text></g>
+    <rect x="640" y="331" width="166.7" height="6" rx="3" class="bar-fill" style="--d:780ms;fill:var(--s-wip)"/>
+    <g class="ride" data-ride style="--dx:166.7px;--d:780ms"><circle cx="806.7" cy="334" r="11" class="pop dot" style="--d:780ms;fill:var(--s-wip)"/><text x="828.7" y="343" class="val"><tspan data-count="1" data-fmt="{} / 3">1 / 3</tspan></text></g>
+    <rect x="640" y="368" width="400" height="6" rx="3" class="bar-fill" style="--d:835ms;fill:var(--s-wip)"/>
+    <g class="ride" data-ride style="--dx:400px;--d:835ms"><circle cx="1040" cy="371" r="11" class="pop dot" style="--d:835ms;fill:var(--s-wip)"/><text x="1062" y="380" class="val"><tspan data-count="80" data-fmt="{}%">80%</tspan></text></g>
+    <rect x="640" y="405" width="450" height="6" rx="3" class="bar-fill" style="--d:890ms;fill:var(--s-wip)"/>
+    <g class="ride" data-ride style="--dx:450px;--d:890ms"><circle cx="1090" cy="408" r="11" class="pop dot" style="--d:890ms;fill:var(--s-wip)"/><text x="1112" y="417" class="val"><tspan data-count="90" data-fmt="{}%">90%</tspan></text></g>
+    <rect x="640" y="457" width="300" height="6" rx="3" class="bar-fill" style="--d:945ms;fill:var(--s-wip)"/>
+    <g class="ride" data-ride style="--dx:300px;--d:945ms"><circle cx="940" cy="460" r="11" class="pop dot" style="--d:945ms;fill:var(--s-wip)"/><text x="962" y="469" class="val"><tspan data-count="60" data-fmt="{}%">60%</tspan></text></g>
+    <rect x="640" y="494" width="500" height="6" rx="3" class="bar-fill" style="--d:1000ms;fill:var(--s-done)"/>
+    <g class="ride" data-ride style="--dx:500px;--d:1000ms"><circle cx="1140" cy="497" r="11" class="pop dot" style="--d:1000ms;fill:var(--s-done)"/><text x="1162" y="506" class="val"><tspan>达成</tspan></text></g>
+    <rect x="640" y="546" width="500" height="6" rx="3" class="bar-fill" style="--d:1055ms;fill:var(--s-done)"/>
+    <g class="ride" data-ride style="--dx:500px;--d:1055ms"><circle cx="1140" cy="549" r="11" class="pop dot" style="--d:1055ms;fill:var(--s-done)"/><text x="1162" y="558" class="val"><tspan data-count="5" data-fmt="{} / 5">5 / 5</tspan></text></g>
+    <rect x="640" y="583" width="500" height="6" rx="3" class="bar-fill" style="--d:1110ms;fill:var(--s-done)"/>
+    <g class="ride" data-ride style="--dx:500px;--d:1110ms"><circle cx="1140" cy="586" r="11" class="pop dot" style="--d:1110ms;fill:var(--s-done)"/><text x="1162" y="595" class="val"><tspan data-count="3" data-fmt="{} / 3">3 / 3</tspan></text></g>
+    <rect x="640" y="620" width="500" height="6" rx="3" class="bar-fill" style="--d:1165ms;fill:var(--s-done)"/>
+    <g class="ride" data-ride style="--dx:500px;--d:1165ms"><circle cx="1140" cy="623" r="11" class="pop dot" style="--d:1165ms;fill:var(--s-done)"/><text x="1162" y="632" class="val"><tspan data-count="1" data-fmt="{} / 1">1 / 1</tspan></text></g>
+  </svg>
+  <figcaption class="source">来源：试用期目标跟踪表 9-30 版，10 月没回填</figcaption>
+</figure>
+
+<aside class="side read">
+  <h3>怎么读这张图</h3>
+  <p>每行一项指标，按 5 个目标分组。<br>点越靠右，完成度越高；<br>虚线是基线，到线就算达到。</p>
+  <p>空心圈是没有数据，不是 0。</p>
+  <h3>口径</h3>
+  <p>完成度取试用期目标跟踪表<br>9-30 版，10 月没回填。</p>
+  <p>每项分基线和超预期两档，<br>这里只按基线算。</p>
+  <p>「<span class="ge">≥</span>3 个场景在用」现在是 1 / 3，<br>按三分之一画。</p>
+</aside>
+</body>
+</html>

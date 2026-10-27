@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-total="1600" data-probe="三方分工是从需求不清周期长里磨出来的 CEO 列个产品方向又工作台先做件事会议看板上线之后没再打开先后发多份原型口腔品牌经营到问题要锐利清晰反而在卷交互方案讨论定义开发群拍板颜色和变定口径消息每日记录">
+<head>
+<meta charset="UTF-8">
+<title>19 分工从哪来</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+/* ───────── 左：9/28 → 10/14 的时间线，横向按天等分 ─────────
+   17 天铺满 1090px，一天 64.12px；第 i 天（9/28 为 0）左边 x = 96 + 64.12·i
+   持续几天的事画成条（长度＝天数），某一天的事画成圆；颜色＝哪类事 */
+.ev { position: absolute; height: 48px; }
+.bar { background: var(--red); transform-origin: 0 50%; }
+.bar.anim { animation: draw-x 520ms var(--ease-out); }
+.dot { width: 48px; border-radius: 50%; }
+.dot.ink { background: var(--ink); }
+.dot.blue { background: var(--blue); }
+.sq { width: 64px; height: 64px; background: var(--blue); }
+@keyframes pop { from { transform: scale(0); } }
+.dot.anim, .sq.anim { animation: pop 340ms var(--ease-out); }
+
+.lb { position: absolute; font-size: var(--fs-body-s); font-weight: 500; line-height: 48px; white-space: nowrap; }
+.lb b { font-weight: 900; margin-right: 12px; }
+.lb.r { text-align: right; }
+.lb.anim { animation: reveal-right 460ms var(--ease-out); }
+
+/* 底部日期轴 */
+.axis { position: absolute; left: 96px; top: 846px; width: 1090px; height: 3px; background: var(--ink); transform-origin: 0 50%; }
+.axis.anim { animation: draw-x 600ms var(--ease-out) 60ms; }
+.tick { position: absolute; top: 834px; width: 2px; height: 12px; background: var(--ink); }
+.tick.big { top: 828px; width: 3px; height: 18px; }
+.tl { position: absolute; top: 862px; font-size: var(--fs-label); font-weight: 700; transform: translateX(-50%); white-space: nowrap; }
+
+/* ───────── 右：竖排标题 + 信息块 ───────── */
+.vt { position: absolute; left: 1236px; top: 80px; writing-mode: vertical-rl;
+      font-family: var(--serif); font-weight: 900; font-size: var(--fs-title-2); line-height: 1.2; letter-spacing: .06em; }
+.vt .ln { display: block; }
+.vt .ln.anim { animation: reveal-down 560ms var(--ease-out); }
+.vt .ln:nth-child(2) { animation-delay: 140ms !important; }
+.vt .ln:nth-child(3) { animation-delay: 280ms !important; }
+
+.info { position: absolute; left: 1604px; top: 84px; width: 220px; }
+.info .tag { margin-bottom: 18px; }
+.info section.anim { animation: reveal-right 520ms var(--ease-out) 420ms; }
+.key { list-style: none; }
+.key li { display: flex; align-items: flex-start; font-size: var(--fs-body-s); font-weight: 500; line-height: 1.5; }
+.key li + li { margin-top: 14px; }
+.key em { flex: 0 0 28px; height: 28px; margin: 4px 12px 0 0; }
+
+.src { position: absolute; left: 1236px; bottom: 107px; width: 588px; font-size: var(--fs-body-s); font-weight: 500; color: var(--ink-2); letter-spacing: .04em; line-height: 1.5; }
+.src.anim { animation: reveal-right 500ms var(--ease-out) 1000ms; }
+.page-rule { left: 96px; right: 96px; top: 1008px; transform-origin: 0 50%; }
+.page-rule.anim { animation: draw-x 600ms var(--ease-out) 940ms; }
+</style>
+</head>
+<body>
+
+  <!-- 9/28–29：第 0–1 天，条长 2 天 -->
+  <div class="ev bar anim" style="left:96px; top:96px; width:128.24px; animation-delay:120ms"></div>
+  <div class="lb anim" style="left:244px; top:96px; animation-delay:240ms"><b>9/28–29</b>CEO 列 5 个产品方向，又列 CEO 工作台先做 5 件事</div>
+
+  <!-- 10/1：第 3 天 -->
+  <div class="ev dot ink anim" style="left:304.4px; top:212px; animation-delay:220ms"></div>
+  <div class="lb anim" style="left:372px; top:212px; animation-delay:320ms"><b>10/1</b>会议看板 v2.0 上线；CEO 9/30 之后没再打开</div>
+
+  <!-- 10/1–10/12：第 3–14 天，条长 12 天 -->
+  <div class="ev bar anim" style="left:288.36px; top:328px; width:769.44px; animation-delay:320ms; animation-duration:700ms"></div>
+  <div class="lb anim" style="left:288px; top:384px; animation-delay:520ms"><b>10/1–10/12</b>CEO 先后发来多份 HTML 原型；口腔品牌经营看板 10/10 到 V50</div>
+
+  <!-- 10/3：第 5 天 -->
+  <div class="ev dot blue anim" style="left:432.6px; top:500px; animation-delay:420ms"></div>
+  <div class="lb anim" style="left:500px; top:500px; animation-delay:520ms"><b>10/3</b>CEO：问题要先锐利清晰，「反而在卷交互」</div>
+
+  <!-- 10/10：第 12 天，文字放左边 -->
+  <div class="ev dot blue anim" style="left:889.4px; top:616px; animation-delay:620ms"></div>
+  <div class="lb r anim" style="right:1050px; top:616px; animation-delay:700ms"><b>10/10</b>看板方案讨论会：先定义问题再开发</div>
+
+  <!-- 10/14：第 16 天，方块，文字放左边 -->
+  <div class="ev sq anim" style="left:1121.9px; top:724px; animation-delay:760ms"></div>
+  <div class="lb r anim" style="right:818px; top:732px; animation-delay:840ms"><b>10/14</b>群里定三方分工；18:03 拍板 CEO 工作台方向</div>
+
+  <!-- 日期轴：刻度在每天中点 -->
+  <div class="axis anim"></div>
+  <i class="tick big" style="left:126.6px"></i><i class="tick" style="left:190.7px"></i><i class="tick" style="left:254.8px"></i>
+  <i class="tick big" style="left:318.9px"></i><i class="tick" style="left:383px"></i><i class="tick big" style="left:447.1px"></i>
+  <i class="tick" style="left:511.3px"></i><i class="tick" style="left:575.4px"></i><i class="tick" style="left:639.5px"></i>
+  <i class="tick" style="left:703.6px"></i><i class="tick" style="left:767.7px"></i><i class="tick" style="left:831.8px"></i>
+  <i class="tick big" style="left:895.9px"></i><i class="tick" style="left:960px"></i><i class="tick big" style="left:1024.2px"></i>
+  <i class="tick" style="left:1088.3px"></i><i class="tick big" style="left:1152.4px"></i>
+  <span class="tl" style="left:128px">9/28</span><span class="tl" style="left:320px">10/1</span><span class="tl" style="left:448px">10/3</span>
+  <span class="tl" style="left:897px">10/10</span><span class="tl" style="left:1025px">10/12</span><span class="tl" style="left:1150px">10/14</span>
+
+  <h1 class="vt" aria-label="三方分工，是从「需求不清、周期长」里磨出来的"><span class="ln anim">三方分工</span><span class="ln anim">是从需求不清</span><span class="ln anim">周期长里磨出来的</span></h1>
+
+  <div class="info">
+    <section class="anim">
+      <span class="tag">颜色</span>
+      <ul class="key">
+        <li><em style="background:var(--red)"></em>CEO 发来的<br>方向和原型</li>
+        <li><em style="background:var(--ink); border-radius:50%"></em>上线</li>
+        <li><em style="background:var(--blue); border-radius:50%"></em>先定问题，<br>再定分工</li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="src anim">口径：CEO 群消息、每日记录</div>
+  <div class="rule page-rule anim"></div>
+
+<script src="../shared/motion.js"></script>
+</body>
+</html>

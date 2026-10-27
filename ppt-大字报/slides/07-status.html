@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>14 项指标状态</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* 骨架：页眉细线 → 断言标题 → 14 栏网格（上按目标分组，下按状态分段）→ 口径行
+     14 项按「没完成的排前面」排好后，从左到右正好是 4 未开始 / 6 进行中 / 4 达到基线，所以一张网格同时讲两件事 */
+
+  .runhead {
+    position: absolute; left: var(--m); right: var(--m); top: 40px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: var(--fs-label); line-height: 1.2;
+  }
+  .runhead b { font-weight: 700; }
+  #rule-top { left: var(--m); width: var(--content-w); top: 78px; }
+
+  h1 {
+    position: absolute; left: var(--m); top: 108px;
+    font-family: var(--font-giant); font-size: var(--fs-head); font-weight: 900;
+    line-height: 1.06; letter-spacing: -0.015em;
+  }
+
+  /* 网格：14 栏，目标之间多一条 24px 的空槽 */
+  .chart {
+    position: absolute; left: var(--m); width: var(--content-w); top: 356px;
+    display: grid; column-gap: 8px;
+    grid-template-columns:
+      repeat(3, 1fr) 24px repeat(3, 1fr) 24px repeat(3, 1fr) 24px repeat(2, 1fr) 24px repeat(3, 1fr);
+    grid-template-rows: 84px 64px 64px 204px 80px 104px;
+  }
+
+  .goal { grid-row: 1; position: relative; padding-top: 14px; }
+  .goal .rule-h { left: 0; right: 0; top: 0; width: 100%; }
+  .goal h2 { font-size: var(--fs-lead); font-weight: 900; line-height: 1.15; white-space: nowrap; }
+  .goal p { font-size: var(--fs-label); color: var(--muted); line-height: 1.2; margin-top: 6px; }
+
+  .val {
+    grid-row: 2; align-self: end;
+    font-family: var(--font-giant); font-weight: 900; font-size: 56px; line-height: 1;
+    letter-spacing: -0.035em; white-space: nowrap;
+  }
+  .val small { font-size: 0.5em; letter-spacing: -0.01em; margin-left: 0.04em; }
+  .val .t { font-family: var(--font-text); font-size: 32px; letter-spacing: 0; }
+
+  .note { grid-row: 3; padding-top: 8px; font-size: var(--fs-label); line-height: 1.2; color: var(--muted); }
+
+  .cells { grid-row: 4; display: flex; flex-direction: column-reverse; gap: 4px; }
+  .cell { flex: 1; position: relative; background: var(--cell); }
+  .cell > i { position: absolute; inset: 0; background: var(--blue); transform-origin: 50% 100%; }
+  .cells.nodata .cell { background: transparent; box-shadow: inset 0 0 0 1.5px #C4C4C4; }
+
+  .lab { grid-row: 5; padding-top: 14px; font-size: var(--fs-body); line-height: 1.25; }
+
+  .band { grid-row: 6; position: relative; padding-top: 14px; white-space: nowrap; }
+  .band .rule-h { left: 0; top: 0; width: 100%; }
+  .band b { font-family: var(--font-giant); font-weight: 900; font-size: 72px; line-height: 1; letter-spacing: -0.035em; }
+  .band em { font-style: normal; font-size: var(--fs-lead); font-weight: 900; margin-left: 8px; }
+
+  .foot {
+    position: absolute; left: var(--m); right: var(--m); top: 1000px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: var(--fs-label); line-height: 1.2; color: var(--muted);
+  }
+  .legend { display: flex; align-items: center; gap: 24px; }
+  .legend span { display: inline-flex; align-items: center; gap: 8px; }
+  .sw { width: 20px; height: 20px; display: inline-block; }
+  .sw.on { background: var(--blue); }
+  .sw.off { background: var(--cell); }
+  .sw.na { box-shadow: inset 0 0 0 1.5px #C4C4C4; }
+</style>
+</head>
+<body>
+
+  <div class="runhead"><b>三、工作目标完成情况</b><span>转正述职　林灶辉</span></div>
+  <div class="rule-h strong" id="rule-top"></div>
+
+  <h1>
+    <span class="ln"><span>14 项指标，4 项达到基线，</span></span>
+    <span class="ln"><span>4 项还没开始</span></span>
+  </h1>
+
+  <section class="chart" id="chart" aria-label="14 项指标的完成度，按目标分组、没完成的排前面"></section>
+
+  <footer class="foot">
+    <span>口径：目标跟踪表 9-30 版，10 月没回填</span>
+    <span class="legend">
+      <span>一格 10%，按个数算的一格一个</span>
+      <span><i class="sw on"></i>做到的部分</span>
+      <span><i class="sw off"></i>没做到的部分</span>
+      <span><i class="sw na"></i>没有数据</span>
+    </span>
+  </footer>
+
+<script src="../shared/motion.js"></script>
+<script>
+  (function () {
+    /* 数据只取 content.md「14 项指标状态」（目标跟踪表 9-30 版）。
+       排序：目标按「没完成的排前面」；同一目标里也按完成度从低到高。
+       pct = 百分比类（10 格）；num/den = 按个数算（den 格）；nodata = 没有统计 */
+    var GOALS = [
+      { name: '专利创新 AI', weight: '权重 10%', krs: [
+        { label: '核心能力<br>搭建', pct: 0 },
+        { label: '3 个案例<br>验证', pct: 0 },
+        { label: '1 轮优化', pct: 0 } ] },
+      { name: '星际圈', weight: '权重 10%', krs: [
+        { label: '30 名<br>成员', text: '未统计', nodata: true },
+        { label: '12 篇<br>内容', pct: 35, note: '10 月是<br>12+ 篇' },
+        { label: '建圈并<br>运营', pct: 70, note: '有风险' } ] },
+      { name: 'VOC 系统', weight: '权重 40%', krs: [
+        { label: '3 个场景<br>在用', num: 1, den: 3 },
+        { label: '1 轮优化', pct: 80 },
+        { label: '核心能力<br>上线', pct: 90 } ] },
+      { name: 'CEO 提效工具', weight: '权重 20%', krs: [
+        { label: '1 轮使用<br>优化', pct: 60 },
+        { label: '1 个场景<br>落地', text: '达成', num: 1, den: 1 } ] },
+      { name: 'AI 场景挖掘', weight: '权重 20%', krs: [
+        { label: '识别<br>5 个场景', num: 5, den: 5 },
+        { label: '3 个方案', num: 3, den: 3 },
+        { label: '1 个 PoC', num: 1, den: 1 } ] }
+    ];
+    // 状态分段（网格列号含目标之间的空槽）：1–4 项未开始，5–10 项进行中，11–14 项达到基线
+    var BANDS = [
+      { n: 4, label: '项未开始', col: '1 / 6' },
+      { n: 6, label: '项进行中', col: '6 / 14' },
+      { n: 4, label: '项达到基线', col: '14 / 19' }
+    ];
+
+    var chart = document.getElementById('chart');
+    var colFills = [];   // 每栏要填色的格子，按从下往上
+    var colVals = [];    // 每栏要计数的数字
+    var track = 1;
+
+    function el(tag, cls, html, col) {
+      var e = document.createElement(tag);
+      if (cls) e.className = cls;
+      if (html != null) e.innerHTML = html;
+      if (col) e.style.gridColumn = col;
+      chart.appendChild(e);
+      return e;
+    }
+
+    GOALS.forEach(function (g, gi) {
+      var span = g.krs.length;
+      var head = el('div', 'goal', '<div class="rule-h strong"></div><h2>' + g.name + '</h2><p>' + g.weight + '</p>',
+        track + ' / ' + (track + span));
+      g.krs.forEach(function (k, ki) {
+        var col = String(track + ki);
+        var v;
+        if (k.text) v = '<span class="t">' + k.text + '</span>';
+        else if (k.pct != null) v = (k.pct ? '<span data-to="' + k.pct + '">' + k.pct + '</span>' : '0') + '<small>%</small>';
+        else v = '<span data-to="' + k.num + '">' + k.num + '</span><small>/' + k.den + '</small>';
+        var valEl = el('div', 'val', v, col);
+        el('div', 'note', k.note || '', col);
+
+        var n = k.pct != null || k.nodata ? 10 : k.den;
+        var filled = k.pct != null ? k.pct / 10 : (k.nodata ? 0 : k.num);
+        var box = el('div', 'cells' + (k.nodata ? ' nodata' : ''), null, col);
+        var fills = [];
+        for (var c = 0; c < n; c++) {
+          var cell = document.createElement('div');
+          cell.className = 'cell';
+          var part = Math.max(0, Math.min(1, filled - c));
+          if (part > 0) {
+            var f = document.createElement('i');
+            if (part < 1) f.style.transform = 'scaleY(' + part + ')';
+            f.dataset.part = part;
+            cell.appendChild(f);
+            fills.push(f);
+          }
+          box.appendChild(cell);     // column-reverse：先加的在最下面
+        }
+        el('p', 'lab', k.label, col);
+        colFills.push(fills);
+        colVals.push(valEl.querySelector('[data-to]'));
+      });
+      track += span + 1;             // 跳过目标之间的空槽
+    });
+
+    BANDS.forEach(function (b) {
+      el('div', 'band', '<div class="rule-h strong"></div><b data-to="' + b.n + '">' + b.n + '</b><em>' + b.label + '</em>', b.col);
+    });
+
+    /* —— 入场编排（约 1.7 秒）——
+       细线从左画到右 → 标题升起 → 目标线依次画出 → 格子从左到右、从下往上填色，每栏数字跟着计数 → 状态段落线和计数 */
+    var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+    var drawX = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }];
+    var rise = [{ transform: 'translateY(135%)' }, { transform: 'none' }];
+
+    P5.tween($('#rule-top'), drawX, { duration: 700 });
+    $$('h1 .ln > span').forEach(function (s, i) { P5.tween(s, rise, { delay: 80 + i * 90, duration: 750 }); });
+    $$('.goal .rule-h').forEach(function (r, i) { P5.tween(r, drawX, { delay: 260 + i * 70, duration: 600 }); });
+
+    var STEP = 15, CELL = 180, t = 460;
+    colFills.forEach(function (fills, i) {
+      var start = t;
+      fills.forEach(function (f) {
+        var part = parseFloat(f.dataset.part);
+        P5.tween(f, [{ transform: 'scaleY(0)' }, { transform: 'scaleY(' + part + ')' }],
+          { delay: t, duration: CELL, easing: 'cubic-bezier(.3,.7,.2,1)' });
+        t += STEP;
+      });
+      if (colVals[i]) P5.count(colVals[i], { delay: start, duration: Math.max(380, t - start + CELL) });
+    });
+
+    $$('.band .rule-h').forEach(function (r, i) { P5.tween(r, drawX, { delay: 900 + i * 90, duration: 600 }); });
+    $$('.band [data-to]').forEach(function (b, i) { P5.count(b, { delay: 960 + i * 90, duration: 560 }); });
+
+    P5.go();
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>自我评价</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：logo 挪到右端，导航右移让出左上角（演示外壳的「概览」按钮在那里；与 01–07 同一写法） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+/* ── 26 自我评价 ── */
+.band { height: 186px; padding-top: 34px; }
+.band .assert { font-size: var(--fs-assert); line-height: 1.2; white-space: nowrap; }
+.band .sub { margin-top: 6px; font-size: var(--fs-body); color: var(--ink-2); }
+
+.chart { position: absolute; left: var(--gutter); top: 326px; width: 1240px; }
+.chart .source { margin-top: 18px; }
+
+.quote { position: relative; padding-left: 52px; }
+.quote::before { content: "「"; position: absolute; left: -6px; top: -14px; font-family: var(--serif); font-weight: 700;
+  font-size: 72px; line-height: 1; color: var(--ink-2); }
+.quote p { font-family: var(--serif); font-weight: 700; font-size: 36px; line-height: 1.5; color: var(--ink); }
+.quote cite { display: block; margin-top: 8px; font-style: normal; font-size: var(--fs-body); color: var(--muted); }
+
+.card { width: 100%; margin-top: 24px; border-collapse: collapse; }
+.card th { text-align: left; font-size: var(--fs-label); font-weight: 700; color: var(--muted); letter-spacing: .04em;
+  padding: 0 0 10px; border-bottom: 2px solid var(--ink-2); }
+.card td { vertical-align: top; padding: 9px 0 9px; border-bottom: 1px solid var(--rule); }
+.card td.st { width: 200px; font-size: var(--fs-body); font-weight: 700; white-space: nowrap; }
+.card td.st i { display: inline-block; width: 18px; height: 18px; border-radius: 50%; margin-right: 12px; vertical-align: -1px; }
+.card tr.miss td.st { color: var(--red); }
+.card tr.miss td.st i { background: var(--red); }
+.card tr.ok td.st { color: var(--ink-2); }
+.card tr.ok td.st i { background: var(--s-done); }
+.card td.what { width: 450px; padding-right: 24px; font-size: 26px; font-weight: 700; line-height: 1.38; color: var(--ink); }
+.card td.ev { font-size: var(--fs-body); line-height: 1.42; color: var(--ink-2); }
+
+.side.read { left: 1400px; top: 322px; width: 414px; }
+.side.read h3 + p { margin-top: 10px; }
+.side.read p + p { margin-top: 14px; }
+.side.read p + h3 { margin-top: 44px; }
+
+/* 时间轴（ms）：红线 0–600 → 标题 100–700 → 引语 300–800 → 5 行逐行出现（没做到的先出）550–1250 → 侧栏 400–800 → 来源行 1300–1600 */
+html.motion .band .assert { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .sub { animation: rise .5s var(--ease-out) .2s both; }
+html.motion .quote { animation: rise .5s var(--ease-out) .3s both; }
+html.motion .card thead { animation: fade .3s ease-out .5s both; }
+html.motion .card tbody tr { animation: rise .4s var(--ease-out) var(--d) both; }
+html.motion .side.read { animation: fade .4s ease-out .4s both; }
+.chart .source { --src-delay: 1.3s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span>岗位定位</span><span>目标回顾</span><span>完成情况</span><span>IT 规划</span><span>团队管理</span><span class="on" aria-current="true">自我评价</span><span>未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">问题和指标想得不够，是我最大的短板</h1>
+  <p class="sub">自评：产品做出来了，但用起来还不够；没做到的排在前面</p>
+</section>
+
+<figure class="chart">
+  <blockquote class="quote">
+    <p>前提还是问题足够锐利清晰，其次指标选择清晰针对性强。<br>这两个是最困难，且一直没花时间想。反而在卷交互。」</p>
+    <cite>CEO 10/3 群消息原文（21:49），对我最准的提醒</cite>
+  </blockquote>
+  <table class="card">
+    <thead><tr><th>对照预期</th><th>内容</th><th>证据</th></tr></thead>
+    <tbody>
+      <tr class="miss" style="--d:550ms"><td class="st"><i></i>不符合预期</td><td class="what">CEO 用得少</td><td class="ev">会议看板 9/30 之后没再打开；<br>工作反馈系统 6 天打开 14 次，最后一次 10/22</td></tr>
+      <tr class="miss" style="--d:680ms"><td class="st"><i></i>不符合预期</td><td class="what">专利 AI 为 0，星际圈断档</td><td class="ev">目标跟踪表 9-30 版</td></tr>
+      <tr class="miss" style="--d:810ms"><td class="st"><i></i>不符合预期</td><td class="what">跟进不及时</td><td class="ev">奖金立项 10/13 到期未完成；<br>目标表 9-30 后、进度表 10-10 后都没更新</td></tr>
+      <tr class="ok" style="--d:940ms"><td class="st"><i></i>符合预期</td><td class="what">产品上线并持续迭代，<br>需求当天响应</td><td class="ev">工作反馈系统一个月 20 个版本；<br>10/22 当天交付</td></tr>
+      <tr class="ok" style="--d:1070ms"><td class="st"><i></i>符合预期</td><td class="what">场景挖掘 3 项基线全部达到</td><td class="ev">目标跟踪表 9-30 版</td></tr>
+    </tbody>
+  </table>
+  <figcaption class="source">来源：CEO 10/3 群消息；试用期目标跟踪表 9-30 版；飞书任务；两个应用的访问记录（截至 10-25）</figcaption>
+</figure>
+
+<aside class="side read">
+  <h3>改进</h3>
+  <p>每个产品先写清「解决谁的什么<br>问题、用什么数衡量」，再做界面。</p>
+  <p>每个产品定一个使用指标，<br>在双周汇报里报。</p>
+  <p>目标表和进度表跟双周汇报<br>一起回填。</p>
+  <h3>口径</h3>
+  <p>引语是 CEO 10/3 群消息原文；<br>奖金立项逾期取飞书任务。</p>
+</aside>
+</body>
+</html>

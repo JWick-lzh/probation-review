@@ -1,0 +1,79 @@
+/* P1 田中一光几何平面构成 · 共享 token
+   只放跨页共用的东西：色板、字号阶、画布锁定、入场动效的公共关键帧。 */
+
+/* 完成度扇形/圆形的填色角度要能动画，先把 --p 注册成数字 */
+@property --p { syntax: '<number>'; inherits: false; initial-value: 0; }
+
+:root {
+  /* 色板：米纸底 + 四色平涂 */
+  --paper:  #F2ECDF;
+  --red:    #D9381E;   /* 朱红：VOC、小标签 */
+  --yellow: #E3A82B;   /* 芥黄：场景挖掘 */
+  --blue:   #2E4A7D;   /* 钢蓝：专利 */
+  --ink:    #1B1B1B;   /* 墨黑：CEO 提效、星际圈、文字 */
+  --ink-2:  #57514A;   /* 次要文字，米纸上对比度 ≈ 7:1 */
+
+  --serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", serif;
+  --sans:  "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+
+  /* 字号阶（1920×1080 投屏）：标题 60–120，正文 ≥24，标签 ≥16 */
+  --fs-title:   120px;  /* 封面竖排大标题 */
+  --fs-title-2:  88px;  /* 数据页竖排断言标题 */
+  --fs-num-xl:   96px;
+  --fs-num-l:    64px;
+  --fs-num-m:    48px;
+  --fs-num-s:    40px;
+  --fs-lead:     32px;
+  --fs-body:     28px;
+  --fs-body-s:   24px;
+  --fs-label:    22px;  /* 小红标签、署名、口径 */
+  --fs-note:     18px;
+
+  --margin: 96px;
+
+  /* 缓动：形状落位用阻尼弹簧（ζ≈0.7，过冲约 4.6% 后回稳）；数据填色不过冲，用 ease-out */
+  --spring: linear(0, 0.0173, 0.0631, 0.1291, 0.2081, 0.2946, 0.3838, 0.4721, 0.5568, 0.636, 0.7084, 0.7731, 0.8299, 0.8788, 0.92, 0.954, 0.9814, 1.0029, 1.0192, 1.0309, 1.0388, 1.0435, 1.0457, 1.0458, 1.0444, 1.0418, 1.0385, 1.0347, 1.0306, 1.0265, 1.0225, 1.0187, 1.0152, 1.0121, 1.0092, 1.0068, 1.0047, 1.003, 1.0015, 1.0004, 1);
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: var(--paper); }
+body {
+  width: 1920px; height: 1080px; overflow: hidden; position: relative;
+  background: var(--paper); color: var(--ink);
+  font-family: var(--sans);
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+  font-kerning: normal;
+}
+
+/* 小红标签：信息分块用（中文，不加大写字距那套） */
+.tag { display: block; font-size: var(--fs-label); font-weight: 700; color: var(--red); letter-spacing: .2em; line-height: 1.2; }
+
+/* 底部细黑线 */
+.rule { position: absolute; height: 3px; background: var(--ink); }
+
+/* ───────── 入场动效 ─────────
+   规则：元素的基础样式就是终态；关键帧只写起点（fill-mode: backwards）。
+   页面加载后动画先暂停在第 0 帧，字体就绪后给 <html> 加 .play 才开始，
+   所以截图、打印、关掉动效时看到的都是终态。 */
+/* 各页用 animation 简写写时长和延迟；简写会重置这两项，所以这里加 !important 兜住 */
+.anim { animation-fill-mode: backwards !important; animation-play-state: paused !important; }
+.play .anim { animation-play-state: running !important; }
+
+/* 从画布上方落进网格：位移距离由各元素的 --drop 决定 */
+@keyframes drop { from { transform: translateY(var(--drop, -600px)); } }
+/* 竖排文字自上而下显出 */
+@keyframes reveal-down { from { clip-path: inset(-24px -24px 100% -24px); } }
+/* 横排文字自左向右显出，带一点位移 */
+@keyframes reveal-right { from { clip-path: inset(-24px 100% -24px -24px); transform: translateX(-24px); } }
+/* 方块从底部填色 */
+@keyframes grow-y { from { transform: scaleY(0); } }
+/* 扇形/圆形按角度扫出填色 */
+@keyframes sweep { from { --p: 0; } }
+/* 细线从左画到右 */
+@keyframes draw-x { from { transform: scaleX(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim { animation: none !important; }
+}

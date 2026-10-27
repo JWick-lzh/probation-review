@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>方法论</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* 骨架：巨数字「约 101 亿」→ 右侧三行小表（26 万 / 1,600 万 / 101 亿，量级差太大，只排字不画比例）
+     → 结论句「大头在重读」→ 底部：方法论 8 篇一排细线格 + 先推的两个 Skill */
+
+  .runhead {
+    position: absolute; left: var(--m); right: var(--m); top: 40px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: var(--fs-label); line-height: 1.2;
+  }
+  .runhead b { font-weight: 700; }
+  #rule-top { left: var(--m); width: var(--content-w); top: 78px; }
+
+  .giant {
+    position: absolute; left: 82px; top: 66px;
+    font-family: var(--font-giant); font-weight: 900; line-height: 1;
+    font-size: 480px; letter-spacing: -0.04em; white-space: nowrap; color: var(--ink);
+  }
+  .giant .pre { font-size: 0.14em; letter-spacing: 0; margin-right: -44px; }
+  .giant .unit { font-size: 0.26em; letter-spacing: 0; margin-left: -36px; }
+
+  .scale { position: absolute; left: 1264px; width: 560px; top: 150px; }
+  .scale small { display: block; font-size: var(--fs-label); color: var(--muted); line-height: 1.35; margin-bottom: 14px; }
+  .scale li { list-style: none; position: relative; height: 66px; display: flex; justify-content: space-between; align-items: center; }
+  .scale li .rule-h { left: 0; top: 0; width: 100%; }
+  .scale li span { font-size: var(--fs-body); }
+  .scale li b { font-family: var(--font-giant); font-size: 36px; font-weight: 900; letter-spacing: -0.02em; white-space: nowrap; }
+  .scale li b i { font-style: normal; font-family: var(--font-text); font-size: var(--fs-body); font-weight: 700; letter-spacing: 0; }
+  .scale li.big span { font-weight: 900; }
+  .scale li.big .rule-h { border-top: var(--strong); }
+  .scale .end { position: absolute; left: 0; width: 100%; bottom: 0; }
+
+  .claim {
+    position: absolute; left: var(--m); top: 548px;
+    font-family: var(--font-giant); font-size: var(--fs-claim); font-weight: 900;
+    line-height: 1.1; letter-spacing: -0.01em; white-space: nowrap;
+  }
+
+  #rule-m { left: var(--m); width: var(--content-w); top: 690px; }
+  .m-head { position: absolute; left: var(--m); width: var(--content-w); top: 706px; }
+  .m-head h3 { font-size: var(--fs-lead); font-weight: 900; line-height: 1.3; }
+  .m-head p { margin-top: 6px; font-size: var(--fs-body); line-height: 1.4; }
+
+  .arts {
+    position: absolute; left: var(--m); width: var(--content-w); top: 800px; height: 92px;
+    display: grid; grid-template-columns: repeat(8, 1fr);
+  }
+  .art { position: relative; padding: 4px 12px 0 16px; }
+  .art .rule-v { left: 0; top: 0; height: 92px; }
+  .art b { display: block; font-family: var(--font-giant); font-size: 32px; font-weight: 900; line-height: 1; }
+  .art span { display: block; margin-top: 10px; font-size: var(--fs-body); line-height: 1.25; white-space: nowrap; }
+  .art.five span { font-weight: 900; }
+
+  .skills { position: absolute; left: var(--m); top: 920px; font-size: var(--fs-body); line-height: 1.4; }
+  .skills b { font-weight: 900; }
+
+  .foot {
+    position: absolute; left: var(--m); right: var(--m); top: 1000px;
+    font-size: var(--fs-label); line-height: 1.2; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+  <div class="runhead"><b>三、团队管理</b><span>转正述职　林灶辉</span></div>
+  <div class="rule-h strong" id="rule-top"></div>
+
+  <div class="giant" role="img" aria-label="重读旧内容约 101 亿 token">
+    <span class="pre" aria-hidden="true">约</span><span class="odo-src" aria-hidden="true">101</span><span class="unit" aria-hidden="true">亿</span>
+  </div>
+
+  <section class="scale" aria-label="两个月的 token 用量，三项">
+    <small>token，按我自己两个月的记录<br>出自《5 怎么省 token》</small>
+    <ul>
+      <li><div class="rule-h"></div><span>自己打的字</span><b><i>约 </i>26<i> 万</i></b></li>
+      <li><div class="rule-h"></div><span>AI 写出来的</span><b><i>约 </i>1,600<i> 万</i></b></li>
+      <li class="big"><div class="rule-h"></div><span>重读旧内容</span><b><i>约 </i>101<i> 亿</i></b></li>
+    </ul>
+    <div class="rule-h end"></div>
+  </section>
+
+  <h2 class="claim"><span class="ln"><span>大头在重读旧内容，不在打字和生成。</span></span></h2>
+
+  <div class="rule-h strong" id="rule-m"></div>
+  <div class="m-head">
+    <h3>正在沉淀：《IT/AI 产品高效开发方法论》</h3>
+    <p>9/28 CEO 把它列为最重要的产品，10/21 开写；首页和 8 篇有了初稿，计划 10/30 补齐成文</p>
+  </div>
+
+  <section class="arts" aria-label="方法论 8 篇">
+    <div class="art"><i class="rule-v"></i><b>1</b><span>新人第一天</span></div>
+    <div class="art"><i class="rule-v"></i><b>2</b><span>关键的东西图解</span></div>
+    <div class="art"><i class="rule-v"></i><b>3</b><span>七步走</span></div>
+    <div class="art"><i class="rule-v"></i><b>4</b><span>工具和模型怎么选</span></div>
+    <div class="art five"><i class="rule-v"></i><b>5</b><span>怎么省 token</span></div>
+    <div class="art"><i class="rule-v"></i><b>6</b><span>好用的 Skill</span></div>
+    <div class="art"><i class="rule-v"></i><b>7</b><span>模板包</span></div>
+    <div class="art"><i class="rule-v"></i><b>8</b><span>怎么继续学</span></div>
+  </section>
+
+  <p class="skills">先推两个 Skill：<b>「新项目七步引导」「业务指标校准」</b></p>
+
+  <footer class="foot">口径：知识库《IT/AI 产品高效开发方法论》《5 怎么省 token》</footer>
+
+<script src="../shared/motion.js"></script>
+<script>
+  (function () {
+    var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+    function odoize(el) {
+      var txt = el.textContent; el.textContent = '';
+      for (var i = 0; i < txt.length; i++) {
+        var ch = txt.charAt(i);
+        if (/\d/.test(ch)) {
+          var d = +ch, n = d === 0 ? 10 : d;
+          var o = document.createElement('span'), s = document.createElement('span');
+          o.className = 'odo'; s.className = 'strip'; s.style.setProperty('--n', n);
+          for (var k = 0; k <= n; k++) { var b = document.createElement('b'); b.textContent = k % 10; s.appendChild(b); }
+          o.appendChild(s); el.appendChild(o);
+        } else el.appendChild(document.createTextNode(ch));
+      }
+      return Array.prototype.slice.call(el.querySelectorAll('.strip'));
+    }
+
+    var drawX = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }];
+    var drawY = [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }];
+    var rise = [{ transform: 'translateY(135%)' }, { transform: 'none' }];
+    var up = [{ transform: 'translateY(16px)', clipPath: 'inset(0 0 100% 0)' }, { transform: 'none', clipPath: 'inset(0 0 0 0)' }];
+
+    P5.tween($('#rule-top'), drawX, { duration: 700 });
+    odoize($('.giant .odo-src')).forEach(function (s, i) {
+      var n = parseFloat(s.style.getPropertyValue('--n'));
+      P5.tween(s, [{ transform: 'translateY(0)' }, { transform: 'translateY(' + (-n) + 'em)' }],
+        { delay: 60 + i * 110, duration: 1100 - i * 110, easing: 'cubic-bezier(.22,.8,.12,1)' });
+    });
+
+    // 三行小表：从小到大逐行出现，最后一行就是巨数字
+    P5.tween($('.scale small'), up, { delay: 260, duration: 500 });
+    $$('.scale li').forEach(function (li, i) {
+      P5.tween(li.querySelector('.rule-h'), drawX, { delay: 320 + i * 120, duration: 500 });
+      P5.tween(li.querySelector('span'), up, { delay: 360 + i * 120, duration: 480 });
+      P5.tween(li.querySelector('b'), up, { delay: 400 + i * 120, duration: 480 });
+    });
+    P5.tween($('.scale .end'), drawX, { delay: 680, duration: 500 });
+
+    P5.tween($('.claim .ln > span'), rise, { delay: 440, duration: 800 });
+
+    P5.tween($('#rule-m'), drawX, { delay: 620, duration: 800 });
+    $$('.m-head > *').forEach(function (e, i) { P5.tween(e, up, { delay: 700 + i * 70, duration: 520 }); });
+    $$('.art').forEach(function (a, i) {
+      P5.tween(a.querySelector('.rule-v'), drawY, { delay: 820 + i * 50, duration: 360 });
+      P5.tween(a.querySelector('b'), up, { delay: 840 + i * 50, duration: 420 });
+      P5.tween(a.querySelector('span'), up, { delay: 870 + i * 50, duration: 420 });
+    });
+    P5.tween($('.skills'), up, { delay: 1180, duration: 420 });
+
+    P5.go();
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-total="1600" data-probe="做出来的东西没人信也没人用每年花约万管着个系统家厂商看到的现象归到底多而散交付不被任员工声音接用不起同一件事买几遍做几钱在报销单里有主线收口按产品负责组织渗透率同规模飞书客户最低对照自己再公司付费额度却闲口径规划原文第章图重画月诊断">
+<head>
+<meta charset="UTF-8">
+<title>16 IT 现状</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+/* ───────── 左上：钱 ───────── */
+.money { position: absolute; left: 96px; top: 80px; }
+.money .tag { margin-bottom: 12px; }
+.money .n { font-size: var(--fs-num-xl); font-weight: 900; line-height: 1; letter-spacing: -.01em; }
+.money .n small { font-size: var(--fs-num-m); font-weight: 900; }
+.money .s { margin-top: 14px; font-size: var(--fs-body-s); font-weight: 500; line-height: 1.5; }
+.money.anim { animation: reveal-right 560ms var(--ease-out) 120ms; }
+
+/* ───────── 左：六个现象 × 三个根因（按 IT 规划图 5 的连线重画成格子） ─────────
+   列中心 x = 685 / 855 / 1025；根因图形 170，贴在一起
+   行 y = 380 起，行距 88，行高 64 */
+.root { position: absolute; top: 80px; width: 170px; height: 170px; }
+.root.r1 { left: 600px; background: var(--blue); border-radius: 50%; }
+.root.r2 { left: 770px; background: var(--red); }
+.root.r3 { left: 940px; background: var(--yellow); border-top-right-radius: 100%; }
+.root.anim { animation: drop 680ms var(--spring); --drop: -300px; }
+.root.r1 { animation-delay: 0ms !important; }
+.root.r2 { animation-delay: 90ms !important; }
+.root.r3 { animation-delay: 180ms !important; }
+.rlab { position: absolute; top: 266px; width: 170px; font-size: var(--fs-body-s); font-weight: 700; line-height: 1.35; text-align: center; }
+.rlab.l1 { left: 600px; } .rlab.l2 { left: 770px; } .rlab.l3 { left: 940px; }
+.rlab.anim { animation: reveal-down 480ms var(--ease-out) 380ms; }
+
+.rows-tag { position: absolute; left: 96px; top: 334px; }
+.row { position: absolute; left: 96px; width: 1014px; height: 64px; }
+.row .t { position: absolute; left: 0; top: 0; height: 64px; display: flex; align-items: center; font-size: 30px; font-weight: 700; letter-spacing: .02em; white-space: nowrap; }
+.row .hl { position: absolute; left: 470px; right: 0; top: 31px; height: 2px; background: rgba(27, 27, 27, .2); }
+.row.anim { animation: reveal-right 480ms var(--ease-out); }
+.row.y1 { top: 380px; } .row.y2 { top: 468px; } .row.y3 { top: 556px; }
+.row.y4 { top: 644px; } .row.y5 { top: 732px; } .row.y6 { top: 820px; }
+
+/* 格子里的记号：形状和颜色 = 归到哪个根因 */
+.mk { position: absolute; top: 4px; width: 56px; height: 56px; }
+.mk.m1 { left: 561px; background: var(--blue); border-radius: 50%; }   /* 685 - 96 - 28 */
+.mk.m2 { left: 731px; background: var(--red); }
+.mk.m3 { left: 901px; background: var(--yellow); border-top-right-radius: 100%; }
+@keyframes pop { from { transform: scale(0); } }
+.mk.anim { animation: pop 320ms var(--ease-out); }
+
+/* ───────── 右：竖排标题 + 信息块 ───────── */
+.vt { position: absolute; left: 1236px; top: 80px; writing-mode: vertical-rl;
+      font-family: var(--serif); font-weight: 900; font-size: var(--fs-title-2); line-height: 1.2; letter-spacing: .06em; }
+.vt .ln { display: block; }
+.vt .ln.anim { animation: reveal-down 560ms var(--ease-out); }
+.vt .ln:nth-child(2) { animation-delay: 140ms !important; }
+
+.info { position: absolute; left: 1492px; top: 84px; width: 332px; }
+.info section + section { margin-top: 52px; }
+.info .tag { margin-bottom: 18px; }
+.info section.anim { animation: reveal-right 520ms var(--ease-out); }
+.info section:nth-child(1) { animation-delay: 420ms !important; }
+.info section:nth-child(2) { animation-delay: 540ms !important; }
+.info .num { font-size: var(--fs-num-m); font-weight: 900; line-height: 1; margin-bottom: 12px; }
+.info .txt { font-size: var(--fs-body-s); font-weight: 500; line-height: 1.6; }
+
+.src { position: absolute; left: 1236px; bottom: 107px; width: 588px; font-size: var(--fs-body-s); font-weight: 500; color: var(--ink-2); letter-spacing: .04em; line-height: 1.5; }
+.src.anim { animation: reveal-right 500ms var(--ease-out) 1000ms; }
+.page-rule { left: 96px; right: 96px; top: 1008px; transform-origin: 0 50%; }
+.page-rule.anim { animation: draw-x 600ms var(--ease-out) 940ms; }
+</style>
+</head>
+<body>
+
+  <div class="money anim">
+    <span class="tag">IT 每年花</span>
+    <div class="n"><small>约</small> 2,700 <small>万</small></div>
+    <p class="s">管着 <span data-to="60" data-delay="200" data-dur="600">60</span> 个系统、约 <span data-to="30" data-delay="240" data-dur="600">30</span> 家厂商</p>
+  </div>
+
+  <!-- 三个根因 -->
+  <div class="root r1 anim" aria-hidden="true"></div>
+  <div class="root r2 anim" aria-hidden="true"></div>
+  <div class="root r3 anim" aria-hidden="true"></div>
+  <div class="rlab l1 anim">没有主线</div>
+  <div class="rlab l2 anim">没有收口</div>
+  <div class="rlab l3 anim">没有按产品<br>负责的组织</div>
+
+  <span class="tag rows-tag">看到的六个现象</span>
+
+  <!-- 六个现象：连线关系取自 IT 规划图 5
+       系统多而散 → 主线、收口；交付不被信任 → 主线、组织；员工的声音没人接 → 组织；
+       AI 用不起来 → 组织；同一件事买几遍、做几遍 → 收口；AI 工具的钱花在报销单里 → 收口 -->
+  <div class="row y1 anim" style="animation-delay:300ms"><span class="t">系统多而散</span><i class="hl"></i>
+    <i class="mk m1 anim" style="animation-delay:620ms"></i><i class="mk m2 anim" style="animation-delay:700ms"></i></div>
+  <div class="row y2 anim" style="animation-delay:360ms"><span class="t">交付不被信任</span><i class="hl"></i>
+    <i class="mk m1 anim" style="animation-delay:660ms"></i><i class="mk m3 anim" style="animation-delay:820ms"></i></div>
+  <div class="row y3 anim" style="animation-delay:420ms"><span class="t">员工的声音没人接</span><i class="hl"></i>
+    <i class="mk m3 anim" style="animation-delay:860ms"></i></div>
+  <div class="row y4 anim" style="animation-delay:480ms"><span class="t">AI 用不起来</span><i class="hl"></i>
+    <i class="mk m3 anim" style="animation-delay:900ms"></i></div>
+  <div class="row y5 anim" style="animation-delay:540ms"><span class="t">同一件事买几遍、做几遍</span><i class="hl"></i>
+    <i class="mk m2 anim" style="animation-delay:740ms"></i></div>
+  <div class="row y6 anim" style="animation-delay:600ms"><span class="t">AI 工具的钱花在报销单里</span><i class="hl"></i>
+    <i class="mk m2 anim" style="animation-delay:780ms"></i></div>
+
+  <h1 class="vt" aria-label="IT 每年花约 2,700 万，做出来的东西没人信、也没人用"><span class="ln anim">做出来的东西</span><span class="ln anim">没人信也没人用</span></h1>
+
+  <div class="info">
+    <section class="anim">
+      <span class="tag">AI 渗透率</span>
+      <p class="num">24.2%</p>
+      <p class="txt">同规模飞书客户里最低<br>对照客户 46%–73%</p>
+    </section>
+    <section class="anim">
+      <span class="tag">钱和额度</span>
+      <p class="txt">员工自己买 AI 工具再报销<br>公司付费的飞书 AI 额度却闲着</p>
+    </section>
+  </div>
+
+  <div class="src anim">口径：IT 规划原文第 1 章，左图按其图 5 重画；<br>对照客户 46%–73% 取飞书 9 月诊断</div>
+  <div class="rule page-rule anim"></div>
+
+<script src="../shared/motion.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-total="1600" data-probe="问题和指标想得不够是我最大的短板前提还足够锐利清晰其次选择针对性强这两个困难且一直没花时间反而在卷交互 CEO 群消息改进每产品先写解决谁什么用数衡量再做界面定使用双周汇报里报目标表进度跟起回填符合预期少专利为星际圈断档跟进不及奖金立项到期未完成后都更新上线并持续迭代需求当天交付场景挖掘基线全部达口径原文逾期取飞书任务">
+<head>
+<meta charset="UTF-8">
+<title>26 自我评价</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+/* ───────── 左：CEO 10/3 原话放在朱红方块里 ───────── */
+.quote { position: absolute; left: 96px; top: 80px; width: 720px; height: 720px; background: var(--red); color: var(--paper);
+         padding: 64px 60px; display: flex; flex-direction: column; justify-content: space-between; }
+.quote .q { font-family: var(--serif); font-weight: 900; font-size: 40px; line-height: 1.62; letter-spacing: .02em; text-indent: -.5em; }
+.quote .by { font-size: var(--fs-body-s); font-weight: 700; letter-spacing: .06em; }
+.quote.anim { animation: drop 720ms var(--spring) 0ms; --drop: -800px; }
+.quote .q.anim { animation: reveal-down 620ms var(--ease-out) 440ms; }
+.quote .by.anim { animation: reveal-right 460ms var(--ease-out) 760ms; }
+
+/* 方块右下：改进，三条 */
+.fix { position: absolute; left: 862px; top: 470px; width: 324px; }
+.fix .tag { margin-bottom: 18px; }
+.fix li { list-style: none; display: flex; align-items: flex-start; font-size: var(--fs-body-s); font-weight: 500; line-height: 1.5; }
+.fix li + li { margin-top: 14px; }
+.fix li em { flex: 0 0 18px; height: 18px; margin: 9px 12px 0 0; background: var(--red); border-radius: 50%; }
+.fix.anim { animation: reveal-right 520ms var(--ease-out) 820ms; }
+
+/* ───────── 右：竖排标题 + 自评（不符合在前） ───────── */
+.vt { position: absolute; left: 1236px; top: 80px; writing-mode: vertical-rl;
+      font-family: var(--serif); font-weight: 900; font-size: var(--fs-title-2); line-height: 1.2; letter-spacing: .06em; }
+.vt .ln { display: block; }
+.vt .ln.anim { animation: reveal-down 560ms var(--ease-out); }
+.vt .ln:nth-child(2) { animation-delay: 140ms !important; }
+.vt .ln:nth-child(3) { animation-delay: 280ms !important; }
+
+.info { position: absolute; left: 1604px; top: 84px; width: 220px; }
+.info section + section { margin-top: 44px; }
+.info .tag { margin-bottom: 16px; }
+.info section.anim { animation: reveal-right 520ms var(--ease-out); }
+.info section:nth-child(1) { animation-delay: 420ms !important; }
+.info section:nth-child(2) { animation-delay: 560ms !important; }
+.ev li { list-style: none; display: flex; align-items: flex-start; font-size: var(--fs-body-s); font-weight: 500; line-height: 1.5; }
+.ev li + li { margin-top: 12px; }
+.ev li em { flex: 0 0 22px; height: 22px; margin: 7px 12px 0 0; border: 3px solid var(--ink); }
+.ev.ok li em { background: var(--ink); }
+.ev .sub { display: block; color: var(--ink-2); }
+
+.src { position: absolute; left: 1236px; bottom: 107px; width: 588px; font-size: var(--fs-body-s); font-weight: 500; color: var(--ink-2); letter-spacing: .04em; line-height: 1.5; }
+.src.anim { animation: reveal-right 500ms var(--ease-out) 1000ms; }
+.page-rule { left: 96px; right: 96px; top: 1008px; transform-origin: 0 50%; }
+.page-rule.anim { animation: draw-x 600ms var(--ease-out) 940ms; }
+</style>
+</head>
+<body>
+
+  <figure class="quote anim">
+    <blockquote class="q anim">「前提还是问题足够锐利清晰，<br>其次指标选择清晰针对性强。<br>这两个是最困难，<br>且一直没花时间想。<br>反而在卷交互。」</blockquote>
+    <figcaption class="by anim">CEO 10/3 群消息</figcaption>
+  </figure>
+
+  <div class="fix anim">
+    <span class="tag">改进</span>
+    <ul>
+      <li><em></em><span>每个产品先写清<br>「解决谁的什么问题、<br>用什么数衡量」，再做界面</span></li>
+      <li><em></em><span>每个产品定一个使用指标，<br>在双周汇报里报</span></li>
+      <li><em></em><span>目标表和进度表<br>跟双周汇报一起回填</span></li>
+    </ul>
+  </div>
+
+  <h1 class="vt" aria-label="问题和指标想得不够，是我最大的短板"><span class="ln anim">问题和指标</span><span class="ln anim">想得不够</span><span class="ln anim">是我最大的短板</span></h1>
+
+  <div class="info">
+    <section class="anim">
+      <span class="tag">不符合预期</span>
+      <ul class="ev">
+        <li><em></em><span>CEO 用得少</span></li>
+        <li><em></em><span>专利 AI 为 0，<br>星际圈断档</span></li>
+        <li><em></em><span>跟进不及时<span class="sub">奖金立项 10/13<br>到期未完成；<br>目标表 9-30 后、<br>进度表 10-10 后<br>都没更新</span></span></li>
+      </ul>
+    </section>
+    <section class="anim">
+      <span class="tag">符合预期</span>
+      <ul class="ev ok">
+        <li><em></em><span>产品上线并<br>持续迭代，<br>需求当天交付</span></li>
+        <li><em></em><span>场景挖掘 3 项<br>基线全部达到</span></li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="src anim">口径：CEO 10/3 21:49 群消息原文；<br>奖金立项逾期取飞书任务</div>
+  <div class="rule page-rule anim"></div>
+
+<script src="../shared/motion.js"></script>
+</body>
+</html>

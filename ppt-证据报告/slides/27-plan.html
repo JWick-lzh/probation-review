@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>后三个月</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：logo 挪到右端，导航右移让出左上角（演示外壳的「概览」按钮在那里；与 01–07 同一写法） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+/* ── 27 后三个月 ── */
+.band { height: 186px; padding-top: 34px; }
+.band .assert { font-size: var(--fs-assert); line-height: 1.2; white-space: nowrap; }
+.band .sub { margin-top: 6px; font-size: var(--fs-body); color: var(--ink-2); }
+
+.chart { position: absolute; left: var(--gutter); top: 312px; width: 1240px; }
+.plot { display: block; overflow: visible; }
+.chart .source { margin-top: 18px; }
+
+.plot .ph { font-size: 28px; font-weight: 700; fill: var(--ink); }
+.plot .pd { font-size: 20px; fill: var(--muted); }
+.plot .ax { font-size: 20px; font-weight: 700; fill: var(--ink-2); }
+.plot .it { font-size: 24px; fill: var(--ink); }
+.plot .it-d { font-weight: 700; }
+.plot .is { font-size: 20px; fill: var(--muted); }
+.plot .is-b { font-size: 20px; font-weight: 700; fill: var(--ink-2); }
+.plot .lane { fill: var(--band); stroke: var(--ink-2); stroke-width: 2; stroke-dasharray: 8 6; }
+.plot .col { stroke: var(--rule); stroke-width: 1.5; stroke-dasharray: 4 6; }
+.plot .plan { fill: #fff; stroke: var(--s-done); stroke-width: 3; }
+.plot .itbox { fill: #fff; stroke: var(--s-done); stroke-width: 2; }
+.plot .ittx { font-size: 16px; font-weight: 700; fill: var(--ink); }
+
+.side.read { left: 1400px; top: 322px; width: 414px; }
+.side.read h3 + p { margin-top: 10px; }
+.side.read p + p { margin-top: 14px; }
+.side.read p + h3 { margin-top: 44px; }
+.side .verdict { font-weight: 700; color: var(--ink); }
+
+/* 时间轴（ms）：红线 0–600 → 标题 100–700 → 三段依次铺开 300–900 → 日期节点落点 600–1000
+   → 三列计划逐条出现 650–1350 → 来源行 1300–1600 */
+.plot .lane { transform-box: fill-box; transform-origin: 0 50%; }
+.plot .pop { transform-box: fill-box; transform-origin: 50% 50%; }
+.plot .itm { transform-box: fill-box; }
+html.motion .band .assert { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .sub { animation: rise .5s var(--ease-out) .2s both; }
+html.motion .plot .frame { animation: fade .4s ease-out var(--d, .25s) both; }
+html.motion .plot .lane { animation: draw-x .45s var(--ease-draw) var(--d) both; }
+html.motion .plot .pop { animation: pop .28s var(--ease-out) var(--d) both; }
+html.motion .plot .itm { animation: rise .35s var(--ease-out) var(--d) both; }
+html.motion .side.read { animation: fade .4s ease-out .3s both; }
+.chart .source { --src-delay: 1.3s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span>岗位定位</span><span>目标回顾</span><span>完成情况</span><span>IT 规划</span><span>团队管理</span><span>自我评价</span><span class="on" aria-current="true">未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">后三个月的计划：从做出来，转到用起来</h1>
+  <p class="sub">下面全部是计划，不是已完成</p>
+</section>
+
+<figure class="chart">
+  <!-- 10/21 到 1/21 共 92 天：x = 天数 × 13.478；空心 = 还没发生的计划 -->
+  <svg class="plot" width="1240" height="620" viewBox="0 0 1240 620" role="img"
+       aria-label="后三个月计划，全部是计划：M4 场景放量 10/21–11/20：10/30 CEO 工作台正式上线、10/30 方法论成文、11/8 VOC 正式上线、专利 GTM 启动。M5 超预期冲刺 11/21–12/20：VOC 场景补到 3 个、专利 3 个案例验证、星际圈成员到 30 人。M6 收官 12/21–1/21：各产品使用指标复盘、转正答辩">
+    <g class="frame" style="--d:250ms">
+      <text x="0" y="30" class="ph">M4 场景放量</text>
+      <text x="0" y="58" class="pd">10/21–11/20</text>
+      <text x="434" y="30" class="ph">M5 超预期冲刺</text>
+      <text x="434" y="58" class="pd">11/21–12/20</text>
+      <text x="838" y="30" class="ph">M6 收官</text>
+      <text x="838" y="58" class="pd">12/21–1/21</text>
+    </g>
+    <rect x="1" y="76" width="413.8" height="32" class="lane" style="--d:300ms"/>
+    <rect x="421.8" y="76" width="396.4" height="32" class="lane" style="--d:450ms"/>
+    <rect x="826.2" y="76" width="412.8" height="32" class="lane" style="--d:600ms"/>
+
+    <!-- 有日期的节点落在时间条上 -->
+    <circle cx="121.3" cy="92" r="9" class="pop plan" style="--d:620ms"/>
+    <circle cx="242.6" cy="92" r="9" class="pop plan" style="--d:700ms"/>
+    <g class="frame" style="--d:700ms">
+      <text x="121.3" y="136" class="ax" text-anchor="middle">10/30</text>
+      <text x="242.6" y="136" class="ax" text-anchor="middle">11/8</text>
+      <line x1="417.8" x2="417.8" y1="152" y2="612" class="col"/>
+      <line x1="822.2" x2="822.2" y1="152" y2="612" class="col"/>
+    </g>
+
+    <!-- M4 -->
+    <g class="itm" style="--d:650ms"><circle cx="9" cy="196" r="8" class="plan"/><text x="28" y="204" class="it"><tspan class="it-d">10/30</tspan> CEO 工作台正式上线</text></g>
+    <g class="itm" style="--d:720ms"><circle cx="9" cy="274" r="8" class="plan"/><text x="28" y="282" class="it"><tspan class="it-d">10/30</tspan> 方法论成文</text></g>
+    <g class="itm" style="--d:790ms"><circle cx="9" cy="352" r="8" class="plan"/><text x="28" y="360" class="it"><tspan class="it-d">11/8</tspan> VOC 正式上线</text></g>
+    <g class="itm" style="--d:860ms"><circle cx="9" cy="430" r="8" class="plan"/><text x="28" y="438" class="it">专利 GTM 启动</text><text x="28" y="468" class="is">11 月启动，日期待确认</text></g>
+
+    <!-- M5 -->
+    <g class="itm" style="--d:800ms"><circle cx="443" cy="196" r="8" class="plan"/><text x="462" y="204" class="it">VOC 场景补到 3 个</text><text x="462" y="234" class="is">日期待确认</text></g>
+    <g class="itm" style="--d:870ms"><circle cx="443" cy="274" r="8" class="plan"/><text x="462" y="282" class="it">专利 3 个案例验证</text><text x="462" y="312" class="is">12 月底验证，待确认</text></g>
+    <g class="itm" style="--d:940ms"><circle cx="443" cy="352" r="8" class="plan"/><text x="462" y="360" class="it">星际圈成员到 30 人</text><text x="462" y="390" class="is">每双周 1 篇；日期待确认</text></g>
+
+    <!-- M6 -->
+    <g class="itm" style="--d:950ms"><circle cx="847" cy="196" r="8" class="plan"/><text x="866" y="204" class="it">各产品使用指标复盘</text></g>
+    <g class="itm" style="--d:1020ms"><circle cx="847" cy="274" r="8" class="plan"/><text x="866" y="282" class="it">转正答辩</text></g>
+  </svg>
+  <figcaption class="source">来源：阶段取试用期目标跟踪表里程碑 M4–M6；上线日期取第 4 期双周汇报。全部是计划</figcaption>
+</figure>
+
+<aside class="side read">
+  <h3>怎么读这张图</h3>
+  <p>虚线条和空心标记都是计划，<br>还没发生。</p>
+  <h3>用起来怎么算</h3>
+  <p>CEO 工作台：目标使用者连续<br>两周每周至少打开 1 次。</p>
+  <p>每个模块定一个使用指标。</p>
+  <h3>口径</h3>
+  <p>「待确认」是日期还没定，<br>原文就是这样写的。</p>
+</aside>
+</body>
+</html>

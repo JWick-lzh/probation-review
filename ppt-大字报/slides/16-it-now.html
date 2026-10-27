@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>IT 现状</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* 骨架：页眉 → 左上巨数字「约 2,700 万」（花费，不是成绩，用墨色）→ 左下结论句 + 三条现象 + 三个「没有」；右下 IT 规划图 5 原图当证据 */
+
+  .runhead {
+    position: absolute; left: var(--m); right: var(--m); top: 40px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: var(--fs-label); line-height: 1.2;
+  }
+  .runhead b { font-weight: 700; }
+  #rule-top { left: var(--m); width: var(--content-w); top: 78px; }
+
+  .giant {
+    position: absolute; left: 80px; top: 74px;
+    font-family: var(--font-giant); font-weight: 900; line-height: 1;
+    font-size: 360px; letter-spacing: -0.04em; white-space: nowrap; color: var(--ink);
+  }
+  .giant .pre { font-size: 0.17em; letter-spacing: 0; margin-right: 0.08em; }
+  .giant .unit { font-size: 0.2em; letter-spacing: 0; margin-left: 0.1em; }
+
+  .note {
+    position: absolute; right: var(--m); top: 160px; text-align: right;
+    font-size: var(--fs-lead); font-weight: 700; line-height: 1.45;
+  }
+  .note small { display: block; margin-top: 10px; font-size: var(--fs-label); font-weight: 400; color: var(--muted); }
+
+  .claim {
+    position: absolute; left: var(--m); top: 492px;
+    font-family: var(--font-giant); font-size: var(--fs-title); font-weight: 900;
+    line-height: 1.1; letter-spacing: -0.01em; white-space: nowrap;
+  }
+
+  .facts { position: absolute; left: var(--m); width: 936px; top: 594px; }
+  .facts li { list-style: none; position: relative; height: 56px; display: flex; align-items: center; font-size: var(--fs-body); line-height: 1.2; }
+  .facts li .rule-h { left: 0; top: 0; width: 100%; }
+  .facts li b { font-weight: 900; }
+
+  .roots { position: absolute; left: var(--m); width: 936px; top: 796px; }
+  .roots > .rule-h { left: 0; top: 0; width: 100%; }
+  .roots p { padding-top: 14px; font-size: var(--fs-label); font-weight: 700; color: var(--muted); line-height: 1.2; }
+  .roots ul { display: grid; grid-template-columns: 1fr 1fr 1.5fr; column-gap: 24px; margin-top: 14px; }
+  .roots li { list-style: none; font-family: var(--font-giant); font-size: 36px; font-weight: 900; line-height: 1.2; letter-spacing: -0.01em; }
+
+  .fig { position: absolute; left: 1104px; top: 496px; width: 720px; }
+  .fig .frame { width: 720px; height: 432px; box-shadow: inset 0 0 0 1px var(--rule); background: #FAFAFA; }
+  .fig img { width: 720px; height: 432px; object-fit: contain; display: block; }
+  .fig figcaption { margin-top: 12px; font-size: var(--fs-label); color: var(--muted); line-height: 1.2; }
+
+  .foot {
+    position: absolute; left: var(--m); right: var(--m); top: 1000px;
+    font-size: var(--fs-label); line-height: 1.2; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+  <div class="runhead"><b>三、指标以外：IT 规划</b><span>转正述职　林灶辉</span></div>
+  <div class="rule-h strong" id="rule-top"></div>
+
+  <div class="giant" role="img" aria-label="IT 每年花约 2,700 万">
+    <span class="pre" aria-hidden="true">约</span><span class="odo-src" aria-hidden="true">2,700</span><span class="unit" aria-hidden="true">万</span>
+  </div>
+
+  <aside class="note">
+    <span class="ln"><span>IT 每年的花费</span></span>
+    <span class="ln"><small>IT 规划原文第 1 章</small></span>
+  </aside>
+
+  <h2 class="claim"><span class="ln"><span>做出来的东西没人信、也没人用。</span></span></h2>
+
+  <ul class="facts">
+    <li><div class="rule-h"></div><span class="ln"><span>管着 <b>60</b> 个系统、约 <b>30</b> 家厂商</span></span></li>
+    <li><div class="rule-h"></div><span class="ln"><span>AI 渗透率 <b>24.2%</b>，同规模飞书客户里最低（对照客户 46%–73%）</span></span></li>
+    <li><div class="rule-h"></div><span class="ln"><span>员工自己买 AI 工具再报销，公司已经付费的飞书 AI 额度却闲着</span></span></li>
+  </ul>
+
+  <section class="roots">
+    <div class="rule-h strong"></div>
+    <p>归到底是三个「没有」</p>
+    <ul>
+      <li><span class="ln"><span>没有主线</span></span></li>
+      <li><span class="ln"><span>没有收口</span></span></li>
+      <li><span class="ln"><span>没有按产品负责的组织</span></span></li>
+    </ul>
+  </section>
+
+  <figure class="fig">
+    <div class="frame"><img src="../assets/it-roots.png" alt="IT 规划图 5：六个现象，三个根因"></div>
+    <figcaption>IT 规划图 5：六个现象，三个根因</figcaption>
+  </figure>
+
+  <footer class="foot">口径：IT 规划原文第 1 章；对照客户 46%–73% 取飞书 9 月诊断</footer>
+
+<script src="../shared/motion.js"></script>
+<script>
+  (function () {
+    var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+    function odoize(el) {
+      var txt = el.textContent; el.textContent = '';
+      for (var i = 0; i < txt.length; i++) {
+        var ch = txt.charAt(i);
+        if (/\d/.test(ch)) {
+          var d = +ch, n = d === 0 ? 10 : d;
+          var o = document.createElement('span'), s = document.createElement('span');
+          o.className = 'odo'; s.className = 'strip'; s.style.setProperty('--n', n);
+          for (var k = 0; k <= n; k++) { var b = document.createElement('b'); b.textContent = k % 10; s.appendChild(b); }
+          o.appendChild(s); el.appendChild(o);
+        } else el.appendChild(document.createTextNode(ch));
+      }
+      return Array.prototype.slice.call(el.querySelectorAll('.strip'));
+    }
+
+    var drawX = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }];
+    var rise = [{ transform: 'translateY(135%)' }, { transform: 'none' }];
+
+    P5.tween($('#rule-top'), drawX, { duration: 700 });
+
+    odoize($('.giant .odo-src')).forEach(function (s, i) {
+      var n = parseFloat(s.style.getPropertyValue('--n'));
+      P5.tween(s, [{ transform: 'translateY(0)' }, { transform: 'translateY(' + (-n) + 'em)' }],
+        { delay: 60 + i * 90, duration: 1100 - i * 90, easing: 'cubic-bezier(.22,.8,.12,1)' });
+    });
+
+    $$('.note .ln > *').forEach(function (s, i) { P5.tween(s, rise, { delay: 300 + i * 70, duration: 700 }); });
+    P5.tween($('.claim .ln > span'), rise, { delay: 380, duration: 800 });
+
+    $$('.facts .rule-h').forEach(function (r, i) { P5.tween(r, drawX, { delay: 480 + i * 80, duration: 600 }); });
+    $$('.facts .ln > span').forEach(function (s, i) { P5.tween(s, rise, { delay: 520 + i * 80, duration: 700 }); });
+
+    // 原图从左往右揭开
+    P5.tween($('.fig .frame'), [{ clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0 0 0)' }], { delay: 420, duration: 900 });
+
+    P5.tween($('.roots > .rule-h'), drawX, { delay: 760, duration: 700 });
+    $$('.roots li .ln > span').forEach(function (s, i) { P5.tween(s, rise, { delay: 860 + i * 100, duration: 700 }); });
+
+    P5.go();
+  })();
+</script>
+</body>
+</html>

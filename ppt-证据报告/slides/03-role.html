@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>岗位定位</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：logo 挪到右端，导航右移让出左上角（演示外壳的「概览」按钮在那里） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+
+/* ── 03 岗位定位 ── */
+.band { height: 186px; padding-top: 34px; }
+.band .assert { font-size: var(--fs-assert); line-height: 1.2; }
+.band .sub { margin-top: 6px; font-size: var(--fs-body); color: var(--ink-2); }
+
+.fig { position: absolute; left: var(--gutter); top: 318px; width: 1240px; }
+.tree { position: relative; width: 1240px; height: 604px; }
+.tree svg { position: absolute; left: 0; top: 0; overflow: visible; }
+.tree .ln { stroke: #8C9AAB; stroke-width: 2; fill: none; }
+.tree .lbl { font-size: 22px; fill: var(--muted); }
+
+.node { position: absolute; display: flex; align-items: baseline; gap: 18px; padding: 0 26px; }
+.node b { font-size: 30px; font-weight: 700; line-height: 1.2; }
+.node span { font-size: 22px; }
+.node.ceo { left: 0; top: 0; height: 84px; align-items: center; border: 2px solid var(--rule); background: #fff; }
+.node.ceo span { color: var(--muted); }
+.node.me { left: 0; top: 152px; height: 96px; align-items: center; background: var(--navy); color: #fff; }
+.node.me span { color: var(--on-navy); }
+
+.col { position: absolute; top: 340px; width: 380px; border-top: 4px solid var(--ink-2); padding-top: 16px; }
+.col .who { font-size: var(--fs-label); font-weight: 700; color: var(--muted); letter-spacing: .08em; }
+.col h3 { margin-top: 4px; font-size: 28px; font-weight: 700; line-height: 1.35; color: var(--ink); }
+.col ul { list-style: none; margin-top: 12px; }
+.col li { font-size: var(--fs-body); line-height: 1.55; color: var(--ink-2); }
+.col.c1 { left: 0; } .col.c2 { left: 430px; } .col.c3 { left: 860px; }
+
+.fig .source { margin-top: 14px; }
+
+.side.why { left: 1400px; top: 328px; width: 414px; }
+.side.why h3 + p { margin-top: 10px; }
+.side.why p + h3 { margin-top: 44px; }
+
+/* 时间轴（ms）：红线 0–600 → 标题 100–700 → 侧栏 300–700 → CEO 300–700 → 直属线 450–750
+   → 本人 550–950 → 分叉线 700–1050 → 三类事依次 850–1350 → 来源行 1300–1600 */
+.tree .vy { transform-box: fill-box; transform-origin: 50% 0; }
+.tree .hx { transform-box: fill-box; transform-origin: 0 50%; }
+html.motion .band .assert { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .sub { animation: rise .5s var(--ease-out) .2s both; }
+html.motion .side.why { animation: fade .4s ease-out .3s both; }
+html.motion .node.ceo { animation: rise .4s var(--ease-out) .3s both; }
+html.motion .tree .vy { animation: draw-y .3s var(--ease-draw) var(--d) both; }
+html.motion .tree .hx { animation: draw-x .35s var(--ease-draw) var(--d) both; }
+html.motion .tree .lbl { animation: fade .3s ease-out .55s both; }
+html.motion .node.me { animation: rise .4s var(--ease-out) .55s both; }
+html.motion .col { animation: rise .45s var(--ease-out) var(--d) both; }
+.fig .source { --src-delay: 1.3s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span class="on" aria-current="true">岗位定位</span><span>目标回顾</span><span>完成情况</span><span>IT 规划</span><span>团队管理</span><span>自我评价</span><span>未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">直属 CEO，做三类事，不占研发排期</h1>
+  <p class="sub">从定义问题到上线迭代，都自己做</p>
+</section>
+
+<figure class="fig">
+  <div class="tree" role="img" aria-label="汇报关系图：林灶辉，做三类事：给 CEO 做提效工具，给业务做 AI 产品，给公司做 AI 的底座和方法">
+    <svg width="1240" height="604" viewBox="0 0 1240 604" aria-hidden="true">
+      <line x1="44" x2="44" y1="84" y2="152" class="ln vy" style="--d:450ms"/>
+      <text x="62" y="126" class="lbl">直属</text>
+      <line x1="44" x2="44" y1="248" y2="300" class="ln vy" style="--d:700ms"/>
+      <line x1="44" x2="904" y1="300" y2="300" class="ln hx" style="--d:780ms"/>
+      <line x1="44" x2="44" y1="300" y2="340" class="ln vy" style="--d:850ms"/>
+      <line x1="474" x2="474" y1="300" y2="340" class="ln vy" style="--d:950ms"/>
+      <line x1="904" x2="904" y1="300" y2="340" class="ln vy" style="--d:1050ms"/>
+    </svg>
+    <div class="node ceo"><b>CEO</b></div>
+    <div class="node me"><b>林灶辉</b><span>AI 创新助理　战略经营部</span></div>
+    <div class="col c1" style="--d:850ms">
+      <p class="who">CEO</p>
+      <h3>给 CEO 做提效工具</h3>
+      <ul><li>会议</li><li>汇报</li><li>时间</li></ul>
+    </div>
+    <div class="col c2" style="--d:950ms">
+      <p class="who">业务</p>
+      <h3>给业务做 AI 产品</h3>
+      <ul><li>VOC 评论分析</li></ul>
+    </div>
+    <div class="col c3" style="--d:1050ms">
+      <p class="who">公司</p>
+      <h3>给公司做 AI 的底座和方法</h3>
+      <ul><li>IT 规划</li><li>指标方法论</li><li>组件库</li><li>星际圈</li></ul>
+    </div>
+  </div>
+  <figcaption class="source">来源：试用期目标跟踪表（7/30 定稿）；职位 AI 创新助理</figcaption>
+</figure>
+
+<aside class="side why">
+  <h3>岗位从哪来</h3>
+  <p>入职当周 CEO 提了 4 项需求，<br>7/30 定成 5 个目标、14 项指标。</p>
+  <h3>公司要求</h3>
+  <p>试用期 5 个目标、14 项指标，<br>每项分基线和超预期两档。</p>
+</aside>
+</body>
+</html>

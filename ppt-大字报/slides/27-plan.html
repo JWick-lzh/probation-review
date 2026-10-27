@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>后三个月</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* 全部是计划：一条时间轴，述职这天（10/27）之前是实线，之后全是虚线；三栏 M4/M5/M6；
+     下面一道虚线泳道是「用起来怎么算」，格子用虚线框（也是计划）。整页不用蓝色（蓝色只给做到的部分） */
+
+  .runhead {
+    position: absolute; left: var(--m); right: var(--m); top: 40px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: var(--fs-label); line-height: 1.2;
+  }
+  .runhead b { font-weight: 700; }
+  #rule-top { left: var(--m); width: var(--content-w); top: 78px; }
+
+  h1 {
+    position: absolute; left: var(--m); top: 108px;
+    font-family: var(--font-giant); font-size: var(--fs-head); font-weight: 900;
+    line-height: 1.06; letter-spacing: -0.015em; white-space: nowrap;
+  }
+  .tag {
+    position: absolute; right: var(--m); top: 132px;
+    padding: 10px 20px; border: 2px dashed var(--ink);
+    font-size: var(--fs-lead); font-weight: 900; line-height: 1.2; white-space: nowrap;
+  }
+
+  .phases {
+    position: absolute; left: var(--m); width: var(--content-w); top: 262px;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+  }
+  .ph { position: relative; padding: 0 32px; }
+  .ph:first-child { padding-left: 0; }
+  .ph h2 { font-family: var(--font-giant); font-size: 44px; font-weight: 900; line-height: 1.1; letter-spacing: -0.01em; white-space: nowrap; }
+  .ph h2 span { font-family: var(--font-text); font-size: var(--fs-body); font-weight: 400; color: var(--muted); letter-spacing: 0; margin-left: 14px; }
+
+  .sep { position: absolute; top: 262px; height: 660px; width: 0; border-left: var(--hair); transform-origin: 50% 0; }
+  #sep1 { left: 672px; } #sep2 { left: 1248px; }
+
+  /* 轴：述职日 10/27 在 M4（10/21–11/20）里第 6 天，6/31×576 ≈ 111px */
+  #axis-done { position: absolute; left: var(--m); top: 340px; width: 111px; border-top: var(--strong); transform-origin: 0 50%; }
+  #axis-plan { position: absolute; left: 207px; top: 340px; width: 1617px; border-top: 2px dashed var(--ink); }
+  .today { position: absolute; left: 200px; top: 333px; width: 14px; height: 14px; background: var(--ink); }
+  .today-l { position: absolute; left: 222px; top: 354px; font-size: var(--fs-label); font-weight: 700; line-height: 1.2; white-space: nowrap; }
+
+  .lists {
+    position: absolute; left: var(--m); width: var(--content-w); top: 420px;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+  }
+  .lists ul { padding: 0 32px; }
+  .lists ul:first-child { padding-left: 0; }
+  .lists li { list-style: none; display: grid; grid-template-columns: 88px 1fr; margin-bottom: 24px; font-size: var(--fs-body); line-height: 1.4; }
+  .lists li b { font-weight: 900; white-space: nowrap; }
+  .lists li em { font-style: normal; color: var(--muted); white-space: nowrap; }
+  .lists li span { white-space: nowrap; }
+  .lists ul.nodate li { grid-template-columns: 1fr; }
+
+  #lane-rule { position: absolute; left: var(--m); width: var(--content-w); top: 712px; border-top: 2px dashed var(--ink); }
+  .lane-h { position: absolute; left: var(--m); width: 544px; top: 736px; }
+  .lane-h b { display: block; font-size: var(--fs-lead); font-weight: 900; line-height: 1.3; }
+  .lane-h span { display: block; margin-top: 8px; font-size: var(--fs-body); line-height: 1.45; }
+  .lane-h small { display: block; margin-top: 6px; font-size: var(--fs-label); color: var(--muted); line-height: 1.3; }
+  .it {
+    position: absolute; top: 764px; width: 544px; padding: 22px 22px;
+    border: 2px dashed var(--ink);
+  }
+  #it5 { left: 704px; } #it6 { left: 1280px; }
+  .it p { display: grid; grid-template-columns: 1fr; font-size: var(--fs-body); line-height: 1.5; white-space: nowrap; }
+  .it p b { font-weight: 900; }
+  .it small { position: absolute; right: 16px; top: -14px; padding: 0 8px; background: var(--paper); font-size: var(--fs-label); font-weight: 700; line-height: 1.3; }
+
+  .foot {
+    position: absolute; left: var(--m); right: var(--m); top: 1000px;
+    font-size: var(--fs-label); line-height: 1.2; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+  <div class="runhead"><b>五、未来计划</b><span>转正述职　林灶辉</span></div>
+  <div class="rule-h strong" id="rule-top"></div>
+
+  <h1><span class="ln"><span>后三个月：从做出来，到用起来</span></span></h1>
+  <p class="tag">全部是计划</p>
+
+  <section class="phases">
+    <div class="ph"><h2>M4 场景放量<span>10/21–11/20</span></h2></div>
+    <div class="ph"><h2>M5 超预期冲刺<span>11/21–12/20</span></h2></div>
+    <div class="ph"><h2>M6 收官<span>12/21–1/21</span></h2></div>
+  </section>
+  <div class="sep" id="sep1"></div><div class="sep" id="sep2"></div>
+
+  <div id="axis-done"></div>
+  <div id="axis-plan"></div>
+  <i class="today"></i>
+  <p class="today-l">10/27 述职，往后都是计划</p>
+
+  <section class="lists" aria-label="后三个月计划，按阶段">
+    <ul>
+      <li><b>10/30</b><span>CEO 工作台正式上线</span></li>
+      <li><b>10/30</b><span>方法论成文</span></li>
+      <li><b>11/8</b><span>VOC 正式上线</span></li>
+      <li><em>待确认</em><span>专利 GTM 启动（11 月）</span></li>
+    </ul>
+    <ul>
+      <li><em>待确认</em><span>VOC 场景补到 3 个</span></li>
+      <li><em>待确认</em><span>专利 3 个案例验证</span></li>
+      <li><em>待确认</em><span>星际圈每双周 1 篇、成员到 30 人</span></li>
+    </ul>
+    <ul class="nodate">
+      <li><span>各产品使用指标复盘</span></li>
+      <li><span>转正答辩</span></li>
+    </ul>
+  </section>
+
+  <div id="lane-rule"></div>
+  <div class="lane-h"><b>用起来怎么算</b><span>从「做出来」转到「用起来」，<br>每个产品都要有一个能看的数</span></div>
+  <div class="it" id="it5">
+    <small>CEO 工作台</small>
+    <p><span>目标使用者连续两周，<br>每周至少打开 1 次</span></p>
+  </div>
+  <div class="it" id="it6">
+    <small>每个产品</small>
+    <p><span>定一个使用指标，<br>在双周汇报里报</span></p>
+  </div>
+
+  <footer class="foot">口径：阶段划分取目标跟踪表里程碑；上线日期取第 4 期双周汇报；「用起来怎么算」取述职报告第四、五章；全部是计划，不是已完成</footer>
+
+<script src="../shared/motion.js"></script>
+<script>
+  (function () {
+    var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+    var drawX = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }];
+    var drawY = [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }];
+    var wipe = [{ clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0 0 0)' }];   // 虚线用揭开，不拉伸虚线段
+    var rise = [{ transform: 'translateY(135%)' }, { transform: 'none' }];
+    var up = [{ transform: 'translateY(16px)', clipPath: 'inset(0 0 100% 0)' }, { transform: 'none', clipPath: 'inset(-4px -4px -4px -4px)' }];
+
+    P5.tween($('#rule-top'), drawX, { duration: 700 });
+    P5.tween($('h1 .ln > span'), rise, { delay: 60, duration: 750 });
+    P5.tween($('.tag'), wipe, { delay: 300, duration: 500 });
+
+    $$('.ph h2').forEach(function (h, i) { P5.tween(h, up, { delay: 220 + i * 90, duration: 520 }); });
+    $$('.sep').forEach(function (s, i) { P5.tween(s, drawY, { delay: 260 + i * 90, duration: 900 }); });
+
+    // 轴：实线走到述职日，然后虚线往后揭开
+    P5.tween($('#axis-done'), drawX, { delay: 300, duration: 200, easing: 'linear' });
+    P5.tween($('.today'), [{ transform: 'scale(0)' }, { transform: 'none' }], { delay: 480, duration: 260 });
+    P5.tween($('.today-l'), up, { delay: 520, duration: 480 });
+    P5.tween($('#axis-plan'), wipe, { delay: 500, duration: 900, easing: 'cubic-bezier(.45,.05,.3,1)' });
+
+    $$('.lists ul').forEach(function (ul, c) {
+      Array.prototype.forEach.call(ul.querySelectorAll('li'), function (li, j) {
+        P5.tween(li, up, { delay: 620 + c * 160 + j * 60, duration: 480 });
+      });
+    });
+
+    P5.tween($('#lane-rule'), wipe, { delay: 820, duration: 700 });
+    Array.prototype.forEach.call(document.querySelectorAll('.lane-h > *'), function (e, i) { P5.tween(e, up, { delay: 900 + i * 60, duration: 480 }); });
+    $$('.it').forEach(function (b, i) { P5.tween(b, wipe, { delay: 1000 + i * 120, duration: 480 }); });
+
+    P5.go();
+  })();
+</script>
+</body>
+</html>

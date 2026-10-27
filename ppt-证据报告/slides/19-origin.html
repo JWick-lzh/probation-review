@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>分工从哪来</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：logo 挪到右端，导航右移让出左上角（演示外壳的「概览」按钮在那里；与 01–07 同一写法） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+/* ── 19 分工从哪来 ── */
+.band { height: 186px; padding-top: 34px; }
+.band .assert { font-size: var(--fs-assert); line-height: 1.2; white-space: nowrap; }
+.band .sub { margin-top: 6px; font-size: var(--fs-body); color: var(--ink-2); }
+
+.chart { position: absolute; left: var(--gutter); top: 312px; width: 1240px; }
+.plot { display: block; overflow: visible; }
+.chart .source { margin-top: 18px; }
+
+.plot .lg { font-size: 22px; fill: var(--ink-2); }
+.plot .ax { font-size: 20px; fill: var(--muted); }
+.plot .dt { font-size: 24px; font-weight: 700; fill: var(--ink-2); }
+.plot .hd { font-size: 26px; font-weight: 700; fill: var(--ink); }
+.plot .dd { font-size: 24px; fill: var(--ink-2); }
+.plot .note { font-size: var(--fs-note); font-weight: 700; fill: var(--ink-2); }
+.plot .sep { stroke: var(--track); stroke-width: 1.5; }
+.plot .track { stroke: var(--track); stroke-width: 2; }
+.plot .grid { stroke: var(--rule); stroke-width: 1.5; stroke-dasharray: 4 6; fill: none; }
+.plot .span { fill: var(--s-done); }
+.plot .dot { fill: var(--s-done); stroke: #fff; stroke-width: 3; }
+.plot .tick { stroke: #fff; stroke-width: 3; }
+
+.side.read { left: 1400px; top: 322px; width: 414px; }
+.side.read h3 + p { margin-top: 10px; }
+.side.read p + p { margin-top: 14px; }
+.side.read p + h3 { margin-top: 44px; }
+
+/* 时间轴（ms）：红线 0–600 → 标题 100–700 → 框架 250–650 → 日期线 350–800
+   → 6 件事按先后逐行出现、条画出来、点落下 400–1300 → 来源行 1300–1600 */
+.plot .row { transform-box: fill-box; }
+.plot .span { transform-box: fill-box; transform-origin: 0 50%; }
+.plot .pop { transform-box: fill-box; transform-origin: 50% 50%; }
+.plot .grid { transform-box: fill-box; transform-origin: 50% 0; }
+html.motion .band .assert { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .sub { animation: rise .5s var(--ease-out) .2s both; }
+html.motion .plot .frame { animation: fade .4s ease-out .25s both; }
+html.motion .plot .grid { animation: draw-y .45s var(--ease-out) .35s both; }
+html.motion .plot .row { animation: rise .4s var(--ease-out) var(--d) both; }
+html.motion .plot .span { animation: draw-x .5s var(--ease-out) var(--d) both; }
+html.motion .plot .pop { animation: pop .28s var(--ease-out) var(--d) both; }
+html.motion .side.read { animation: fade .4s ease-out .3s both; }
+.chart .source { --src-delay: 1.3s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span>岗位定位</span><span>目标回顾</span><span>完成情况</span><span>IT 规划</span><span class="on" aria-current="true">团队管理</span><span>自我评价</span><span>未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">三方分工，是从「需求不清、周期长」里磨出来的</h1>
+  <p class="sub">9 月底到 10 月中，CEO 工作台这条线上发生的事，按日期排</p>
+</section>
+
+<figure class="chart">
+  <!-- 日期轴：x = 760 + (距 9/28 的天数 + 0.5) × 28 -->
+  <svg class="plot" width="1240" height="620" viewBox="0 0 1240 620" role="img"
+       aria-label="CEO 工作台这条线的时间线：9/28–29 CEO 列 5 个产品方向和先做 5 件事；10/1 会议看板 v2.0 上线，CEO 9/30 之后没再打开；10/1–12 CEO 先后发来多份 HTML 原型，口腔品牌经营看板 10/10 已到 V50；10/3 CEO 说问题要先锐利清晰，反而在卷交互；10/10 看板方案讨论会要求先定义问题再开发；10/14 CEO 在群里定三方分工，18:03 拍板方向">
+    <g class="frame">
+    <text x="0" y="36" class="lg">日期</text>
+    <text x="150" y="36" class="lg">发生了什么</text>
+    <text x="774" y="36" class="ax" text-anchor="middle">9/28</text>
+    <text x="858" y="36" class="ax" text-anchor="middle">10/1</text>
+    <text x="970" y="36" class="ax" text-anchor="middle">10/5</text>
+    <text x="1110" y="36" class="ax" text-anchor="middle">10/10</text>
+    <text x="1222" y="36" class="ax" text-anchor="middle">10/14</text>
+    <line x1="0" x2="1240" y1="148" y2="148" class="sep"/>
+    <line x1="0" x2="1240" y1="242" y2="242" class="sep"/>
+    <line x1="0" x2="1240" y1="336" y2="336" class="sep"/>
+    <line x1="0" x2="1240" y1="430" y2="430" class="sep"/>
+    <line x1="0" x2="1240" y1="524" y2="524" class="sep"/>
+    <line x1="760" x2="1236" y1="86" y2="86" class="track"/>
+    <line x1="760" x2="1236" y1="180" y2="180" class="track"/>
+    <line x1="760" x2="1236" y1="274" y2="274" class="track"/>
+    <line x1="760" x2="1236" y1="368" y2="368" class="track"/>
+    <line x1="760" x2="1236" y1="462" y2="462" class="track"/>
+    <line x1="760" x2="1236" y1="556" y2="556" class="track"/>
+    </g>
+    <line x1="774" x2="774" y1="54" y2="610" class="grid"/>
+    <line x1="858" x2="858" y1="54" y2="610" class="grid"/>
+    <line x1="970" x2="970" y1="54" y2="610" class="grid"/>
+    <line x1="1110" x2="1110" y1="54" y2="610" class="grid"/>
+    <line x1="1222" x2="1222" y1="54" y2="610" class="grid"/>
+
+    <g class="row" style="--d:400ms">
+      <text x="0" y="95" class="dt">9/28–29</text>
+      <text x="150" y="95" class="hd">CEO 列 5 个产品方向</text>
+      <text x="150" y="129" class="dd">又列 CEO 工作台先做 5 件事</text>
+    </g>
+    <rect x="762" y="80" width="52" height="12" rx="6" class="span" style="--d:450ms"/>
+
+    <g class="row" style="--d:520ms">
+      <text x="0" y="189" class="dt">10/1</text>
+      <text x="150" y="189" class="hd">会议看板 v2.0 上线</text>
+      <text x="150" y="223" class="dd">CEO 9/30 之后没再打开</text>
+    </g>
+    <circle cx="858" cy="180" r="11" class="pop dot" style="--d:600ms"/>
+
+    <g class="row" style="--d:640ms">
+      <text x="0" y="283" class="dt">10/1–12</text>
+      <text x="150" y="283" class="hd">CEO 先后发来多份 HTML 原型</text>
+      <text x="150" y="317" class="dd">口腔品牌经营看板 10/10 已到 V50</text>
+    </g>
+    <rect x="846" y="268" width="334" height="12" rx="6" class="span" style="--d:700ms"/>
+    <line x1="1110" x2="1110" y1="262" y2="286" class="tick pop" style="--d:1150ms"/>
+    <text x="1110" y="311" class="note pop" text-anchor="middle" style="--d:1150ms">V50</text>
+
+    <g class="row" style="--d:760ms">
+      <text x="0" y="377" class="dt">10/3</text>
+      <text x="150" y="377" class="hd">CEO：问题要先锐利清晰</text>
+      <text x="150" y="411" class="dd">原话：「……反而在卷交互」</text>
+    </g>
+    <circle cx="914" cy="368" r="11" class="pop dot" style="--d:840ms"/>
+
+    <g class="row" style="--d:880ms">
+      <text x="0" y="471" class="dt">10/10</text>
+      <text x="150" y="471" class="hd">看板方案讨论会：先定义问题再开发</text>
+      <text x="150" y="505" class="dd">CEO 工作台的节点转为待确认</text>
+    </g>
+    <circle cx="1110" cy="462" r="11" class="pop dot" style="--d:960ms"/>
+
+    <g class="row" style="--d:1000ms">
+      <text x="0" y="565" class="dt">10/14</text>
+      <text x="150" y="565" class="hd">CEO 在群里定三方分工</text>
+      <text x="150" y="599" class="dd">18:03 拍板 CEO 工作台方向，说「定了」</text>
+    </g>
+    <circle cx="1222" cy="556" r="14" class="pop dot" style="--d:1080ms"/>
+  </svg>
+  <figcaption class="source">来源：CEO 群消息、每日记录；10/3 引语节选自群消息原文</figcaption>
+</figure>
+
+<aside class="side read">
+  <h3>怎么读这张图</h3>
+  <p>每行一件事。右边是日期轴：<br>条是持续的一段，点是某一天。</p>
+  <h3>说明</h3>
+  <p>我没有下属，团队管理这块<br>做的是协作方式。</p>
+  <p>10/14 定的分工见下一页。</p>
+  <h3>口径</h3>
+  <p>CEO 群消息、每日记录。</p>
+</aside>
+</body>
+</html>

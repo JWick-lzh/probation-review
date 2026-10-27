@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-total="1700" data-probe="个目标里一项占系统提效工具场景挖掘专利创新星际圈项指标上面三合计怎么定的了每分基线和超预期两档今天按算读一格权重小形数口径跟踪表稿最后回填">
+<head>
+<meta charset="UTF-8">
+<title>04 5 个目标</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+/* ───────── 左：100 格方阵，一格 = 1% 权重 ─────────
+   和封面不同：封面是 5 块按面积拼，这里是 100 个同样大的格子按行数数。
+   VOC 4 行（40 格）、CEO 提效 2 行、场景挖掘 2 行 —— 前 8 行 = 80%；
+   空一道缝，下面专利 1 行、星际圈 1 行。
+   格 72、间距 8；第 r 行 top = 96 + 80r（第 8 行起再加 64 的缝）。
+   形状沿用封面：VOC/场景 方块，CEO/星际圈 四分之一圆，专利 圆 */
+@keyframes pop { from { transform: scale(0); } }
+.c { position: absolute; width: 72px; height: 72px; }
+.c.anim { animation: pop 360ms var(--ease-out); }
+.voc  { background: var(--red); }
+.ceo  { background: var(--ink); border-top-right-radius: 100%; }
+.scn  { background: var(--yellow); }
+.pat  { background: var(--blue); border-radius: 50%; }
+.star { background: var(--ink); border-top-right-radius: 100%; }
+
+/* 80% 分界线 */
+.cut { position: absolute; left: 96px; top: 758px; width: 456px; height: 4px; background: var(--ink); transform-origin: 0 50%; }
+.cut.anim { animation: draw-x 420ms var(--ease-out) 760ms; }
+.cutlab { position: absolute; left: 576px; top: 728px; width: 312px; height: 64px; justify-content: flex-end; display: flex; align-items: center; gap: 12px; white-space: nowrap; }
+.cutlab .t { font-size: var(--fs-body-s); font-weight: 700; }
+.cutlab .n { font-size: 44px; font-weight: 900; line-height: 1; letter-spacing: -.01em; }
+.cutlab.anim { animation: reveal-right 420ms var(--ease-out) 860ms; }
+
+/* 每个目标的说明：权重 + 名字 + 指标个数（小形个数 = 指标数） */
+.lb { position: absolute; left: 920px; width: 266px; display: flex; flex-direction: column; justify-content: center; }
+.lb .w  { font-weight: 900; line-height: 1; letter-spacing: -.01em; }
+.lb .nm { font-size: 26px; font-weight: 700; line-height: 1.3; white-space: nowrap; }
+.lb .ks { display: flex; align-items: center; gap: 8px; margin-top: 8px; font-size: var(--fs-body-s); font-weight: 500; white-space: nowrap; }
+.lb .ks i { flex: 0 0 22px; height: 22px; }
+.lb .ks i.sq  { background: var(--c); }
+.lb .ks i.fan { background: var(--c); border-top-right-radius: 100%; }
+.lb .ks i.cir { background: var(--c); border-radius: 50%; }
+.lb .ks span { margin-left: 6px; }
+.lb.anim { animation: reveal-right 420ms var(--ease-out); }
+.lb .row1 { display: flex; align-items: baseline; gap: 12px; white-space: nowrap; }
+
+.lb-voc  { top: 96px;  height: 312px; --c: var(--red); }
+.lb-voc .w { font-size: 120px; color: var(--red); margin-bottom: 10px; }
+.lb-ceo  { top: 416px; height: 152px; --c: var(--ink); }
+.lb-scn  { top: 576px; height: 152px; --c: var(--yellow); }
+.lb-ceo .w, .lb-scn .w { font-size: var(--fs-num-l); margin-bottom: 4px; }
+.lb-pat  { top: 792px; height: 72px; --c: var(--blue); }
+.lb-star { top: 872px; height: 72px; --c: var(--ink); }
+.lb-pat .w, .lb-star .w { font-size: 34px; }
+.lb-pat .nm, .lb-star .nm { font-size: var(--fs-body-s); }
+.lb-pat .ks, .lb-star .ks { margin-top: 4px; }
+.lb-pat .ks i, .lb-star .ks i { flex-basis: 20px; height: 20px; }
+
+/* ───────── 右：竖排标题 + 信息块 ───────── */
+.vt { position: absolute; left: 1236px; top: 80px; writing-mode: vertical-rl;
+      font-family: var(--serif); font-weight: 900; font-size: var(--fs-title-2); line-height: 1.2; letter-spacing: .06em; }
+.vt .l { display: block; }
+.vt .l.anim { animation: reveal-down 560ms var(--ease-out); }
+.vt .l:nth-child(2) { animation-delay: 140ms !important; }
+.tcy { text-combine-upright: all; }
+.up  { text-orientation: upright; }
+
+.info { position: absolute; left: 1500px; top: 84px; width: 324px; }
+.info section + section { margin-top: 48px; }
+.info .tag { margin-bottom: 14px; }
+.info .txt-s { font-size: var(--fs-body-s); font-weight: 500; line-height: 1.6; }
+.info section.anim { animation: reveal-right 520ms var(--ease-out); }
+.info section:nth-child(1) { animation-delay: 420ms !important; }
+.info section:nth-child(2) { animation-delay: 540ms !important; }
+
+.src { position: absolute; left: 1236px; bottom: 107px; width: 588px; font-size: var(--fs-body-s); font-weight: 500; color: var(--ink-2); letter-spacing: .04em; line-height: 1.5; }
+.src.anim { animation: reveal-right 500ms var(--ease-out) 1000ms; }
+.page-rule { left: 96px; right: 96px; top: 1008px; transform-origin: 0 50%; }
+.page-rule.anim { animation: draw-x 600ms var(--ease-out) 940ms; }
+</style>
+</head>
+<body>
+
+  <!-- 100 格：目标跟踪表权重 VOC 40 / CEO 提效 20 / 场景挖掘 20 / 专利 10 / 星际圈 10 -->
+  <i class="c voc anim" style="left:96px;top:96px;animation-delay:40ms"></i>
+  <i class="c voc anim" style="left:176px;top:96px;animation-delay:48ms"></i>
+  <i class="c voc anim" style="left:256px;top:96px;animation-delay:56ms"></i>
+  <i class="c voc anim" style="left:336px;top:96px;animation-delay:64ms"></i>
+  <i class="c voc anim" style="left:416px;top:96px;animation-delay:72ms"></i>
+  <i class="c voc anim" style="left:496px;top:96px;animation-delay:80ms"></i>
+  <i class="c voc anim" style="left:576px;top:96px;animation-delay:88ms"></i>
+  <i class="c voc anim" style="left:656px;top:96px;animation-delay:96ms"></i>
+  <i class="c voc anim" style="left:736px;top:96px;animation-delay:104ms"></i>
+  <i class="c voc anim" style="left:816px;top:96px;animation-delay:112ms"></i>
+  <i class="c voc anim" style="left:96px;top:176px;animation-delay:120ms"></i>
+  <i class="c voc anim" style="left:176px;top:176px;animation-delay:128ms"></i>
+  <i class="c voc anim" style="left:256px;top:176px;animation-delay:136ms"></i>
+  <i class="c voc anim" style="left:336px;top:176px;animation-delay:144ms"></i>
+  <i class="c voc anim" style="left:416px;top:176px;animation-delay:152ms"></i>
+  <i class="c voc anim" style="left:496px;top:176px;animation-delay:160ms"></i>
+  <i class="c voc anim" style="left:576px;top:176px;animation-delay:168ms"></i>
+  <i class="c voc anim" style="left:656px;top:176px;animation-delay:176ms"></i>
+  <i class="c voc anim" style="left:736px;top:176px;animation-delay:184ms"></i>
+  <i class="c voc anim" style="left:816px;top:176px;animation-delay:192ms"></i>
+  <i class="c voc anim" style="left:96px;top:256px;animation-delay:200ms"></i>
+  <i class="c voc anim" style="left:176px;top:256px;animation-delay:208ms"></i>
+  <i class="c voc anim" style="left:256px;top:256px;animation-delay:216ms"></i>
+  <i class="c voc anim" style="left:336px;top:256px;animation-delay:224ms"></i>
+  <i class="c voc anim" style="left:416px;top:256px;animation-delay:232ms"></i>
+  <i class="c voc anim" style="left:496px;top:256px;animation-delay:240ms"></i>
+  <i class="c voc anim" style="left:576px;top:256px;animation-delay:248ms"></i>
+  <i class="c voc anim" style="left:656px;top:256px;animation-delay:256ms"></i>
+  <i class="c voc anim" style="left:736px;top:256px;animation-delay:264ms"></i>
+  <i class="c voc anim" style="left:816px;top:256px;animation-delay:272ms"></i>
+  <i class="c voc anim" style="left:96px;top:336px;animation-delay:280ms"></i>
+  <i class="c voc anim" style="left:176px;top:336px;animation-delay:288ms"></i>
+  <i class="c voc anim" style="left:256px;top:336px;animation-delay:296ms"></i>
+  <i class="c voc anim" style="left:336px;top:336px;animation-delay:304ms"></i>
+  <i class="c voc anim" style="left:416px;top:336px;animation-delay:312ms"></i>
+  <i class="c voc anim" style="left:496px;top:336px;animation-delay:320ms"></i>
+  <i class="c voc anim" style="left:576px;top:336px;animation-delay:328ms"></i>
+  <i class="c voc anim" style="left:656px;top:336px;animation-delay:336ms"></i>
+  <i class="c voc anim" style="left:736px;top:336px;animation-delay:344ms"></i>
+  <i class="c voc anim" style="left:816px;top:336px;animation-delay:352ms"></i>
+  <i class="c ceo anim" style="left:96px;top:416px;animation-delay:360ms"></i>
+  <i class="c ceo anim" style="left:176px;top:416px;animation-delay:368ms"></i>
+  <i class="c ceo anim" style="left:256px;top:416px;animation-delay:376ms"></i>
+  <i class="c ceo anim" style="left:336px;top:416px;animation-delay:384ms"></i>
+  <i class="c ceo anim" style="left:416px;top:416px;animation-delay:392ms"></i>
+  <i class="c ceo anim" style="left:496px;top:416px;animation-delay:400ms"></i>
+  <i class="c ceo anim" style="left:576px;top:416px;animation-delay:408ms"></i>
+  <i class="c ceo anim" style="left:656px;top:416px;animation-delay:416ms"></i>
+  <i class="c ceo anim" style="left:736px;top:416px;animation-delay:424ms"></i>
+  <i class="c ceo anim" style="left:816px;top:416px;animation-delay:432ms"></i>
+  <i class="c ceo anim" style="left:96px;top:496px;animation-delay:440ms"></i>
+  <i class="c ceo anim" style="left:176px;top:496px;animation-delay:448ms"></i>
+  <i class="c ceo anim" style="left:256px;top:496px;animation-delay:456ms"></i>
+  <i class="c ceo anim" style="left:336px;top:496px;animation-delay:464ms"></i>
+  <i class="c ceo anim" style="left:416px;top:496px;animation-delay:472ms"></i>
+  <i class="c ceo anim" style="left:496px;top:496px;animation-delay:480ms"></i>
+  <i class="c ceo anim" style="left:576px;top:496px;animation-delay:488ms"></i>
+  <i class="c ceo anim" style="left:656px;top:496px;animation-delay:496ms"></i>
+  <i class="c ceo anim" style="left:736px;top:496px;animation-delay:504ms"></i>
+  <i class="c ceo anim" style="left:816px;top:496px;animation-delay:512ms"></i>
+  <i class="c scn anim" style="left:96px;top:576px;animation-delay:520ms"></i>
+  <i class="c scn anim" style="left:176px;top:576px;animation-delay:528ms"></i>
+  <i class="c scn anim" style="left:256px;top:576px;animation-delay:536ms"></i>
+  <i class="c scn anim" style="left:336px;top:576px;animation-delay:544ms"></i>
+  <i class="c scn anim" style="left:416px;top:576px;animation-delay:552ms"></i>
+  <i class="c scn anim" style="left:496px;top:576px;animation-delay:560ms"></i>
+  <i class="c scn anim" style="left:576px;top:576px;animation-delay:568ms"></i>
+  <i class="c scn anim" style="left:656px;top:576px;animation-delay:576ms"></i>
+  <i class="c scn anim" style="left:736px;top:576px;animation-delay:584ms"></i>
+  <i class="c scn anim" style="left:816px;top:576px;animation-delay:592ms"></i>
+  <i class="c scn anim" style="left:96px;top:656px;animation-delay:600ms"></i>
+  <i class="c scn anim" style="left:176px;top:656px;animation-delay:608ms"></i>
+  <i class="c scn anim" style="left:256px;top:656px;animation-delay:616ms"></i>
+  <i class="c scn anim" style="left:336px;top:656px;animation-delay:624ms"></i>
+  <i class="c scn anim" style="left:416px;top:656px;animation-delay:632ms"></i>
+  <i class="c scn anim" style="left:496px;top:656px;animation-delay:640ms"></i>
+  <i class="c scn anim" style="left:576px;top:656px;animation-delay:648ms"></i>
+  <i class="c scn anim" style="left:656px;top:656px;animation-delay:656ms"></i>
+  <i class="c scn anim" style="left:736px;top:656px;animation-delay:664ms"></i>
+  <i class="c scn anim" style="left:816px;top:656px;animation-delay:672ms"></i>
+  <i class="c pat anim" style="left:96px;top:800px;animation-delay:680ms"></i>
+  <i class="c pat anim" style="left:176px;top:800px;animation-delay:688ms"></i>
+  <i class="c pat anim" style="left:256px;top:800px;animation-delay:696ms"></i>
+  <i class="c pat anim" style="left:336px;top:800px;animation-delay:704ms"></i>
+  <i class="c pat anim" style="left:416px;top:800px;animation-delay:712ms"></i>
+  <i class="c pat anim" style="left:496px;top:800px;animation-delay:720ms"></i>
+  <i class="c pat anim" style="left:576px;top:800px;animation-delay:728ms"></i>
+  <i class="c pat anim" style="left:656px;top:800px;animation-delay:736ms"></i>
+  <i class="c pat anim" style="left:736px;top:800px;animation-delay:744ms"></i>
+  <i class="c pat anim" style="left:816px;top:800px;animation-delay:752ms"></i>
+  <i class="c star anim" style="left:96px;top:880px;animation-delay:760ms"></i>
+  <i class="c star anim" style="left:176px;top:880px;animation-delay:768ms"></i>
+  <i class="c star anim" style="left:256px;top:880px;animation-delay:776ms"></i>
+  <i class="c star anim" style="left:336px;top:880px;animation-delay:784ms"></i>
+  <i class="c star anim" style="left:416px;top:880px;animation-delay:792ms"></i>
+  <i class="c star anim" style="left:496px;top:880px;animation-delay:800ms"></i>
+  <i class="c star anim" style="left:576px;top:880px;animation-delay:808ms"></i>
+  <i class="c star anim" style="left:656px;top:880px;animation-delay:816ms"></i>
+  <i class="c star anim" style="left:736px;top:880px;animation-delay:824ms"></i>
+  <i class="c star anim" style="left:816px;top:880px;animation-delay:832ms"></i>
+
+  <div class="cut anim"></div>
+  <div class="cutlab anim"><span class="t">上面三项合计</span><span class="n" data-to="80" data-suf="%" data-delay="860" data-dur="480">80%</span></div>
+
+  <div class="lb lb-voc anim" style="animation-delay:380ms">
+    <span class="w" data-to="40" data-suf="%" data-delay="380" data-dur="520">40%</span>
+    <span class="nm">VOC 系统</span>
+    <span class="ks"><i class="sq"></i><i class="sq"></i><i class="sq"></i><span>3 项指标</span></span>
+  </div>
+  <div class="lb lb-ceo anim" style="animation-delay:540ms">
+    <span class="w">20%</span>
+    <span class="nm">CEO 提效工具</span>
+    <span class="ks"><i class="fan"></i><i class="fan"></i><span>2 项指标</span></span>
+  </div>
+  <div class="lb lb-scn anim" style="animation-delay:700ms">
+    <span class="w">20%</span>
+    <span class="nm">AI 场景挖掘</span>
+    <span class="ks"><i class="sq"></i><i class="sq"></i><i class="sq"></i><span>3 项指标</span></span>
+  </div>
+  <div class="lb lb-pat anim" style="animation-delay:860ms">
+    <span class="row1"><span class="w">10%</span><span class="nm">专利创新 AI</span></span>
+    <span class="ks"><i class="cir"></i><i class="cir"></i><i class="cir"></i><span>3 项指标</span></span>
+  </div>
+  <div class="lb lb-star anim" style="animation-delay:940ms">
+    <span class="row1"><span class="w">10%</span><span class="nm">星际圈</span></span>
+    <span class="ks"><i class="fan"></i><i class="fan"></i><i class="fan"></i><span>3 项指标</span></span>
+  </div>
+
+  <!-- 断言标题：5 个目标里，VOC 一项占 40%（竖排两列；VOC 直立排、40 横排组合） -->
+  <h1 class="vt" aria-label="5 个目标里，VOC 一项占 40%"><span class="l anim"><span class="tcy">5</span>个目标里</span><span class="l anim"><span class="up">VOC</span>一项占<span class="tcy">40</span><span class="up">%</span></span></h1>
+
+  <div class="info">
+    <section class="anim">
+      <span class="tag">怎么定的</span>
+      <p class="txt-s">7/30 定了 5 个目标、<br>14 项指标<br>每项分基线和超预期两档<br>今天按基线算</p>
+    </section>
+    <section class="anim">
+      <span class="tag">怎么读</span>
+      <p class="txt-s">一格＝1% 权重<br>小形个数＝指标数</p>
+    </section>
+  </div>
+
+  <div class="src anim">口径：目标跟踪表（7/30 定稿，9-30 最后回填）</div>
+  <div class="rule page-rule anim"></div>
+
+<script src="../shared/motion.js"></script>
+</body>
+</html>

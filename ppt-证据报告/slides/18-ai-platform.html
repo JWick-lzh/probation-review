@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>企业 AI 中台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：logo 挪到右端，导航右移让出左上角（演示外壳的「概览」按钮在那里；与 01–07 同一写法） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+/* ── 18 企业 AI 中台 ── */
+.band { height: 186px; padding-top: 34px; }
+.band .assert { font-size: var(--fs-assert); line-height: 1.2; white-space: nowrap; }
+.band .sub { margin-top: 6px; font-size: var(--fs-body); color: var(--ink-2); }
+
+.chart { position: absolute; left: var(--gutter); top: 312px; width: 1240px; }
+.plot { display: block; overflow: visible; }
+.chart .source { margin-top: 18px; }
+
+.plot .lg { font-size: 22px; fill: var(--ink-2); }
+.plot .row { font-size: 24px; font-weight: 700; fill: var(--muted); }
+.plot .bt { font-size: 28px; font-weight: 700; fill: var(--ink); }
+.plot .bd { font-size: 24px; fill: var(--ink-2); }
+.plot .box { fill: #fff; stroke: var(--ink-2); stroke-width: 2; stroke-dasharray: 10 7; }
+.plot .box.hub { fill: var(--band); stroke: var(--navy); stroke-width: 3; }
+.plot .wire { fill: none; stroke: var(--ink-2); stroke-width: 2.5; }
+.plot .head { fill: var(--ink-2); }
+
+.side.read { left: 1400px; top: 322px; width: 414px; }
+.side.read h3 + p { margin-top: 10px; }
+.side.read p + p { margin-top: 14px; }
+.side.read p + h3 { margin-top: 44px; }
+
+/* 时间轴（ms）：红线 0–600 → 标题 100–700 → 自上而下：工作台 350 → 线 450 → 门户 520 → 分叉线 640
+   → 两条路 760/820 → 汇合线 940 → 一份数据 1060–1460 → 来源行 1300–1600 */
+.plot .blk { transform-box: fill-box; }
+.plot .pop { transform-box: fill-box; transform-origin: 50% 0; }
+html.motion .band .assert { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .sub { animation: rise .5s var(--ease-out) .2s both; }
+html.motion .plot .frame { animation: fade .4s ease-out .25s both; }
+html.motion .plot .blk { animation: rise .4s var(--ease-out) var(--d) both; }
+html.motion .plot .wire { stroke-dasharray: 1; stroke-dashoffset: 1; animation: stroke-in .35s var(--ease-draw) var(--d) forwards; }
+html.motion .plot .pop { animation: pop .2s var(--ease-out) var(--d) both; }
+html.motion .side.read { animation: fade .4s ease-out .3s both; }
+@keyframes stroke-in { to { stroke-dashoffset: 0; } }
+.chart .source { --src-delay: 1.3s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span>岗位定位</span><span>目标回顾</span><span>完成情况</span><span class="on" aria-current="true">IT 规划</span><span>团队管理</span><span>自我评价</span><span>未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">企业 AI 中台：一个门户、两条路、一份数据</h1>
+  <p class="sub">这是 Agent 平台落地后员工看到的样子</p>
+</section>
+
+<figure class="chart">
+  <svg class="plot" width="1240" height="620" viewBox="0 0 1240 620" role="img"
+       aria-label="企业 AI 中台结构：员工从飞书工作台进中台门户；会用 AI 编程的人在自己的 Claude Code、Codex 里一句话发布应用，不会的人在网页里对话也能做出应用；所有应用读同一份飞书数据和业务库，谁能看什么由平台统一管。全部是设计稿">
+    <g class="frame">
+      <rect x="200" y="10" width="44" height="26" class="box"/>
+      <text x="258" y="32" class="lg">虚线框：还在设计，没有建</text>
+      <text x="0" y="99" class="row">入口</text>
+      <text x="0" y="214" class="row">一个门户</text>
+      <text x="0" y="392" class="row">两条路</text>
+      <text x="0" y="566" class="row">一份数据</text>
+    </g>
+
+    <g class="blk" style="--d:350ms">
+      <rect x="200" y="56" width="1040" height="74" class="box"/>
+      <text x="720" y="102" class="bt" text-anchor="middle">飞书工作台</text>
+    </g>
+    <path d="M720 130 V160" class="wire" pathLength="1" style="--d:450ms"/>
+    <path d="M708 158 L720 172 L732 158 Z" class="head pop" style="--d:760ms"/>
+
+    <g class="blk" style="--d:520ms">
+      <rect x="200" y="172" width="1040" height="80" class="box hub"/>
+      <text x="720" y="222" class="bt" text-anchor="middle">中台门户</text>
+    </g>
+    <path d="M720 252 V278 H450 V298" class="wire" pathLength="1" style="--d:640ms"/>
+    <path d="M720 278 H990 V298" class="wire" pathLength="1" style="--d:640ms"/>
+    <path d="M438 296 L450 310 L462 296 Z" class="head pop" style="--d:960ms"/>
+    <path d="M978 296 L990 310 L1002 296 Z" class="head pop" style="--d:960ms"/>
+
+    <g class="blk" style="--d:760ms">
+      <rect x="200" y="310" width="500" height="148" class="box"/>
+      <text x="228" y="358" class="bt">会用 AI 编程的人</text>
+      <text x="228" y="400" class="bd">在自己的 Claude Code、Codex 里，</text>
+      <text x="228" y="434" class="bd">一句话发布应用</text>
+    </g>
+    <g class="blk" style="--d:820ms">
+      <rect x="740" y="310" width="500" height="148" class="box"/>
+      <text x="768" y="358" class="bt">不会的人</text>
+      <text x="768" y="400" class="bd">在网页里对话，</text>
+      <text x="768" y="434" class="bd">也能做出应用</text>
+    </g>
+    <path d="M450 458 V484 H720 V504" class="wire" pathLength="1" style="--d:940ms"/>
+    <path d="M990 458 V484 H720" class="wire" pathLength="1" style="--d:940ms"/>
+    <path d="M708 502 L720 516 L732 502 Z" class="head pop" style="--d:1250ms"/>
+
+    <g class="blk" style="--d:1060ms">
+      <rect x="200" y="516" width="1040" height="96" class="box"/>
+      <text x="228" y="558" class="bt">所有应用读同一份飞书数据和业务库</text>
+      <text x="228" y="595" class="bd">谁能看什么，由平台统一管</text>
+    </g>
+  </svg>
+  <figcaption class="source">来源：企业 AI 中台设计记录（2026-10-13 起）；图是设计稿，不是已上线的系统</figcaption>
+</figure>
+
+<aside class="side read">
+  <h3>为什么自己建</h3>
+  <p>业务 SOP 是公司的打法，<br>装进外采平台就带不走。</p>
+  <p>底层基于开源搭，我们只写<br>公司规矩和业务技能。</p>
+  <h3>口径</h3>
+  <p>企业 AI 中台设计记录，<br>2026-10-13 起。</p>
+</aside>
+</body>
+</html>

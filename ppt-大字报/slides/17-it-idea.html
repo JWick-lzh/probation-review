@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>规划思路</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* 这一页没有该被记住的数，用大色块：左边一块 logo 蓝放思路的一句话 + 主线；右边 IT 规划图 1 原图 + 先做三件事 + 买还是建 */
+
+  .runhead {
+    position: absolute; left: var(--m); right: var(--m); top: 40px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: var(--fs-label); line-height: 1.2;
+  }
+  .runhead b { font-weight: 700; }
+  #rule-top { left: var(--m); width: var(--content-w); top: 78px; }
+
+  .block {
+    position: absolute; left: var(--m); top: 110px; width: 912px; height: 858px;
+    background: var(--blue); color: #FFFFFF; transform-origin: 50% 0;
+  }
+  .block .in { position: absolute; left: 56px; right: 56px; top: 0; bottom: 0; }
+  .block h1 {
+    position: absolute; left: 0; top: 52px;
+    font-family: var(--font-giant); font-size: 120px; font-weight: 900; line-height: 1.08; letter-spacing: -0.015em;
+  }
+  .block .why { position: absolute; left: 0; right: 0; top: 476px; font-size: var(--fs-lead); line-height: 1.5; }
+  .block .main { position: absolute; left: 0; right: 0; top: 650px; }
+  .block .main .rule-h { left: 0; top: 0; width: 100%; border-top-color: #FFFFFF; }
+  .block .main p { padding-top: 16px; font-size: var(--fs-label); font-weight: 700; line-height: 1.2; }
+  .block .main h2 { margin-top: 10px; font-family: var(--font-giant); font-size: 48px; font-weight: 900; line-height: 1.15; letter-spacing: -0.01em; white-space: nowrap; }
+  .block .main h3 { margin-top: 8px; font-size: var(--fs-lead); font-weight: 700; line-height: 1.3; }
+
+  .right { position: absolute; left: 1104px; width: 720px; top: 110px; }
+  .fig .frame { width: 720px; height: 468px; box-shadow: inset 0 0 0 1px var(--rule); background: #FAFAFA; }
+  .fig img { width: 720px; height: 468px; object-fit: contain; display: block; }
+  .fig figcaption { margin-top: 12px; font-size: var(--fs-label); color: var(--muted); line-height: 1.2; }
+
+  .three { position: absolute; left: 0; width: 720px; top: 530px; }
+  .three > .rule-h, .build > .rule-h { left: 0; top: 0; width: 100%; }
+  .sec { padding-top: 14px; font-size: var(--fs-label); font-weight: 700; color: var(--muted); line-height: 1.2; }
+  .three ul { margin-top: 10px; }
+  .three li { list-style: none; position: relative; height: 48px; display: flex; align-items: center; font-size: var(--fs-lead); font-weight: 700; line-height: 1.2; }
+  .three li .rule-h { left: 0; top: 0; width: 100%; }
+
+  .build { position: absolute; left: 0; width: 720px; top: 740px; }
+  .build ul { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 24px; margin-top: 14px; }
+  .build li { list-style: none; }
+  .build li span { display: block; font-size: var(--fs-label); color: var(--muted); line-height: 1.2; }
+  .build li b { display: block; margin-top: 6px; font-family: var(--font-giant); font-size: 36px; font-weight: 900; line-height: 1.1; letter-spacing: -0.01em; }
+
+  .foot {
+    position: absolute; left: var(--m); right: var(--m); top: 1000px;
+    font-size: var(--fs-label); line-height: 1.2; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+  <div class="runhead"><b>三、指标以外：IT 规划</b><span>转正述职　林灶辉</span></div>
+  <div class="rule-h strong" id="rule-top"></div>
+
+  <section class="block">
+    <div class="in">
+      <h1>
+        <span class="ln"><span>IT 先当</span></span>
+        <span class="ln"><span>第一个客户，</span></span>
+        <span class="ln"><span>先治好自己。</span></span>
+      </h1>
+      <p class="why"><span class="ln"><span>IT 自己的毛病，就是公司信息化要解的问题。</span></span><span class="ln"><span>先治好自己，再推全公司。</span></span></p>
+      <div class="main">
+        <div class="rule-h"></div>
+        <p>主线</p>
+        <h2><span class="ln"><span>目标 → 项目 → 执行 → 结果</span></span></h2>
+        <h3><span class="ln"><span>看得见、管得住</span></span></h3>
+      </div>
+    </div>
+  </section>
+
+  <div class="right">
+    <figure class="fig">
+      <div class="frame"><img src="../assets/it-blueprint.png" alt="IT 规划图 1：蓝图，一条主线、五层结构、三个产品组"></div>
+      <figcaption>IT 规划图 1：蓝图（一条主线、五层结构、三个产品组）</figcaption>
+    </figure>
+
+    <section class="three">
+      <div class="rule-h strong"></div>
+      <p class="sec">先做三件事</p>
+      <ul>
+        <li><span class="ln"><span>所有项目统一跟进</span></span></li>
+        <li><div class="rule-h"></div><span class="ln"><span>自研系统从项目变成产品</span></span></li>
+        <li><div class="rule-h"></div><span class="ln"><span>建公司自己的 Agent 平台</span></span></li>
+      </ul>
+    </section>
+
+    <section class="build">
+      <div class="rule-h strong"></div>
+      <p class="sec">买还是建，按属于哪一层定</p>
+      <ul>
+        <li><span>通用的</span><b>买</b></li>
+        <li><span>公司特有的</span><b>只建一个</b></li>
+        <li><span>长尾小场景</span><b>业务自己搭</b></li>
+      </ul>
+    </section>
+  </div>
+
+  <footer class="foot">口径：IT 规划原文第 3 章，全文在知识库</footer>
+
+<script src="../shared/motion.js"></script>
+<script>
+  (function () {
+    var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+    var drawX = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }];
+    var rise = [{ transform: 'translateY(135%)' }, { transform: 'none' }];
+
+    P5.tween($('#rule-top'), drawX, { duration: 700 });
+    // 色块从上往下铺开，字再从块里升起
+    P5.tween($('.block'), [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }], { delay: 60, duration: 700 });
+    $$('.block h1 .ln > span').forEach(function (s, i) { P5.tween(s, rise, { delay: 360 + i * 90, duration: 800 }); });
+    $$('.block .why .ln > span').forEach(function (s, i) { P5.tween(s, rise, { delay: 620 + i * 70, duration: 700 }); });
+    P5.tween($('.block .main .rule-h'), drawX, { delay: 700, duration: 700 });
+    $$('.block .main .ln > span').forEach(function (s, i) { P5.tween(s, rise, { delay: 780 + i * 80, duration: 700 }); });
+
+    P5.tween($('.fig .frame'), [{ clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0 0 0)' }], { delay: 300, duration: 900 });
+    P5.tween($('.three > .rule-h'), drawX, { delay: 520, duration: 700 });
+    $$('.three li .rule-h').forEach(function (r, i) { P5.tween(r, drawX, { delay: 600 + i * 80, duration: 600 }); });
+    $$('.three .ln > span').forEach(function (s, i) { P5.tween(s, rise, { delay: 600 + i * 80, duration: 700 }); });
+    P5.tween($('.build > .rule-h'), drawX, { delay: 760, duration: 700 });
+    $$('.build li').forEach(function (s, i) { P5.tween(s, [{ transform: 'translateY(24px)', clipPath: 'inset(0 0 100% 0)' }, { transform: 'none', clipPath: 'inset(0 0 0 0)' }], { delay: 840 + i * 90, duration: 600 }); });
+
+    P5.go();
+  })();
+</script>
+</body>
+</html>

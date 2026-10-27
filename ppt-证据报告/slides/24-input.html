@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>投入</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：logo 挪到右端，导航右移让出左上角（演示外壳的「概览」按钮在那里；与 01–07 同一写法） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+/* ── 24 投入 ── */
+.band { height: 186px; padding-top: 34px; }
+.band .assert { font-size: var(--fs-assert); line-height: 1.2; white-space: nowrap; }
+.band .sub { margin-top: 6px; font-size: var(--fs-body); color: var(--ink-2); }
+
+.chart { position: absolute; left: var(--gutter); top: 312px; width: 1240px; }
+.plot { display: block; overflow: visible; }
+.chart .source { margin-top: 18px; }
+
+.plot .lg { font-size: 22px; fill: var(--ink-2); }
+.plot .lg-n { font-size: 26px; font-weight: 700; fill: var(--ink); }
+.plot .ax { font-size: 20px; fill: var(--muted); }
+.plot .mo { font-size: 26px; font-weight: 700; fill: var(--ink); }
+.plot .part { font-size: 20px; font-weight: 700; fill: var(--ink); }
+.plot .full { font-size: 20px; fill: var(--muted); }
+.plot .val { font-size: 30px; font-weight: 700; fill: var(--ink); }
+.plot .grid { stroke: var(--track); stroke-width: 1.5; }
+.plot .base { stroke: #8E9AA8; stroke-width: 2; }
+.plot .col { fill: var(--s-done); }
+.plot .col.partial { fill: url(#hatch); stroke: var(--s-done); stroke-width: 2.5; }
+.plot .key-solid { fill: var(--s-done); }
+.plot .key-hatch { fill: url(#hatch); stroke: var(--s-done); stroke-width: 2; }
+
+.side.read { left: 1400px; top: 322px; width: 414px; }
+.side.read h3 + p { margin-top: 10px; }
+.side.read p + p { margin-top: 14px; }
+.side.read p + h3 { margin-top: 44px; }
+
+/* 时间轴（ms）：红线 0–600 → 标题 100–700 → 框架 250–650
+   → 4 根柱子从底往上长、数字跟着柱顶走并计数 450–1350 → 来源行 1300–1600
+   数字的计数借 motion.js 的 [data-ride]：组在 x 上只挪 1px（--dx:1px），同时在 y 上跟柱顶一起升，计数和柱高同一条缓动 */
+.plot .col { transform-box: fill-box; transform-origin: 50% 100%; }
+html.motion .band .assert { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .sub { animation: rise .5s var(--ease-out) .2s both; }
+html.motion .plot .frame { animation: fade .4s ease-out .25s both; }
+html.motion .plot .col { animation: draw-y .6s var(--ease-out) var(--d) both; }
+html.motion .plot .up { animation: ride-up .6s var(--ease-out) var(--d) both; }
+html.motion .side.read { animation: fade .4s ease-out .3s both; }
+@keyframes ride-up {
+  0%   { transform: translate(calc(-1 * var(--dx)), var(--h)); visibility: hidden; }
+  1%   { visibility: visible; }
+  100% { transform: none; }
+}
+.chart .source { --src-delay: 1.3s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span>岗位定位</span><span>目标回顾</span><span>完成情况</span><span>IT 规划</span><span>团队管理</span><span class="on" aria-current="true">自我评价</span><span>未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">三个月 1,305 次代码提交，225 次上线发布</h1>
+  <p class="sub">每月代码提交次数；7 月和 10 月都不是整月，用斜线画</p>
+</section>
+
+<figure class="chart">
+  <!-- y = 500 − 次数 × 0.7；柱宽 160，中心 225 / 515 / 805 / 1095 -->
+  <svg class="plot" width="1240" height="580" viewBox="0 0 1240 580" role="img"
+       aria-label="每月代码提交次数：7 月 54 次（只算 22–31 日）、8 月 119 次、9 月 541 次、10 月 591 次（截至 25 日），合计 1,305 次">
+    <defs>
+      <pattern id="hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="12" height="12" fill="#fff"/>
+        <rect width="5" height="12" fill="#1D3D63"/>
+      </pattern>
+    </defs>
+    <g class="frame">
+      <rect x="80" y="12" width="26" height="26" class="key-solid"/>
+      <text x="116" y="34" class="lg">整月</text>
+      <rect x="200" y="12" width="26" height="26" class="key-hatch"/>
+      <text x="236" y="34" class="lg">不是整月</text>
+      <text x="1240" y="34" class="lg" text-anchor="end">合计 <tspan class="lg-n">1,305</tspan> 次，7/22–10/25</text>
+      <line x1="80" x2="1240" y1="360" y2="360" class="grid"/>
+      <line x1="80" x2="1240" y1="220" y2="220" class="grid"/>
+      <line x1="80" x2="1240" y1="80" y2="80" class="grid"/>
+      <text x="62" y="507" class="ax" text-anchor="end">0</text>
+      <text x="62" y="367" class="ax" text-anchor="end">200</text>
+      <text x="62" y="227" class="ax" text-anchor="end">400</text>
+      <text x="62" y="87" class="ax" text-anchor="end">600</text>
+      <text x="225" y="540" class="mo" text-anchor="middle">7 月</text>
+      <text x="225" y="570" class="part" text-anchor="middle">只算 22–31 日</text>
+      <text x="515" y="540" class="mo" text-anchor="middle">8 月</text>
+      <text x="515" y="570" class="full" text-anchor="middle">整月</text>
+      <text x="805" y="540" class="mo" text-anchor="middle">9 月</text>
+      <text x="805" y="570" class="full" text-anchor="middle">整月</text>
+      <text x="1095" y="540" class="mo" text-anchor="middle">10 月</text>
+      <text x="1095" y="570" class="part" text-anchor="middle">截至 25 日</text>
+    </g>
+
+    <rect x="145" y="462.2" width="160" height="37.8" class="col partial" style="--d:450ms"/>
+    <g class="up" data-ride style="--dx:1px;--h:37.8px;--d:450ms"><text x="225" y="446" class="val" text-anchor="middle"><tspan data-count="54">54</tspan></text></g>
+    <rect x="435" y="416.7" width="160" height="83.3" class="col" style="--d:570ms"/>
+    <g class="up" data-ride style="--dx:1px;--h:83.3px;--d:570ms"><text x="515" y="401" class="val" text-anchor="middle"><tspan data-count="119">119</tspan></text></g>
+    <rect x="725" y="121.3" width="160" height="378.7" class="col" style="--d:690ms"/>
+    <g class="up" data-ride style="--dx:1px;--h:378.7px;--d:690ms"><text x="805" y="106" class="val" text-anchor="middle"><tspan data-count="541">541</tspan></text></g>
+    <rect x="1015" y="86.3" width="160" height="413.7" class="col partial" style="--d:810ms"/>
+    <g class="up" data-ride style="--dx:1px;--h:413.7px;--d:810ms"><text x="1095" y="71" class="val" text-anchor="middle"><tspan data-count="591">591</tspan></text></g>
+    <line x1="80" x2="1240" y1="500" y2="500" class="base"/>
+  </svg>
+  <figcaption class="source">来源：6 个代码仓库提交记录，按作者统计，7/22–10/25；发布次数取妙搭发布记录和 VOC 生产部署记录，指本人账号操作</figcaption>
+</figure>
+
+<aside class="side read">
+  <h3>说明</h3>
+  <p>上线发布 225 次：妙搭 213 次，<br>VOC 生产部署 12 次。</p>
+  <p>8 月打卡 259 小时，<br>21 个工作日。</p>
+  <p>次数只说明投入，不说明用得<br>好不好，见下一页。</p>
+  <h3>口径</h3>
+  <p>7/22–10/25，6 个仓库，<br>按作者统计；发布指本人<br>账号操作。</p>
+</aside>
+</body>
+</html>

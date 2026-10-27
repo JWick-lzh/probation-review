@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>指标以外</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* 骨架（同封面主语法）：页眉 → 左上巨数字 77 → 右侧注释 + 按月三条 → 结论句 → 底部细线五栏：指标以外的其余产出 */
+
+  .runhead {
+    position: absolute; left: var(--m); right: var(--m); top: 40px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: var(--fs-label); line-height: 1.2;
+  }
+  .runhead b { font-weight: 700; }
+  #rule-top { left: var(--m); width: var(--content-w); top: 78px; }
+
+  .giant {
+    position: absolute; left: 76px; top: 86px;
+    font-family: var(--font-giant); font-weight: 900; line-height: 1;
+    font-size: 560px; letter-spacing: -0.04em; white-space: nowrap; color: var(--blue);
+  }
+  .giant .unit { font-size: 0.18em; letter-spacing: 0; color: var(--ink); margin-left: 0.12em; }
+
+  .note {
+    position: absolute; right: var(--m); top: 186px; text-align: right;
+    font-size: var(--fs-lead); font-weight: 700; line-height: 1.45;
+  }
+  .note small { display: block; margin-top: 10px; font-size: var(--fs-label); font-weight: 400; color: var(--muted); }
+
+  /* 按月三条：长度按篇数，29 篇 = 400px */
+  .months { position: absolute; left: 1224px; width: 600px; top: 392px; }
+  .months .cap { font-size: var(--fs-label); color: var(--muted); line-height: 1.2; margin-bottom: 14px; }
+  .mrow { display: grid; grid-template-columns: 96px 1fr; align-items: center; height: 44px; margin-bottom: 12px; }
+  .mrow span { font-size: var(--fs-body); }
+  .mrow .bar { display: flex; align-items: center; gap: 14px; }
+  .mrow .bar i { display: block; height: 36px; background: var(--blue); transform-origin: 0 50%; }
+  .mrow .bar b { font-family: var(--font-giant); font-weight: 900; font-size: 36px; letter-spacing: -0.02em; line-height: 1; }
+
+  .claim {
+    position: absolute; left: var(--m); top: 640px;
+    font-family: var(--font-giant); font-size: var(--fs-claim); font-weight: 900;
+    line-height: 1.1; letter-spacing: -0.01em;
+  }
+
+  #rule-facts { left: var(--m); width: var(--content-w); top: 862px; }
+  .facts {
+    position: absolute; left: var(--m); width: var(--content-w); top: 864px; height: 160px;
+    display: grid; grid-template-columns: repeat(5, 1fr);
+  }
+  .facts .rule-v { top: 0; height: 160px; left: 0; }
+  .fact { padding: 16px 24px 0; position: relative; }
+  .fact:first-child { padding-left: 0; }
+  .fact .k { font-size: var(--fs-label); font-weight: 700; color: var(--muted); line-height: 1.2; white-space: nowrap; }
+  .fact .v { font-family: var(--font-giant); font-weight: 900; font-size: 60px; line-height: 1; margin-top: 8px; letter-spacing: -0.035em; }
+  .fact .v i { font-style: normal; font-family: var(--font-text); font-size: var(--fs-lead); font-weight: 700; letter-spacing: 0; margin-left: 6px; }
+  .fact small { display: block; margin-top: 10px; font-size: var(--fs-label); line-height: 1.3; color: var(--ink-2); }
+</style>
+</head>
+<body>
+
+  <div class="runhead"><b>三、工作目标完成情况</b><span>转正述职　林灶辉</span></div>
+  <div class="rule-h strong" id="rule-top"></div>
+
+  <div class="giant" role="img" aria-label="知识库主空间 79 篇，本人写了 77 篇">
+    <span class="odo-src" aria-hidden="true">77</span><span class="unit" aria-hidden="true">篇</span>
+  </div>
+
+  <aside class="note">
+    <span class="ln"><span>我写的知识库文档</span></span>
+    <span class="ln"><span>主空间 79 篇里的 77 篇</span></span>
+    <span class="ln"><small>知识库按创建人统计，10-26</small></span>
+  </aside>
+
+  <section class="months" aria-label="77 篇按月分布">
+    <p class="cap">按月：10 月统计到 10-26，不是整月</p>
+    <div class="mrow"><span>8 月</span><div class="bar"><i style="width:290px"></i><b data-to="21">21</b></div></div>
+    <div class="mrow"><span>9 月</span><div class="bar"><i style="width:359px"></i><b data-to="26">26</b></div></div>
+    <div class="mrow"><span>10 月</span><div class="bar"><i style="width:400px"></i><b data-to="29">29</b></div></div>
+  </section>
+
+  <h2 class="claim">
+    <span class="ln"><span>指标以外：一份 IT 规划，</span></span>
+    <span class="ln"><span>77 篇知识库文档。</span></span>
+  </h2>
+
+  <div class="rule-h strong" id="rule-facts"></div>
+  <section class="facts">
+    <div class="fact">
+      <p class="k">IT 建设规划 2026–2028</p>
+      <p class="v">v2</p>
+      <small>讨论稿，10/9 成稿，下一节讲</small>
+    </div>
+    <div class="fact">
+      <div class="rule-v"></div>
+      <p class="k">经营指标方法论</p>
+      <p class="v"><span data-to="4">4</span><i>篇</i></p>
+      <small>10/9 完成</small>
+    </div>
+    <div class="fact">
+      <div class="rule-v"></div>
+      <p class="k">前端组件库 usmile-ui</p>
+      <p class="v">v0.2.0</p>
+      <small>10/22，内部系统共用一套前端</small>
+    </div>
+    <div class="fact">
+      <div class="rule-v"></div>
+      <p class="k">集团目标驾驶舱</p>
+      <p class="v">v2</p>
+      <small>9/9 上线，<br>后来并入工作反馈系统</small>
+    </div>
+    <div class="fact">
+      <div class="rule-v"></div>
+      <p class="k">飞书 AI 使用与额度诊断</p>
+      <p class="v"><span data-to="3">3</span><i>次</i></p>
+      <small>8/6、8/17、10/21；<br>提出按场景分配额度，待反馈</small>
+    </div>
+  </section>
+
+<script src="../shared/motion.js"></script>
+<script>
+  (function () {
+    var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+    /* 巨数字改成里程表（终态由 --n 写在 CSS 里，减少动效时一打开就是终值）。0 转一整圈 */
+    function odoize(el) {
+      var txt = el.textContent; el.textContent = '';
+      for (var i = 0; i < txt.length; i++) {
+        var ch = txt.charAt(i);
+        if (/\d/.test(ch)) {
+          var d = +ch, n = d === 0 ? 10 : d;
+          var o = document.createElement('span'), s = document.createElement('span');
+          o.className = 'odo'; s.className = 'strip'; s.style.setProperty('--n', n);
+          for (var k = 0; k <= n; k++) { var b = document.createElement('b'); b.textContent = k % 10; s.appendChild(b); }
+          o.appendChild(s); el.appendChild(o);
+        } else el.appendChild(document.createTextNode(ch));
+      }
+      return Array.prototype.slice.call(el.querySelectorAll('.strip'));
+    }
+
+    var drawX = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }];
+    var drawY = [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }];
+    var rise = [{ transform: 'translateY(135%)' }, { transform: 'none' }];
+
+    P5.tween($('#rule-top'), drawX, { duration: 700 });
+
+    odoize($('.giant .odo-src')).forEach(function (s, i) {
+      var n = parseFloat(s.style.getPropertyValue('--n'));
+      P5.tween(s, [{ transform: 'translateY(0)' }, { transform: 'translateY(' + (-n) + 'em)' }],
+        { delay: 60 + i * 110, duration: 1100 - i * 120, easing: 'cubic-bezier(.22,.8,.12,1)' });
+    });
+
+    $$('.note .ln > *').forEach(function (s, i) { P5.tween(s, rise, { delay: 320 + i * 70, duration: 700 }); });
+    $$('.mrow .bar i').forEach(function (b, i) { P5.tween(b, drawX, { delay: 420 + i * 90, duration: 700 }); });
+    $$('.mrow [data-to]').forEach(function (n, i) { P5.count(n, { delay: 420 + i * 90, duration: 700 }); });
+    $$('.claim .ln > span').forEach(function (s, i) { P5.tween(s, rise, { delay: 420 + i * 90, duration: 800 }); });
+
+    P5.tween($('#rule-facts'), drawX, { delay: 560, duration: 800 });
+    $$('.facts .rule-v').forEach(function (v, i) { P5.tween(v, drawY, { delay: 700 + i * 60, duration: 600 }); });
+    $$('.facts [data-to]').forEach(function (n, i) { P5.count(n, { delay: 720 + i * 60, duration: 600 }); });
+
+    P5.go();
+  })();
+</script>
+</body>
+</html>

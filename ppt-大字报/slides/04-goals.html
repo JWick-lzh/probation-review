@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>5 个目标</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* 骨架：页眉 → 左上巨数字 40% → 结论句 → 底部分栏：栏宽就是权重（40/20/20/10/10），顶上一条按权重切开的粗条 */
+
+  .runhead {
+    position: absolute; left: var(--m); right: var(--m); top: 40px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: var(--fs-label); line-height: 1.2;
+  }
+  .runhead b { font-weight: 700; }
+  #rule-top { left: var(--m); width: var(--content-w); top: 78px; }
+
+  .giant {
+    position: absolute; left: 80px; top: 50px;
+    font-family: var(--font-giant); font-weight: 900; line-height: 1;
+    font-size: 520px; letter-spacing: -0.04em; white-space: nowrap;
+  }
+  .giant small { font-size: 0.5em; letter-spacing: -0.02em; margin-left: 0.02em; }
+
+  .tbl { position: absolute; left: 1104px; width: 720px; top: 128px; }
+  .tr { position: relative; display: grid; grid-template-columns: 136px 1fr; padding: 22px 0 24px; }
+  .tr .rule-h { left: 0; width: 100%; top: 0; }
+  .tr .k { font-size: var(--fs-label); font-weight: 700; color: var(--muted); line-height: 1.5; padding-top: 6px; }
+  .tr .d { font-size: var(--fs-lead); line-height: 1.45; }
+
+  .claim {
+    position: absolute; left: var(--m); top: 542px;
+    font-family: var(--font-giant); font-size: var(--fs-head); font-weight: 900;
+    line-height: 1.06; letter-spacing: -0.015em; white-space: nowrap;
+  }
+
+  /* 权重分栏 */
+  .weights { position: absolute; left: var(--m); width: var(--content-w); top: 690px; height: 270px; }
+  .brace { position: absolute; left: 0; width: 80%; top: 0; height: 34px; }
+  .brace .rule-h { left: 0; width: 100%; bottom: 0; }
+  .brace i { position: absolute; bottom: -1px; width: 2px; height: 12px; background: var(--ink); }
+  .brace p { position: absolute; right: 0; bottom: 10px; font-size: var(--fs-label); font-weight: 700; line-height: 1.2; }
+  /* 条和栏用同一套 fr 网格，栏线正好落在条的缝里 */
+  .bar, .cols { display: grid; column-gap: 4px; grid-template-columns: minmax(0, 40fr) minmax(0, 20fr) minmax(0, 20fr) minmax(0, 10fr) minmax(0, 10fr); }
+  .bar { position: absolute; left: 0; right: 0; top: 46px; height: 28px; }
+  .bar i { display: block; height: 100%; background: var(--cell); transform-origin: 0 50%; }
+  .bar i.top { background: var(--ink); }
+  .cols { position: absolute; left: 0; right: 0; top: 74px; bottom: 0; }
+  .col { position: relative; padding: 20px 0 0 16px; }
+  .col:first-child { padding-left: 0; }
+  .col .rule-v { left: -2px; top: 0; height: 100%; }
+  .col h2 { font-size: var(--fs-body); font-weight: 700; line-height: 1.2; white-space: nowrap; }
+  .col .w { font-family: var(--font-giant); font-weight: 900; font-size: 64px; line-height: 1; margin-top: 12px; letter-spacing: -0.035em; white-space: nowrap; }
+  .col .w small { font-size: 0.5em; margin-left: 0.04em; letter-spacing: -0.01em; }
+  .col .n { margin-top: 12px; font-size: var(--fs-label); color: var(--ink-2); line-height: 1.3; white-space: nowrap; }
+
+  .foot {
+    position: absolute; left: var(--m); right: var(--m); top: 1000px;
+    font-size: var(--fs-label); line-height: 1.2; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+  <div class="runhead"><b>二、目标回顾</b><span>转正述职　林灶辉</span></div>
+  <div class="rule-h strong" id="rule-top"></div>
+
+  <div class="giant" role="img" aria-label="VOC 权重 40%">
+    <span class="odo" aria-hidden="true"><span class="strip" style="--n:4"><b>0</b><b>1</b><b>2</b><b>3</b><b>4</b></span></span><span class="odo" aria-hidden="true"><span class="strip" style="--n:0"><b>0</b></span></span><small aria-hidden="true">%</small>
+  </div>
+
+  <section class="tbl">
+    <div class="tr"><div class="rule-h strong"></div><p class="k">定稿</p><p class="d ln"><span>7/30 定了 5 个目标、14 项指标</span></p></div>
+    <div class="tr"><div class="rule-h"></div><p class="k">怎么算</p><p class="d ln"><span>每项分基线和超预期两档，今天按基线算</span></p></div>
+    <div class="tr"><div class="rule-h"></div><p class="k">从哪来</p><p class="d ln"><span>入职当周 CEO 提的 4 项需求，加上 AI 推广</span></p></div>
+  </section>
+
+  <h1 class="claim"><span class="ln"><span>5 个目标里，VOC 一项占 40%</span></span></h1>
+
+  <section class="weights" aria-label="5 个目标的权重和指标数">
+    <div class="brace"><div class="rule-h strong"></div><i style="left:0"></i><i style="right:0"></i><p>VOC、CEO 提效、场景挖掘三项合计 80%</p></div>
+    <div class="bar" aria-hidden="true">
+      <i class="top"></i><i></i><i></i><i></i><i></i>
+    </div>
+    <div class="cols">
+      <div class="col"><h2>VOC 系统</h2><p class="w"><span data-to="40">40</span><small>%</small></p><p class="n">3 项指标</p></div>
+      <div class="col"><div class="rule-v"></div><h2>CEO 提效工具</h2><p class="w"><span data-to="20">20</span><small>%</small></p><p class="n">2 项指标</p></div>
+      <div class="col"><div class="rule-v"></div><h2>AI 场景挖掘</h2><p class="w"><span data-to="20">20</span><small>%</small></p><p class="n">3 项指标</p></div>
+      <div class="col"><div class="rule-v"></div><h2>专利创新 AI</h2><p class="w"><span data-to="10">10</span><small>%</small></p><p class="n">3 项指标</p></div>
+      <div class="col"><div class="rule-v"></div><h2>星际圈</h2><p class="w"><span data-to="10">10</span><small>%</small></p><p class="n">3 项指标</p></div>
+    </div>
+  </section>
+
+  <footer class="foot">口径：目标跟踪表（7/30 定稿，9-30 最后回填）；一栏的宽度就是这个目标的权重</footer>
+
+<script src="../shared/motion.js"></script>
+<script>
+  (function () {
+    var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+    var drawX = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }];
+    var drawY = [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }];
+    var rise = [{ transform: 'translateY(135%)' }, { transform: 'none' }];
+    var fade = [{ opacity: 0 }, { opacity: 1 }];
+
+    P5.tween($('#rule-top'), drawX, { duration: 700 });
+    P5.tween($('.giant .strip'), [{ transform: 'translateY(0)' }, { transform: 'translateY(-4em)' }],
+      { delay: 60, duration: 1000, easing: 'cubic-bezier(.22,.8,.12,1)' });
+    P5.tween($('.giant small'), fade, { delay: 500, duration: 500 });
+
+    $$('.tr').forEach(function (r, i) {
+      P5.tween(r.querySelector('.rule-h'), drawX, { delay: 220 + i * 110, duration: 600 });
+      P5.tween(r.querySelector('.k'), fade, { delay: 300 + i * 110, duration: 500 });
+      P5.tween(r.querySelector('.ln > span'), rise, { delay: 280 + i * 110, duration: 700 });
+    });
+    P5.tween($('.claim .ln > span'), rise, { delay: 400, duration: 800 });
+
+    // 权重条：五段按顺序从左长出来，栏线落下，权重计数，最后画出 80% 的括线
+    var t = 560;
+    $$('.bar i').forEach(function (b, i) {
+      P5.tween(b, drawX, { delay: t, duration: 380, easing: 'cubic-bezier(.3,.7,.2,1)' });
+      t += 70;
+    });
+    $$('.col .rule-v').forEach(function (v, i) { P5.tween(v, drawY, { delay: 700 + i * 70, duration: 500 }); });
+    $$('.col').forEach(function (c, i) { P5.tween(c, fade, { delay: 640 + i * 70, duration: 500 }); });
+    $$('.col [data-to]').forEach(function (n, i) { P5.count(n, { delay: 640 + i * 70, duration: 600 }); });
+    P5.tween($('.brace .rule-h'), drawX, { delay: 940, duration: 520 });
+    P5.tween($('.brace p'), fade, { delay: 1100, duration: 450 });
+    $$('.brace i').forEach(function (b, i) { P5.tween(b, drawY, { delay: 940 + i * 400, duration: 200 }); });
+
+    P5.go();
+  })();
+</script>
+</body>
+</html>

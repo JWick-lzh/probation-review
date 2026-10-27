@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-total="1700" data-probe="月渗透率日活人飞书诊断报告用量总结数据截至的口径近个工作内在任一产品上有使用量是什么原文没再给通用额度万点了用掉对齐会方话计划场景运营与">
+<head>
+<meta charset="UTF-8">
+<title>06 飞书诊断</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+/* ───────── 左：芥黄平涂画框 + 截图 ─────────
+   截图 1465×812，按原比例放 1000 × 554.3，不裁 */
+.frame { position: absolute; left: 96px; top: 80px; width: 1064px; background: var(--yellow); }
+.frame .shot { display: block; margin: 32px 32px 0; width: 1000px; height: 554.3px; object-fit: contain; background: #fff; }
+.frame .cap { height: 64px; display: flex; align-items: center; padding: 0 32px; font-size: var(--fs-label); font-weight: 700; color: var(--ink); letter-spacing: .04em; }
+.frame.anim { animation: drop 720ms var(--spring); --drop: -820px; }
+
+/* 截图下面一排：两个数各自的口径 + 额度 */
+.nums { position: absolute; left: 96px; top: 780px; width: 1064px; display: grid; grid-template-columns: 1.15fr 1fr 1fr; column-gap: 48px; }
+.nums .tag { margin-bottom: 10px; }
+.nums .n { font-size: var(--fs-num-m); font-weight: 900; line-height: 1; letter-spacing: -.01em; white-space: nowrap; }
+.nums .n small { font-size: var(--fs-body); font-weight: 700; margin-left: 8px; letter-spacing: 0; }
+.nums .sub { font-size: var(--fs-body-s); font-weight: 500; line-height: 1.45; margin-top: 12px; }
+.nums .note { font-size: var(--fs-body); font-weight: 700; line-height: 1.5; }
+.nums > div.anim { animation: reveal-right 520ms var(--ease-out); }
+.nums > div:nth-child(1) { animation-delay: 620ms !important; }
+.nums > div:nth-child(2) { animation-delay: 720ms !important; }
+.nums > div:nth-child(3) { animation-delay: 820ms !important; }
+/* 额度条：整条 = 618 万点，填墨 = 362.76 万点（58.70%） */
+.qbar { position: relative; margin-top: 14px; height: 22px; border: 3px solid var(--ink); }
+.qbar b { position: absolute; inset: 0; background: var(--ink); transform-origin: 0 50%; transform: scaleX(var(--f)); }
+.qbar b.anim { animation: draw-x 600ms var(--ease-out) 940ms; }
+
+/* ───────── 右：竖排断言标题（四列，换列代替标点；三位数和小数直立排） ───────── */
+.vt { position: absolute; left: 1236px; top: 80px; writing-mode: vertical-rl;
+      font-family: var(--serif); font-weight: 900; font-size: var(--fs-title-2); line-height: 1.2; letter-spacing: .06em; }
+.vt .l { display: block; }
+.vt .l.anim { animation: reveal-down 560ms var(--ease-out); }
+.vt .l:nth-child(2) { animation-delay: 110ms !important; }
+.vt .l:nth-child(3) { animation-delay: 220ms !important; }
+.vt .l:nth-child(4) { animation-delay: 330ms !important; }
+.tcy { text-combine-upright: all; }
+.up  { text-orientation: upright; letter-spacing: 0; }
+
+.src { position: absolute; left: 1236px; bottom: 107px; width: 588px; font-size: var(--fs-body-s); font-weight: 500; color: var(--ink-2); letter-spacing: .04em; line-height: 1.5; }
+.src.anim { animation: reveal-right 500ms var(--ease-out) 1000ms; }
+.page-rule { left: 96px; right: 96px; top: 1008px; transform-origin: 0 50%; }
+.page-rule.anim { animation: draw-x 600ms var(--ease-out) 940ms; }
+</style>
+</head>
+<body>
+
+  <figure class="frame anim">
+    <img class="shot" src="../assets/diag-1023.png" alt="飞书诊断报告 AI 用量总结：通用额度已消耗 3,627,641 / 6,180,000 点，消耗率 58.70%；近 7 个工作日 AI DAU 为 692">
+    <figcaption class="cap">飞书诊断报告「AI 用量总结」，数据截至 2026.10.23</figcaption>
+  </figure>
+
+  <div class="nums">
+    <div class="anim">
+      <span class="tag">24.2% 的口径</span>
+      <div class="n">257 / 1,061<small>人</small></div>
+      <p class="sub">近 7 个工作日内，在任一<br>飞书 AI 产品上有用量的人</p>
+    </div>
+    <div class="anim">
+      <span class="tag">通用额度用了</span>
+      <div class="n">58.70%</div>
+      <div class="qbar" aria-label="年度额度 618 万点，用了 362.76 万点"><b class="anim" style="--f:.587"></b></div>
+      <p class="sub">整条＝年度额度 618 万点</p>
+    </div>
+    <div class="anim">
+      <span class="tag">692 的口径</span>
+      <p class="note">近 7 个工作日的 AI 日活<br>10/23 更新的原文<br>没再给渗透率</p>
+    </div>
+  </div>
+
+  <!-- 断言标题：9 月渗透率 24.2%，10/23 日活 692 人 -->
+  <h1 class="vt" aria-label="9 月渗透率 24.2%，10 月 23 日日活 692 人"><span class="l anim"><span class="tcy">9</span>月渗透率</span><span class="l anim"><span class="up">24.2%</span></span><span class="l anim"><span class="tcy">10</span>月<span class="tcy">23</span>日日活</span><span class="l anim"><span class="up">692</span>人</span></h1>
+
+  <div class="src anim">口径：《Usmile 飞书使用诊断与 AI 场景运营计划》，<br>数据截至 2026.10.23；<br>24.2% 的口径取 9/23 对齐会飞书方原话</div>
+  <div class="rule page-rule anim"></div>
+
+<script src="../shared/motion.js"></script>
+</body>
+</html>

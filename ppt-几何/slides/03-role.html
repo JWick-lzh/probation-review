@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-total="1700" data-probe="直属 CEO 做三类事林灶辉创新助理给提效工具业务产品公司的底座和方法会议汇报时间评论分析规划指标方法论组件库星际圈关系战略经营部怎么从定义问题到上线迭代都自己不占研发排期岗位哪来入职当周提了项需求定成个目标口径试用期跟踪表稿">
+<head>
+<meta charset="UTF-8">
+<title>03 岗位定位</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+/* ───────── 左：汇报线 + 三类事 ─────────
+   一块竖条＝一项工作内容，条数就是内容数：CEO 3 项、业务 1 项、公司 4 项
+   条宽 115、条内间距 10、组间距 60：3×115+20 + 60 + 115 + 60 + 4×115+30 = 1090 */
+.node { position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: var(--paper); }
+.ceo-node { left: 521px; top: 80px; width: 240px; height: 240px; border-radius: 50%; background: var(--ink); }
+.ceo-node .big { font-size: var(--fs-num-l); font-weight: 900; line-height: 1.1; letter-spacing: .04em; }
+.ceo-node .sm  { font-size: var(--fs-label); font-weight: 500; margin-top: 4px; letter-spacing: .1em; }
+.me-node  { left: 541px; top: 368px; width: 200px; height: 200px; background: var(--red); }
+.me-node .big { font-size: 36px; font-weight: 900; line-height: 1.2; letter-spacing: .06em; }
+.me-node .sm  { font-size: var(--fs-body-s); font-weight: 500; margin-top: 6px; }
+.ceo-node.anim { animation: drop 680ms var(--spring); --drop: -320px; }
+.me-node.anim  { animation: reveal-down 460ms var(--ease-out) 360ms; }
+
+.ln { position: absolute; background: var(--ink); }
+.ln.v { width: 3px; transform-origin: 50% 0; }
+.ln.h { height: 3px; transform-origin: 50% 50%; }
+.ln.v.anim { animation: grow-y 260ms var(--ease-out); }
+.ln.h.anim { animation: draw-x 360ms var(--ease-out); }
+.zs { position: absolute; left: 660px; top: 327px; font-size: var(--fs-body-s); font-weight: 700; letter-spacing: .2em; }
+.zs.anim { animation: reveal-right 360ms var(--ease-out) 300ms; }
+
+.gh { position: absolute; top: 640px; transform: translateX(-50%); font-size: 26px; font-weight: 700; white-space: nowrap; letter-spacing: .02em; }
+.gh.anim { animation: reveal-right 420ms var(--ease-out); }
+
+.tile { position: absolute; top: 692px; width: 115px; height: 316px; display: flex; align-items: center; justify-content: center; color: var(--paper); }
+.tile span { writing-mode: vertical-rl; font-size: var(--fs-lead); font-weight: 700; letter-spacing: .12em; line-height: 1; }
+.tile.k { background: var(--ink); }
+.tile.r { background: var(--red); }
+.tile.b { background: var(--blue); }
+/* 竖条从底线往上长出来（裁切显出，不拉伸文字） */
+@keyframes rise { from { clip-path: inset(100% 0 0 0); } }
+.tile.anim { animation: rise 520ms var(--ease-out); }
+.tcy { text-combine-upright: all; }
+.up  { text-orientation: upright; letter-spacing: 0; }
+
+/* ───────── 右：竖排标题 + 信息块 ───────── */
+.vt { position: absolute; left: 1236px; top: 80px; writing-mode: vertical-rl;
+      font-family: var(--serif); font-weight: 900; font-size: var(--fs-title-2); line-height: 1.2; letter-spacing: .06em; }
+.vt .l { display: block; }
+.vt .l.anim { animation: reveal-down 560ms var(--ease-out); }
+.vt .l:nth-child(2) { animation-delay: 140ms !important; }
+
+.info { position: absolute; left: 1500px; top: 84px; width: 324px; }
+.info section + section { margin-top: 48px; }
+.info .tag { margin-bottom: 14px; }
+.info .txt { font-size: var(--fs-body); font-weight: 500; line-height: 1.55; }
+.info .txt-s { font-size: var(--fs-body-s); font-weight: 500; line-height: 1.6; }
+.info section.anim { animation: reveal-right 520ms var(--ease-out); }
+.info section:nth-child(1) { animation-delay: 420ms !important; }
+.info section:nth-child(2) { animation-delay: 520ms !important; }
+.info section:nth-child(3) { animation-delay: 620ms !important; }
+
+.src { position: absolute; left: 1236px; bottom: 107px; width: 588px; font-size: var(--fs-body-s); font-weight: 500; color: var(--ink-2); letter-spacing: .04em; line-height: 1.5; }
+.src.anim { animation: reveal-right 500ms var(--ease-out) 1000ms; }
+.page-rule { left: 96px; right: 96px; top: 1008px; transform-origin: 0 50%; }
+.page-rule.anim { animation: draw-x 600ms var(--ease-out) 940ms; }
+</style>
+</head>
+<body>
+
+  <!-- 汇报线 -->
+  <div class="node ceo-node anim"><span class="big">CEO</span></div>
+  <div class="ln v anim" style="left:639.5px;top:320px;height:48px;animation-delay:260ms"></div>
+  <div class="zs anim">直属</div>
+  <div class="node me-node anim"><span class="big">林灶辉</span><span class="sm">AI 创新助理</span></div>
+  <div class="ln v anim" style="left:639.5px;top:568px;height:30px;animation-delay:620ms"></div>
+  <div class="ln h anim" style="left:277px;top:597px;width:665.5px;animation-delay:660ms"></div>
+  <div class="ln v anim" style="left:277px;top:598px;height:32px;animation-delay:800ms"></div>
+  <div class="ln v anim" style="left:577px;top:598px;height:32px;animation-delay:800ms"></div>
+  <div class="ln v anim" style="left:939.5px;top:598px;height:32px;animation-delay:800ms"></div>
+
+  <div class="gh anim" style="left:278.5px;animation-delay:820ms">给 CEO 做提效工具</div>
+  <div class="gh anim" style="left:578.5px;animation-delay:850ms">给业务做 AI 产品</div>
+  <div class="gh anim" style="left:941px;animation-delay:880ms">给公司做 AI 的底座和方法</div>
+
+  <!-- CEO：会议、汇报、时间 -->
+  <div class="tile k anim" style="left:96px;animation-delay:840ms"><span>会议</span></div>
+  <div class="tile k anim" style="left:221px;animation-delay:870ms"><span>汇报</span></div>
+  <div class="tile k anim" style="left:346px;animation-delay:900ms"><span>时间</span></div>
+  <!-- 业务：VOC 评论分析 -->
+  <div class="tile r anim" style="left:521px;animation-delay:930ms"><span><span class="up">VOC</span>评论分析</span></div>
+  <!-- 公司：IT 规划、指标方法论、组件库、星际圈 -->
+  <div class="tile b anim" style="left:696px;animation-delay:960ms"><span><span class="tcy">IT</span>规划</span></div>
+  <div class="tile b anim" style="left:821px;animation-delay:990ms"><span>指标方法论</span></div>
+  <div class="tile b anim" style="left:946px;animation-delay:1020ms"><span>组件库</span></div>
+  <div class="tile b anim" style="left:1071px;animation-delay:1050ms"><span>星际圈</span></div>
+
+  <h1 class="vt" aria-label="直属 CEO，做三类事"><span class="l anim">直属 CEO</span><span class="l anim">做三类事</span></h1>
+
+  <div class="info">
+    <section class="anim">
+      <span class="tag">部门</span>
+      <p class="txt">战略经营部</p>
+    </section>
+    <section class="anim">
+      <span class="tag">怎么做</span>
+      <p class="txt">从定义问题到上线迭代<br>都自己做<br>不占研发排期</p>
+    </section>
+    <section class="anim">
+      <span class="tag">岗位从哪来</span>
+      <p class="txt-s">入职当周 CEO 提了 4 项需求<br>7/30 定成 5 个目标、<br>14 项指标</p>
+    </section>
+  </div>
+
+  <div class="src anim">口径：试用期目标跟踪表（7/30 定稿）</div>
+  <div class="rule page-rule anim"></div>
+
+<script src="../shared/motion.js"></script>
+</body>
+</html>

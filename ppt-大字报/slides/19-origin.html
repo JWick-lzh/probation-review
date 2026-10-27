@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>分工从哪来</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* 骨架：巨字 V50（「周期长」最具体的证据）→ 结论句 → 细线时间线六个节点，最后一个 10/14 用蓝色（分工定下来了） */
+
+  .runhead {
+    position: absolute; left: var(--m); right: var(--m); top: 40px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: var(--fs-label); line-height: 1.2;
+  }
+  .runhead b { font-weight: 700; }
+  #rule-top { left: var(--m); width: var(--content-w); top: 78px; }
+
+  .giant {
+    position: absolute; left: 78px; top: 92px;
+    font-family: var(--font-giant); font-weight: 900; line-height: 1;
+    font-size: 400px; letter-spacing: -0.04em; white-space: nowrap; color: var(--ink);
+  }
+
+  .note {
+    position: absolute; right: var(--m); top: 186px; text-align: right;
+    font-size: var(--fs-lead); font-weight: 700; line-height: 1.45;
+  }
+  .note small { display: block; margin-top: 10px; font-size: var(--fs-label); font-weight: 400; color: var(--muted); }
+
+  .claim {
+    position: absolute; left: var(--m); top: 500px;
+    font-family: var(--font-giant); font-size: var(--fs-title); font-weight: 900;
+    line-height: 1.1; letter-spacing: -0.01em; white-space: nowrap;
+  }
+
+  .tl-cap { position: absolute; left: var(--m); top: 640px; font-size: var(--fs-label); font-weight: 700; color: var(--muted); line-height: 1.2; }
+  #axis { left: var(--m); width: var(--content-w); top: 680px; }
+  .tl {
+    position: absolute; left: var(--m); width: var(--content-w); top: 681px;
+    display: grid; grid-template-columns: repeat(6, 1fr);
+  }
+  .ev { position: relative; padding-right: 12px; }
+  .ev .dot { position: absolute; left: 0; top: -8px; width: 14px; height: 14px; background: var(--ink); }
+  .ev .d { margin-top: 30px; font-family: var(--font-giant); font-size: 44px; font-weight: 900; line-height: 1; letter-spacing: -0.02em; white-space: nowrap; }
+  .ev p { margin-top: 18px; font-size: var(--fs-body); line-height: 1.45; white-space: nowrap; }
+  .ev.last .dot { background: var(--blue); width: 18px; height: 18px; top: -10px; }
+  .ev.last .d { color: var(--blue); }
+  .ev.last p { font-weight: 700; }
+
+  .foot {
+    position: absolute; left: var(--m); right: var(--m); top: 1000px;
+    font-size: var(--fs-label); line-height: 1.2; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+  <div class="runhead"><b>三、团队管理</b><span>转正述职　林灶辉</span></div>
+  <div class="rule-h strong" id="rule-top"></div>
+
+  <div class="giant" role="img" aria-label="口腔品牌经营看板 10/10 已到 V50">
+    <span class="odo-src" aria-hidden="true">V50</span>
+  </div>
+
+  <aside class="note">
+    <span class="ln"><span>口腔品牌经营看板</span></span>
+    <span class="ln"><span>10/10 已到 V50</span></span>
+    <span class="ln"><small>CEO 10/1–10/12 先后发来的 HTML 原型之一</small></span>
+  </aside>
+
+  <h2 class="claim"><span class="ln"><span>三方分工，是从「需求不清、周期长」里磨出来的。</span></span></h2>
+
+  <p class="tl-cap">9 月底到 10 月中，CEO 工作台这条线</p>
+  <div class="rule-h strong" id="axis"></div>
+  <section class="tl" aria-label="分工从哪来的时间线">
+    <div class="ev"><i class="dot"></i><p class="d">9/28–29</p><p>CEO 列 5 个产品方向；<br>又列 CEO 工作台<br>先做 5 件事</p></div>
+    <div class="ev"><i class="dot"></i><p class="d">10/1</p><p>会议看板 v2.0 上线；<br>CEO 9/30 之后<br>没再打开</p></div>
+    <div class="ev"><i class="dot"></i><p class="d">10/1–12</p><p>CEO 先后发来多份<br>HTML 原型；口腔品牌<br>经营看板 10/10 到 V50</p></div>
+    <div class="ev"><i class="dot"></i><p class="d">10/3</p><p>CEO：「前提还是<br>问题足够锐利清晰<br>……反而在卷交互」</p></div>
+    <div class="ev"><i class="dot"></i><p class="d">10/10</p><p>看板方案讨论会：<br>先定义问题再开发；<br>CEO 工作台节点<br>转为待确认</p></div>
+    <div class="ev last"><i class="dot"></i><p class="d">10/14</p><p>CEO 在群里定三方分工；<br>18:03 拍板 CEO 工作台<br>方向，说「定了」</p></div>
+  </section>
+
+  <footer class="foot">口径：CEO 群消息、每日记录</footer>
+
+<script src="../shared/motion.js"></script>
+<script>
+  (function () {
+    var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+    function odoize(el) {
+      var txt = el.textContent; el.textContent = '';
+      for (var i = 0; i < txt.length; i++) {
+        var ch = txt.charAt(i);
+        if (/\d/.test(ch)) {
+          var d = +ch, n = d === 0 ? 10 : d;
+          var o = document.createElement('span'), s = document.createElement('span');
+          o.className = 'odo'; s.className = 'strip'; s.style.setProperty('--n', n);
+          for (var k = 0; k <= n; k++) { var b = document.createElement('b'); b.textContent = k % 10; s.appendChild(b); }
+          o.appendChild(s); el.appendChild(o);
+        } else el.appendChild(document.createTextNode(ch));
+      }
+      return Array.prototype.slice.call(el.querySelectorAll('.strip'));
+    }
+
+    var drawX = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }];
+    var rise = [{ transform: 'translateY(135%)' }, { transform: 'none' }];
+
+    P5.tween($('#rule-top'), drawX, { duration: 700 });
+    odoize($('.giant .odo-src')).forEach(function (s, i) {
+      var n = parseFloat(s.style.getPropertyValue('--n'));
+      P5.tween(s, [{ transform: 'translateY(0)' }, { transform: 'translateY(' + (-n) + 'em)' }],
+        { delay: 60 + i * 110, duration: 1100 - i * 120, easing: 'cubic-bezier(.22,.8,.12,1)' });
+    });
+    $$('.note .ln > *').forEach(function (s, i) { P5.tween(s, rise, { delay: 300 + i * 70, duration: 700 }); });
+    P5.tween($('.claim .ln > span'), rise, { delay: 380, duration: 800 });
+
+    // 时间线：轴从左画到右，节点跟着轴依次出现
+    P5.tween($('.tl-cap'), [{ transform: 'translateY(20px)', clipPath: 'inset(0 0 100% 0)' }, { transform: 'none', clipPath: 'inset(0 0 0 0)' }], { delay: 420, duration: 500 });
+    P5.tween($('#axis'), drawX, { delay: 460, duration: 1000, easing: 'cubic-bezier(.45,.05,.3,1)' });
+    $$('.ev').forEach(function (e, i) {
+      var t = 520 + i * 150;
+      P5.tween(e.querySelector('.dot'), [{ transform: 'scale(0)' }, { transform: 'none' }], { delay: t, duration: 320 });
+      Array.prototype.forEach.call(e.querySelectorAll('p'), function (p, j) {
+        P5.tween(p, [{ transform: 'translateY(24px)', clipPath: 'inset(0 0 100% 0)' }, { transform: 'none', clipPath: 'inset(0 0 0 0)' }], { delay: t + 40 + j * 60, duration: 560 });
+      });
+    });
+
+    P5.go();
+  })();
+</script>
+</body>
+</html>

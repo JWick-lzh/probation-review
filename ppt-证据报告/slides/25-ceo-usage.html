@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>CEO 的实际使用</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：logo 挪到右端，导航右移让出左上角（演示外壳的「概览」按钮在那里；与 01–07 同一写法） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+/* ── 25 CEO 的实际使用 ── */
+.band { height: 186px; padding-top: 34px; }
+.band .assert { font-size: var(--fs-assert); line-height: 1.2; white-space: nowrap; }
+.band .sub { margin-top: 6px; font-size: var(--fs-body); color: var(--ink-2); }
+
+.chart { position: absolute; left: var(--gutter); top: 312px; width: 1240px; }
+.plot { display: block; overflow: visible; }
+.chart .source { margin-top: 18px; }
+
+.plot .lg { font-size: 22px; fill: var(--ink-2); }
+.plot .ax { font-size: 20px; fill: var(--muted); }
+.plot .app { font-size: 28px; font-weight: 700; fill: var(--ink); }
+.plot .cnt { font-size: 24px; fill: var(--ink-2); }
+.plot .cnt-b { font-weight: 700; fill: var(--ink); }
+.plot .ann { font-size: 20px; font-weight: 500; fill: var(--ink-2); }
+.plot .ann-b { font-size: 22px; font-weight: 700; fill: var(--ink); }
+.plot .bad { font-size: 24px; font-weight: 700; fill: var(--red); }
+.plot .week { stroke: var(--rule); stroke-width: 1.5; stroke-dasharray: 4 6; fill: none; }
+.plot .sep { stroke: var(--track); stroke-width: 1.5; }
+.plot .on { fill: var(--s-done); stroke: #fff; stroke-width: 3; }
+.plot .off { fill: #B8C2CE; }
+.plot .none { stroke: #8E9AA8; stroke-width: 2; stroke-dasharray: 6 6; }
+.plot .flag { stroke: var(--ink-2); stroke-width: 2; }
+.plot .gap { stroke: var(--red); stroke-width: 3; }
+
+.side.read { left: 1400px; top: 322px; width: 414px; }
+.side.read h3 + p { margin-top: 10px; }
+.side.read p + p { margin-top: 14px; }
+.side.read p + h3 { margin-top: 44px; }
+.side .verdict { font-weight: 700; color: var(--ink); }
+
+/* 时间轴（ms）：红线 0–600 → 标题 100–700 → 框架 250–650 → 周线 350–800
+   → 每天的小点从左到右排开 400–1220 → 打开的日子变成大点 800–1380 → 注释 1000–1400 → 来源行 1300–1600 */
+.plot .pop { transform-box: fill-box; transform-origin: 50% 50%; }
+.plot .week { transform-box: fill-box; transform-origin: 50% 0; }
+.plot .gap { transform-box: fill-box; transform-origin: 0 50%; }
+html.motion .band .assert { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .sub { animation: rise .5s var(--ease-out) .2s both; }
+html.motion .plot .frame { animation: fade .4s ease-out .25s both; }
+html.motion .plot .week { animation: draw-y .45s var(--ease-out) .35s both; }
+html.motion .plot .pop { animation: pop .28s var(--ease-out) var(--d) both; }
+html.motion .plot .gap { animation: draw-x .45s var(--ease-draw) 1s both; }
+html.motion .plot .late { animation: fade .3s ease-out var(--d) both; }
+html.motion .side.read { animation: fade .4s ease-out .3s both; }
+.chart .source { --src-delay: 1.3s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span>岗位定位</span><span>目标回顾</span><span>完成情况</span><span>IT 规划</span><span>团队管理</span><span class="on" aria-current="true">自我评价</span><span>未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">做出来了，CEO 用得还不多</h1>
+  <p class="sub">CEO 打开两个应用的日期，9/21–10/25，一天一个点</p>
+</section>
+
+<figure class="chart">
+  <!-- 9/21 到 10/25 共 35 天：x = 300 + (距 9/21 的天数 + 0.5) × 26.43 -->
+  <svg class="plot" width="1240" height="540" viewBox="0 0 1240 540" role="img"
+       aria-label="CEO 打开两个应用的日期，9/21–10/25：CEO 会议看板 9/28、9/29 共 2 天 4 次，9/30 之后没再打开；工作反馈系统 9/30、10/12、10/14、10/16、10/21、10/22 共 6 天 14 次，最后一次 10/22，9/28 之前没有记录">
+    <g class="frame">
+      <circle cx="11" cy="26" r="11" class="on"/>
+      <text x="32" y="34" class="lg">有打开记录的一天</text>
+      <circle cx="252" cy="26" r="4.5" class="off"/>
+      <text x="268" y="34" class="lg">没打开</text>
+      <line x1="372" x2="412" y1="26" y2="26" class="none"/>
+      <text x="424" y="34" class="lg">没有记录</text>
+
+      <text x="0" y="182" class="app">CEO 会议看板</text>
+      <text x="0" y="216" class="cnt"><tspan class="cnt-b">2</tspan> 天，共 <tspan class="cnt-b">4</tspan> 次</text>
+      <line x1="0" x2="1240" y1="290" y2="290" class="sep"/>
+      <text x="0" y="392" class="app">工作反馈系统</text>
+      <text x="0" y="426" class="cnt"><tspan class="cnt-b">6</tspan> 天，共 <tspan class="cnt-b">14</tspan> 次</text>
+      <line x1="300" x2="478" y1="400" y2="400" class="none"/>
+      <text x="392" y="378" class="ann" text-anchor="middle">没有记录</text>
+
+      <text x="304" y="522" class="ax">9/21</text>
+      <text x="489" y="522" class="ax">9/28</text>
+      <text x="674" y="522" class="ax">10/5</text>
+      <text x="859" y="522" class="ax">10/12</text>
+      <text x="1044" y="522" class="ax">10/19</text>
+      <text x="1236" y="522" class="ax" text-anchor="end">10/25</text>
+    </g>
+    <line x1="300" x2="300" y1="70" y2="496" class="week"/>
+    <line x1="485" x2="485" y1="70" y2="496" class="week"/>
+    <line x1="670" x2="670" y1="70" y2="496" class="week"/>
+    <line x1="855" x2="855" y1="70" y2="496" class="week"/>
+    <line x1="1040" x2="1040" y1="70" y2="496" class="week"/>
+    <line x1="1225" x2="1225" y1="70" y2="496" class="week"/>
+
+    <circle cx="313.2" cy="190" r="4.5" class="off pop" style="--d:400ms"/>
+    <circle cx="339.6" cy="190" r="4.5" class="off pop" style="--d:412ms"/>
+    <circle cx="366.1" cy="190" r="4.5" class="off pop" style="--d:424ms"/>
+    <circle cx="392.5" cy="190" r="4.5" class="off pop" style="--d:436ms"/>
+    <circle cx="418.9" cy="190" r="4.5" class="off pop" style="--d:448ms"/>
+    <circle cx="445.4" cy="190" r="4.5" class="off pop" style="--d:460ms"/>
+    <circle cx="471.8" cy="190" r="4.5" class="off pop" style="--d:472ms"/>
+    <circle cx="551.1" cy="190" r="4.5" class="off pop" style="--d:508ms"/>
+    <circle cx="577.5" cy="190" r="4.5" class="off pop" style="--d:520ms"/>
+    <circle cx="603.9" cy="190" r="4.5" class="off pop" style="--d:532ms"/>
+    <circle cx="630.4" cy="190" r="4.5" class="off pop" style="--d:544ms"/>
+    <circle cx="656.8" cy="190" r="4.5" class="off pop" style="--d:556ms"/>
+    <circle cx="683.2" cy="190" r="4.5" class="off pop" style="--d:568ms"/>
+    <circle cx="709.7" cy="190" r="4.5" class="off pop" style="--d:580ms"/>
+    <circle cx="736.1" cy="190" r="4.5" class="off pop" style="--d:592ms"/>
+    <circle cx="762.5" cy="190" r="4.5" class="off pop" style="--d:604ms"/>
+    <circle cx="789.0" cy="190" r="4.5" class="off pop" style="--d:616ms"/>
+    <circle cx="815.4" cy="190" r="4.5" class="off pop" style="--d:628ms"/>
+    <circle cx="841.8" cy="190" r="4.5" class="off pop" style="--d:640ms"/>
+    <circle cx="868.2" cy="190" r="4.5" class="off pop" style="--d:652ms"/>
+    <circle cx="894.7" cy="190" r="4.5" class="off pop" style="--d:664ms"/>
+    <circle cx="921.1" cy="190" r="4.5" class="off pop" style="--d:676ms"/>
+    <circle cx="947.5" cy="190" r="4.5" class="off pop" style="--d:688ms"/>
+    <circle cx="974.0" cy="190" r="4.5" class="off pop" style="--d:700ms"/>
+    <circle cx="1000.4" cy="190" r="4.5" class="off pop" style="--d:712ms"/>
+    <circle cx="1026.8" cy="190" r="4.5" class="off pop" style="--d:724ms"/>
+    <circle cx="1053.3" cy="190" r="4.5" class="off pop" style="--d:736ms"/>
+    <circle cx="1079.7" cy="190" r="4.5" class="off pop" style="--d:748ms"/>
+    <circle cx="1106.1" cy="190" r="4.5" class="off pop" style="--d:760ms"/>
+    <circle cx="1132.5" cy="190" r="4.5" class="off pop" style="--d:772ms"/>
+    <circle cx="1159.0" cy="190" r="4.5" class="off pop" style="--d:784ms"/>
+    <circle cx="1185.4" cy="190" r="4.5" class="off pop" style="--d:796ms"/>
+    <circle cx="1211.8" cy="190" r="4.5" class="off pop" style="--d:808ms"/>
+    <circle cx="498.2" cy="400" r="4.5" class="off pop" style="--d:484ms"/>
+    <circle cx="524.7" cy="400" r="4.5" class="off pop" style="--d:496ms"/>
+    <circle cx="577.5" cy="400" r="4.5" class="off pop" style="--d:520ms"/>
+    <circle cx="603.9" cy="400" r="4.5" class="off pop" style="--d:532ms"/>
+    <circle cx="630.4" cy="400" r="4.5" class="off pop" style="--d:544ms"/>
+    <circle cx="656.8" cy="400" r="4.5" class="off pop" style="--d:556ms"/>
+    <circle cx="683.2" cy="400" r="4.5" class="off pop" style="--d:568ms"/>
+    <circle cx="709.7" cy="400" r="4.5" class="off pop" style="--d:580ms"/>
+    <circle cx="736.1" cy="400" r="4.5" class="off pop" style="--d:592ms"/>
+    <circle cx="762.5" cy="400" r="4.5" class="off pop" style="--d:604ms"/>
+    <circle cx="789.0" cy="400" r="4.5" class="off pop" style="--d:616ms"/>
+    <circle cx="815.4" cy="400" r="4.5" class="off pop" style="--d:628ms"/>
+    <circle cx="841.8" cy="400" r="4.5" class="off pop" style="--d:640ms"/>
+    <circle cx="894.7" cy="400" r="4.5" class="off pop" style="--d:664ms"/>
+    <circle cx="947.5" cy="400" r="4.5" class="off pop" style="--d:688ms"/>
+    <circle cx="1000.4" cy="400" r="4.5" class="off pop" style="--d:712ms"/>
+    <circle cx="1026.8" cy="400" r="4.5" class="off pop" style="--d:724ms"/>
+    <circle cx="1053.3" cy="400" r="4.5" class="off pop" style="--d:736ms"/>
+    <circle cx="1079.7" cy="400" r="4.5" class="off pop" style="--d:748ms"/>
+    <circle cx="1159.0" cy="400" r="4.5" class="off pop" style="--d:784ms"/>
+    <circle cx="1185.4" cy="400" r="4.5" class="off pop" style="--d:796ms"/>
+    <circle cx="1211.8" cy="400" r="4.5" class="off pop" style="--d:808ms"/>
+    <circle cx="498.2" cy="190" r="14" class="on pop" style="--d:800ms"/>
+    <circle cx="524.7" cy="190" r="14" class="on pop" style="--d:890ms"/>
+    <circle cx="551.1" cy="400" r="14" class="on pop" style="--d:900ms"/>
+    <circle cx="868.2" cy="400" r="14" class="on pop" style="--d:980ms"/>
+    <circle cx="921.1" cy="400" r="14" class="on pop" style="--d:1060ms"/>
+    <circle cx="974.0" cy="400" r="14" class="on pop" style="--d:1140ms"/>
+    <circle cx="1106.1" cy="400" r="14" class="on pop" style="--d:1220ms"/>
+    <circle cx="1132.5" cy="400" r="14" class="on pop" style="--d:1300ms"/>
+
+    <g class="late" style="--d:1000ms">
+      <line x1="577.5" x2="577.5" y1="130" y2="166" class="flag"/>
+      <text x="577.5" y="120" class="ann" text-anchor="middle">10/1 会议看板 v2.0 上线</text>
+    </g>
+    <line x1="545" x2="1225" y1="226" y2="226" class="gap"/>
+    <g class="late" style="--d:1250ms"><text x="1225" y="262" class="bad" text-anchor="end">9/30 之后没再打开</text></g>
+    <g class="late" style="--d:1350ms"><text x="1132.5" y="362" class="ann-b" text-anchor="middle">最后一次 10/22</text></g>
+  </svg>
+  <figcaption class="source">来源：CEO 会议看板、工作反馈系统线上库的访问记录，只读查询，截至 10-25</figcaption>
+</figure>
+
+<aside class="side read">
+  <h3>说明</h3>
+  <p>两个应用累计都是 3 人，<br>其中 2 人是开发者。</p>
+  <p class="verdict">这是下一阶段最要解决的事。</p>
+  <h3>口径</h3>
+  <p>两个应用线上库的访问记录，<br>只读查询，截至 10-25。</p>
+  <p>工作反馈系统的记录 9/28 起<br>才有，之前画成虚线，不是 0。</p>
+</aside>
+</body>
+</html>

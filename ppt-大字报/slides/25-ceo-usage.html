@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>CEO 的实际使用</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* 坏消息页：巨数字 4（会议看板一共只打开 4 次）用墨色，不用蓝 → 右边结论句
+     → 9/21–10/25 每天一格（同第 7 页的格子语法：蓝 = 打开过，灰 = 没打开，空框 = 没有记录）→ 底部细线三栏 */
+
+  .runhead {
+    position: absolute; left: var(--m); right: var(--m); top: 40px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: var(--fs-label); line-height: 1.2;
+  }
+  .runhead b { font-weight: 700; }
+  #rule-top { left: var(--m); width: var(--content-w); top: 78px; }
+
+  .giant {
+    position: absolute; left: 66px; top: 56px;
+    font-family: var(--font-giant); font-weight: 900; line-height: 1;
+    font-size: 600px; letter-spacing: -0.04em; white-space: nowrap; color: var(--ink);
+  }
+  .giant .unit { font-size: 0.12em; letter-spacing: 0; margin-left: 0.02em; }
+
+  .cap { position: absolute; left: 620px; top: 150px; font-size: var(--fs-lead); font-weight: 700; line-height: 1.45; }
+  .cap small { display: block; margin-top: 8px; font-size: var(--fs-label); font-weight: 400; color: var(--muted); }
+
+  .claim {
+    position: absolute; left: 620px; top: 330px;
+    font-family: var(--font-giant); font-size: var(--fs-head); font-weight: 900;
+    line-height: 1.1; letter-spacing: -0.015em; white-space: nowrap;
+  }
+
+  /* 每天一格：35 天，格宽 38、间距 4，右对齐到内容区右边 */
+  .days { position: absolute; left: var(--m); width: var(--content-w); top: 626px; }
+  .row { position: relative; height: 56px; margin-bottom: 10px; }
+  .row .name { position: absolute; left: 0; top: 0; height: 56px; display: flex; align-items: center; gap: 12px; font-size: var(--fs-body); font-weight: 700; white-space: nowrap; }
+  .row .name em { font-style: normal; font-weight: 400; color: var(--muted); }
+  .cells { position: absolute; right: 0; top: 0; display: flex; gap: 4px; }
+  .c { width: 38px; height: 56px; background: var(--cell); }
+  .c.on { background: var(--blue); }
+  .c.na { background: transparent; box-shadow: inset 0 0 0 1.5px #C4C4C4; }
+  .ticks { position: relative; height: 30px; }
+  .ticks span { position: absolute; top: 4px; font-size: var(--fs-label); color: var(--muted); line-height: 1.2; white-space: nowrap; }
+
+  #rule-base { left: var(--m); width: var(--content-w); top: 818px; }
+  .base {
+    position: absolute; left: var(--m); width: var(--content-w); top: 820px; height: 140px;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+  }
+  .base .rule-v { top: 0; height: 140px; left: 0; }
+  .cell { position: relative; padding: 16px 32px 0; }
+  .cell:first-child { padding-left: 0; }
+  .cell .k { font-size: var(--fs-label); font-weight: 700; color: var(--muted); line-height: 1.2; }
+  .cell .v { margin-top: 8px; font-family: var(--font-giant); font-weight: 900; font-size: 56px; line-height: 1; letter-spacing: -0.03em; }
+  .cell .v i { font-style: normal; font-family: var(--font-text); font-size: var(--fs-lead); font-weight: 700; letter-spacing: 0; margin-left: 6px; }
+  .cell small { display: block; margin-top: 8px; font-size: var(--fs-label); color: var(--ink-2); line-height: 1.3; }
+  .cell h3 { margin-top: 12px; font-size: 32px; font-weight: 900; line-height: 1.3; }
+
+  .foot {
+    position: absolute; left: var(--m); right: var(--m); top: 1000px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: var(--fs-label); line-height: 1.2; color: var(--muted);
+  }
+  .legend { display: flex; align-items: center; gap: 20px; white-space: nowrap; }
+  .legend span { display: inline-flex; align-items: center; gap: 8px; }
+  .sw { width: 20px; height: 20px; display: inline-block; }
+  .sw.on { background: var(--blue); }
+  .sw.off { background: var(--cell); }
+  .sw.na { box-shadow: inset 0 0 0 1.5px #C4C4C4; }
+</style>
+</head>
+<body>
+
+  <div class="runhead"><b>四、自我评价</b><span>转正述职　林灶辉</span></div>
+  <div class="rule-h strong" id="rule-top"></div>
+
+  <div class="giant" role="img" aria-label="CEO 会议看板 CEO 一共打开 4 次">
+    <span class="odo-src" aria-hidden="true">4</span><span class="unit" aria-hidden="true">次</span>
+  </div>
+
+  <aside class="cap">
+    <span class="ln"><span>CEO 会议看板，CEO 9/28、9/29 共打开 4 次，</span></span>
+    <span class="ln"><span>9/30 之后没再打开</span></span>
+  </aside>
+
+  <h2 class="claim">
+    <span class="ln"><span>做出来了，</span></span>
+    <span class="ln"><span>CEO 用得还不多。</span></span>
+  </h2>
+
+  <section class="days" id="days" aria-label="9/21 到 10/25 CEO 打开两个应用的日期">
+    <div class="row" data-on="7,8"><p class="name">会议看板<em>4 次</em></p><div class="cells"></div></div>
+    <div class="row" data-on="9,21,23,25,30,31" data-na="0-6"><p class="name">工作反馈系统<em>14 次</em></p><div class="cells"></div></div>
+    <div class="ticks"></div>
+  </section>
+
+  <div class="rule-h strong" id="rule-base"></div>
+  <section class="base">
+    <div class="cell">
+      <p class="k">两个应用的累计用户</p>
+      <p class="v"><span data-to="3">3</span><i>人</i></p>
+      <small>两个应用都是 3 人，其中 2 人是开发者</small>
+    </div>
+    <div class="cell">
+      <div class="rule-v"></div>
+      <p class="k">工作反馈系统</p>
+      <p class="v">10/22</p>
+      <small>最后一次打开；6 天打开 14 次</small>
+    </div>
+    <div class="cell">
+      <div class="rule-v"></div>
+      <p class="k">判断</p>
+      <h3>这是下一阶段<br>最要解决的事。</h3>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>口径：两个应用线上库访问记录，只读查询，截至 10-25；工作反馈系统的记录 9/28 起才有</span>
+    <span class="legend">
+      <span><i class="sw on"></i>打开过</span>
+      <span><i class="sw off"></i>没打开</span>
+      <span><i class="sw na"></i>没有记录</span>
+    </span>
+  </footer>
+
+<script src="../shared/motion.js"></script>
+<script>
+  (function () {
+    var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+    function odoize(el) {
+      var txt = el.textContent; el.textContent = '';
+      for (var i = 0; i < txt.length; i++) {
+        var ch = txt.charAt(i);
+        if (/\d/.test(ch)) {
+          var d = +ch, n = d === 0 ? 10 : d;
+          var o = document.createElement('span'), s = document.createElement('span');
+          o.className = 'odo'; s.className = 'strip'; s.style.setProperty('--n', n);
+          for (var k = 0; k <= n; k++) { var b = document.createElement('b'); b.textContent = k % 10; s.appendChild(b); }
+          o.appendChild(s); el.appendChild(o);
+        } else el.appendChild(document.createTextNode(ch));
+      }
+      return Array.prototype.slice.call(el.querySelectorAll('.strip'));
+    }
+
+    /* 数据只取 content.md「CEO 实际使用」：第 0 格 = 9/21，第 34 格 = 10/25。
+       只标打开的日期，每天打开几次原文没给，不分。 */
+    var N = 35;
+    function parseList(s) {
+      var out = {};
+      (s || '').split(',').forEach(function (p) {
+        if (!p) return;
+        var r = p.split('-'), a = +r[0], b = r.length > 1 ? +r[1] : a;
+        for (var i = a; i <= b; i++) out[i] = true;
+      });
+      return out;
+    }
+    $$('#days .row').forEach(function (row) {
+      var on = parseList(row.getAttribute('data-on')), na = parseList(row.getAttribute('data-na'));
+      var box = row.querySelector('.cells');
+      for (var i = 0; i < N; i++) {
+        var c = document.createElement('i');
+        c.className = 'c' + (on[i] ? ' on' : na[i] ? ' na' : '');
+        box.appendChild(c);
+      }
+    });
+    // 刻度：9/21 起每周一个，加上 10/25
+    var ticks = $('#days .ticks'), x0 = 1728 - (N * 38 + (N - 1) * 4);
+    [[0, '9/21'], [7, '9/28'], [14, '10/5'], [21, '10/12'], [28, '10/19'], [34, '10/25']].forEach(function (t) {
+      var s = document.createElement('span');
+      s.textContent = t[1];
+      if (t[0] === N - 1) { s.style.left = (x0 + t[0] * 42 + 38) + 'px'; s.style.transform = 'translateX(-100%)'; }
+      else s.style.left = (x0 + t[0] * 42) + 'px';
+      ticks.appendChild(s);
+    });
+
+    var drawX = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }];
+    var drawY = [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }];
+    var rise = [{ transform: 'translateY(135%)' }, { transform: 'none' }];
+    var up = [{ transform: 'translateY(16px)', clipPath: 'inset(0 0 100% 0)' }, { transform: 'none', clipPath: 'inset(0 0 0 0)' }];
+
+    P5.tween($('#rule-top'), drawX, { duration: 700 });
+    odoize($('.giant .odo-src')).forEach(function (s) {
+      var n = parseFloat(s.style.getPropertyValue('--n'));
+      P5.tween(s, [{ transform: 'translateY(0)' }, { transform: 'translateY(' + (-n) + 'em)' }],
+        { delay: 60, duration: 1000, easing: 'cubic-bezier(.22,.8,.12,1)' });
+    });
+    $$('.cap .ln > span').forEach(function (s, i) { P5.tween(s, rise, { delay: 260 + i * 70, duration: 700 }); });
+    $$('.claim .ln > span').forEach(function (s, i) { P5.tween(s, rise, { delay: 360 + i * 90, duration: 800 }); });
+
+    // 格子从左往右按天出现（一天 14ms）
+    $$('#days .row').forEach(function (row, r) {
+      P5.tween(row.querySelector('.name'), up, { delay: 420 + r * 80, duration: 500 });
+      Array.prototype.forEach.call(row.querySelectorAll('.c'), function (c, i) {
+        P5.tween(c, [{ transform: 'scaleY(0)' }, { transform: 'none' }], { delay: 480 + r * 80 + i * 14, duration: 260, easing: 'cubic-bezier(.3,.7,.2,1)' });
+      });
+    });
+    P5.tween($('#days .ticks'), up, { delay: 900, duration: 500 });
+
+    P5.tween($('#rule-base'), drawX, { delay: 760, duration: 700 });
+    $$('.base .rule-v').forEach(function (v, i) { P5.tween(v, drawY, { delay: 900 + i * 60, duration: 500 }); });
+    P5.count($('.base [data-to]'), { delay: 900, duration: 500 });
+    $$('.cell > *:not(.rule-v)').forEach(function (e, i) { P5.tween(e, up, { delay: 920 + i * 40, duration: 480 }); });
+
+    P5.go();
+  })();
+</script>
+</body>
+</html>

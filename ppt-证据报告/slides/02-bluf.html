@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>一句话结论</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：logo 挪到右端，导航右移让出左上角（演示外壳的「概览」按钮在那里） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+
+/* ── 02 一句话结论 ── */
+.band { height: 186px; padding-top: 34px; }
+.band .assert { font-size: var(--fs-assert); line-height: 1.2; }
+.band .sub { margin-top: 6px; font-size: var(--fs-body); color: var(--ink-2); }
+
+.chart { position: absolute; left: var(--gutter); top: 318px; width: 1240px; }
+.plot { display: block; overflow: visible; }
+.chart .source { margin-top: 14px; }
+
+.plot .ct { font-size: 26px; font-weight: 700; fill: var(--ink); }
+.plot .tn { font-size: 24px; fill: var(--ink-2); }
+.plot .td { font-size: 24px; font-weight: 700; fill: var(--ink);
+  paint-order: stroke; stroke: #fff; stroke-width: 8px; stroke-linejoin: round; }
+.plot .mo { font-size: 20px; fill: var(--muted); }
+.plot .track { stroke: var(--track); stroke-width: 2; }
+.plot .axis { stroke: #B8C2CE; stroke-width: 2; }
+.plot .tick { stroke: #B8C2CE; stroke-width: 2; }
+.plot .tdot { fill: var(--s-done); stroke: #fff; stroke-width: 3; }
+.plot .sdot { stroke: #fff; stroke-width: 2; }
+.plot .sl { font-size: 24px; fill: var(--ink-2); }
+.plot .sn { font-size: 32px; font-weight: 700; fill: var(--ink); }
+.plot .sep { stroke: var(--rule); stroke-width: 1.5; }
+
+.side.miss { left: 1400px; top: 328px; width: 414px; }
+.side.miss h3.bad { color: var(--red); }
+.misses { list-style: none; margin-top: 8px; }
+.misses li { padding: 14px 0 16px; border-bottom: 1px solid var(--rule); }
+.misses li b { display: block; font-size: 28px; font-weight: 700; line-height: 1.35; color: var(--ink); }
+.misses li span { display: block; margin-top: 4px; font-size: var(--fs-label); line-height: 1.45; color: var(--muted); }
+.side.miss h3.ask { margin-top: 40px; }
+.side.miss h3.ask + p { margin-top: 8px; }
+
+/* 时间轴（ms）：红线 0–600 → 标题 100–700 → 侧栏 300–700 → 框架 250–650、轴线 400–850
+   → 4 个工具按日期先后落点 550–1000 → 14 个点逐个出现 700–1290 → 来源行 1300–1600 */
+.plot .pop { transform-box: fill-box; transform-origin: 50% 50%; }
+.plot .axis { transform-box: fill-box; transform-origin: 0 50%; }
+html.motion .band .assert { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .sub { animation: rise .5s var(--ease-out) .2s both; }
+html.motion .side.miss { animation: fade .4s ease-out .3s both; }
+html.motion .plot .frame { animation: fade .4s ease-out .25s both; }
+html.motion .plot .axis { animation: draw-x .45s var(--ease-draw) .4s both; }
+html.motion .plot .pop { animation: pop .28s var(--ease-out) var(--d) both; }
+html.motion .plot .ride { animation: ride .3s var(--ease-out) var(--d) both; }
+.chart .source { --src-delay: 1.3s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span>岗位定位</span><span>目标回顾</span><span>完成情况</span><span>IT 规划</span><span>团队管理</span><span>自我评价</span><span>未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">三个月上线 4 个工具，14 项指标 4 项达到基线</h1>
+  <p class="sub">每项指标分基线和超预期两档，这里只按基线算</p>
+</section>
+
+<figure class="chart">
+  <svg class="plot" width="1240" height="604" viewBox="0 0 1240 604" role="img"
+       aria-label="上：4 个工具的上线日期，VOC 评论雷达 8/11，工作反馈系统 9/23，007 会议助手 9/23，CEO 会议看板 v2.0 10/1。下：14 项指标里未开始 4、进行中 6、达到基线 4">
+    <!-- 横轴 7/21 → 10/27：x = 300 + 天数 × 880/98 -->
+    <g class="frame">
+      <text x="0" y="30" class="ct">4 个工具的上线日期</text>
+      <text x="0" y="98" class="tn">VOC 评论雷达</text>
+      <line x1="300" x2="1180" y1="90" y2="90" class="track"/>
+      <text x="0" y="162" class="tn">工作反馈系统</text>
+      <line x1="300" x2="1180" y1="154" y2="154" class="track"/>
+      <text x="0" y="226" class="tn">007 会议助手</text>
+      <line x1="300" x2="1180" y1="218" y2="218" class="track"/>
+      <text x="0" y="290" class="tn">CEO 会议看板 v2.0</text>
+      <line x1="300" x2="1180" y1="282" y2="282" class="track"/>
+      <line x1="398.8" x2="398.8" y1="320" y2="330" class="tick"/>
+      <line x1="677.1" x2="677.1" y1="320" y2="330" class="tick"/>
+      <line x1="946.5" x2="946.5" y1="320" y2="330" class="tick"/>
+      <text x="349.4" y="356" class="mo" text-anchor="middle">7 月</text>
+      <text x="538" y="356" class="mo" text-anchor="middle">8 月</text>
+      <text x="811.8" y="356" class="mo" text-anchor="middle">9 月</text>
+      <text x="1063.3" y="356" class="mo" text-anchor="middle">10 月</text>
+      <line x1="0" x2="1240" y1="398" y2="398" class="sep"/>
+      <text x="0" y="450" class="ct">14 项指标的状态</text>
+    </g>
+    <line x1="300" x2="1180" y1="320" y2="320" class="axis"/>
+
+    <circle cx="488.6" cy="90" r="11" class="pop tdot" style="--d:550ms"/>
+    <g class="ride" data-ride style="--dx:10px;--d:550ms"><text x="506" y="98" class="td">8/11</text></g>
+    <circle cx="874.7" cy="154" r="11" class="pop tdot" style="--d:650ms"/>
+    <g class="ride" data-ride style="--dx:10px;--d:650ms"><text x="892" y="162" class="td">9/23</text></g>
+    <circle cx="874.7" cy="218" r="11" class="pop tdot" style="--d:750ms"/>
+    <g class="ride" data-ride style="--dx:10px;--d:750ms"><text x="892" y="226" class="td">9/23</text></g>
+    <circle cx="946.5" cy="282" r="11" class="pop tdot" style="--d:850ms"/>
+    <g class="ride" data-ride style="--dx:10px;--d:850ms"><text x="964" y="290" class="td">10/1</text></g>
+
+    <circle cx="24" cy="512" r="24" class="pop sdot" style="--d:700ms;fill:var(--s-none)"/>
+    <circle cx="84" cy="512" r="24" class="pop sdot" style="--d:740ms;fill:var(--s-none)"/>
+    <circle cx="144" cy="512" r="24" class="pop sdot" style="--d:780ms;fill:var(--s-none)"/>
+    <circle cx="204" cy="512" r="24" class="pop sdot" style="--d:820ms;fill:var(--s-none)"/>
+    <g class="ride" data-ride style="--dx:8px;--d:900ms"><text x="0" y="590" class="sl"><tspan>未开始</tspan><tspan dx="10" class="sn">4</tspan></text></g>
+    <circle cx="320" cy="512" r="24" class="pop sdot" style="--d:860ms;fill:var(--s-wip)"/>
+    <circle cx="380" cy="512" r="24" class="pop sdot" style="--d:900ms;fill:var(--s-wip)"/>
+    <circle cx="440" cy="512" r="24" class="pop sdot" style="--d:940ms;fill:var(--s-wip)"/>
+    <circle cx="500" cy="512" r="24" class="pop sdot" style="--d:980ms;fill:var(--s-wip)"/>
+    <circle cx="560" cy="512" r="24" class="pop sdot" style="--d:1020ms;fill:var(--s-wip)"/>
+    <circle cx="620" cy="512" r="24" class="pop sdot" style="--d:1060ms;fill:var(--s-wip)"/>
+    <g class="ride" data-ride style="--dx:8px;--d:1100ms"><text x="296" y="590" class="sl"><tspan>进行中</tspan><tspan dx="10" class="sn">6</tspan></text></g>
+    <circle cx="736" cy="512" r="24" class="pop sdot" style="--d:1100ms;fill:var(--s-done)"/>
+    <circle cx="796" cy="512" r="24" class="pop sdot" style="--d:1140ms;fill:var(--s-done)"/>
+    <circle cx="856" cy="512" r="24" class="pop sdot" style="--d:1180ms;fill:var(--s-done)"/>
+    <circle cx="916" cy="512" r="24" class="pop sdot" style="--d:1220ms;fill:var(--s-done)"/>
+    <g class="ride" data-ride style="--dx:8px;--d:1260ms"><text x="712" y="590" class="sl"><tspan>达到基线</tspan><tspan dx="10" class="sn">4</tspan></text></g>
+  </svg>
+  <figcaption class="source">来源：上线日期取 git 和应用版本记录；指标取试用期目标跟踪表 9-30 版，10 月没回填</figcaption>
+</figure>
+
+<aside class="side miss">
+  <h3 class="bad">没做到</h3>
+  <ul class="misses">
+    <li><b>专利 AI 没启动</b><span>专利 3 项指标都是 0</span></li>
+    <li><b>星际圈运营断档</b><span>9/25「AI 圈建立」节点逾期</span></li>
+    <li><b>CEO 用得还少</b><span>会议看板 9/30 之后没再打开</span></li>
+  </ul>
+</aside>
+</body>
+</html>

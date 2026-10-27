@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>自我评价</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* 没有该被记住的数：巨字做主角——CEO 10/3 的原话排成大字。上面一句自评（判断），下面细线三栏：
+     不符合预期（墨线）/ 符合预期（蓝线，做到的部分）/ 改进（虚线，还没做） */
+
+  .runhead {
+    position: absolute; left: var(--m); right: var(--m); top: 40px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: var(--fs-label); line-height: 1.2;
+  }
+  .runhead b { font-weight: 700; }
+  #rule-top { left: var(--m); width: var(--content-w); top: 78px; }
+
+  h1 {
+    position: absolute; left: var(--m); top: 108px;
+    font-family: var(--font-giant); font-size: var(--fs-title); font-weight: 900;
+    line-height: 1.1; letter-spacing: -0.01em; white-space: nowrap;
+  }
+
+  .quote { position: absolute; left: var(--m); width: var(--content-w); top: 222px; }
+  .quote blockquote {
+    font-family: var(--font-giant); font-size: 76px; font-weight: 900; line-height: 1.25; letter-spacing: -0.005em;
+    text-indent: -0.5em;
+  }
+  .quote cite { display: block; margin-top: 16px; font-style: normal; font-size: var(--fs-body); font-weight: 700; color: var(--muted); line-height: 1.2; }
+
+  .cols {
+    position: absolute; left: var(--m); width: var(--content-w); top: 690px;
+    display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 48px;
+  }
+  .col { position: relative; }
+  .col > .rule-h { left: 0; top: 0; width: 100%; }
+  .col.good > .rule-h { border-top: 2px solid var(--blue); }
+  .col.next > .rule-h { border-top: 2px dashed var(--ink); }
+  .col h2 { padding-top: 14px; font-size: var(--fs-lead); font-weight: 900; line-height: 1.2; }
+  .col li { list-style: none; position: relative; margin-top: 12px; padding-top: 12px; font-size: var(--fs-body); line-height: 1.4; white-space: nowrap; }
+  .col li::before { content: ""; position: absolute; left: 0; top: 0; width: 100%; border-top: var(--hair); }
+
+  .foot {
+    position: absolute; left: var(--m); right: var(--m); top: 1000px;
+    font-size: var(--fs-label); line-height: 1.2; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+  <div class="runhead"><b>四、自我评价</b><span>转正述职　林灶辉</span></div>
+  <div class="rule-h strong" id="rule-top"></div>
+
+  <h1><span class="ln"><span>问题和指标想得不够，是我最大的短板。</span></span></h1>
+
+  <figure class="quote">
+    <blockquote>
+      <span class="ln"><span>「前提还是问题足够锐利清晰，</span></span>
+      <span class="ln"><span>&#8195;其次指标选择清晰针对性强。</span></span>
+      <span class="ln"><span>&#8195;这两个是最困难，且一直没花时间想。</span></span>
+      <span class="ln"><span>&#8195;反而在卷交互。」</span></span>
+    </blockquote>
+    <cite><span class="ln"><span>CEO 10/3 群消息，对我最准的提醒</span></span></cite>
+  </figure>
+
+  <section class="cols">
+    <div class="col">
+      <div class="rule-h strong"></div>
+      <h2>不符合预期</h2>
+      <ul>
+        <li>CEO 用得少：会议看板 9/30 之后没再打开</li>
+        <li>专利 AI 为 0，星际圈断档</li>
+        <li>跟进不及时：奖金立项 10/13 到期未完成；<br>目标表 9-30 后、进度表 10-10 后没更新</li>
+      </ul>
+    </div>
+    <div class="col good">
+      <div class="rule-h"></div>
+      <h2>符合预期</h2>
+      <ul>
+        <li>产品上线并持续迭代：<br>工作反馈系统一个月 20 个版本</li>
+        <li>需求当天响应：10/22 当天交付</li>
+        <li>场景挖掘 3 项基线全部达到</li>
+      </ul>
+    </div>
+    <div class="col next">
+      <div class="rule-h"></div>
+      <h2>改进</h2>
+      <ul>
+        <li>每个产品先写清「解决谁的什么问题、<br>用什么数衡量」，再做界面</li>
+        <li>每个产品定一个使用指标，在双周汇报里报</li>
+        <li>目标表和进度表跟双周汇报一起回填</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="foot">口径：CEO 10/3 21:49 群消息原文；奖金立项逾期取飞书任务；使用情况取应用线上库访问记录；其余取目标跟踪表 9-30 版、应用发布记录</footer>
+
+<script src="../shared/motion.js"></script>
+<script>
+  (function () {
+    var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+    var drawX = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }];
+    var rise = [{ transform: 'translateY(135%)' }, { transform: 'none' }];
+    var up = [{ transform: 'translateY(16px)', clipPath: 'inset(0 0 100% 0)' }, { transform: 'none', clipPath: 'inset(0 0 0 0)' }];
+
+    P5.tween($('#rule-top'), drawX, { duration: 700 });
+    P5.tween($('h1 .ln > span'), rise, { delay: 60, duration: 750 });
+    // 原话一行一行升起，最后落款
+    $$('.quote blockquote .ln > span').forEach(function (s, i) { P5.tween(s, rise, { delay: 240 + i * 110, duration: 800 }); });
+    P5.tween($('.quote cite .ln > span'), rise, { delay: 720, duration: 600 });
+
+    $$('.col').forEach(function (c, i) {
+      var t = 760 + i * 100;
+      P5.tween(c.querySelector('.rule-h'), drawX, { delay: t, duration: 600 });
+      P5.tween(c.querySelector('h2'), up, { delay: t + 60, duration: 480 });
+      Array.prototype.forEach.call(c.querySelectorAll('li'), function (li, j) {
+        P5.tween(li, up, { delay: t + 120 + j * 70, duration: 480 });
+      });
+    });
+
+    P5.go();
+  })();
+</script>
+</body>
+</html>

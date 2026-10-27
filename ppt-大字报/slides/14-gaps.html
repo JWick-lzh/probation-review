@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>没做到的</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* 骨架：页眉 → 左上巨数字 0%（专利 3 项的完成度，黑色，本页不出现蓝）+ 右侧细线表（是什么、该何时、为什么）→ 结论句 → 底部四栏（星际圈 + 补救计划） */
+
+  .runhead {
+    position: absolute; left: var(--m); right: var(--m); top: 40px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: var(--fs-label); line-height: 1.2;
+  }
+  .runhead b { font-weight: 700; }
+  #rule-top { left: var(--m); width: var(--content-w); top: 78px; }
+
+  .giant {
+    position: absolute; left: 84px; top: 39px;
+    font-family: var(--font-giant); font-weight: 900; line-height: 1;
+    font-size: 600px; letter-spacing: -0.04em; white-space: nowrap;
+    clip-path: inset(43px -40px 64px -40px);  /* 上沿在页眉线下，下沿在基线下：0 从基线里升起来 */
+  }
+  .giant > span { display: inline-block; }
+  .giant small { font-size: 0.5em; letter-spacing: -0.02em; margin-left: 0.02em; }
+
+  .tbl { position: absolute; left: 864px; width: 960px; top: 128px; }
+  .tr { position: relative; display: grid; grid-template-columns: 160px 1fr; padding: 22px 0 24px; }
+  .tr .rule-h { left: 0; width: 100%; top: 0; }
+  .tr .k { font-size: var(--fs-label); font-weight: 700; color: var(--muted); line-height: 1.5; padding-top: 6px; }
+  .tr .d { font-size: var(--fs-lead); line-height: 1.45; }
+  .tr .d b { font-weight: 700; }
+
+  .claim {
+    position: absolute; left: var(--m); top: 598px;
+    font-family: var(--font-giant); font-size: var(--fs-head); font-weight: 900;
+    line-height: 1.06; letter-spacing: -0.015em; white-space: nowrap;
+  }
+
+  #rule-facts { left: var(--m); width: var(--content-w); top: 774px; }
+  .facts {
+    position: absolute; left: var(--m); width: var(--content-w); top: 776px; height: 186px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+  }
+  .facts .rule-v { top: 0; height: 186px; }
+  .fact { padding: 16px 28px 0; position: relative; }
+  .fact:first-child { padding-left: 0; }
+  .fact .k { font-size: var(--fs-label); font-weight: 700; color: var(--muted); line-height: 1.2; }
+  .fact .v { font-family: var(--font-giant); font-weight: 900; font-size: 60px; line-height: 1; margin-top: 6px; letter-spacing: -0.035em; white-space: nowrap; }
+  .fact .v i { font-style: normal; font-family: var(--font-text); font-size: var(--fs-lead); font-weight: 700; letter-spacing: 0; margin-left: 6px; }
+  .fact > small { display: block; margin-top: 10px; font-size: var(--fs-label); line-height: 1.35; color: var(--ink-2); }
+
+  .foot {
+    position: absolute; left: var(--m); right: var(--m); top: 1000px;
+    font-size: var(--fs-label); line-height: 1.2; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+  <div class="runhead"><b>三、工作目标完成情况</b><span>转正述职　林灶辉</span></div>
+  <div class="rule-h strong" id="rule-top"></div>
+
+  <div class="giant" role="img" aria-label="专利创新 AI 的 3 项指标完成度都是 0%">
+    <span aria-hidden="true">0<small>%</small></span>
+  </div>
+
+  <section class="tbl">
+    <div class="tr"><div class="rule-h strong"></div><p class="k">专利 3 项</p><p class="d ln"><span><b>核心能力搭建、3 个案例验证、1 轮优化，都是 0</b></span></p></div>
+    <div class="tr"><div class="rule-h"></div><p class="k">按计划</p><p class="d ln"><span>9/21–10/20 应该启动，错过了</span></p></div>
+    <div class="tr"><div class="rule-h"></div><p class="k">原因</p><p class="d"><span class="ln"><span>精力放在权重 80% 的 VOC、CEO 提效、场景挖掘上，</span></span><span class="ln"><span>这是我排的优先级</span></span></p></div>
+  </section>
+
+  <h1 class="claim"><span class="ln"><span>专利 AI 没启动，星际圈断档</span></span></h1>
+
+  <div class="rule-h strong" id="rule-facts"></div>
+  <section class="facts">
+    <div class="fact">
+      <p class="k">星际圈上线</p>
+      <p class="v">8/7</p>
+      <small>开通当周发了 3 篇</small>
+    </div>
+    <div class="fact">
+      <div class="rule-v" style="left:0"></div>
+      <p class="k">建圈节点</p>
+      <p class="v">9/25<i>逾期</i></p>
+      <small>10/23 自评运营断档</small>
+    </div>
+    <div class="fact">
+      <div class="rule-v" style="left:0"></div>
+      <p class="k">星际圈内容 / 成员</p>
+      <p class="v">12+<i>篇</i></p>
+      <small>10 月的数；成员数还没统计</small>
+    </div>
+    <div class="fact">
+      <div class="rule-v" style="left:0"></div>
+      <p class="k">补救（计划，时间待确认）</p>
+      <p class="v">11 月</p>
+      <small>专利 GTM 启动；<br>星际圈每双周 1 篇、成员到 30 人</small>
+    </div>
+  </section>
+
+  <footer class="foot">口径：目标跟踪表 9-30 版；12+ 篇是 10 月的数；补救是计划，启动和验证时间待确认</footer>
+
+<script src="../shared/motion.js"></script>
+<script>
+  (function () {
+    var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+    var drawX = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }];
+    var drawY = [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }];
+    var rise = [{ transform: 'translateY(135%)' }, { transform: 'none' }];
+    var fade = [{ opacity: 0 }, { opacity: 1 }];
+
+    P5.tween($('#rule-top'), drawX, { duration: 700 });
+    // 0 不滚动（滚到 0 像是在倒退），只从底下升上来
+    P5.tween($('.giant > span'), [{ transform: 'translateY(100%)' }, { transform: 'none' }], { delay: 60, duration: 900 });
+
+    $$('.tr').forEach(function (r, i) {
+      P5.tween(r.querySelector('.rule-h'), drawX, { delay: 220 + i * 110, duration: 600 });
+      P5.tween(r.querySelector('.k'), fade, { delay: 300 + i * 110, duration: 500 });
+      $$('.ln > span').filter(function (s) { return r.contains(s); }).forEach(function (s, j) {
+        P5.tween(s, rise, { delay: 280 + i * 110 + j * 60, duration: 700 });
+      });
+    });
+    P5.tween($('.claim .ln > span'), rise, { delay: 420, duration: 800 });
+
+    P5.tween($('#rule-facts'), drawX, { delay: 580, duration: 750 });
+    $$('.facts .rule-v').forEach(function (v, i) { P5.tween(v, drawY, { delay: 740 + i * 60, duration: 500 }); });
+    $$('.fact').forEach(function (f, i) { P5.tween(f, fade, { delay: 700 + i * 70, duration: 450 }); });
+
+    P5.go();
+  })();
+</script>
+</body>
+</html>

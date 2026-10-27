@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-total="1600" data-probe="提出按场景分配额度待反馈指标以外一份规划篇知识库文档是我写的其他主空间共最大的一块建设讨论稿成稿接下来讲怎么读格红经营方法论完成飞书诊断次组件库内部系统共用一套前端集团目标驾驶舱上线后来并入工作反馈口径按创建人统计">
+<head>
+<meta charset="UTF-8">
+<title>15 指标以外</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+/* ───────── 左：知识库主空间 79 篇 = 79 格，红＝本人写的 77 篇，描边＝其他 2 篇 ─────────
+   10 列 × 8 行，格 64、缝 8：宽 712、高 568（y 80–648），第 80 格空着 */
+.kb { position: absolute; left: 96px; top: 80px; display: grid; grid-template-columns: repeat(10, 64px); gap: 8px; }
+.kb i { width: 64px; height: 64px; background: var(--red); }
+.kb i.o { background: transparent; border: 4px solid var(--ink); }
+@keyframes pop { from { transform: scale(0); } }
+.kb i.anim { animation: pop 260ms var(--ease-out) calc(120ms + var(--i) * 7ms); }
+
+/* 方阵右侧图注，底边对齐方阵 */
+.kb-key { position: absolute; left: 856px; top: 462px; width: 330px; }
+.kb-key .big { font-size: var(--fs-num-xl); font-weight: 900; line-height: 1; color: var(--red); letter-spacing: -.01em; }
+.kb-key .big small { font-size: var(--fs-body); font-weight: 700; color: var(--ink); margin-left: 8px; letter-spacing: .02em; }
+.kb-key .row { display: flex; align-items: center; margin-top: 18px; font-size: var(--fs-body-s); font-weight: 500; line-height: 1.4; }
+.kb-key .row em { flex: 0 0 26px; height: 26px; border: 4px solid var(--ink); margin-right: 12px; }
+.kb-key .all { margin-top: 10px; font-size: var(--fs-body-s); font-weight: 500; line-height: 1.4; color: var(--ink-2); }
+.kb-key.anim { animation: reveal-right 520ms var(--ease-out) 560ms; }
+
+/* 方阵下：其他产出，每项用小几何形的个数表示数量 */
+.more { position: absolute; left: 96px; top: 706px; width: 1090px; display: grid; grid-template-columns: 545px 545px; row-gap: 26px; }
+.more .it { display: flex; align-items: flex-start; }
+.more .mk { flex: 0 0 128px; display: flex; flex-wrap: wrap; gap: 6px; padding-top: 6px; }
+.more .mk b { width: 22px; height: 22px; background: var(--ink); }
+.more .mk b.c { border-radius: 50%; }
+.more .mk b.q { width: 34px; height: 34px; border-top-right-radius: 100%; }
+.more .mk b.s { width: 34px; height: 34px; }
+.more .nm { font-size: var(--fs-body-s); font-weight: 700; line-height: 1.4; }
+.more .ds { font-size: var(--fs-body-s); font-weight: 500; line-height: 1.4; color: var(--ink-2); }
+.more .it.anim { animation: reveal-right 520ms var(--ease-out); }
+.more .it:nth-child(1) { animation-delay: 760ms !important; }
+.more .it:nth-child(2) { animation-delay: 820ms !important; }
+.more .it:nth-child(3) { animation-delay: 880ms !important; }
+.more .it:nth-child(4) { animation-delay: 940ms !important; }
+
+/* ───────── 右：竖排标题 + 信息块（同 07） ───────── */
+.vt { position: absolute; left: 1236px; top: 80px; writing-mode: vertical-rl;
+      font-family: var(--serif); font-weight: 900; font-size: var(--fs-title-2); line-height: 1.2; letter-spacing: .06em; }
+.vt .ln { display: block; }
+.vt .ln.anim { animation: reveal-down 560ms var(--ease-out); }
+.vt .ln:nth-child(2) { animation-delay: 140ms !important; }
+.vt .ln:nth-child(3) { animation-delay: 280ms !important; }
+.tcy { text-combine-upright: all; letter-spacing: 0; }
+.tcy.lat { font-size: .84em; }   /* 竖排里的拉丁字母（IT、AI）衬线偏宽，缩一点免得顶到邻列 */
+
+.info { position: absolute; left: 1604px; top: 84px; width: 220px; }
+.info section + section { margin-top: 52px; }
+.info .tag { margin-bottom: 18px; }
+.info section.anim { animation: reveal-right 520ms var(--ease-out); }
+.info section:nth-child(1) { animation-delay: 420ms !important; }
+.info section:nth-child(2) { animation-delay: 540ms !important; }
+.info .lead { font-size: var(--fs-body-s); font-weight: 700; line-height: 1.5; }
+.info .txt  { font-size: var(--fs-body-s); font-weight: 500; line-height: 1.6; }
+.info .key { display: flex; align-items: center; font-size: var(--fs-body-s); font-weight: 500; line-height: 1.6; }
+.info .key em { flex: 0 0 24px; height: 24px; margin-right: 12px; background: var(--red); }
+.info .key em.o { background: transparent; border: 4px solid var(--ink); }
+
+.src { position: absolute; left: 1236px; bottom: 107px; width: 588px; font-size: var(--fs-body-s); font-weight: 500; color: var(--ink-2); letter-spacing: .04em; line-height: 1.5; }
+.src.anim { animation: reveal-right 500ms var(--ease-out) 1000ms; }
+.page-rule { left: 96px; right: 96px; top: 1008px; transform-origin: 0 50%; }
+.page-rule.anim { animation: draw-x 600ms var(--ease-out) 940ms; }
+</style>
+</head>
+<body>
+
+  <!-- 知识库主空间 79 篇：前 77 格红（本人写），后 2 格描边（其他） -->
+  <div class="kb" aria-label="知识库主空间 79 篇，本人写 77 篇">
+    <i class="anim" style="--i:0"></i><i class="anim" style="--i:1"></i><i class="anim" style="--i:2"></i><i class="anim" style="--i:3"></i><i class="anim" style="--i:4"></i><i class="anim" style="--i:5"></i><i class="anim" style="--i:6"></i><i class="anim" style="--i:7"></i><i class="anim" style="--i:8"></i><i class="anim" style="--i:9"></i>
+    <i class="anim" style="--i:10"></i><i class="anim" style="--i:11"></i><i class="anim" style="--i:12"></i><i class="anim" style="--i:13"></i><i class="anim" style="--i:14"></i><i class="anim" style="--i:15"></i><i class="anim" style="--i:16"></i><i class="anim" style="--i:17"></i><i class="anim" style="--i:18"></i><i class="anim" style="--i:19"></i>
+    <i class="anim" style="--i:20"></i><i class="anim" style="--i:21"></i><i class="anim" style="--i:22"></i><i class="anim" style="--i:23"></i><i class="anim" style="--i:24"></i><i class="anim" style="--i:25"></i><i class="anim" style="--i:26"></i><i class="anim" style="--i:27"></i><i class="anim" style="--i:28"></i><i class="anim" style="--i:29"></i>
+    <i class="anim" style="--i:30"></i><i class="anim" style="--i:31"></i><i class="anim" style="--i:32"></i><i class="anim" style="--i:33"></i><i class="anim" style="--i:34"></i><i class="anim" style="--i:35"></i><i class="anim" style="--i:36"></i><i class="anim" style="--i:37"></i><i class="anim" style="--i:38"></i><i class="anim" style="--i:39"></i>
+    <i class="anim" style="--i:40"></i><i class="anim" style="--i:41"></i><i class="anim" style="--i:42"></i><i class="anim" style="--i:43"></i><i class="anim" style="--i:44"></i><i class="anim" style="--i:45"></i><i class="anim" style="--i:46"></i><i class="anim" style="--i:47"></i><i class="anim" style="--i:48"></i><i class="anim" style="--i:49"></i>
+    <i class="anim" style="--i:50"></i><i class="anim" style="--i:51"></i><i class="anim" style="--i:52"></i><i class="anim" style="--i:53"></i><i class="anim" style="--i:54"></i><i class="anim" style="--i:55"></i><i class="anim" style="--i:56"></i><i class="anim" style="--i:57"></i><i class="anim" style="--i:58"></i><i class="anim" style="--i:59"></i>
+    <i class="anim" style="--i:60"></i><i class="anim" style="--i:61"></i><i class="anim" style="--i:62"></i><i class="anim" style="--i:63"></i><i class="anim" style="--i:64"></i><i class="anim" style="--i:65"></i><i class="anim" style="--i:66"></i><i class="anim" style="--i:67"></i><i class="anim" style="--i:68"></i><i class="anim" style="--i:69"></i>
+    <i class="anim" style="--i:70"></i><i class="anim" style="--i:71"></i><i class="anim" style="--i:72"></i><i class="anim" style="--i:73"></i><i class="anim" style="--i:74"></i><i class="anim" style="--i:75"></i><i class="anim" style="--i:76"></i><i class="o anim" style="--i:77"></i><i class="o anim" style="--i:78"></i>
+  </div>
+
+  <div class="kb-key anim">
+    <div class="big"><span data-to="77" data-delay="160" data-dur="700">77</span><small>篇是我写的</small></div>
+    <div class="row"><em></em>其他 2 篇</div>
+    <div class="all">知识库主空间共 79 篇</div>
+  </div>
+
+  <!-- 其他产出：小几何形的个数 = 数量 -->
+  <div class="more">
+    <div class="it anim"><div class="mk"><b></b><b></b><b></b><b></b></div><div><div class="nm">经营指标方法论 4 篇</div><div class="ds">10/9 完成</div></div></div>
+    <div class="it anim"><div class="mk"><b class="c"></b><b class="c"></b><b class="c"></b></div><div><div class="nm">飞书 AI 使用诊断 3 次</div><div class="ds">8/6、8/17、10/21<br>提出按场景分配额度，待反馈</div></div></div>
+    <div class="it anim"><div class="mk"><b class="s"></b></div><div><div class="nm">usmile-ui 组件库 v0.2.0</div><div class="ds">10/22，内部系统共用一套前端</div></div></div>
+    <div class="it anim"><div class="mk"><b class="q"></b></div><div><div class="nm">集团目标驾驶舱 v2</div><div class="ds">9/9 上线，后来并入工作反馈系统</div></div></div>
+  </div>
+
+  <h1 class="vt" aria-label="指标以外：一份 IT 规划，77 篇知识库文档"><span class="ln anim">指标以外</span><span class="ln anim">一份<span class="tcy lat">IT</span>规划</span><span class="ln anim"><span class="tcy">77</span>篇知识库文档</span></h1>
+
+  <div class="info">
+    <section class="anim">
+      <span class="tag">最大的一块</span>
+      <p class="lead">IT 建设规划<br>2026–2028</p>
+      <p class="txt">讨论稿 v2<br>10/9 成稿<br>下一页接着讲</p>
+    </section>
+    <section class="anim">
+      <span class="tag">怎么读</span>
+      <p class="txt">一格＝一篇</p>
+      <p class="key"><em></em>我写的</p>
+      <p class="key"><em class="o"></em>其他人写的</p>
+    </section>
+  </div>
+
+  <div class="src anim">口径：知识库按创建人统计，10-26</div>
+  <div class="rule page-rule anim"></div>
+
+<script src="../shared/motion.js"></script>
+</body>
+</html>

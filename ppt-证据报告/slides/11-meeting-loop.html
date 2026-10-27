@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>会议闭环</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<script src="../shared/motion.js"></script>
+<style>
+/* 顶栏：logo 挪到右端，导航右移让出左上角（演示外壳的「概览」按钮在那里） */
+.bar nav { order: 1; margin-left: 58px; }
+.bar .asof { order: 2; }
+.bar .brand { order: 3; }
+
+/* ── 11 会议闭环：左图（竖长截图）+ 中间流程环 + 右注 ── */
+.band { height: 186px; padding-top: 34px; }
+.band .assert { font-size: var(--fs-assert); line-height: 1.2; }
+.band .sub { margin-top: 6px; font-size: var(--fs-body); color: var(--ink-2); }
+
+.shot { position: absolute; left: var(--gutter); top: 318px; width: 790px; }
+.shot .frame { width: 790px; aspect-ratio: 1444 / 1164; border: 1px solid var(--rule); background: #fff; }
+.shot img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.shot .source { margin-top: 14px; }
+
+.loop { position: absolute; left: 966px; top: 330px; overflow: visible; }
+.loop .nd { fill: #fff; stroke: var(--ink-2); stroke-width: 2; }
+.loop .nd.on { fill: var(--navy); stroke: var(--navy); }
+.loop .nt { font-size: 26px; font-weight: 700; fill: var(--ink); }
+.loop .nt.on { fill: #fff; }
+.loop .ns { font-size: var(--fs-label); fill: var(--muted); }
+.loop .ns.on { fill: var(--on-navy); }
+.loop .ln { fill: none; stroke: #8C9AAB; stroke-width: 2.5; }
+.loop .ah { fill: #8C9AAB; }
+.loop .cap { font-size: var(--fs-label); font-weight: 700; fill: var(--muted); letter-spacing: .06em; }
+
+.side.notes { left: 1400px; top: 328px; width: 414px; }
+.side.notes h3 + p { margin-top: 10px; }
+.side.notes p + h3 { margin-top: 44px; }
+
+/* 时间轴（ms）：红线 0–600 → 标题 100–700 → 截图 250–700 → 三步依次 400–1000，箭头跟着画
+   → 回环线 950–1350 → 侧栏 350–750 → 来源行 1300–1600 */
+@keyframes dash { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.loop .vy { transform-box: fill-box; transform-origin: 50% 0; }
+html.motion .band .assert { animation: rise .5s var(--ease-out) .1s both; }
+html.motion .band .sub { animation: rise .5s var(--ease-out) .2s both; }
+html.motion .shot .frame { animation: fade .45s ease-out .25s both; }
+html.motion .loop .step { animation: rise .4s var(--ease-out) var(--d) both; }
+html.motion .loop .vy { animation: draw-y .3s var(--ease-draw) var(--d) both; }
+html.motion .loop .back { stroke-dasharray: 1; animation: dash .4s var(--ease-draw) .95s both; }
+html.motion .loop .ah { animation: fade .2s ease-out var(--d) both; }
+html.motion .loop .cap { animation: fade .3s ease-out 1.1s both; }
+html.motion .side.notes { animation: fade .4s ease-out .35s both; }
+.shot .source { --src-delay: 1.3s; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand" role="img" aria-label="usmile"></div>
+  <nav aria-label="章节"><span>岗位定位</span><span>目标回顾</span><span class="on" aria-current="true">完成情况</span><span>IT 规划</span><span>团队管理</span><span>自我评价</span><span>未来计划</span></nav>
+  <span class="asof">数据截至 2026-10-26</span>
+</header>
+<div class="bar-rule" aria-hidden="true"></div>
+
+<section class="band">
+  <h1 class="assert">会前评审、约会、会后打分，已连成一个闭环</h1>
+  <p class="sub">用智能体把三步连起来，减少业务助理开会前的准备工作</p>
+</section>
+
+<figure class="shot">
+  <div class="frame">
+    <img src="../assets/booking-007.png" alt="约会工作台「和 007 约会请填写」：会议主题、会议说明、期望日期、时长、参会人与分工、会议材料；右侧约会三步流程和 007 办公地点">
+  </div>
+  <figcaption class="source">来源：业务助理自己搭的约会工作台「和 007 约会请填写」，10/26 截图；<br>截图中人名已换成岗位</figcaption>
+</figure>
+
+<svg class="loop" width="380" height="600" viewBox="0 0 380 600" role="img"
+     aria-label="会议闭环：会前材料评审，会议时间预约（左图），会后自动推送打分，再回到会前">
+  <g class="step" style="--d:400ms">
+    <rect x="1" y="1" width="300" height="96" class="nd"/>
+    <text x="28" y="44" class="nt">会前材料评审</text>
+    <text x="28" y="78" class="ns">开会前</text>
+  </g>
+  <line x1="150" x2="150" y1="98" y2="180" class="ln vy" style="--d:560ms"/>
+  <path d="M140 176 L150 194 L160 176 Z" class="ah" style="--d:800ms"/>
+  <g class="step" style="--d:600ms">
+    <rect x="1" y="196" width="300" height="96" class="nd on"/>
+    <text x="28" y="239" class="nt on">会议时间预约</text>
+    <text x="28" y="273" class="ns on">左图是这一步</text>
+  </g>
+  <line x1="150" x2="150" y1="293" y2="375" class="ln vy" style="--d:760ms"/>
+  <path d="M140 371 L150 389 L160 371 Z" class="ah" style="--d:1000ms"/>
+  <g class="step" style="--d:800ms">
+    <rect x="1" y="391" width="300" height="96" class="nd"/>
+    <text x="28" y="434" class="nt">会后打分</text>
+    <text x="28" y="468" class="ns">会后自动推送</text>
+  </g>
+  <path d="M302 439 H352 V49 H320" pathLength="1" class="ln back"/>
+  <path d="M322 39 L304 49 L322 59 Z" class="ah" style="--d:1300ms"/>
+  <text x="0" y="548" class="cap">三步用智能体连起来</text>
+</svg>
+
+<aside class="side notes">
+  <h3>顺带的变化</h3>
+  <p>业务助理更熟练地用 AI，<br>开始搭自己的业务工作台。</p>
+  <h3>左图</h3>
+  <p>约 007 之前先填目标、议题、<br>分工和材料；总助确认后<br>发飞书日程，会后要出结果。</p>
+</aside>
+</body>
+</html>

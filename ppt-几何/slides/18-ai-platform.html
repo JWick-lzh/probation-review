@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-total="1600" data-probe="一个门户两条路份数据企业中台平台落地后员工看到的样子从飞书工作台进会用编程人在自己里句话发布应用不网页对话也能做出所有读同和业务库谁看什么由统管为建流程是公司打法装外采就带走底层基于开源搭我们只写规矩技能进度开始设计部署登录凭证隔离已经定了还没工口径记录">
+<head>
+<meta charset="UTF-8">
+<title>18 企业 AI 中台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+/* ───────── 左：一个门户（圆）→ 两条路（两块）→ 一份数据（通栏） ─────────
+   个数就是图形个数：1 / 2 / 1 */
+.cap { position: absolute; left: 96px; top: 80px; width: 400px; }
+.cap .nm { font-size: var(--fs-lead); font-weight: 700; line-height: 1.3; }
+.cap .ds { margin-top: 10px; font-size: var(--fs-body-s); font-weight: 500; line-height: 1.5; color: var(--ink-2); }
+.cap.anim { animation: reveal-right 520ms var(--ease-out) 80ms; }
+
+.portal { position: absolute; left: 501px; top: 80px; width: 280px; height: 280px; border-radius: 50%; background: var(--red); color: var(--paper);
+          display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.portal .nm { font-size: 36px; font-weight: 900; line-height: 1.2; }
+.portal .ds { margin-top: 10px; font-size: var(--fs-body-s); font-weight: 500; }
+.portal.anim { animation: drop 680ms var(--spring) 0ms; --drop: -400px; }
+
+.wire { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; pointer-events: none; }
+.wire path { fill: none; stroke: var(--ink); stroke-width: 4; stroke-dasharray: 1; stroke-dashoffset: 0; }
+@keyframes draw-path { from { stroke-dashoffset: 1; } }
+.wire path.anim { animation: draw-path 420ms var(--ease-out); }
+
+.path { position: absolute; top: 430px; width: 520px; height: 230px; padding: 30px 34px; display: flex; flex-direction: column; justify-content: center; }
+.path .nm { font-size: var(--fs-body); font-weight: 700; line-height: 1.3; }
+.path .ds { margin-top: 10px; font-size: var(--fs-body-s); font-weight: 500; line-height: 1.55; }
+.path.p1 { left: 96px;  background: var(--ink);    color: var(--paper); }
+.path.p2 { left: 666px; background: var(--yellow); color: var(--ink); }
+.path.anim { animation: drop 640ms var(--spring); --drop: -260px; }
+.path.p1 { animation-delay: 360ms !important; }
+.path.p2 { animation-delay: 440ms !important; }
+
+.data { position: absolute; left: 96px; top: 730px; width: 1090px; height: 170px; background: var(--blue); color: var(--paper);
+        padding: 0 40px; display: flex; flex-direction: column; justify-content: center; }
+.data .nm { font-size: 36px; font-weight: 900; line-height: 1.2; }
+.data .ds { margin-top: 10px; font-size: var(--fs-body-s); font-weight: 500; line-height: 1.5; }
+@keyframes wipe { from { clip-path: inset(0 100% 0 0); } }
+.data.anim { animation: wipe 560ms var(--ease-out) 700ms; }
+
+/* ───────── 右：竖排标题 + 信息块 ───────── */
+.vt { position: absolute; left: 1236px; top: 80px; writing-mode: vertical-rl;
+      font-family: var(--serif); font-weight: 900; font-size: var(--fs-title-2); line-height: 1.2; letter-spacing: .06em; }
+.vt .ln { display: block; }
+.vt .ln.anim { animation: reveal-down 560ms var(--ease-out); }
+.vt .ln:nth-child(2) { animation-delay: 140ms !important; }
+.vt .ln:nth-child(3) { animation-delay: 280ms !important; }
+
+.info { position: absolute; left: 1604px; top: 84px; width: 220px; }
+.info section + section { margin-top: 48px; }
+.info .tag { margin-bottom: 18px; }
+.info section.anim { animation: reveal-right 520ms var(--ease-out); }
+.info section:nth-child(1) { animation-delay: 420ms !important; }
+.info section:nth-child(2) { animation-delay: 540ms !important; }
+.info section:nth-child(3) { animation-delay: 660ms !important; }
+.info .txt { font-size: var(--fs-body-s); font-weight: 500; line-height: 1.6; }
+.info .bad { font-weight: 900; color: var(--red); }
+
+.src { position: absolute; left: 1236px; bottom: 107px; width: 588px; font-size: var(--fs-body-s); font-weight: 500; color: var(--ink-2); letter-spacing: .04em; line-height: 1.5; }
+.src.anim { animation: reveal-right 500ms var(--ease-out) 1000ms; }
+.page-rule { left: 96px; right: 96px; top: 1008px; transform-origin: 0 50%; }
+.page-rule.anim { animation: draw-x 600ms var(--ease-out) 940ms; }
+</style>
+</head>
+<body>
+
+  <div class="cap anim">
+    <p class="nm">企业 AI 中台</p>
+    <p class="ds">Agent 平台落地后<br>员工看到的样子（设计中）</p>
+  </div>
+
+  <!-- 连线：圆底 → 两块顶；两块底 → 数据条顶 -->
+  <svg class="wire" viewBox="0 0 1920 1080" aria-hidden="true">
+    <path class="anim" pathLength="1" style="animation-delay:220ms" d="M641 360 V395 H356 V430"/>
+    <path class="anim" pathLength="1" style="animation-delay:220ms" d="M641 360 V395 H926 V430"/>
+    <path class="anim" pathLength="1" style="animation-delay:620ms" d="M356 660 V730"/>
+    <path class="anim" pathLength="1" style="animation-delay:620ms" d="M926 660 V730"/>
+  </svg>
+
+  <div class="portal anim">
+    <span class="nm">一个门户</span>
+    <span class="ds">从飞书工作台进</span>
+  </div>
+
+  <div class="path p1 anim">
+    <span class="nm">会用 AI 编程的人</span>
+    <span class="ds">在自己的 Claude Code、Codex 里，<br>一句话发布应用</span>
+  </div>
+  <div class="path p2 anim">
+    <span class="nm">不会的人</span>
+    <span class="ds">在网页里对话，也能做出应用</span>
+  </div>
+
+  <div class="data anim">
+    <span class="nm">一份数据</span>
+    <span class="ds">所有应用读同一份飞书数据和业务库，谁能看什么由平台统一管</span>
+  </div>
+
+  <h1 class="vt" aria-label="Agent 平台：企业 AI 中台，一个门户、两条路、一份数据"><span class="ln anim">一个门户</span><span class="ln anim">两条路</span><span class="ln anim">一份数据</span></h1>
+
+  <div class="info">
+    <section class="anim">
+      <span class="tag">为什么自己建</span>
+      <p class="txt">业务 SOP<br>是公司的打法，<br>装进外采平台<br>就带不走</p>
+    </section>
+    <section class="anim">
+      <span class="tag">怎么建</span>
+      <p class="txt">底层基于开源搭，<br>我们只写公司规矩<br>和业务技能</p>
+    </section>
+  </div>
+
+  <div class="src anim">口径：企业 AI 中台设计记录，2026-10-13</div>
+  <div class="rule page-rule anim"></div>
+
+<script src="../shared/motion.js"></script>
+</body>
+</html>

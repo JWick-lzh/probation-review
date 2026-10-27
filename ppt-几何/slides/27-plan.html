@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-total="1600" data-probe="从做出来到用起场景放量超预期冲刺收官工作台正式上线方法论成文专利启动补个案例验证星际圈每双周篇成员人各产品使指标复盘转正答辩用起来怎么算目标使连续两周每打开次定一个在汇报里报述职全部是计划描边不已完成项 CEO 日期待确认月初底和优化口径取目标跟踪表里程碑汇报节">
+<head>
+<meta charset="UTF-8">
+<title>27 后三个月</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+/* ───────── 左：M4 / M5 / M6 三个阶段沿时间排开（宽度按天数，10/21 → 1/21 共 93 天铺满 1090px） ─────────
+   全部是计划：所有图形只描边、不填色。唯一实心的是 10/27 述职这一天。
+   M4 10/21–11/20 x 96–454；M5 11/21–12/20 x 464–806；M6 12/21–1/21 x 816–1186 */
+.stage { position: absolute; top: 80px; height: 112px; border: 4px solid var(--ink); padding: 16px 20px; }
+.stage .nm { font-size: var(--fs-body); font-weight: 900; line-height: 1.25; white-space: nowrap; }
+.stage .dt { margin-top: 6px; font-size: var(--fs-body-s); font-weight: 500; line-height: 1.3; }
+@keyframes wipe { from { clip-path: inset(0 100% 0 0); } }
+.stage.anim { animation: wipe 460ms var(--ease-out); }
+.g4 { left: 96px;  width: 358px; animation-delay: 80ms !important; }
+.g5 { left: 464px; width: 342px; animation-delay: 220ms !important; }
+.g6 { left: 816px; width: 370px; animation-delay: 360ms !important; }
+
+.axis { position: absolute; left: 96px; top: 222px; width: 1090px; height: 3px; background: var(--ink); transform-origin: 0 50%; }
+.axis.anim { animation: draw-x 600ms var(--ease-out) 120ms; }
+.today { position: absolute; left: 160px; top: 211px; width: 25px; height: 25px; border-radius: 50%; background: var(--red); }
+@keyframes pop { from { transform: scale(0); } }
+.today.anim { animation: pop 320ms var(--ease-out) 520ms; }
+.today-lb { position: absolute; left: 196px; top: 236px; font-size: var(--fs-label); font-weight: 700; color: var(--red); }
+
+.items { position: absolute; top: 290px; list-style: none; }
+.items li { display: flex; align-items: flex-start; font-size: var(--fs-body-s); font-weight: 500; line-height: 1.45; }
+.items li + li { margin-top: 18px; }
+.items li em { flex: 0 0 20px; height: 20px; margin: 7px 12px 0 0; border: 3px solid var(--ink); }
+.items li b { font-weight: 900; margin-right: 8px; }
+.tbd { display: block; font-size: var(--fs-label); font-weight: 700; color: var(--ink-2); }
+.items.anim { animation: reveal-down 520ms var(--ease-out); }
+
+/* 用起来怎么算：虚线框，也是计划 */
+.it { position: absolute; left: 96px; top: 640px; width: 1090px; height: 220px; border: 3px dashed var(--ink); }
+.it.anim { animation: wipe 560ms var(--ease-out) 640ms; }
+.it-hd { position: absolute; left: 124px; top: 668px; width: 310px; }
+.it-hd .nm { font-size: var(--fs-body); font-weight: 900; line-height: 1.3; }
+.it-hd .ok { margin-top: 8px; font-size: var(--fs-body); font-weight: 900; color: var(--red); line-height: 1.3; }
+.it-hd .dt { margin-top: 8px; font-size: var(--fs-body-s); font-weight: 500; line-height: 1.4; }
+.it-hd.anim { animation: reveal-right 480ms var(--ease-out) 760ms; }
+.items.itl { top: 676px; }
+.items.itl li em { border-radius: 50%; border-style: dashed; }
+
+/* ───────── 右：竖排标题 + 信息块 ───────── */
+.vt { position: absolute; left: 1236px; top: 80px; writing-mode: vertical-rl;
+      font-family: var(--serif); font-weight: 900; font-size: var(--fs-title-2); line-height: 1.2; letter-spacing: .06em; }
+.vt .ln { display: block; }
+.vt .ln.anim { animation: reveal-down 560ms var(--ease-out); }
+.vt .ln:nth-child(2) { animation-delay: 140ms !important; }
+
+.info { position: absolute; left: 1492px; top: 84px; width: 332px; }
+.info section + section { margin-top: 48px; }
+.info .tag { margin-bottom: 18px; }
+.info section.anim { animation: reveal-right 520ms var(--ease-out); }
+.info section:nth-child(1) { animation-delay: 420ms !important; }
+.info section:nth-child(2) { animation-delay: 540ms !important; }
+.info section:nth-child(3) { animation-delay: 660ms !important; }
+.info .txt { font-size: var(--fs-body-s); font-weight: 500; line-height: 1.6; }
+.info .key { display: flex; align-items: center; font-size: var(--fs-body-s); font-weight: 500; line-height: 1.6; }
+.info .key em { flex: 0 0 26px; height: 26px; margin-right: 12px; border: 3px solid var(--ink); }
+
+.src { position: absolute; left: 1236px; bottom: 107px; width: 588px; font-size: var(--fs-body-s); font-weight: 500; color: var(--ink-2); letter-spacing: .04em; line-height: 1.5; }
+.src.anim { animation: reveal-right 500ms var(--ease-out) 1000ms; }
+.page-rule { left: 96px; right: 96px; top: 1008px; transform-origin: 0 50%; }
+.page-rule.anim { animation: draw-x 600ms var(--ease-out) 940ms; }
+</style>
+</head>
+<body>
+
+  <div class="stage g4 anim"><p class="nm">M4 场景放量</p><p class="dt">10/21–11/20</p></div>
+  <div class="stage g5 anim"><p class="nm">M5 超预期冲刺</p><p class="dt">11/21–12/20</p></div>
+  <div class="stage g6 anim"><p class="nm">M6 收官</p><p class="dt">12/21–1/21</p></div>
+
+  <div class="axis anim"></div>
+  <!-- 10/27 是第 6 天，中点 x = 96 + 6.5 × 11.72 ≈ 172 -->
+  <i class="today anim"></i>
+  <span class="today-lb">10/27 述职</span>
+
+  <ul class="items anim" style="left:96px; width:358px; animation-delay:300ms">
+    <li><em></em><span><b>10/30</b>CEO 工作台正式上线</span></li>
+    <li><em></em><span><b>10/30</b>方法论成文</span></li>
+    <li><em></em><span><b>11/8</b>VOC 正式上线</span></li>
+    <li><em></em><span>专利 GTM 启动<span class="tbd">日期待确认</span></span></li>
+  </ul>
+  <ul class="items anim" style="left:464px; width:342px; animation-delay:420ms">
+    <li><em></em><span>VOC 场景补到 3 个<span class="tbd">日期待确认</span></span></li>
+    <li><em></em><span>专利 3 个案例验证<span class="tbd">日期待确认</span></span></li>
+    <li><em></em><span>星际圈每双周 1 篇，<br>成员到 30 人<span class="tbd">日期待确认</span></span></li>
+  </ul>
+  <ul class="items anim" style="left:816px; width:370px; animation-delay:540ms">
+    <li><em></em><span>各产品使用指标复盘</span></li>
+    <li><em></em><span>转正答辩</span></li>
+  </ul>
+
+  <div class="it anim"></div>
+  <div class="it-hd anim">
+    <p class="nm">用起来怎么算</p>
+    <p class="dt">每个产品都要有<br>一个能看的数</p>
+  </div>
+  <ul class="items itl anim" style="left:464px; width:330px; animation-delay:820ms">
+    <li><em></em><span><b>CEO 工作台</b><br>目标使用者连续两周，<br>每周至少打开 1 次</span></li>
+  </ul>
+  <ul class="items itl anim" style="left:816px; width:350px; animation-delay:880ms">
+    <li><em></em><span><b>每个产品</b><br>定一个使用指标，<br>在双周汇报里报</span></li>
+  </ul>
+
+  <h1 class="vt" aria-label="后三个月：从做出来，到用起来"><span class="ln anim">从做出来</span><span class="ln anim">到用起来</span></h1>
+
+  <div class="info">
+    <section class="anim">
+      <span class="tag">全部是计划</span>
+      <p class="key"><em></em>描边＝计划，都还没完成</p>
+    </section>
+    <section class="anim">
+      <span class="tag">日期待确认</span>
+      <p class="txt">专利、星际圈「11 月启动，<br>12 月底验证」，VOC 场景<br>和优化的日期，都还没定</p>
+    </section>
+  </div>
+
+  <div class="src anim">口径：阶段取目标跟踪表里程碑 M4–M6；<br>上线日期取第 4 期双周汇报；<br>「用起来怎么算」取述职报告第四、五章</div>
+  <div class="rule page-rule anim"></div>
+
+<script src="../shared/motion.js"></script>
+</body>
+</html>

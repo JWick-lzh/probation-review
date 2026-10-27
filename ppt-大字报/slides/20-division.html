@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>三方分工</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@700..900&family=Noto+Sans+SC:wght@400;700;900&display=swap"></noscript>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* 没有该被记住的数：用流程 + 大色块。四步沿一条细线排开（同第 19 页的时间线语法），
+     第 3 步是我的，做成 logo 蓝色块；下面是分工之后两周的三件事，右边是「下不了结论」的判断 */
+
+  .runhead {
+    position: absolute; left: var(--m); right: var(--m); top: 40px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: var(--fs-label); line-height: 1.2;
+  }
+  .runhead b { font-weight: 700; }
+  #rule-top { left: var(--m); width: var(--content-w); top: 78px; }
+
+  h1 {
+    position: absolute; left: var(--m); top: 108px;
+    font-family: var(--font-giant); font-size: 88px; font-weight: 900;
+    line-height: 1.08; letter-spacing: -0.015em; white-space: nowrap;
+  }
+
+  #flow-line { left: var(--m); width: var(--content-w); top: 336px; }
+  .steps {
+    position: absolute; left: var(--m); width: var(--content-w); top: 337px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+  }
+  .step { position: relative; height: 412px; padding: 30px 32px 0 0; }
+  .step .dot { position: absolute; left: 0; top: -8px; width: 14px; height: 14px; background: var(--ink); }
+  .step .n { font-family: var(--font-giant); font-size: 120px; font-weight: 900; line-height: 1; letter-spacing: -0.04em; }
+  .step h2 { margin-top: 18px; font-size: 40px; font-weight: 900; line-height: 1.15; }
+  .step p { margin-top: 14px; font-size: var(--fs-body); line-height: 1.45; white-space: nowrap; }
+
+  /* 第 3 步：色块 */
+  .step.me { padding: 30px 32px 0; color: #FFFFFF; isolation: isolate; }
+  .step.me .bg { position: absolute; left: 0; right: 16px; top: 22px; bottom: 0; background: var(--blue); transform-origin: 50% 0; z-index: -1; }
+  .step.me .dot { background: var(--blue); width: 18px; height: 18px; top: -10px; }
+  .step.me .n, .step.me h2, .step.me p { position: relative; }
+  .step.me .n { margin-top: 12px; }
+  .step.me p { font-weight: 700; }
+  .steps .step:not(.me) .n { margin-top: 12px; }
+
+  #rule-after { left: var(--m); width: 1104px; top: 790px; }
+  .after {
+    position: absolute; left: var(--m); width: 1104px; top: 791px;
+  }
+  .after > p, .judge > p { padding-top: 14px; font-size: var(--fs-label); font-weight: 700; color: var(--muted); line-height: 1.2; }
+  .after ul { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 32px; margin-top: 16px; }
+  .after li { list-style: none; }
+  .after li b { display: block; font-family: var(--font-giant); font-size: 40px; font-weight: 900; line-height: 1; letter-spacing: -0.02em; }
+  .after li span { display: block; margin-top: 12px; font-size: var(--fs-body); line-height: 1.4; white-space: nowrap; }
+
+  #rule-judge { left: 1248px; width: 576px; top: 790px; }
+  .judge { position: absolute; left: 1248px; width: 576px; top: 791px; }
+  .judge h3 { margin-top: 16px; font-size: var(--fs-lead); font-weight: 900; line-height: 1.4; }
+  .judge span.s { display: block; margin-top: 6px; font-size: var(--fs-body); line-height: 1.4; }
+
+  .foot {
+    position: absolute; left: var(--m); right: var(--m); top: 1000px;
+    font-size: var(--fs-label); line-height: 1.2; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+  <div class="runhead"><b>三、团队管理</b><span>转正述职　林灶辉</span></div>
+  <div class="rule-h strong" id="rule-top"></div>
+
+  <h1>
+    <span class="ln"><span>10/14 的分工：</span></span>
+    <span class="ln"><span>我负责把确认过的需求做成产品</span></span>
+  </h1>
+
+  <div class="rule-h strong" id="flow-line"></div>
+  <section class="steps" aria-label="10/14 CEO 定的三方分工，四步">
+    <div class="step"><i class="dot"></i><p class="n">1</p><h2>业务助理</h2><p>发现业务痛点，<br>定义问题和指标，<br>出产品 Demo</p></div>
+    <div class="step"><i class="dot"></i><p class="n">2</p><h2>CEO</h2><p>确认需求</p></div>
+    <div class="step me"><i class="bg"></i><i class="dot"></i><p class="n">3</p><h2>我</h2><p>数据打通，产品实现，<br>发现好产品推广赋能</p></div>
+    <div class="step"><i class="dot"></i><p class="n">4</p><h2>业务助理</h2><p>产品化之后看活跃、<br>看迭代，升级产品</p></div>
+  </section>
+
+  <div class="rule-h strong" id="rule-after"></div>
+  <section class="after">
+    <p>分工之后两周</p>
+    <ul>
+      <li><b>10/18</b><span>工作反馈系统按 CEO 的<br>Demo 改版上线</span></li>
+      <li><b>10/19</b><span>时间管理上线</span></li>
+      <li><b>10/22</b><span>10:54 提需求，<br>16:52 交付验收</span></li>
+    </ul>
+  </section>
+
+  <div class="rule-h strong" id="rule-judge"></div>
+  <section class="judge">
+    <p>判断</p>
+    <h3>是不是分工带来的，<br>时间还短，下不了结论。</h3>
+    <span class="s">现在当试验田在跑。</span>
+  </section>
+
+  <footer class="foot">口径：10/14 CEO 群消息原文；交付时间取应用发布记录</footer>
+
+<script src="../shared/motion.js"></script>
+<script>
+  (function () {
+    var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+    var drawX = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }];
+    var rise = [{ transform: 'translateY(135%)' }, { transform: 'none' }];
+    var up = [{ transform: 'translateY(24px)', clipPath: 'inset(0 0 100% 0)' }, { transform: 'none', clipPath: 'inset(0 0 0 0)' }];
+
+    P5.tween($('#rule-top'), drawX, { duration: 700 });
+    $$('h1 .ln > span').forEach(function (s, i) { P5.tween(s, rise, { delay: 80 + i * 90, duration: 750 }); });
+
+    // 流程线从左到右，四步依次出现；第 3 步的色块从上往下铺开
+    P5.tween($('#flow-line'), drawX, { delay: 260, duration: 1000, easing: 'cubic-bezier(.45,.05,.3,1)' });
+    $$('.step').forEach(function (st, i) {
+      var t = 320 + i * 200;
+      P5.tween(st.querySelector('.dot'), [{ transform: 'scale(0)' }, { transform: 'none' }], { delay: t, duration: 300 });
+      var bg = st.querySelector('.bg');
+      if (bg) P5.tween(bg, [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }], { delay: t + 40, duration: 600 });
+      Array.prototype.forEach.call(st.querySelectorAll('.n, h2, p'), function (e, j) {
+        P5.tween(e, up, { delay: t + 80 + j * 60, duration: 560 });
+      });
+    });
+
+    P5.tween($('#rule-after'), drawX, { delay: 860, duration: 600 });
+    $$('.after li').forEach(function (e, i) { P5.tween(e, up, { delay: 940 + i * 80, duration: 560 }); });
+    P5.tween($('#rule-judge'), drawX, { delay: 980, duration: 500 });
+    $$('.judge > *').forEach(function (e, i) { P5.tween(e, up, { delay: 1040 + i * 60, duration: 520 }); });
+
+    P5.go();
+  })();
+</script>
+</body>
+</html>
